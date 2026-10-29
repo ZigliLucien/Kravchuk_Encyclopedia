@@ -1,0 +1,41 @@
+\chapter{Tables of Krawtchouk and Symmetric Matrices}
+\label{app:matrix-tables}
+\section{Verified tables for $N=2,3,4,5,7,8$}
+The matrices in this section use the standard column-vector basis
+and zero-based indexing. Each order $N$ gives matrices of size
+$(N+1)\times(N+1)$:
+\[
+R_Ne_j=(N-j)e_{j+1},\qquad L_Ne_j=je_{j-1},\qquad A_N=R_N+L_N,
+\]
+\[
+(\Phi_N)_{nj}=[v^n](1+v)^{N-j}(1-v)^j,\qquad
+S_N=\Phi_N\operatorname{diag}\binom Nj.
+\]
+For every displayed order, exact integer arithmetic verified
+\[
+[L_N,R_N]=\Lambda_N,\quad
+A_N\Phi_N=\Phi_N\Lambda_N,\quad
+\Phi_NA_N=\Lambda_N\Phi_N,\quad
+\Phi_N^2=2^NI,\quad S_N^T=S_N,
+\]
+where $\Lambda_N=\operatorname{diag}(N,N-2,\ldots,-N)$.
+Definitions and interpretation appear in
+Sections~\ref{sec:finite-sl2-matrices},
+\ref{sec:matrix-recurrence-intertwining},
+\ref{sec:matrix-Phi-definition}, and~\ref{sec:matrix-S-definition}.
+
+\input{chapters/tables/matrices-N02}
+\input{chapters/tables/matrices-N03}
+\input{chapters/tables/matrices-N04}
+\input{chapters/tables/matrices-N05}
+\input{chapters/tables/matrices-N07}
+\input{chapters/tables/matrices-N08}
+
+\section{Additional orders through $N=14$}
+% TODO: Populate and verify the remaining orders from the original outline.
+
+\noindent\textbf{ADDITIONAL ORDERS THROUGH $N=14$ NEEDS TO BE DONE.}
+
+The verified tables above are the currently developed subset of the
+original program for orders one through fourteen. Additional orders
+have not been filled with unverified or placeholder numerical values.

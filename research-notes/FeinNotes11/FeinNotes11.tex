@@ -1,0 +1,269 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\F}{{\cal F}}
+\newcommand{\Fstar}{{\cal F}^{*}}
+\newcommand{\dd}{\,dx}
+\newtheorem*{editorial}{Editorial note}
+\title{Hermite Functions, Fourier Transform, and the Kravchuk System}
+\author{Philip}
+\date{28 April 2011}
+\begin{document}
+\maketitle
+\begin{center}
+\textit{Editable working transcription of FeinNotes11, with marked corrections}
+\end{center}
+
+% SOURCE STATUS: Transcribed from the page-by-page readings retained in the
+% conversation, including a targeted re-reading of the original scan.
+% The original PDF was not available in the current workspace for a fresh
+% visual comparison. This is an editorial working transcription, not a
+% certified diplomatic reproduction. Section headings and mathematics follow
+% the recorded readings; prose and layout have been lightly regularized.
+% The recorded handwritten header reads "Philip." and "28/04/11".
+
+\begin{editorial}
+This working transcription follows the previously recorded readings of the
+three-page notes. The original scan was not available for a fresh visual
+comparison during this conversion. Layout and prose have been lightly
+regularized. Corrections are recorded in source comments and summarized
+at the end; added clarifications are identified explicitly.
+\end{editorial}
+
+\section{Hermite functions}
+Let $D=d/dx$, and define
+\begin{equation}\label{eq:psi}
+\psi_n(x)=(x-D)^n e^{-x^2/2}.
+\end{equation}
+By Heisenberg--Weyl calculus,
+\[
+x-D=e^{-D^2/2}xe^{D^2/2},\qquad
+(x-D)^n=e^{-D^2/2}x^ne^{D^2/2}.
+\]
+The translation identity is
+\[
+f(D)e^{ax}=e^{ax}f(D+a).
+\]
+The generating function is
+\begin{align}
+G(x,t)&=\sum_{n\ge0}\frac{t^n\psi_n(x)}{n!}
+=e^{t(x-D)}e^{-x^2/2}\notag\\
+&=e^{-D^2/2}e^{tx}e^{D^2/2}e^{-x^2/2}\notag\\
+&=e^{tx}e^{\frac12(D^2-(D+t)^2)}e^{-x^2/2}\notag\\
+&=e^{tx-t^2/2}e^{-tD}e^{-x^2/2}\notag\\
+&=e^{tx-t^2/2}e^{-(x-t)^2/2}\notag\\
+&=e^{2tx-t^2}e^{-x^2/2}.\label{eq:G}
+\end{align}
+\begin{editorial}
+The heat-operator conjugations above are formal Heisenberg--Weyl
+identities; separate domain questions for the individual unbounded
+exponentials are not being asserted. The final generating function
+can alternatively be obtained directly from the Baker--Campbell--Hausdorff
+factorization $e^{t(x-D)}=e^{tx}e^{-tD}e^{-t^2/2}$.
+\end{editorial}
+
+Define the two-parameter Hermite polynomials by
+\begin{equation}\label{eq:Hermite-polynomials}
+e^{zx-\tau z^2/2}
+=\sum_{n\ge0}\frac{z^n H_n(x,\tau)}{n!}.
+\end{equation}
+% A targeted re-reading confirmed the factor tau in the exponent.
+Then
+\[
+\psi_n(x)=2^nH_n(x,1/2)e^{-x^2/2}.
+\]
+For complex $z$, the Gaussian Fourier--Laplace integral is
+\[
+\frac1{\sqrt{2\pi}}\int_{\RR}e^{zx}e^{-x^2/2}\dd=e^{z^2/2}.
+\]
+
+\subsection*{Fourier-transform convention}
+% NOTATION CORRECTION requested by the author: write {\cal F}^{*}
+% for the positive-exponent transform. Earlier recorded readings called it F.
+We write the usual negative-exponent transform as
+\begin{equation}\label{eq:Fminus}
+(\F f)(\xi)=\frac1{\sqrt{2\pi}}
+\int_{\RR}e^{-i\xi x}f(x)\dd,
+\end{equation}
+and its adjoint (equivalently, its inverse) as
+\begin{equation}\label{eq:Fplus}
+(\Fstar f)(\xi)=\frac1{\sqrt{2\pi}}
+\int_{\RR}e^{i\xi x}f(x)\dd.
+\end{equation}
+These integrals may first be taken for Schwartz functions and then
+extended unitarily to $L^2(\RR,dx)$.
+The kernel in \eqref{eq:Fplus} is the complex conjugate of the kernel
+in \eqref{eq:Fminus}. For complex-valued $f$, this is not the same as
+simply taking the complex conjugate of $\F f$:
+\[
+\Fstar f=\overline{\F(\overline f)}.
+\]
+
+Using \eqref{eq:G}, we obtain
+\begin{align}
+(\Fstar G)(\xi,t)
+&=\frac1{\sqrt{2\pi}}\int_{\RR}
+e^{i\xi x}e^{-x^2/2+2tx-t^2}\dd\notag\\
+&=e^{-t^2}e^{(i\xi+2t)^2/2}\notag\\
+&=e^{-\xi^2/2+2i\xi t+t^2}\label{eq:corrected-mixed-term}\\
+&=G(\xi,it)
+=\sum_{n\ge0}\frac{(it)^n\psi_n(\xi)}{n!}.\notag
+\end{align}
+% ORIGINAL RECORDED READING of the intermediate line:
+% e^{-xi^2/2+i xi t+t^2}; the coefficient 2 was missing.
+% CORRECTED: e^{-xi^2/2+2 i xi t+t^2}.
+Comparing coefficients gives
+\begin{equation}\label{eq:Fourier-Hermite}
+\boxed{\Fstar\psi_n=i^n\psi_n.}
+\end{equation}
+For the usual transform, correspondingly,
+$\F\psi_n=(-i)^n\psi_n$.
+
+\section{$\mathfrak{sl}(2)$ operators}
+Consider
+\[
+H=\frac{x^2-D^2}{2},
+\]
+the harmonic-oscillator Hamiltonian. The operators
+\[
+R=\frac{x^2}{2},\qquad L=\frac{D^2}{2},\qquad
+\rho=xD+\frac12
+\]
+satisfy the commutation relations
+\begin{equation}\label{eq:commutators}
+[L,R]=\rho,\qquad [L,\rho]=2L,\qquad [\rho,R]=2R.
+\end{equation}
+These differential-operator identities hold on the Schwartz space
+$\mathcal S(\RR)$. In particular, $H=R-L$.
+
+By Heisenberg--Weyl algebra,
+\[
+(x+D)(x-D)=x^2-D^2+1,
+\qquad 2H=(x+D)(x-D)-1.
+\]
+Now
+\[
+(x-D)G(x,t)=\sum_{n\ge0}\frac{t^n\psi_{n+1}(x)}{n!},
+\]
+% An earlier reading rendered the generating parameter here as l.
+% It has been regularized to the same t used throughout G(x,t).
+and
+\begin{align*}
+(x+D)G(x,t)
+&=(x+D)e^{2tx-t^2-x^2/2}\\
+&=2tG(x,t)
+=\sum_{n\ge1}\frac{2n\,t^n\psi_{n-1}(x)}{n!}.
+\end{align*}
+Thus
+\[
+(x+D)\psi_n=2n\psi_{n-1},\qquad
+(x-D)\psi_n=\psi_{n+1},
+\]
+where the lowering term vanishes at $n=0$. Consequently,
+\begin{align*}
+2H\psi_n
+&=\bigl[(x+D)(x-D)-1\bigr]\psi_n\\
+&=\bigl[(2n+2)-1\bigr]\psi_n
+=(2n+1)\psi_n.
+\end{align*}
+Therefore
+\[
+e^{\pi iH/2}\psi_n
+=e^{\pi in/2+\pi i/4}\psi_n
+=i^n\sqrt{i}\,\psi_n,
+\qquad \sqrt{i}=e^{i\pi/4}.
+\]
+Together with \eqref{eq:Fourier-Hermite}, this gives the main identity
+\begin{equation}\label{eq:main-on-basis}
+\boxed{e^{\pi iH/2}\psi_n=\sqrt{i}\,\Fstar\psi_n.}
+\end{equation}
+
+\subsection*{Hilbert-space formulation}
+% ORIGINAL RECORDED SENTENCE:
+% "This extends to L^2(R,e^{-x^2/2} dx) since the functions psi_n
+% are dense in that Hilbert space."
+% EDITORIAL CORRECTION: the standard unitary Fourier/oscillator identity
+% belongs to unweighted L^2(R,dx), for these Gaussian wavefunctions.
+The normalized Hermite functions
+\[
+h_n(x)=\frac{\psi_n(x)}{\sqrt{2^n n!\sqrt\pi}}
+\]
+form an orthonormal basis of $L^2(\RR,dx)$. Taking the self-adjoint
+oscillator realization of $H$, both sides of
+\eqref{eq:main-on-basis} define bounded unitary operators on this
+space. Equality on the Hermite basis therefore implies
+\begin{equation}\label{eq:main-operator}
+\boxed{e^{\pi iH/2}=\sqrt{i}\,\Fstar,\qquad
+\Fstar=e^{\frac{\pi i}{2}(H-\frac12)}.}
+\end{equation}
+Equivalently,
+\[
+\F=e^{-\frac{\pi i}{2}(H-\frac12)}.
+\]
+A Gaussian-weighted polynomial realization is also possible, but
+requires conjugating the operators; it is not the same unitary
+Fourier transform with a different measure inserted.
+
+\medskip
+\noindent\textit{Remark from the notes.}
+The relation between the $\mathfrak{sl}(2)$ algebra and Fourier
+transform is well known in optics.
+% This is retained as a source remark, not a newly verified literature claim.
+
+\section{Connection with Kravchuk polynomials}
+The notes state:
+\begin{quote}
+The Kravchuk polynomials are basis states for irreducible
+representations of $\mathfrak{sl}(2)$. They are eigenfunctions of
+$H$ in a different representation.
+\end{quote}
+\begin{editorial}
+This is retained as a programmatic representation-theoretic statement.
+Here $H=(x^2-D^2)/2$ denotes the differential oscillator Hamiltonian.
+A corresponding finite-dimensional generator must be specified in its
+own representation; the quoted sentence is not an assertion that these
+finite matrices are the same operator as the differential $H$.
+No finite-dimensional convolution intertwiner is established here.
+\end{editorial}
+
+\section{Convolution in the Kravchuk system}
+The final page poses the question:
+\begin{quote}
+Find an intertwining operator that relates convolution/Fourier
+transform with K-convolution/Kravchuk transform. Does it exist???
+\end{quote}
+This remains an open question in these preliminary notes.
+
+\appendix
+\section{Editorial changes and points for review}
+\begin{enumerate}
+\item \textbf{Fourier notation.} Following the author's clarification,
+$\Fstar={\cal F}^{*}$ denotes the positive-exponent transform.
+Its Hermite eigenvalues are $i^n$. The negative-exponent transform
+$\F$ has eigenvalues $(-i)^n$.
+\item \textbf{Mixed-term typo.} The intermediate Gaussian exponent
+is $-\xi^2/2+2i\xi t+t^2$, not
+$-\xi^2/2+i\xi t+t^2$.
+\item \textbf{Hermite parameter.} The generating function for
+$H_n(x,\tau)$ contains $-\tau z^2/2$. This agrees with the targeted
+re-reading recorded earlier and with the specialization
+$2^nH_n(x,1/2)$.
+\item \textbf{Generating parameter.} A previously transcribed $l^n$
+in the raising identity has been regularized to $t^n$; this may have
+been a reading ambiguity rather than a source typo.
+\item \textbf{Hilbert space.} The Fourier/oscillator unitary identity
+is stated on $L^2(\RR,dx)$, not on the Gaussian-weighted space in
+the earlier recorded sentence. The original reading is preserved
+in a source comment.
+\item \textbf{Scope.} The formal heat-operator calculation, the
+finite-versus-continuum representation issue, and the unsolved
+convolution question have explicit editorial qualifications.
+\item \textbf{Source comparison.} A fresh page-by-page comparison
+with the original scan remains desirable before treating this as
+an exact transcription. No new theorem or literature attribution
+has been added on the author's behalf.
+\end{enumerate}
+\end{document}

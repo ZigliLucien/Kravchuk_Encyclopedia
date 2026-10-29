@@ -1,0 +1,48 @@
+\chapter{Symmetric Krawtchouk Matrices}
+\label{ch:16}
+\section{The matrix $T$}
+\label{sec:16-1}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\section{$S^2$ and trace formulas}
+\label{sec:16-2}
+Binomial duality yields the exact bilinear identity
+\[
+(S_N^2)_{jk}=\binom Nj\binom Nk\sum_{n=0}^NK_n(j;N)K_n(k;N).
+\]
+Parseval applied to the generating functions evaluates it as
+\begin{equation}\label{eq:beta}
+(S_N^2)_{jk}=\frac{4^N}{\pi}\binom Nj\binom Nk
+\cos\frac{\pi(j-k)}2\,
+\mathrm B\left(\frac{j+k+1}{2},\frac{2N-j-k+1}{2}\right).
+\end{equation}
+The beta integral follows by factoring $1\pm e^{i\theta}$ into half-angle sine and cosine factors. This identity is exact, not an asymptotic statement.
+
+\section{Spectrum of $S$}
+\label{sec:16-3}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\section{Symmetry sectors and block decompositions}
+\label{sec:16-4}
+Define $(Jf)_j=f_{N-j}$ and $(Ef)_j=(-1)^jf_j$. Then
+\[
+JS_N=S_NE,\qquad S_NJ=ES_N,
+\]
+so $S_N$ commutes with $J+E$. For the square, indices of different parity decouple. Conjugation by $\operatorname{diag}((-1)^{\lfloor j/2\rfloor})$ makes each parity block entrywise positive, by \eqref{eq:beta}.
+
+\section{Beta-function kernel and spectral asymptotics}
+\label{sec:16-5}
+\begin{remark}[Working asymptotic program, not a completed theorem]
+Put $\xi=(N-2j)/\sqrt N$ and $\eta=(N-2k)/\sqrt N$. Compact-window Stirling expansions of \eqref{eq:beta}, after sign removal and normalization by $N/8^N$, lead to the candidate kernel
+\[
+L(\xi,\eta)=\frac{1}{\sqrt2\pi^{3/2}}
+\exp\left[-\frac38(\xi^2+\eta^2)+\frac14\xi\eta\right].
+\]
+Its Gaussian ground state is $\exp(-\xi^2/(2\sqrt2))$, with eigenvalue $\kappa=(\sqrt8-2)/\pi$. The proposed positive-eigenvalue asymptotic is
+\[
+\lambda_{\max}(S_N)\sim\sqrt{\sqrt8-2}\,
+\frac{(\sqrt8)^N}{\sqrt{\pi N}}.
+\]
+Global operator convergence and control of the positive spectral branch still require proof. Fixed-degree Hermite limits alone do not justify this conclusion.
+\end{remark}
+

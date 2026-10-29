@@ -1,0 +1,54 @@
+\chapter{Symmetric Functions and Energy}
+\label{ch:4}
+\section{Elementary symmetric functions and determinants}
+\label{sec:4-1}
+For scalars $z_1,\ldots,z_N$, the elementary symmetric functions are
+\[
+e_n(z_1,\ldots,z_N)=\sum_{1\leq a_1<\cdots<a_n\leq N}
+z_{a_1}\cdots z_{a_n},\qquad e_0=1.
+\]
+Each subset occurs once: repeated indices and ordered tuples are excluded.
+For $D=\operatorname{diag}(z_1,\ldots,z_N)$,
+\begin{equation}\label{eq:elementary-energy-generating}
+\det(I+vD)=\prod_{a=1}^N(1+z_av)
+=\sum_{n=0}^N e_n(z_1,\ldots,z_N)v^n.
+\end{equation}
+If $z_a=\epsilon_a\in\{+1,-1\}$ and precisely $j$ signs are negative,
+comparison with the defining generating function \eqref{eq:gen} gives
+\begin{equation}\label{eq:sign-energy-Krawtchouk}
+e_n(\epsilon_1,\ldots,\epsilon_N)=K_n(j;N).
+\end{equation}
+Thus the order-$n$ interaction energy depends only on the number of
+negative signs, not their positions. The first two nonconstant energies are
+\[
+e_1=N-2j,\qquad e_2=\frac{(N-2j)^2-N}{2}.
+\]
+These are ordinary coefficient values, not the factorial-scaled centered
+polynomials: $k_n(N-2j,N)=n!e_n$.
+The twiston interpretation is given in Section~\ref{sec:9-6}; the signed-path
+interpretation in Section~\ref{sec:2-1} gives the same coefficients by a
+different combinatorial construction. See also \cite[Sections~1 and~5]{KocikFeynman}.
+
+\section{Traces on Grassmann algebras}
+\label{sec:4-2}
+Let $V$ have dimension $N$ and let $T:V\to V$ be linear. On the $n$th exterior power define
+\[
+(\bigwedge^n T)(v_1\wedge\cdots\wedge v_n)
+=Tv_1\wedge\cdots\wedge Tv_n.
+\]
+The trace of this induced map is the sum of the principal $n\times n$ minors of $T$. Consequently,
+\begin{equation}\label{eq:exterior-trace-determinant}
+\det(I+vT)=\sum_{n=0}^N v^n\operatorname{tr}(\bigwedge^n T).
+\end{equation}
+Indeed, in an exterior basis indexed by subsets, the diagonal entry indexed by a subset is precisely its principal minor; the determinant expansion gives the same coefficients. This argument does not require diagonalizability.
+For a sign operator $D$ with $N-j$ eigenvalues $+1$ and $j$ eigenvalues $-1$, the degree-$n$ trace is therefore
+\[
+\operatorname{tr}(\bigwedge^n D)=K_n(j;N).
+\]
+For the full Grassmann algebra $\bigwedge V=\bigoplus_n\bigwedge^n V$, ordinary trace and supertrace are respectively
+\[
+\operatorname{tr}(\bigwedge T)=\det(I+T),\qquad
+\operatorname{str}(\bigwedge T)=\sum_n(-1)^n\operatorname{tr}(\bigwedge^n T)=\det(I-T).
+\]
+Here $\bigwedge^0T$ is the identity on the scalar space. These formulas concern multiplicative exterior powers, not the additive Lie-algebra action obtained by applying a generator to one wedge factor at a time. They develop the Grassmann-algebra heading of the supplied source outline from the determinant identity in Section~\ref{sec:4-1}.
+

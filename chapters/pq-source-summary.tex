@@ -1,0 +1,139 @@
+\chapter{Source conventions and the general Krawtchouk transform}
+\label{chap:pq-source-summary}
+This chapter integrates the supplied summary paper \emph{On Krawtchouk
+Transforms} (\texttt{KravPQ.tex}) with \texttt{KravSums.tex}.
+The originals are retained in \texttt{sources/}. Source conventions are
+preferred here; explicit dictionaries keep the earlier symmetric chapters
+compatible. Statements below are derived directly from the supplied
+generating functions, rather than imported with an implicit normalization.
+
+\section{The two source conventions}
+In the transform paper, let $p,q>0$, $p+q=1$, and $x=N-2j$. Its convention is
+\begin{equation}\label{eq:pq-source-gf}
+G(v)=(1+2qv)^{N-j}(1-2pv)^j
+=\sum_{n=0}^N\frac{v^n}{n!}K_n(x,N).
+\end{equation}
+In the sums paper the convention is
+\begin{equation*}
+(1+z)^{N-j}(1-rz)^j=\sum_{n=0}^Nz^n\phi^N_{nj},
+\qquad
+(1+z)^{N-j}(1-z)^j=\sum_{n=0}^Nz^n\Phi^N_{nj}.
+\end{equation*}
+Thus the lowercase $\phi$ denotes general parameters, and uppercase
+$\Phi$ denotes the symmetric specialization in the sums convention.
+The precise bridge, with the parameters of the transform paper, is
+\begin{equation}\label{eq:pq-source-dictionary}
+r=\frac pq,\qquad z=2qv,\qquad
+K_n(N-2j,N)=n!(2q)^n\phi^N_{nj}.
+\end{equation}
+\emph{Parameter warning.} The sums paper writes $r=q_{\rm S}/p_{\rm S}$.
+Consequently $p_{\rm S}=q$ and $q_{\rm S}=p$ when matching it to the
+transform paper. Identifying the two letters $p$ without this interchange
+would give an incorrect biased-parameter dictionary.
+At $p=q=1/2$, $K_n(N-2j,N)=n!\Phi^N_{nj}$.
+The earlier chapters' ordinary-coefficient notation $K_n(j;N)$ equals
+$\Phi^N_{nj}$ in that symmetric setting; it is not the factorial-normalized
+$K_n(x,N)$ of this chapter.
+
+\section{Orthogonality and inversion}
+Let $J$ have probabilities $\binom Nj q^jp^{N-j}$ and $X=N-2J$.
+Independence of the $N$ Bernoulli steps gives
+\begin{equation*}
+\mathbb E[G(v)G(w)]
+=\{p(1+2qv)(1+2qw)+q(1-2pv)(1-2pw)\}^N
+=(1+4pqvw)^N.
+\end{equation*}
+Comparing coefficients proves
+\begin{equation}
+\mathbb E[K_n(X,N)K_m(X,N)]
+=\delta_{nm}(n!)^2\binom Nn(4pq)^n.
+\end{equation}
+To distinguish ordinary from exponential coefficients, put
+$\widehat\Phi_{nj}=K_n(N-2j,N)/n!$ and
+\begin{equation*}
+B=\operatorname{diag}\!\left(\binom Nj p^{N-j}q^j\right),\qquad
+\Gamma=\operatorname{diag}\!\left(\binom Nn(4pq)^n\right).
+\end{equation*}
+These local source-style matrices are not the unweighted $B_N$ of the
+symmetric chapters. Orthogonality and its inverse formula become
+\begin{equation*}
+\widehat\Phi B\widehat\Phi^{\mathsf T}=\Gamma,
+\qquad
+\widehat\Phi^{-1}=B\widehat\Phi^{\mathsf T}\Gamma^{-1}.
+\end{equation*}
+Indeed the first identity gives a right inverse of a square matrix.
+In particular, this binomially weighted row orthogonality must not be
+confused with the unweighted column sums in the sums chapter.
+
+\section{Operator coefficients and positivity}
+Write $D=d/dx$. For $\deg f\le N$ there is a unique expansion
+\begin{equation*}
+f(x)=\sum_{n=0}^N\widetilde f(n)K_n(x,N),\qquad
+\widetilde f(n)=\frac1{n!}
+\left[(pe^D+qe^{-D})^{N-n}(\sinh D)^nf\right]_{x=0}.
+\end{equation*}
+All power series act finitely on the polynomial space. To prove the formula,
+put $M(z)=pe^z+qe^{-z}$ and $V(z)=\sinh z/M(z)$. Substitution in the generating
+function gives
+\begin{equation*}
+e^{zx}=M(z)^N\sum_{n\ge0}\frac{V(z)^n}{n!}K_n(x,N).
+\end{equation*}
+For coefficient extraction through degree $N$, only $n\le N$ is needed;
+compare coefficients of $z^m$ for $0\le m\le N$ to obtain the claimed
+operator formula on monomials and hence on every such $f$.
+
+\begin{proposition}
+If $p\ge q$ and $f$ has nonnegative monomial coefficients, then
+$\widetilde f(n)\ge0$ for every $n$. If $p>q$ and every monomial
+coefficient of $f$ through degree $N$ is strictly positive, then every
+$\widetilde f(n)$ is strictly positive.
+\end{proposition}
+\begin{proof}
+The series $M(z)=\cosh z+(p-q)\sinh z$ and $\sinh z$ have nonnegative
+coefficients. If $h(z)=\sum h_mz^m$ and $f(x)=\sum a_mx^m$, then
+$[h(D)f]_{x=0}=\sum m!h_ma_m$. This proves nonnegativity.
+For strict positivity the coefficient of $z^n$ in
+$M(z)^{N-n}(\sinh z)^n$ is $1$, so the term $a_n$ already suffices.
+\end{proof}
+Strict positivity cannot be asserted for arbitrary polynomials with only
+some positive coefficients: $f=1$ has zero transform coefficients for $n>0$.
+At $p=q$, parity also forces zeros for many individual monomials.
+
+\section{Low-degree checks and connection to sums}
+Set $a=p-q$. Expansion of the generating function gives
+\begin{equation*}
+K_0=1,\qquad K_1=x-Na,\qquad
+K_2=(x-Na)^2+2a(x-Na)-4Npq.
+\end{equation*}
+Consequently
+\begin{equation*}
+x=K_1+NaK_0,
+\qquad
+x^2=K_2+2a(N-1)K_1+(N^2a^2+4Npq)K_0.
+\end{equation*}
+These examples exhibit positivity when $p\ge q$ and recover
+$x^2=K_2+NK_0$ in the symmetric case.
+
+The weighted partial column sums, Catalan evaluations, and Boolean-lattice
+applications of \texttt{KravSums.tex} are already developed in the sums
+section included in the existing algebra chapter. Their entries should
+be read as $\phi^N_{nj}$ (general) and $\Phi^N_{nj}$ (symmetric).
+For example the bridge for any scalar weights $w_n$ is
+\begin{equation*}
+\sum_{n=0}^m w_n(\phi^N_{nj})^2
+=\sum_{n=0}^m\frac{w_n}{(n!)^2(2q)^{2n}}
+K_n(N-2j,N)^2.
+\end{equation*}
+This termwise conversion preserves the weights; replacing only the
+polynomial symbol would not. It connects the column identities to the
+operator transform without duplicating the existing sums treatment.
+
+\section{Scope of this integration}
+The supplied transform paper also treats coding theory, modified inversion,
+and multivariate symmetric representations. This chapter integrates its
+normalization, orthogonality, expansion calculus, positivity, and their
+connection with the sums results. The remaining applications are retained
+in the original reference source and are not claimed to be fully integrated
+here. The malformed intermediate displays in the supplied Appell-inverse
+calculation are not copied: the valid identity used above is
+$V(z)=\sinh z/(pe^z+qe^{-z})$.

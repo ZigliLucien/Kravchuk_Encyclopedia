@@ -1,0 +1,67 @@
+\documentclass[11pt,oneside]{amsbook}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\setcounter{tocdepth}{1}
+\title{Kravchuk Encyclopedia\\ A Working Book Skeleton}
+
+\date{}
+\begin{document}
+\frontmatter
+\maketitle
+\chapter*{Editorial Preface}
+This editable skeleton follows the eighteen main topics and appendix program in Section 6.1 of the supplied article source, \texttt{KravFeinsKocik.tex}. Additional headings from the supplied archived website, \texttt{Kravchuk.zip}, have been placed within the closest corresponding chapters. The archived introduction now appears as the first numbered chapter; the eighteen topical chapters follow it. The contents preserve the original program rather than impose a new textbook sequence.
+
+Most sections are intentionally empty. A small set of starter passages establishes a consistent symmetric normalization and elementary identities. Those passages are introductory mathematical derivations, not a comprehensive literature review. Recent spectral-asymptotic material is explicitly labeled as an unfinished working program. Empty sections contain source comments for future development, but no artificial prose filler.
+
+The title retains ``Kravchuk'' while the polynomial notation uses the conventional spelling ``Krawtchouk.'' Historical names and original terminology should be checked as chapters are developed. In particular, the operator symbols $A$, $K$, $\Lambda$, and $T$ require definitions from their original source contexts before they are used interchangeably.
+\chapter*{Notation and Conventions}
+Throughout the starter material, $K_n(j;N)$ is defined by the ordinary generating function, $k_n(N-2j,N)=n!K_n(j;N)$, $\Phi_N=(K_n(j;N))$, $B_N=\operatorname{diag}(\binom Nj)$, and $S_N=\Phi_NB_N$. All matrix indices begin at zero. Physicists' and probabilists' Hermite normalizations must be explicitly distinguished. Binomial coefficients outside their usual integer range vanish.
+\tableofcontents
+\mainmatter
+\include{chapters/00-introduction}
+\include{chapters/01-chapter}
+\include{chapters/02-chapter}
+\include{chapters/03-chapter}
+\include{chapters/04-chapter}
+\include{chapters/05-chapter}
+\include{chapters/06-chapter}
+\include{chapters/07-chapter}
+\include{chapters/08-chapter}
+\include{chapters/09-chapter}
+\include{chapters/10-chapter}
+\include{chapters/11-chapter}
+\include{chapters/12-chapter}
+\include{chapters/13-chapter}
+\include{chapters/14-chapter}
+\include{chapters/15-chapter}
+\include{chapters/16-chapter}
+\include{chapters/17-chapter}
+\include{chapters/18-chapter}
+\appendix
+\include{chapters/appendix-01}
+\include{chapters/appendix-02}
+\include{chapters/appendix-03}
+\include{chapters/appendix-04}
+\include{chapters/appendix-05}
+\include{chapters/appendix-06}
+\backmatter
+\chapter*{Bibliography and Source Register}
+\addcontentsline{toc}{chapter}{Bibliography and Source Register}
+\section*{Supplied source materials}
+\begin{itemize}
+\item \texttt{KravFeinsKocik.tex}: the article source supplying the encyclopedia outline in Section 6.1.
+\item \texttt{Kravchuk.zip}: the archived encyclopedia website supplying additional headings and the introductory chapter.
+\item \texttt{KravConvolutions.pdf}: supplied supporting material for future transform and convolution chapters.
+\end{itemize}
+\section*{Literature bibliography}
+% TODO: Insert a verified bibliography, then cite it in the developed chapters.
+No external bibliographic records have been asserted or reconstructed in this initial skeleton. Before publication, verify authors, titles, dates, venues, and identifiers for every reference.
+\end{document}

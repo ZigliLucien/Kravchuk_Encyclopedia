@@ -1,0 +1,137 @@
+\documentclass[12pt,reqno]{amsart}
+\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareMathSymbol{\N}{\mathbin}{AMSb}{"4E}
+\DeclareMathSymbol{\Z}{\mathbin}{AMSb}{"5A}
+%\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+%\DeclareMathSymbol{\Q}{\mathbin}{AMSb}{"51}
+%\DeclareMathSymbol{\I}{\mathbin}{AMSb}{"49}
+\DeclareMathSymbol{\C}{\mathbin}{AMSb}{"43}
+
+\def\sech{{\mathrm{sech}\,}}
+
+\font\fff= eufm10 scaled \magstep 1
+\def\?#1?{\hbox{\fff #1}}
+
+\parindent=0pt
+
+\def\pidagger{\pi^\ddag}
+\def\pistar{\pi^\ast}
+\def\pitilde{\tilde\pi}
+\def\pihat{\hat\pi}
+\def\pihatstar{\hat\pi^\ast}
+\def\picheck{\check\pi}
+\def\xid{\xi^\ddag}
+\def\xis{\xi^\ast}
+\def\xicheck{\check\xi}
+\def\ad #1.{{{\rm ad}\,#1}}
+\def\X{{\hat X}}
+\def\Y{{\hat Y}}
+\def\D{{\hat D}}
+\def\R{{\cal R}}
+\def\V{{\hat V}}
+\def\W{{\hat W}}
+\def\y{{\hat y}}
+%\def\C{{\bf C}}
+\def\e{{\bf e}}
+\def\1{{\bf 1}}
+\def\tfrac#1#2{\frac{\textstyle #1}{\textstyle #2}}
+\def\eqref#1{(\ref{#1})}
+
+\begingroup 
+\newtheorem{bigthm}{Theorem}                 % Numbered separately, as A,B, etc.
+\newtheorem{thm}{Theorem}[section]           % Numbered within each section
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{notation}{Notation.}
+\newtheorem{terminology}{Terminology}
+\newtheorem{remark}[thm]{Remark. }             % Numbered along with thm
+\newtheorem{example}[thm]{Example}           % Numbered along with thm
+\endgroup
+
+\def\qed{\qquad\framebox[7pt] \medskip \noindent}
+\def\pqed{\rightline{\qed} \medskip \noindent}
+
+\def\th{\thinspace}
+
+\def\half{{\textstyle\frac{1}{2}}}
+\def\avg#1.{\langle#1\rangle}
+\def\vstrut{\phantom{\biggm|}}
+
+\renewcommand{\thebigthm}{\Alph{bigthm}}  % Number as "Theorem A."
+\renewcommand{\thenotation}{}  
+\renewcommand{\theterminology}{}  
+\renewenvironment{remark}{\bigskip \rm\ {\bf Remark. }}{\bigskip}
+
+\renewenvironment{abstract}{\begin{quote}{\bf Abstract.\
+}\small}{\end{quote}\bigskip}
+
+\def\vstrut{\phantom{\biggm|}}
+
+\title{Estimating the sum of the absolute values of the entries in the Krawtchouk matrices}
+
+\author{Philip Feinsilver}\address{Department of Mathematics
+Southern Illinois University 
+ Carbondale, IL. 62901, U.S.A.}
+
+\date{}
+
+\begin{document} 
+\maketitle
+\thispagestyle{empty}
+Start with the symmetry of $S=\Phi B$, so $\Phi B=B\Phi^*$. With $\Phi^2=2^NI$, we have
+$$\Phi B\Phi^*=\Phi^2 B=2^NB$$
+Rescaling by $2^N$ and adjusting factors of $\sqrt{B}$, we get
+$$2^{-N/2}\sqrt{B}^{-1}\Phi\sqrt{B} 2^{-N/2}\sqrt{B}\Phi^*\sqrt{B}^{-1}=I$$
+i.e., $2^{-N/2}\sqrt{B}^{-1}\Phi\sqrt{B}$ is orthogonal. Taking squared norms of the rows yields
+$$\sum_j \Phi_{ij}^2\binom{N}{j}=2^N\binom{N}{i}$$
+Similary, the columns yield
+$$\sum_i \Phi_{ij}^2\binom{N}{i}^{-1}=2^N\binom{N}{j}^{-1}$$
+
+Schwartz' inequality for the sums over $j$ yield the estimate
+$$\sum_j |\Phi_{ij}|\,{\textstyle\sqrt{\binom{N}{j}}/\sqrt{\binom{N}{j}}}\le \sqrt{\sum_j \textstyle\binom{N}{j}^{-1}}\,
+\sqrt{\textstyle\binom{N}{i}2^N}$$
+while the sums over $i$ yield
+$$\sum_i |\Phi_{ij}|\,{\textstyle\sqrt{\binom{N}{i}}/\sqrt{\binom{N}{i}}}\le \sqrt{2^N}\,\sqrt{2^N/\textstyle\binom{N}{j}}
+=2^N\binom{N}{j}^{-1/2}$$
+
+Since the column sums for $j=0$ and $j=N$ are $2^N$, 
+$$2^{N+1}\le\sum_{i,j} |\Phi_{ij}|\le 2^N\binom{N}{j}^{-1/2}=2^N\bigl(2+\sum_{0<j<N}\binom{N}{j}^{-1/2}\bigr)$$
+For $N>9$, say, we have, by symmetry and unimodality of the binomial coefficients,
+\begin{align*}
+\sum_{0<j<N}\binom{N}{j}^{-1/2}&\le 2\left[\frac{1}{\sqrt{N}}+\frac{\sqrt{2}}{\sqrt{N(N-1)}}+\frac{\sqrt{6}\,(N/2-1)}{\sqrt{N(N-1)(N-2)}}\right]\cr
+&=2\left[\frac{1}{\sqrt{N}}+\frac{\sqrt{2}}{\sqrt{N(N-1)}}+\frac{\sqrt{6(N-2)}/2}{\sqrt{N(N-1)}}\right]\cr
+&\le\frac{2+1+\sqrt{6}/2}{\sqrt{N}}\le\frac{5}{\sqrt{N}}
+\end{align*}
+using $2\sqrt{2}<\sqrt{N-1}$. This gives
+$$
+2^{N+1}\le\sum_{i,j} |\Phi_{ij}|\le 2^N\,\bigl(2+\frac{5}{\sqrt{N}}\bigr)$$
+or
+$$\sum_{i,j} |\Phi_{ij}|\sim 2^{N+1}\,, \qquad\text{as } N\to\infty
+$$
+The second column sums to $\displaystyle \binom{N}{N/2}$ for even $N$, and generally, to
+$\displaystyle \binom{N-1}{\lfloor(N-1)/2\rfloor}$. This improves the lower bound to
+$$2^{N+1}+2\,\binom{N-1}{\lfloor(N-1)/2\rfloor}$$
+Stirling estimates give
+$$2^{N+1}\,\sqrt{\frac{2}{\pi N}}$$
+for the additional term.
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

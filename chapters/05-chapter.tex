@@ -1,0 +1,67 @@
+\chapter{Martingales}
+\label{ch:5}
+\section{Iterated integrals}
+\label{sec:5-1}
+Let $\epsilon_1,\epsilon_2,\ldots$ be independent symmetric signs, $X_m=\sum_{a=1}^m\epsilon_a$, and $\mathcal F_m=\sigma(\epsilon_1,\ldots,\epsilon_m)$. Define
+\[
+M_m(v)=\prod_{a=1}^m(1+v\epsilon_a)=\sum_{n=0}^m E_n(m)v^n.
+\]
+Independence and zero mean imply $\mathbb E[M_{m+1}(v)\mid\mathcal F_m]=M_m(v)$. Comparing coefficients gives a martingale in $m$ for every fixed $n$, taking $E_n(m)=0$ for $n>m$. Direct expansion gives
+\begin{equation}\label{eq:iterated-sign-sums}
+E_n(m)=\sum_{1\le a_1<\cdots<a_n\le m}\epsilon_{a_1}\cdots\epsilon_{a_n}
+=\frac{k_n(X_m,m)}{n!}.
+\end{equation}
+With $E_0(m)=1$, the discrete stochastic integral recursion is
+\begin{equation}\label{eq:discrete-iterated-recursion}
+E_n(m+1)-E_n(m)=\epsilon_{m+1}E_{n-1}(m),\qquad
+E_n(m)=\sum_{a=1}^m E_{n-1}(a-1)\epsilon_a.
+\end{equation}
+The integrand is evaluated before the new sign is observed. Thus these are iterated sums over strictly increasing times, with no diagonal terms. For example, $E_1(m)=X_m$ and $E_2(m)=(X_m^2-m)/2$.
+This develops the iterated-integral interpretation in the probabilistic part of the supplied \texttt{KravFeinsKocik.tex}; all normalizations here follow \eqref{eq:gen}.
+
+\section{Orthogonal functionals}
+\label{sec:5-2}
+For fixed $N$, independence gives the two-variable generating identity
+\[
+\mathbb E[M_N(v)M_N(w)]=\prod_{a=1}^N\mathbb E[(1+v\epsilon_a)(1+w\epsilon_a)]=(1+vw)^N.
+\]
+Consequently,
+\begin{equation}\label{eq:martingale-orthogonality}
+\mathbb E[E_n(N)E_m(N)]=\delta_{nm}\binom Nn.
+\end{equation}
+Equivalently, if $J=(N-X_N)/2$ has mass $\pi_N(j)=2^{-N}\binom Nj$, then
+\[
+\sum_{j=0}^N\pi_N(j)K_n(j;N)K_m(j;N)=\delta_{nm}\binom Nn.
+\]
+This also follows by expanding into subsets: two distinct subsets leave at least one independent sign to an odd power, so their product has expectation zero. Identical subsets contribute one.
+There are $N+1$ nonzero orthogonal functions on the $N+1$-point lattice, so they form a basis of all functions of $J$. Explicitly,
+\[
+f(j)=\sum_{n=0}^N\widehat f_nK_n(j;N),\qquad
+\widehat f_n=\frac{\mathbb E[f(J)K_n(J;N)]}{\binom Nn},\qquad
+\mathbb E[f(J)^2]=\sum_{n=0}^N\binom Nn\widehat f_n^2
+\]
+for real $f$. In factorial normalization the squared norm is $(n!)^2\binom Nn$, not merely $\binom Nn$. The martingale time parameter $N$ should be distinguished from the fixed-order lattice argument $j$.
+
+\section{Krawtchouk polynomials and multinomial distribution}
+\label{sec:5-3}
+The supplied source extends the product martingale to independent identically distributed finite-valued variables. Let $\mathbb P(Y_a=\xi_r)=p_r$ for $0\le r\le d-1$, with $p_r>0$, $\sum_rp_r=1$, mean $\mu$, and variance $\sigma^2>0$. If $\nu_r$ counts occurrences of $\xi_r$ among $N$ observations, set
+\[
+\mathcal G_{\boldsymbol\nu}(v)=\prod_{r=0}^{d-1}(1+v(\xi_r-\mu))^{\nu_r}
+=\sum_{n=0}^N Q_n(\boldsymbol\nu)v^n.
+\]
+Then
+\[
+Q_n(\boldsymbol\nu)=\sum_{a_0+\cdots+a_{d-1}=n}\prod_{r=0}^{d-1}\binom{\nu_r}{a_r}(\xi_r-\mu)^{a_r},
+\qquad
+Q_n(\boldsymbol\nu+\mathbf e_r)=Q_n(\boldsymbol\nu)+(\xi_r-\mu)Q_{n-1}(\boldsymbol\nu).
+\]
+The count vector has multinomial mass $N!\prod_r p_r^{\nu_r}/\nu_r!$ on $\sum_r\nu_r=N$. Since a centered increment has mean zero and variance $\sigma^2$,
+\[
+\mathbb E[\mathcal G_{\boldsymbol\nu}(v)\mathcal G_{\boldsymbol\nu}(w)]
+=(1+\sigma^2vw)^N,\qquad
+\mathbb E[Q_nQ_m]=\delta_{nm}\binom Nn\sigma^{2n}.
+\]
+The same conditional-expectation argument as in Section~\ref{sec:5-1} proves the coefficient martingale property as observations are added.
+
+For the two values $+1,-1$ with equal probabilities this reduces exactly to $Q_n=K_n(j;N)$. For $d>2$, these $N+1$ orthogonal functions are generally not a complete basis on the $\binom{N+d-1}{d-1}$ count vectors. The source's scalar-parameter construction is therefore distinguished here from a full multi-index multivariate Krawtchouk system; the latter needs additional independent contrasts and is not asserted by this argument.
+

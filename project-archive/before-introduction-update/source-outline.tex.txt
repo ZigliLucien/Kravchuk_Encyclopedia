@@ -1,0 +1,172 @@
+\subsection{Krawtchouk Encyclopedia}
+
+Here is a list of topics currently in the Krawtchouk Encyclopedia.\\
+
+\begin{enumerate}
+
+\item Pascal's Triangle
+
+\item Random Walks  
+\begin{itemize} 
+\item  Path integrals
+\item  A, K, and $\Lambda$
+\item  Nonsymmetric Walks
+\item  Symmetric Krawtchouk matrices and binomial expectations 
+ \end{itemize}   
+
+
+\item Urn Model  
+
+\begin{itemize} 
+\item   Markov chains 
+\item  Initial and invariant distributions 
+\end{itemize}
+
+
+\item Symmetric Functions. Energy  
+
+\begin{itemize} 
+\item   Elementary symmetric functions and determinants 
+\item  Traces on Grassman algebras 
+
+
+ \end{itemize}
+
+\item Martingales   
+
+ 
+\begin{itemize} 
+\item   Iterated integrals 
+\item  Orthogonal functionals 
+\item  Krawtchouk polynomials and multinomial distribution 
+ \end{itemize}
+
+\item Lie algebras and Krawtchouk polynomials  
+ 
+ 
+\begin{itemize}
+\item   so(2,1) explained 
+\item  so(2,1) spinors 
+\item  Quaternions and Clifford algebras 
+\item  S and so(2,1) tensors 
+\item Three-dimensional simple Lie algebras 
+ \end{itemize}
+
+\item Lie Groups. Reflections  
+
+ 
+\begin{itemize}
+\item  Reflections 
+\item  Krawtchouk matrices as group elements 
+ \end{itemize}
+
+\item Representations   
+
+ 
+\begin{itemize}
+\item   Splitting formula 
+\item  Hilbert space structure 
+ \end{itemize}
+
+\item Quantum Probability and Tensor Algebra  
+
+  
+\begin{itemize}
+\item Flip operator and quantum random walk 
+\item  Krawtchouk matrices as eigenvectors 
+\item  Trace formulas. MacMahon's Theorem  
+\item  Chebyshev polynomials  
+ \end{itemize}
+
+\item Heisenberg Algebra   
+
+ 
+\begin{itemize}
+\item  Representations of the Heisenberg algebra 
+\item  Raising and velocity operator. Number operator 
+\item Evolution structure. Hamiltonian. 
+\item Time-zero polynomials 
+ \end{itemize}
+
+\item Central Limit Theorem  
+
+ 
+\begin{itemize}
+\item  Hermite polynomials 
+\item  Discrete stochastic differential equations 
+ \end{itemize}
+
+\item Clebsch-Gordan Coefficients
+\begin{itemize}
+\item   Clebsch-Gordan coefficients and Krawtchouk polynomials 
+\item  Racah coefficients 
+ \end{itemize}
+
+\item Orthogonal Polynomials   
+
+\begin{itemize}
+\item Three-term recurrence in terms of A, K, Lambda 
+\item Nonsymmetric case 
+ \end{itemize}
+
+\item Krawtchouk Transforms   
+
+ 
+\begin{itemize}
+\item  Orthogonal transformation associated to K 
+\item  Exponential function in Krawtchouk basis 
+\item Krawtchouk transform
+ \end{itemize}
+
+
+
+\item Hypergeometric Functions  
+
+ 
+\begin{itemize}
+\item   Krawtchouk polynomials as hypergeometric functions 
+\item  Addition formulas 
+ \end{itemize}
+
+
+
+\item Symmetric Krawtchouk Matrices  
+
+ 
+\begin{itemize}
+\item The matrix T 
+\item  S-squared and trace formulas 
+\item  Spectrum of S 
+ \end{itemize}
+
+
+
+\item Gaussian Quadrature  
+
+   
+\begin{itemize}
+\item  Zeros of Krawtchouk polynomials 
+\item  Gaussian-Krawtchouk summation 
+ \end{itemize}
+
+\item Coding Theory  
+
+   
+\begin{itemize}
+\item  MacWilliams' theorem 
+\item Association schemes 
+ \end{itemize}
+
+\item Appendices  
+
+\begin{itemize}
+\item  K and S matrices for N from 1 to 14 
+\item  Krawtchouk polynomials in the variables x,N/i,j/j,N for N from 1 to 20 
+\item  Eigenvalues of S 
+\item  Remarks on the multivariate case 
+\item  Time-zero polynomials 
+\item  Mikhail Philippovitch Krawtchouk: a biographical sketch 
+\end{itemize}
+
+\end{enumerate}
+

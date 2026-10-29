@@ -1,0 +1,45 @@
+\chapter{Central Limit Theorem}
+\label{ch:11}
+\section{Hermite polynomials}
+\label{sec:11-1}
+The centered generating function has the exact form
+\[
+G_N(x,v)=(1-v^2)^{N/2}\exp(x\operatorname{artanh}v).
+\]
+For $x=\sqrt N\xi$ and $v=t/\sqrt N$, its logarithm tends to $\xi t-t^2/2$. Consequently, for fixed $n$,
+\[
+N^{-n/2}k_n(\sqrt N\xi,N)\longrightarrow\operatorname{He}_n(\xi),
+\]
+where $\exp(\xi t-t^2/2)=\sum_n\operatorname{He}_n(\xi)t^n/n!$. When polynomial values are interpreted only on the original lattice, take admissible sequences approaching $\xi$.
+
+\section{Discrete stochastic differential equations}
+\label{sec:11-2}
+The exact finite-step precursor of Hermite martingales is \eqref{eq:discrete-iterated-recursion}. In factorial normalization it reads
+\[
+k_n(X_{m+1},m+1)-k_n(X_m,m)
+=n\,k_{n-1}(X_m,m)\epsilon_{m+1}.
+\]
+In particular, $X_m$, $X_m^2-m$, and $X_m^3-(3m-2)X_m$ are martingales. The update changes both the spatial variable and the order parameter; it is not the fixed-$N$ urn-chain generator of Chapter~\ref{ch:3}.
+
+To identify the scaling, define polynomials $H_n(x,t)$ by
+\[
+\exp(ux-tu^2/2)=\sum_{n=0}^{\infty}H_n(x,t)\frac{u^n}{n!}.
+\]
+For $t>0$, $H_n(x,t)=t^{n/2}\operatorname{He}_n(x/\sqrt t)$, and coefficient differentiation gives
+\[
+\partial_xH_n=nH_{n-1},\qquad
+\partial_tH_n+\tfrac12\partial_x^2H_n=0.
+\]
+For standard Brownian motion $B_t$, Ito's formula therefore yields
+\[
+dH_n(B_t,t)=nH_{n-1}(B_t,t)\,dB_t.
+\]
+This is the continuous counterpart of the displayed finite-step equation. The generating-function expansion proves fixed-degree polynomial scaling; a process-level convergence statement additionally requires a functional central limit argument and appropriate integrability control, neither of which is inferred solely from the formal similarity of the equations.
+
+\section{Bilinear kernels and the Mehler limit}
+\label{sec:11-3}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\noindent\textbf{BILINEAR KERNELS AND THE MEHLER LIMIT NEEDS TO BE DONE.}
+
+

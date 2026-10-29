@@ -1,0 +1,88 @@
+\chapter{Orthogonal Polynomials}
+\label{ch:13}
+\section{Three-term recurrence in terms of $A$, $K$, and $\Lambda$}
+\label{sec:13-1}
+Differentiating the generating function gives
+\[
+k_{n+1}(x,N)=xk_n(x,N)-n(N-n+1)k_{n-1}(x,N).
+\]
+The spatial equation is
+\[
+\frac{N-x}{2}\bigl[k_n(x+2,N)-k_n(x,N)\bigr]
++\frac{N+x}{2}\bigl[k_n(x-2,N)-k_n(x,N)\bigr]
+=-2n k_n(x,N).
+\]
+These formulas fix the normalization for later operator treatments.
+
+
+\begin{remark}[Terminal polynomial and trivial integral zeros]
+\label{rem:terminal-integral-zeros}
+Extend the monic centered recurrence
+\[
+k_{n+1}(x,N)=xk_n(x,N)-n(N-n+1)k_{n-1}(x,N)
+\]
+through $n=N$. The resulting terminal polynomial is
+\[
+k_{N+1}(x,N)=\prod_{j=0}^{N}(x-(N-2j)).
+\]
+Indeed, at each spectral point $x=N-2j$, the generating function has degree $N$, so its coefficient of degree $N+1$ vanishes. The recurrence identifies this coefficient with $k_{N+1}/(N+1)!$, and monicity determines the factorization. Pairing opposite roots gives
+\[
+k_{N+1}(x,N)=
+\begin{cases}
+x\displaystyle\prod_{r=1}^{m}(x^2-4r^2),&N=2m,\\
+\displaystyle\prod_{r=0}^{m}(x^2-(2r+1)^2),&N=2m+1.
+\end{cases}
+\]
+Empty products are one. These are the trivial integral zeros: the entire finite spectrum $-N,-N+2,\ldots,N$, with spacing two. In ordinary-coefficient normalization the corresponding centered polynomial is $k_{N+1}(x,N)/(N+1)!$. The terminal polynomial vanishes on the support and has zero squared norm; it is not an additional positive-norm member of the orthogonal system.
+\end{remark}
+
+\subsection{Matrix form of the two recurrences}
+\label{sec:matrix-recurrence-intertwining}
+With $A_N,R_N,L_N,\Lambda_N$ defined in
+Section~\ref{sec:finite-sl2-matrices}, and
+$\Phi_N=(K_n(j;N))$ as in
+Section~\ref{sec:matrix-Phi-definition}, the degree and spatial
+recurrences take the paired form
+\begin{equation}\label{eq:ency-intertwining}
+A_N\Phi_N=\Phi_N\Lambda_N,\qquad
+\Phi_NA_N=\Lambda_N\Phi_N.
+\end{equation}
+The coefficient proof and entrywise recurrences are given in
+Section~\ref{sec:2-2}; the tensor interpretation is in
+Section~\ref{sec:8-1}.
+Terms outside the degree or column range are omitted.
+Thus the columns of $\Phi_N$ are right eigenvectors of $A_N$,
+and its rows are left eigenvectors, with the equally spaced spectrum
+$N,N-2,\ldots,-N$. This does not make $A_N$ symmetric in the
+standard basis. Explicit examples appear in
+Appendix~\ref{app:matrix-tables}.
+
+\section{Nonsymmetric case}
+\label{sec:13-2}
+To avoid silently changing the symmetric normalization, introduce a new family. Let $0<p<1$, $q=1-p$, and define
+\begin{equation}\label{eq:biased-generating}
+(1+pv)^{N-j}(1-qv)^j=\sum_{n=0}^N Q_n^{(p)}(j;N)v^n.
+\end{equation}
+If $J\sim\operatorname{Bin}(N,p)$, a single factor takes the value $1+pv$ with probability $q$ and $1-qv$ with probability $p$. Its linear coefficient is centered and has variance $pq$. Therefore
+\[
+\mathbb E[Q_n^{(p)}(J;N)Q_m^{(p)}(J;N)]
+=\delta_{nm}\binom Nn(pq)^n.
+\]
+This is the two-point instance of Section~\ref{sec:5-3}. At $p=q=1/2$, $Q_n^{(1/2)}=2^{-n}K_n$; the new family is not numerically identical to $K_n$.
+Writing $a=pN-j$, logarithmic differentiation of \eqref{eq:biased-generating} gives
+\[
+(n+1)Q_{n+1}^{(p)}=[a-(p-q)n]Q_n^{(p)}-pq(N-n+1)Q_{n-1}^{(p)}.
+\]
+For example, $Q_0^{(p)}=1$, $Q_1^{(p)}=a$, and $2Q_2^{(p)}=a^2-(p-q)a-pqN$.
+
+The reversible birth--death generator on $0\le j\le N$ is
+\[
+(\mathcal L_pf)(j)=p(N-j)[f(j+1)-f(j)]+qj[f(j-1)-f(j)].
+\]
+Boundary terms with zero rates are omitted. Binomial detailed balance follows from
+$\pi_p(j)p(N-j)=\pi_p(j+1)q(j+1)$, where $\pi_p(j)=\binom Njp^jq^{N-j}$. Acting on the generating function gives $\mathcal L_pG=-v\partial_vG$, hence
+\[
+\mathcal L_pQ_n^{(p)}=-nQ_n^{(p)}.
+\]
+This generator uses a one-coordinate refresh rate convention. At $p=1/2$ it is half the sign-flip generator whose eigenvalues are $-2n$ in Section~\ref{sec:13-1}. The factor is a time normalization, not a contradiction.
+

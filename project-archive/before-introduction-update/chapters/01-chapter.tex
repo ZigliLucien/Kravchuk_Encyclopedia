@@ -1,0 +1,49 @@
+\chapter{Pascal's Triangle}
+\label{ch:1}
+\section{Pascal's triangle and binomial identities}
+\label{sec:1-1}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\section{Krawtchouk polynomials}
+\label{sec:1-2}
+For $0\leq n,j\leq N$, define the symmetric Krawtchouk polynomial values by
+\begin{equation}\label{eq:gen}
+(1+v)^{N-j}(1-v)^j=\sum_{n=0}^N K_n(j;N)v^n.
+\end{equation}
+Hence
+\[
+K_n(j;N)=\sum_r(-1)^r\binom jr\binom{N-j}{n-r}.
+\]
+Binomial coefficients outside their usual range are understood to vanish.
+In centered coordinates $x=N-2j$, write
+\[
+(1+v)^{(N+x)/2}(1-v)^{(N-x)/2}
+=\sum_{n=0}^N\frac{v^n}{n!}k_n(x,N).
+\]
+Thus $k_n(N-2j,N)=n!K_n(j;N)$.
+
+\section{Generating functions}
+\label{sec:1-3}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\section{Krawtchouk matrices}
+\label{sec:1-4}
+Set $\Phi_N=(K_n(j;N))_{n,j=0}^N$ and
+$B_N=\operatorname{diag}(\binom N0,\ldots,\binom NN)$. Binomial duality is
+\[
+\binom Nj K_n(j;N)=\binom Nn K_j(n;N).
+\]
+Consequently $S_N=\Phi_NB_N$ is symmetric. The symmetric transform satisfies
+\[
+\Phi_N^2=2^NI.
+\]
+For orientation,
+\[
+\Phi_1=\begin{pmatrix}1&1\\1&-1\end{pmatrix},\qquad
+\Phi_2=\begin{pmatrix}1&1&1\\2&0&-2\\1&-1&1\end{pmatrix}.
+\]
+
+\section{First view and cross properties}
+\label{sec:1-5}
+% TODO: Develop this section; add verified references, examples, and exercises.
+

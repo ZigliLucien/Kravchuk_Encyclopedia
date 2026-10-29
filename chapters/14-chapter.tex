@@ -1,0 +1,138 @@
+\chapter{Krawtchouk Transforms}
+\label{ch:14}
+\section{Orthogonal transformation associated to $K$}
+\label{sec:14-1}
+The raw Krawtchouk matrix $\Phi_N$ is not generally orthogonal in
+the Euclidean inner product. Its orthogonal normalization is
+\begin{equation}\label{eq:ency-U-normalization}
+U_N=2^{-N/2}B_N^{-1/2}\Phi_NB_N^{1/2},
+\qquad B_N=\operatorname{diag}\binom Nj.
+\end{equation}
+Indeed, binomial duality and weighted orthogonality give
+\[
+\Phi_NB_N=B_N\Phi_N^T,\qquad
+\Phi_NB_N\Phi_N^T=2^NB_N.
+\]
+Consequently $U_N^T=U_N$ and $U_N^TU_N=I$.
+This distinguishes the raw matrix $\Phi_N$, its orthogonal
+normalization $U_N$, and the symmetric weighted matrix $S_N$ of
+Section~\ref{sec:matrix-S-definition}. In particular,
+\[
+S_N=2^{N/2}B_N^{1/2}U_NB_N^{1/2},
+\]
+is a congruence, not a similarity.
+
+\section{Exponential function in the Krawtchouk basis}
+\label{sec:14-2}
+Let $x_j=N-2j$ and $t\in\mathbb R$. Since
+$e^{t\epsilon}=\cosh t\,(1+\epsilon\tanh t)$ for $\epsilon\in\{+1,-1\}$, multiplication over $N$ signs gives the exact finite expansion
+\begin{equation}\label{eq:exponential-Krawtchouk-expansion}
+e^{tx_j}=(\cosh t)^N\sum_{n=0}^N(\tanh t)^nK_n(j;N).
+\end{equation}
+For complex $t$ a denominator-free version is preferable:
+\[
+e^{tx_j}=\sum_{n=0}^N(\sinh t)^n(\cosh t)^{N-n}K_n(j;N).
+\]
+It holds even when $\cosh t=0$. Orthogonality from Section~\ref{sec:5-2} then gives
+\[
+\mathbb E[e^{tX_N}K_n(J;N)]=\binom Nn(\sinh t)^n(\cosh t)^{N-n}.
+\]
+For $N=2$ this reads $e^{tx}=\cosh^2t+x\sinh t\cosh t+(x^2-2)\sinh^2t/2$ on $x=2,0,-2$. These are expansions of lattice functions; they do not identify the raw transform $\Phi_N$ with the Euclidean-orthogonal normalization $U_N$.
+
+\section{Krawtchouk transform}
+\label{sec:14-3}
+\subsection{The ordinary-generating-function matrix}
+\label{sec:matrix-Phi-definition}
+We use the row index $n$ for degree and the column index $j$ for
+the lattice argument:
+\begin{equation}\label{eq:ency-Phi-generating}
+(1+v)^{N-j}(1-v)^j
+=\sum_{n=0}^N K_n(j;N)v^n,\qquad
+\Phi_N=(K_n(j;N))_{n,j=0}^N.
+\end{equation}
+For example,
+\[
+\Phi_2=\begin{pmatrix}1&1&1\\2&0&-2\\1&-1&1\end{pmatrix}.
+\]
+The transform is an involution up to scale:
+\begin{equation}\label{eq:ency-Phi-involution}
+\Phi_N^2=2^NI,\qquad \Phi_N^{-1}=2^{-N}\Phi_N.
+\end{equation}
+For completeness, summing a fixed row of the matrix square via the
+generating function gives
+\begin{align*}
+\sum_{n=0}^N v^n(\Phi_N^2)_{nj}
+&=\sum_{k=0}^N(1+v)^{N-k}(1-v)^kK_k(j;N)\\
+&=(1+v)^N\left(1+\frac{1-v}{1+v}\right)^{N-j}
+\left(1-\frac{1-v}{1+v}\right)^j
+=2^Nv^j.
+\end{align*}
+The apparent denominator at $v=-1$ is removed by the polynomial
+identity. Comparing coefficients proves
+\eqref{eq:ency-Phi-involution}.
+The recurrence identities \eqref{eq:ency-intertwining} connect this
+transform to the finite Lie-algebra generators. Tables for
+$N=2,3,4,5,7,8$ are in Appendix~\ref{app:matrix-tables}.
+
+\section{Krawtchouk transform and FFT}
+\label{sec:14-4}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\noindent\textbf{KRAWTCHOUK TRANSFORM AND FFT NEEDS TO BE DONE.}
+
+
+\section{Binomial bases and dual transforms}
+\label{sec:14-5}
+Let $P_N=(\binom{k}{i})_{i,k=0}^N$ and denote column $k$ by $c^{(k)}$:
+\[
+c^{(k)}_i=\binom{k}{i},\qquad c^{(k)}_i=0\quad(i>k).
+\]
+The Pascal matrix $P_N$ is triangular with diagonal entries one and
+must not be confused with the diagonal binomial matrix $B_N$.
+For $f_a(v)=\sum_{j=0}^N a_jv^j$, the defining transform gives
+\[
+f_{\Phi_Na}(v)=(1+v)^N f_a\!\left(\frac{1-v}{1+v}\right).
+\]
+Apply this to $f_{c^{(k)}}(v)=(1+v)^k$ to obtain
+\begin{equation}\label{eq:Pascal-column-transform}
+\Phi_Nc^{(k)}=2^k c^{(N-k)}.
+\end{equation}
+The apparent denominator is removable because both sides are polynomial.
+Writing $J_Ne_k=e_{N-k}$ and
+$W_N=\operatorname{diag}(2^0,\ldots,2^N)$, this is
+\[
+P_N^{-1}\Phi_NP_N=J_NW_N.
+\]
+Here $W_N$ is used to avoid collision with the parity matrix $D_N$
+of Section~\ref{sec:8-1}. This is the existing binomial-basis identity,
+with its proof made explicit; compare \cite[Section~7.3]{KocikFeynman}.
+
+\subsection{Explicit eigenvectors of the raw transform}
+For each $0\leq k<N/2$, define
+\[
+v_k^{\pm}=2^{(N-k)/2}c^{(k)}\ \pm\ 2^{k/2}c^{(N-k)}.
+\]
+Equation~\eqref{eq:Pascal-column-transform} gives
+\[
+\Phi_Nv_k^{\pm}=\pm 2^{N/2}v_k^{\pm}.
+\]
+Use each complementary pair only once. If $N$ is even, the unpaired
+column $c^{(N/2)}$ has eigenvalue $+2^{N/2}$; the corresponding minus
+combination would be zero and must not be counted.
+Since the columns of $P_N$ are independent, these vectors form a complete
+basis. The multiplicities are
+\[
+m_+=\lfloor N/2\rfloor+1,\qquad
+m_-=\lfloor (N+1)/2\rfloor.
+\]
+For $N=3$ both multiplicities are two; for $N=5$ both are three.
+
+These are eigenvectors of $\Phi_N$, not the columns of $\Phi_N$ viewed
+as eigenvectors of $A_N$, and not eigenvectors of $S_N$ in general.
+For the orthogonal involution $U_N$, the corresponding eigenvectors are
+$B_N^{-1/2}v_k^{\pm}$, with eigenvalues $\pm1$.
+Pascal coordinates are not orthonormal: Euclidean inner products in
+these coordinates use the Gram matrix $P_N^TP_N$.
+
+
+\input{chapters/kravchuk-sums}

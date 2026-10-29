@@ -1,0 +1,13 @@
+CURRENT ENCYCLOPEDIA SOURCE SNAPSHOT
+
+Unzip and compile main.tex from inside the Kravchuk_Encyclopedia directory.
+
+Recommended:
+  latexmk -pdf -interaction=nonstopmode main.tex
+Or run pdflatex main.tex three times to resolve cross-references.
+
+The master uses amsbook, preserving the existing chapter structure. Reference papers retain their original classes; they are not compilation entry points for the Encyclopedia.
+
+Includes current chapters, bibliography, tables, research notes, and source papers. Includes the new pq-source-summary chapter and the KravPQ/KravSums TeX and PDF originals.
+
+Historical project-archive backups and the outdated main.pdf are omitted. This snapshot has not been LaTeX-compiled here. Existing working-status documents may lag the newest chapter; main.tex determines the compiled contents. Unfinished sections remain visible in the text. Coding-theory and multivariate source applications are not yet fully integrated.

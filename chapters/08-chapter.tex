@@ -1,0 +1,100 @@
+\chapter{Representations}
+\label{ch:8}
+\section{Splitting formula}
+\label{sec:8-1}
+For $g=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in GL(2,\mathbb R)$ define
+on homogeneous degree-$N$ polynomials
+\[
+(\rho_N(g)p)(x,y)=p(ax+cy,bx+dy).
+\]
+In the basis $e_j=x^{N-j}y^j$, expansion gives its columns, and
+$\rho_N(gh)=\rho_N(g)\rho_N(h)$.
+For a Lie algebra element $X$, instead use the derivative
+\[
+d\rho_N(X)=\left.\frac{d}{dt}\rho_N(I+tX)\right|_{t=0}.
+\]
+On the full tensor space these two constructions are respectively
+\[
+g\mapsto g^{\otimes N},\qquad
+X\mapsto\sum_{r=1}^N I^{\otimes(r-1)}\otimes X\otimes I^{\otimes(N-r)}.
+\]
+The group construction is multiplicative; the differential preserves
+commutators. Tensoring a Lie algebra element multiplicatively would
+not give the second construction.
+
+For the split units and $H=F+G$, direct differentiation gives
+\[
+d\rho_N(F)e_j=(N-j)e_{j+1}+je_{j-1},\qquad
+d\rho_N(G)e_j=(N-2j)e_j.
+\]
+Meanwhile
+\[
+\rho_N(H)e_j=(x+y)^{N-j}(x-y)^j
+=\sum_{n=0}^N K_n(j;N)e_n.
+\]
+Thus $d\rho_N(F)=A_N$, $d\rho_N(G)=\Lambda_N$, and
+$\rho_N(H)=\Phi_N$. Differentiating the conjugation identity produces
+$A_N\Phi_N=\Phi_N\Lambda_N$.
+
+The group lift gives a different consequence. Put
+$J_Ne_j=e_{N-j}$ and $D_Ne_j=(-1)^je_j$. Then
+\[
+\rho_N(F)=J_N,\quad\rho_N(G)=D_N,\quad
+J_N\Phi_N=\Phi_ND_N,\quad D_N\Phi_N=\Phi_NJ_N.
+\]
+Equivalently,
+\[
+K_{N-n}(j;N)=(-1)^jK_n(j;N),\qquad
+K_n(N-j;N)=(-1)^nK_n(j;N).
+\]
+The master equation and these reflection symmetries therefore arise
+from the same two-dimensional identity through different lifts.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{Hilbert space structure}
+\label{sec:8-2}
+With $w_N(j)=2^{-N}\binom Nj$,
+\begin{equation}\label{eq:orth}
+\sum_{j=0}^Nw_N(j)K_n(j;N)K_m(j;N)=\binom Nn\delta_{nm}.
+\end{equation}
+Indeed, the weighted product of two generating functions equals $(1+uv)^N$, and coefficient comparison proves \eqref{eq:orth}. Thus
+\[
+\psi_{n,N}(j)=\sqrt{\frac{w_N(j)}{\binom Nn}}K_n(j;N)
+\]
+is an orthonormal basis for the counting-measure space on $\{0,\ldots,N\}$.
+
+
+\subsection{Column vectors, covectors, and the binomial metric}
+\label{sec:binomial-dual-metrics}
+For state columns $u,v$ define
+\[
+\langle u,v\rangle_{B^{-1}}=u^TB_N^{-1}v.
+\]
+For row covectors $\alpha,\beta$, the dual inner product is
+$\alpha B_N\beta^T$. The two weights are inverse to one another,
+not competing choices for the same coordinates.
+The matrices $A_N$ and $\Phi_N$ are self-adjoint for the column metric:
+\[
+A_N^TB_N^{-1}=B_N^{-1}A_N,\qquad
+\Phi_N^TB_N^{-1}=B_N^{-1}\Phi_N.
+\]
+For $A_N$ this follows directly from the adjacent binomial ratios; for
+$\Phi_N$ it is binomial duality from Section~\ref{sec:1-4}.
+If $\phi_j$ is column $j$ of $\Phi_N$, then
+\[
+\phi_j^TB_N^{-1}\phi_k=\frac{2^N}{\binom Nj}\delta_{jk}.
+\]
+Thus $2^{-N/2}\sqrt{\binom Nj}\,\phi_j$ are orthonormal in this
+weighted column space, not generally in ordinary Euclidean coordinates.
+The coordinate change $u\mapsto B_N^{-1/2}u$ turns this metric into
+the Euclidean one and yields $U_N$ of \eqref{eq:ency-U-normalization}.
+See \cite[Appendix~A]{KocikFeynman} for the source's vector/covector viewpoint.
+
+\section*{Connection to the supplied article sources}
+Section~3 (``Krawtchouk matrices and symmetric tensors'') of the supplied
+\texttt{KravFeinsKocik.tex}, and the tensor-product and symmetric-tensor
+appendices of \texttt{jkhadamard\_Oct\_08\_00.tex}, supply source material
+for this chapter. The full tensor space has dimension $2^N$, whereas its
+symmetric sector has dimension $N+1$. Orbit sums, orbit averages, and
+orthonormal orbit vectors must be distinguished when comparing matrices.
+See also Chapter~\ref{ch:9}.

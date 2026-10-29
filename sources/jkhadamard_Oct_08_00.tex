@@ -1,0 +1,1419 @@
+\documentclass[12pt]{article}    %-*-latex-*-
+%
+\font\fff=eufm10 scaled \magstep1
+%\font\STM=stmary10
+\font\STM=cmss10
+\parindent=0pt
+%
+%\def\g{\hbox{\fff g}}
+%
+\begingroup 
+\newtheorem{bigthm}{Theorem}             % Numbered separately, as A, B, etc.
+\newtheorem{thm}{Theorem}[section]       % Numbered within each section
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{notation}{Notation}
+\newtheorem{terminology}{Terminology}
+\newtheorem{remark}[thm]{Remark}          % Numbered along with thm
+\newtheorem{example}[thm]{Example}        % Numbered along with thm
+\newtheorem{observation}[thm]{Observation}        % Numbered along with thm
+\endgroup
+%
+%dirac:
+\def\dir#1.{\;|\, #1 \,\rangle}             % dirac bracket
+\def\dirs#1.{\;|\, #1 \,\rangle_{\rm Sym}}  % dirac symmetric bracket
+%\def\state#1.{|#1\rangle}
+%\def\.#1.{\langle #1 \rangle_{wv}}
+%
+\def\qed{\qquad\framebox[7pt]\medskip\noindent}
+%\def\pqed{\rightline{\qed}\medskip\noindent}
+%
+\def\FFF#1#2{\Phi^{(#1)}_{#2}}
+\def\tr{\mathrm{tr}\,}
+%\def\.#1.#2.{{#1}^{#2}}
+%\def\tfo #1.#2.#3.#4.{{}_2 F_1\left({#1,#2\atop #3}\biggm| #4 \right)}
+%\def\kck#1.#2.{{#1\choose#2}}
+%\def\hft #1.#2.#3.#4.#5.#6.{{}_3 F_2\left({#1,\,#2,\,#3\atop#4,\,#5}\biggm| #6 \right)}
+%\def\ov#1.#2.{\frac{#1}{#2}}
+%
+%
+\newenvironment{proof}{{\sl Proof:}\quad}{\hfill{\qed}\\ \noindent}
+%
+\renewcommand{\thebigthm}{\Alph{bigthm}}  % Number as "Theorem A."
+\renewcommand{\thenotation}{}  
+\renewcommand{\theterminology}{}  
+%
+\renewenvironment{abstract}{\begin{quote}{\bf Abstract.\
+}\small}{\end{quote}\bigskip}
+%
+%
+%
+\title{Krawtchouk matrices from Hadamard matrices}
+\author{Philip Feinsilver and Jerzy Kocik
+\thanks{\leftskip -1cm Department of Mathematics
+Southern Illinois University Carbondale, IL. 62901, U.S.A.} 
+} 
+
+\date{}
+
+\thispagestyle{empty}
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+We show the connection between the Krawtchouk matrices (and hence,
+polynomials) and the Sylvester-Hadamard matrices. Then we derive the
+Krawtchouk matrices from the classical symmetric Bernoulli random
+walk. This approach is continued to the quantum probability context, 
+leading to the construction of Krawtchouk matrices via tensor powers 
+of the elementary Krawtchouk/Hadamard matrix. 
+
+{\bf Keywords:} Krawtchouk polynomials, Hadamard matrices, 
+symmetric tensors, random walk, quantum computing, quantum probability.
+
+{\bf AMS classification:} 
+05B20, %hadamard
+60G50, %random walk
+47A80, %tensor, operators 
+81P99, %qm computing
+46L53. %noncom probab
+
+
+\end{abstract}
+
+
+%\vfill
+%\pagebreak
+%\tableofcontents
+%\pagebreak
+
+%===================  1   ===========================================
+\section{Introduction}
+\label{sec:intro}
+
+Krawtchouk polynomials were introduced in \cite{Kra} and see also \cite{Kra2} 
+B: digital filtering
+Del,Del2,Del3:association schemes
+Dun,DR: harmonic analysis/special functions
+Eag,V-J: statistics
+FF,FS: symmetric K-matrices, classical probabilistic description
+FH: tensor spaces
+Lev: coding theory
+MS: coding theory
+Spr: symm. trace th.
+Sze:orthogonal polynomials
+Y-H: Hadamard matrices/transform
+(see also 
+\cite{B,Dun, DR, Eag, Kra2, V-J} and especially \cite{Sze}). They 
+play important role in many areas.  They appear in code theory 
+(used explicitly first in \cite{Del, Del2, Del3}) where 
+MacWilliams transform (see \cite{MS} page 137) relates dual codes. 
+
+
+%\bibitem{Bose}\bibitem{Del}\bibitem{Del2}\bibitem{Del3}\bibitem{Dun}
+%\bibitem{DR}\bibitem{Eag}\bibitem{FF}\bibitem{FS}\bibitem{FH}
+%\bibitem{Kra}
+%\bibitem{Kra2}
+%\bibitem{Lev}\bibitem{MS}\bibitem{Spr}\bibitem{Sze}\bibitem{V-J}
+%\bibitem{Wie}\bibitem{YH} 
+
+
+%%%%%%%%%%%%%%
+\vfill       %  To be removed
+\newpage     %
+%%%%%%%%%%%%%%
+
+%===================  1   ===========================================
+\section{What are Krawtchouk  Matrices}
+
+Krawtchouk matrices are generalization of binomial coefficients.
+For instance the ``degree-two algebraic rules" 
+translate into a ``second-degree Krawtchouk  matrix": 
+
+$$
+\matrix{  
+       \hfill (a+b)^2   &=& a^2+2ab+b^2         \hfill \cr
+       \hfill(a+b)(a-b) &=& a^2-ab+b^2          \hfill \cr
+       \hfill (a-b)^2   &=& a^2-3a^2b+3ab^2+b^3 \hfill \cr}
+\qquad\Rightarrow\qquad
+\Phi^{(2)} = \left[\matrix{  1 &  1 &  1 \cr
+                             2 &  0 & -2 \cr
+                             1 & -1 &  1 \cr }\right]
+$$
+(the coefficients are set vertically).
+Hence the formal definition:
+
+%----------------------
+\begin{definition}\rm
+ 
+The $n^{\mathrm{th}}$-degree Krawtchouk  matrix $\FFF n{}$ is an
+$(n+1)\times(n+1)$ matrix,
+the entries of which are determined by:
+\begin{equation}
+\label{eq:genkraw}
+    (1+v)^{n-j} \; (1-v)^j = \sum_{i=0}^{n} \ v^i \Phi^{(n)}_{ij}
+\end{equation}
+where the left-hand-side
+$
+              G(v)= (1+v)^{n-j}\; (1-v)^j
+$
+can be viewed as the {\it generating function} for $\Phi$.
+Simple exercise gives direct expression:
+$$
+\Phi^{(n)}_{ij}= \sum_{\alpha} (-)^\alpha {j \choose\alpha}
+      {n-j \choose i-\alpha}
+$$ 
+\end{definition}
+%-----------------------------
+
+Krawtchouk  matrices of order zero and one are:
+%
+\begin{equation}
+\label{eq:krav2}
+\Phi^{(0)}=\left[\matrix{ 1 }\right] \qquad
+\Phi^{(1)}=\left[\matrix{ 1 &  1 \cr
+                          1 & -1 \cr}\right]
+\end{equation}
+
+The columns of the Krawtchouk matrices contain the generalized 
+binomials, while the rows define Krawtchouk polynomials: for the order 
+$n$, define the $p$-th Krawtchouk| polynomial as a function that assumes 
+the values  in the $i$-th row. 
+$$
+        P^{(n)}_i(j) = \Phi^{(n)}_{ij}   
+$$ 
+One can easily show that $P_i(j)$ is indeed a degree $i$ 
+polynomial in $j$. 
+\\
+
+
+%-----------------------------------------------------------
+The basic properties of Krawtchouk matrices are:
+\\
+
+(1)
+Square of a Krawtchouk  matrix is proportional to the identity matrix.
+$$
+\FFF n{} \circ \FFF n {} = 2^n \cdot \hbox{id}
+$$
+This remarkable property allows one to defines 
+a Fourier-like transformation for integer vectors. 
+\\
+
+(2)
+The leftmost entries are just binomial coefficients,
+$\FFF n{i0} = {n\choose i}$.  The rightmost entries are just binomial
+coefficients with the alternating sign, $\FFF n{0i} = (-1)^i{n\choose i}$
+The top row has always 1's only. The bottom row has $\pm 1$'s with
+alternating signs (starting with $+1$).
+\\
+
+(3)
+There is a four-fold symmetry:
+$
+\mid \FFF{n}{i\;  j} \mid  =  \mid \FFF{n}{n-i\;j} \mid =
+\mid \FFF{n}{i\;n-j} \mid =  \mid \FFF{n}{n-i\;n-j} \mid
+$.
+\\
+
+
+If each column of the matrix is multiplied by a corresponding binomial
+coefficient, the matrix becomes symmetric.
+Let $B^{(n)}$ denote an $(n+1)\times (n+1)$ matrix with binomial
+coefficients on its diagonal, 
+%
+\begin{equation}
+\label{eq:diagB}
+          B^{(n)}_{ii}=\hbox{\rm diag}{n\choose i}
+\end{equation}
+and with zeros everywhere else.  
+Then, one defines the  {\bf symmetric Krawtchouk  matrices}
+as
+$$
+S^{(n)}=\FFF n{} \circ B^{(n)}
+$$
+{\bf Example:}  For $n=3$, we have
+$$
+S^{3)} =
+       \left[\matrix{ 1 &  1 &  1  &  1 \cr
+                      3 &  1 & -1  & -3 \cr
+                      3 & -1 & -1  &  3 \cr
+                      1 & -1 &  1  & -1 \cr }\right]
+\circ
+       \left[\matrix{ 1 &  0 & 0 & 0 \cr
+                      0 &  3 & 0 & 0 \cr
+                      0 &  0 & 3 & 0 \cr
+                      0 &  0 & 0 & 1 \cr }\right]
+=
+      \left[\matrix{ 1 &  3 &  3  &  1 \cr
+                     3 &  3 & -3  & -3 \cr
+                     3 & -3 & -3  &  3 \cr
+                     1 & -3 &  3  & -1 \cr }\right]
+$$ 
+A number of symmetric Krawtchouk  matrices are displayed in Table 2.  
+\\
+
+
+
+
+%==================  krav matrices ==================================
+\newpage
+\hrule
+
+\begin{eqnarray*}
+%
+\Phi^{(0)}&=&\left[\matrix{ 1 }\right]   
+\\
+\Phi^{(1)}&=&\left[\matrix{ 1 &  1 \cr
+                           1 & -1 \cr}\right]    
+\\
+\Phi^{(2)}&=& \left[\matrix{  1 &  1 &  1 \cr
+                             2 &  0 & -2 \cr
+                             1 & -1 &  1 \cr }\right]
+\\
+\Phi^{(3)}&=&
+       \left[\matrix{ 1 &  1 &  1  &  1 \cr
+                      3 &  1 & -1  & -3 \cr
+                      3 & -1 & -1  &  3 \cr
+                      1 & -1 &  1  & -1 \cr }\right]
+\\
+\Phi^{(4)}&=&
+       \left[\matrix{ 1 &  1 &  1  &  1  &  1 \cr
+                      4 &  2 &  0  & -2  & -4 \cr
+                      6 &  0 & -2  &  0  &  6 \cr
+                      4 & -2 &  0  &  2  & -4 \cr
+                      1 & -1 &  1  & -1  &  1 \cr }\right]
+\\
+\Phi^{(5)}&=&
+       \left[\matrix{ 1  &  1 &  1  &  1  &  1 &   1 \cr
+                      5  &  3 &  1  & -1  & -3 &  -5 \cr
+                     10  &  2 & -2  & -2  &  2 &  10 \cr
+                     10  & -2 & -2  &  2  &  2 & -10 \cr
+                      5  & -3 &  1  &  1  & -3 &   5 \cr
+                      1  & -1 &  1  & -1  &  1 &  -1 \cr }\right]
+\\
+\Phi^{(6)}&=&
+       \left[\matrix{ 1  &  1 &  1  &  1  &  1 &  1  &   1 \cr
+                      6  &  4 &  2  &  0  & -2 & -4  &  -6 \cr
+                     15  &  5 & -1  & -3  & -1 &  5  &  15 \cr
+                     20  &  0 & -4  &  0  &  4 &  0  & -20 \cr
+                     15  & -5 & -1  &  3  & -1 & -5  &  15 \cr
+                      6  & -4 &  2  &  0  & -2 &  4  &  -6 \cr
+                      1  & -1 &  1  & -1  &  1 & -1  &   1 \cr }\right]
+\end{eqnarray*}
+
+
+
+\hrule
+\bigskip
+{\bf Table 1:} Krawtchouk  matrices
+
+%=============   symmetric krav matrices =============================
+\newpage
+\hrule
+
+
+\begin{eqnarray*}
+%
+S^{(0)}&=&\left[\matrix{ 1 }\right]
+\\
+S^{(1)}&=&\left[\matrix{ 1 &  1 \cr
+                        1 & -1 \cr}\right]
+\\
+S^{(2)}&=& \left[\matrix{  1 &  2 &  1 \cr
+                          2 &  0 & -2 \cr
+                          1 & -2 &  1 \cr }\right]
+\\
+S^{(3)}&=&
+      \left[\matrix{ 1 &  3 &  3  &  1 \cr
+                     3 &  3 & -3  & -3 \cr
+                     3 & -3 & -3  &  3 \cr
+                     1 & -3 &  3  & -1 \cr }\right]
+\\
+\\
+S^{(4)}&=&
+      \left[\matrix{ 1 &  4 &  6  &  4  &  1 \cr
+                     4 &  8 &  0  & -8  & -4 \cr
+                     6 &  0 &-12  &  0  &  6 \cr
+                     4 & -8 &  0  &  8  & -4 \cr
+                     1 & -4 &  6  & -4  &  1 \cr }\right]
+\\
+S^{(5)}&=&
+      \left[\matrix{ 1  &  5 & 10 &  10  &   5 &   1 \cr
+                     5  & 15 & 10 & -10  & -15 &  -5 \cr
+                    10  & 10 &-20 & -20  &  10 &  10 \cr
+                    10  &-10 &-20 &  20  &  10 & -10 \cr
+                     5  &-15 & 10 &  10  & -15 &   5 \cr
+                     1  & -5 & 10 & -10  &   5 &  -1 \cr }\right]
+\\
+S^{(6)}&=&
+       \left[\matrix{ 1  &   6 &  15  &  20 &  15 &   6 &   1 \cr
+                      6  &  24 &  30  &   0 & -30 & -24 &  -6 \cr
+                     15  &  30 & -15  & -60 & -15 &  30 &  15 \cr
+                     20  &   0 & -60  &   0 &  60 &   0 & -20 \cr
+                     15  & -30 & -15  &  60 & -15 & -30 &  15 \cr
+                      6  & -24 &  30  &   0 & -30 &  24 &  -6 \cr
+                      1  &  -6 &  15  & -20 &  15 &  -6 &   1 \cr }\right]
+\end{eqnarray*}
+
+\hrule
+\bigskip
+{\bf Table 2:} Symmetric Krawtchouk  matrices
+
+
+
+
+
+
+% ===============================================
+
+\newpage
+
+
+%===================  2   ===========================================
+\section{Krawtchouk tower and identities}
+\label{sec:kraw}
+
+Krawtchouk  matrices generalize Pascal's triangle.
+One can visualize that in the form of ``Pascal-Krawtchouk pyramid" 
+by setting the matrices one upon the other, increasing the degree 
+$n$ down-wards
+(Pascal triangle forms one side of Krawtchouk tower).
+\\
+
+As one could expect, Pascal identity, valid for the leftmost columns, 
+generalizes for the other columns Krawtchouk  matrices.
+Less obvious is another ---call it dual Pascal--- identity.
+\\
+
+
+\begin{lemma}
+{\bf (Cross identities)}
+Denote
+$$\left\{ \matrix{
+  a&=& \FFF n {i-1\;j} \cr
+  b&=& \FFF n {i \;j} \cr } \right.
+  \qquad\left\{ \matrix{
+  A&=& \FFF {n+1} {i\;j} \cr
+  B&=& \FFF {n+1} {i\;j+1} \cr}  \right.
+$$
+Then one has
+$$
+\matrix{
+      (i)&\quad &a+b &=& A &\qquad&(iii) & A+B &=& 2b   \cr
+     (ii)&\quad &b-a &=& B &\qquad&(iv)  &  A-B &=& 2a  \cr }
+$$
+\end{lemma}
+
+\begin{proof}
+To prove (i), consider 
+$(1+v)^{n-j+1}(1-v)^j=(1+v)\times (1+v)^{n-j}(1-v)^j$.
+To prove (ii), consider 
+$(1+v)^{n-j}(1-v)^{j+1}= (1-v) \times  (1+v)^{n-j}(1-v)^j$.
+Now equations (iii) and (iv) follow from (i) and (ii).
+\end{proof}
+
+
+\begin{corollary}
+{\bf (Square identity)}
+In a square of any four adjacent entries in a Krawtchouk  matrix, 
+the entry in the left-bottom corner is the sum of the other three,
+i.e., 
+$$
+\hbox{for } ~~ 
+\Phi =  
+\left[\matrix{  &\vdots&\vdots \cr
+              \cdots & a & c &\cdots \cr
+              \cdots & b & d &\cdots\cr
+                &\vdots&\vdots \cr}\right]
+\qquad\qquad\hbox{it holds}\qquad
+b=a+c+d
+$$
+\end{corollary}
+
+\begin{proof}
+$(a+b)+(c+d) = A+B=2b$, hence $a+c+d=b$.
+\end{proof}
+
+The square identity is useful in producing the entries of a Krawtchouk 
+matrix: fill the top row with ``1's" the right-most column with 
+the binomial coefficients. Then, apply the square identity to 
+reproduce the matrix. 
+\\
+
+In summary, the identities considered above can be written as follows:
+\\
+
+{\bf Cross identities:}
+%
+$$
+\matrix{
+(i)&   \FFF n{i-1\;j} + \FFF n{i  \;j}  =  \FFF {n+1}{i\;j}    &\quad&
+(ii)&  \FFF n{i  \;j} + \FFF n{i  \;j+1}= 2\FFF {n-1}{i\;j}   \cr\cr
+(iii)& \FFF n{i \;j}  - \FFF n{i-1\;j}  =  \FFF {n+1}{i\;j+1}  &\quad&
+(iv)&  \FFF n{i  \;j} - \FFF n{i  \;j+1}= 2\FFF {n-1}{i-1\;j}\cr}
+$$
+
+
+{\bf Square identity:}
+$$
+\FFF n {ij} =  \FFF n{i-1\;j} + \FFF n{i-1\; j+1}+  \FFF n{i\;j+1}
+$$
+
+%
+%{\bf Corollary:} Big vertical triangle identity (minimal case)
+%$$
+%-\FFF n {ij} + \FFF n{i+2\; j} = \FFF {n+2}{i+2\; j}
+%$$
+
+
+
+
+%===================  3   ===========================================
+\section{Krawtchouk matrices from Hadamard matrices}
+\label{sec:result}
+
+The identities allow to define Krawtchouk matrices recurrently, 
+with the use of tensor product.  One can ``blow up"
+a (symmetric) matrix  $S^{(n)}$ by Kronecker product with the elementary
+matrix
+\begin{equation}
+\label{eq:had}
+          H=\left[\matrix{ 1& 1\cr
+                           1& -1\cr}\right]
+\end{equation}
+%
+and then contract appropriately the resulting matrix to get $S^{(n)}$.
+
+\begin{definition}\rm
+Define a square contraction $r(M)$ of an $n\times n$ matrix $M$
+as an $k\times k$ matrix
+\begin{equation}
+\label{eq:zdzichu}
+(rM)_{ij} = \sum_{a=2i-2,\; 2i-1 \atop b=2j-2,\; 2j-1}
+M_{ab}
+\end{equation}
+where the entries of $M_{ab}$ outside of the range $(1,\ldots, n)$ 
+are taken as zero.
+\end{definition}
+
+%
+\begin{theorem}
+Symmetric Krawtchouk matrices are:
+$$
+S^{(n+1)} = r ( S^{(n)}\otimes H )
+$$
+\end{theorem}
+
+\begin{corollary}
+Regular Krawtchouk matrices are:
+$$
+\Phi^{(n+1)} = r ( \Phi^{(n)} B \otimes H ) B^{-1}
+$$
+where $B$ is the diagonal binomial matrix defined in (\ref{eq:diagB}).
+\end{corollary}
+
+
+{\bf Example}.  Start with symmetric Krawtchouk matrix or order 2:
+$$
+S^{(3)} = 
+\left[ \matrix{   1 & 2 & 1 \cr
+                  2 & 0 & -2 \cr
+                  1 & -2& 1  \cr} \right]
+$$
+Get the tensor product with $H$:
+$$
+S^{(3)}\otimes H = 
+\left[ \matrix{   1&1 & 2&2 & 1&1 \cr
+                  1&-1 & 2&-2 & 1&-1 \cr
+                  2&2 & 0&0 & -2&-2 \cr
+                  2&-2 & 0&0 & -2&2 \cr
+                  1&1 & -2&-2& 1&1  \cr
+                  1&-1 & -2&2& 1&-1  \cr} \right]
+$$
+surround with zeros and contract:                
+$$
+r (S^{(3)}\otimes H) = 
+\left[ \matrix{ 0& 0& 0& 0& 0& 0&0 &0 \cr 
+                0& 1&1 & 2&2 & 1&1 &0 \cr
+                0& 1&-1 & 2&-2 & 1&-1&0  \cr
+                0& 2&2 & 0&0 & -2&-2 &0 \cr
+                0& 2&-2 & 0&0 & -2&2 &0  \cr
+                0& 1&1 & -2&-2& 1&1  &0 \cr
+                0& 1&-1 & -2&2& 1&-1 &0  \cr
+                0& 0& 0& 0& 0& 0&0 &0 \cr } \right]
+%
+=
+\left[ \matrix{ 1& 3&  3& 1 \cr 
+                3& 3& -3& -3 \cr
+                3& 3& -3& -3 \cr
+                1&-3&  3& -1 \cr} \right]
+$$
+~
+\\
+
+These results suggest that Krawtchouk matrices can be obtained somehow from 
+the pure multiple tensor powers of the elementary matrix $H$.
+Such powers define a family of Hadamard matrices,
+namely Sylvester-Hadamard matrices \ref{YH}.
+
+
+
+
+\begin{definition}
+Special Hadamard matrices are tensor products (in the matrix 
+Kronecker sense) of the fundamental matrix $H$: 
+%
+\begin{equation}\label{eq:HH}
+  H^{(n)} = 
+      \underbrace{H\otimes H \ldots H}_{n\hbox{ times}} 
+\end{equation}
+\end{definition}
+
+
+
+The problem is that the powers --- understood as Kronecker matrix 
+products --- ``scatter" the columns and rows that would have to be 
+summed up. We need to identify appropriate sets of indices to be 
+summed in the contraction of the Hadamard matrices. 
+\\
+
+Define the $n$-th {\bf binary shuffling function} 
+as a function
+$$
+         f^{(n)} : {\bf Z} \to {\bf Z}
+$$
+as measuring the ``binary weight" of integer numbers.
+That is, if $[n_2]_i$ represents the $i-th$ digit of number $n$ 
+expressed in the binary notation, then
+$$
+              f(x) = \sum_i [x_2]_i
+$$ 
+(just the number of ``ones" needed to write $x$ in the binary 
+representation). Notice that, set-theoretically,  
+$$       
+       f(\{0,1,\ldots, 2^n-1\}) =    \{0, 1,\ldots, n\} 
+$$
+Here are the first 16 values of $f$ listed for the 
+argument running from 0 through $2^4-1=15$:
+$$
+0 \quad
+1 \quad
+1 \quad
+2 \quad
+1 \quad
+2 \quad
+2 \quad
+3 \quad
+1 \quad
+2 \quad
+2 \quad
+3 \quad
+2 \quad
+3 \quad
+3 \quad
+4 \quad
+$$
+
+\begin{remark}
+\label{r:shuffle}
+The shuffling function can be defined recurrently as
+$$
+f(0)=0 \\
+f(2^n + k) = f(k)+1
+$$
+for $0\leq k < 2^n$.
+One can thus create the sequence of the values of the shuffling function 
+by starting with $0$ and then recurrently by appending a string with 
+its copy with values increased by $1$:
+$$
+0
+\ \rightarrow\
+01
+\ \rightarrow\
+0112
+\ \rightarrow\
+01121223
+\ \rightarrow\ 
+\hbox{etc.} 
+$$
+
+\end{remark}
+
+
+Now we are ready to state the result;
+
+\begin{theorem}
+Symmetric Krawtchouk matrices are reductions of Hadamard matrices:
+$$
+S^{(n)}_{ij} = \sum_{a\in f^{-1}(i) \atop b\in f^{-1}(j)} H^{(n)}_{ab}
+             = \sum_{a\in f^{-1}(i) \atop b\in f^{-1}(j)} (\otimes^n H)_{ab}
+$$
+\end{theorem}
+
+
+
+
+{\bf Example:}
+Let us see the transformation for case $H^{(4)} \to S^{(4)}$.
+First, for the typographical reasons, in the following the 
+Hadamard matrices will be presented with bullets instead of numbers:
+$\bullet$ for 1 and $\circ$ for -1.
+Thus for instance:
+
+
+\def\b{\circ}
+\def\a{\bullet}
+$$
+H^{(1)}=\left[\matrix{
+\a &\a  \cr
+\a &\b  \cr 
+}\right]
+%
+\quad
+%
+H^{(2)}=\left[\matrix{
+\a &\a &\a &\a  \cr
+\a &\b &\a &\b   \cr 
+\a &\a &\b &\b   \cr
+\a &\b &\b &\a   \cr
+}\right]
+%
+\quad
+%
+H^{(3)}=\left[\matrix{
+\a &\a &\a &\a  &\a &\a &\a &\a    \cr
+\a &\b &\a &\b  &\a &\b &\a &\b    \cr
+\a &\a &\b &\b  &\a &\a &\b &\b    \cr
+\a &\b &\b &\a  &\a &\b &\b &\a    \cr
+%
+\a &\a &\a &\a  &\b &\b &\b &\b    \cr \a &\b &\a &\b  &\b &\a &\b 
+&\a    \cr \a &\a &\b &\b  &\b &\b &\a &\a    \cr \a &\b &\b &\a  
+&\b &\a &\a &\b    \cr }\right] 
+$$ 
+etc. 
+Now, applying the binary 
+shuffling function to $H^{(4)}$, mark the rows and columns with 
+the aimed indices: 
+
+$$
+\bordermatrix{
+  &0  &1  &1  &2   &1  &2  &2  &3   &1  &2  &2  &3   &2  &3  &3  &4   \cr 
+0 &\a &\a &\a &\a  &\a &\a &\a &\a  &\a &\a &\a &\a  &\a &\a &\a &\a  \cr
+1 &\a &\b &\a &\b  &\a &\b &\a &\b  &\a &\b &\a &\b  &\a &\b &\a &\b  \cr 
+1 &\a &\a &\b &\b  &\a &\a &\b &\b  &\a &\a &\b &\b  &\a &\a &\b &\b  \cr
+2 &\a &\b &\b &\a  &\a &\b &\b &\a  &\a &\b &\b &\a  &\a &\b &\b &\a  \cr
+%
+1 &\a &\a &\a &\a  &\b &\b &\b &\b  &\a &\a &\a &\a  &\b &\b &\b &\b  \cr
+2 &\a &\b &\a &\b  &\b &\a &\b &\a  &\a &\b &\a &\b  &\b &\a &\b &\a  \cr
+2 &\a &\a &\b &\b  &\b &\b &\a &\a  &\a &\a &\b &\b  &\b &\b &\a &\a  \cr
+3 &\a &\b &\b &\a  &\b &\a &\a &\b  &\a &\b &\b &\a  &\b &\a &\a &\b  \cr
+%
+1 &\a &\a &\a &\a  &\a &\a &\a &\a  &\b &\b &\b &\b  &\b &\b &\b &\b  \cr
+2 &\a &\b &\a &\b  &\a &\b &\a &\b  &\b &\a &\b &\a  &\b &\a &\b &\a  \cr
+2 &\a &\a &\b &\b  &\a &\a &\b &\b  &\b &\b &\a &\a  &\b &\b &\a &\a  \cr
+3 &\a &\b &\b &\a  &\a &\b &\b &\a  &\b &\a &\a &\b  &\b &\a &\a &\b  \cr
+%
+2 &\a &\a &\a &\a  &\b &\b &\b &\b  &\b &\b &\b &\b  &\a &\a &\a &\a  \cr
+3 &\a &\b &\a &\b  &\b &\a &\b &\a  &\b &\a &\b &\a  &\a &\b &\a &\b  \cr
+3 &\a &\a &\b &\b  &\b &\b &\a &\a  &\b &\b &\a &\a  &\a &\a &\b &\b  \cr
+4 &\a &\b &\b &\a  &\b &\a &\a &\b  &\b &\a &\a &\b  &\a &\b &\b &\a  \cr
+}
+$$
+which indeed, when summed up, gives the symmetric Krawtchouk
+matrix $S^{(4)}$.  
+Entries that produce $S_{33}$ are marked for exemplification.
+
+%%%%%%%%%%%%%%%%%%%%% extra copy %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%$$
+%H^{(4)}=\left[\matrix{
+%\a &\a &\a &\a  &\a &\a &\a &\a  &\a &\a &\a &\a  &\a &\a &\a &\a  \cr
+%\a &\b &\a &\b  &\a &\b &\a &\b  &\a &\b &\a &\b  &\a &\b &\a &\b  \cr 
+%\a &\a &\b &\b  &\a &\a &\b &\b  &\a &\a &\b &\b  &\a &\a &\b &\b  \cr
+%\a &\b &\b &\a  &\a &\b &\b &\a  &\a &\b &\b &\a  &\a &\b &\b &\a  \cr
+%%
+%\a &\a &\a &\a  &\b &\b &\b &\b  &\a &\a &\a &\a  &\b &\b &\b &\b  \cr
+%\a &\b &\a &\b  &\b &\a &\b &\a  &\a &\b &\a &\b  &\b &\a &\b &\a  \cr
+%\a &\a &\b &\b  &\b &\b &\a &\a  &\a &\a &\b &\b  &\b &\b &\a &\a  \cr
+%\a &\b &\b &\a  &\b &\a &\a &\b  &\a &\b &\b &\a  &\b &\a &\a &\b  \cr
+%%
+%\a &\a &\a &\a  &\a &\a &\a &\a  &\b &\b &\b &\b  &\b &\b &\b &\b  \cr
+%\a &\b &\a &\b  &\a &\b &\a &\b  &\b &\a &\b &\a  &\b &\a &\b &\a  \cr
+%\a &\a &\b &\b  &\a &\a &\b &\b  &\b &\b &\a &\a  &\b &\b &\a &\a  \cr
+%\a &\b &\b &\a  &\a &\b &\b &\a  &\b &\a &\a &\b  &\b &\a &\a &\b  \cr
+%%
+%\a &\a &\a &\a  &\b &\b &\b &\b  &\b &\b &\b &\b  &\a &\a &\a &\a  \cr
+%\a &\b &\a &\b  &\b &\a &\b &\a  &\b &\a &\b &\a  &\a &\b &\a &\b  \cr
+%\a &\a &\b &\b  &\b &\b &\a &\a  &\b &\b &\a &\a  &\a &\a &\b &\b  \cr
+%\a &\b &\b &\a  &\b &\a &\a &\b  &\b &\a &\a &\b  &\a &\b &\b &\a  \cr
+%}\right]
+%$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%============================ 5 ==========================
+\section{Krawtchouk matrices and classical random walk}
+\label{sec:classical}
+
+In this section we will give a probabilistic meaning to
+the Krawtchouk matrices and some of their properties.\\
+
+Let $\xi_i$ be independent symmetric Bernoulli random variables taking
+values $\pm1$. Let $X_N=\xi_1+\cdots+\xi_N$ be the associated random
+walk starting from $0$. Now observe that the generating function of
+the elementary symmetric functions in the $\xi_i$ is a martingale, in
+fact a discrete exponential martingale:
+$$
+   M_N = \prod_{i=1}^N(1+v\xi_i)=\sum_k v^k 
+           \alpha_k(\xi_1,\ldots,\xi_N)
+$$
+where $\alpha_k$ denotes the $k^{\mathrm{th}}$ elementary symmetric
+function. 
+The martingale property is immediate since each $\xi_i$ has mean $0$.
+Suppose that at time $N$, the number of the $\xi_i$ that are equal to $-1$
+is $j_N$, with the rest equal to $+1$. Then  $j_N= (N-X_N)/2$ 
+and $M_N$ can be expressed solely in terms of $N$ and $X_N$, or, 
+equivalently, of $N$ and $j_N$
+$$
+       M_N = (1+v)^{N-j_N}(1-v)^{j_N} 
+           = (1+v)^{(N+X_N)/2}(1-v)^{(N-X_N)/2}  
+$$
+>From the generating function for the Krawtchouk
+matrices, equation (\ref{eq:genkraw}), follows 
+$$
+    M_N = \sum_iv^i\Phi^{(N)}_{i,j_N}
+$$
+so that as functions on the Bernoulli space, each sequence of random
+variables $\Phi^{(N)}_{i,j_N}$ is a martingale. \\
+
+Now we can interpret two basic recurrences of Section 2. For a fixed
+column of $\Phi^{(N)}$, to get the corresponding column in 
+$\Phi^{(N+1)}$ one uses the Pascal's triangle recurrence:
+$$
+  \FFF N{i-1\;j} + \FFF N{i  \;j}  =  \FFF {N+1}{i\;j}
+$$
+This follows in the probabilistic setting by writing
+$M_{N+1}=(1+v\xi_N)M_N$ and remarking that for $j$ to remain constant,
+$\xi_N$ must take the value $+1$, with consequences as in the purely
+algebraic context. The martingale property is more interesting in the
+present context. We have
+$$
+\FFF N{ij_N}= E(\FFF N{ij_{N+1}}|\xi_1,\ldots,\xi_N)
+             =\frac12\,\left(\FFF{N+1}{i\,j_N+1}+\FFF{N+1}{ij_N}\right)
+$$
+since half the time $\xi_{N+1}$ is $-1$, increasing $j_N$ by 1, and
+half the time $j_N$ is unchanged. Thus, writing $j$ for $j_N$,
+$$
+      \FFF N{ij}=\frac12\,\left(\FFF{N+1}{i\,j+1}+\FFF{N+1}{ij}\right)
+$$
+
+The interpretation of Krawtchouk polynomials as elementary symmetric
+functions on the Bernoulli space allows one to derive their 
+analytic properties using probabilistic methods with corresponding
+interpretations. 
+
+
+
+
+
+
+%========================= 6 ======================
+\section{Krawtchouk matrices and quantum random walk}
+\label{sec:quantum}
+
+In quantum probability, random variables are modelled by self-adjoint
+operators on Hilbert space and independence by tensor products. 
+We can model symmetric Bernoulli walk as follows. 
+Consider a 2-dimensional Hilbert space $V={\bf R}^2$
+and two special $2\times2$ operators (matrices) 
+$$ 
+         F=\pmatrix{0&1\cr 1&0\cr},    \qquad
+         G=\pmatrix{1&0\cr 0&-1\cr}
+$$
+satisfying $F^2=G^2=I$, the $2\times2$ identity.
+Recall the fundamental Krawtchouk/Hadamard matrix $H$ 
+(see Equation (\ref{eq:krav2}) and (\ref{eq:had})), which we shall now view as
+$$
+H=F+G = \left(\matrix{ 1 &  1 \cr
+                       1 & -1 \cr}\right)
+$$
+One can readily check that
+\begin{equation}
+\label{eq:H}
+         FH =F(F+G) =(F+G)G =HG
+\end{equation}
+%
+(use $F^2=G^2=I$). This, of course, can be viewed as 
+the spectral decomposition of $F$ and we can interpret the Hadamard
+matrix as diagonalizing $F$. \\
+
+
+\begin{remark}
+Note that the  exponentiated  operator
+$$
+    \exp(zF) = \pmatrix{\cosh z&\sinh z\cr \sinh z&\cosh z\cr}
+$$
+has the expectation value in the state $e_0$ equal 
+$$
+\langle e_0,\exp(zF)e_0\rangle = \cosh z
+$$
+which coincides with the moment generating function for the symmetric 
+Ber\-noul\-li random variable taking values $\pm 1$. 
+This implies that indeed we are dealing with the (quantum)
+generalization of the classical model.
+\end{remark}
+
+
+~
+
+\begin{remark} {\bf (Quantum computer interpretation).}
+\rm 
+We can view $V=\hbox{span}\;\{e_0,\,e_1\}$ as a Hilbert space 
+representing a simple two-state quantum system, e.g., 
+a particle with possible spin-up ($e_0$) and spin-down ($e_1$) states, 
+respectively.
+In the context of ``quantum computing," these elementary states represent 
+``qubits."  Operator $F$ represents a ``spin flip" and operator $G$ 
+a  ``phase change,"  both are thus basic qubit operations. 
+[Geometrically, they are reflections in $V$ through lines 
+that form 45 degrees.  The Hadamard matrix $M$ is essentially 
+a "rotation by 45 degrees" (up to composition with reflection and scaling) 
+and therefore ties them via (\ref{eq:H}).] 
+Now, to perform quantum computing, one needs an assembly of $N$ such
+independent systems --- this constitutes a simple quantum computer.  
+The Hilbert space of computer states is represented 
+by the $N$-th tensor product of the original space $V$,
+that is, by the $2^N$-dimensional Hilbert space $V^{\otimes N}$. 
+This motivates our further considerations. 
+\end{remark}
+
+
+
+Define the following simple operators
+\begin{eqnarray*}
+\xi_1 &=& F\otimes I \otimes\cdots\otimes I          \\
+\xi_2 &=& I\otimes F\otimes I \otimes\cdots\otimes I \\
+\vdots &=& \vdots                                    \\
+\xi_N &=& I\otimes I \otimes\cdots\otimes F
+\end{eqnarray*}
+%
+Each $\xi_i$ describes a "flip" at $i$-th position.
+(These are our ``quantum" equivalents of the random walk variables 
+from section \ref{sec:classical}.)
+Performing them independently would result in ``running" 
+a classical $N$-bit computer.
+We shall however consider the superposition of these independent 
+individual actions,  described by $X_F=\xi_1+\cdots+\xi_N$. 
+Analogously, we define:
+%
+\begin{eqnarray*}
+\sigma_1 &=& G\otimes I \otimes\cdots\otimes I\\
+\sigma_2 &=& I\otimes G\otimes I \otimes\cdots\otimes I\\
+\vdots &=& \vdots \\
+\sigma_N &=& I\otimes I \otimes\cdots\otimes G
+\end{eqnarray*}
+%
+with $X_G=\sigma_1+\cdots+\sigma_N$. 
+We also extend $H$ to the $N$-fold tensor product, 
+setting $H_N=H^{\otimes N}$. 
+\\
+
+
+Now for illustration, consider a simple calculation for $N=3$:
+%
+\begin{eqnarray*}
+\xi_1H_3 &=& (F\otimes I\otimes I)(H\otimes H\otimes H)\\
+         &=& (H\otimes H\otimes H)(G\otimes I\otimes I)
+              = H_3\sigma_3
+\end{eqnarray*}
+%
+where relation $FH=HG$ was used. 
+This clearly generalizes to $\xi_kH_N=H_N\sigma_k$ and 
+--- by summing over $k$ --- yields an important relation:
+$$
+            X_F H_N = H_N X_G
+$$
+Since products are preserved under projection onto 
+the symmetric tensor space (see Appendix 2), we get
+$$
+       \overline{X}_F\overline{H}_N = \overline{H}_N \overline{X}_G
+$$
+We know how to calculate $\overline{H}_N$ from the action of $H$ on
+polynomials in degree $N$. 
+
+\begin{proposition} For each $N>0$, symmetric projection of Hadamard 
+matrices leads to 
+$$ 
+    \overline{H}_{ij} = \FFF{N}{ji}
+$$
+That is, $\overline{H}_N$ is the transpose of the Krawtchouk matrix
+$\FFF{N}{}$.
+\end{proposition}
+
+\begin{proof}
+Writing $(x,y)$ for $(x_0,x_1)$, we have in degree $N$ for the 
+$k^{\mathrm{th}}$ component:
+$$
+        (x+y)^{N-k}(x-y)^k=\sum_l \overline{H}_{kl} x^{N-l}y^l
+$$
+Scaling out $x^N$ and replacing $v=y/x$ yields
+the generating function for the Krawtchouk matrices with the
+coefficient of $v^l$ equal to $\FFF{N}{lk}$. Thus the result.
+\end{proof}
+
+Now consider the generating function for the elementary symmetric
+functions in the quantum variables $\xi_j$. This is the $N$-fold
+tensor power
+$$ 
+     {\cal F}_N (t) = (I+tF)^{\otimes N}
+                    = I^{\otimes N}+t\,X_N+\cdots
+$$
+noting that the coefficient of $t$ is $X_F$. 
+Similarly, define
+$$
+     {\cal G}_N(t) = (I+tG)^{\otimes N}
+                   = I+tX_G+\cdots
+$$
+  From $(I+tF)H=H(I+tG)$ we have
+$$
+   {\cal F}_NH_N  =  H_N{\cal G}_N        
+   \qquad\hbox{and}\qquad 
+   \overline{\cal F}_N \overline{H}_N  
+ = \overline{H}_N \overline{\cal G}_N
+$$
+The difficulty is to calculate the action on the symmetric tensors for
+operators, such as $X_N$, that are not pure tensor powers. However,
+from ${\cal F}_N(t)$ and ${\cal G}_N(t)$ we can 
+recover $X_F$ and $X_G$ via
+$$
+          X_F=\frac{d}{dt}\biggm|_{t=0}(I+tF)^{\otimes N},
+     \qquad
+          X_G=\frac{d}{dt}\biggm|_{t=0}(I+tG)^{\otimes N}
+$$
+with corresponding relations for the barred operators.
+Calculating on polynomials yields the desired results as follows.
+$$ 
+          I+tF = \pmatrix{1&t\cr t&1\cr},\qquad
+          I+tG = \pmatrix{1+t&0\cr 0&1-t\cr}
+$$
+In degree $N$, using $x$ and $y$ as variables, we get the 
+$k^{\mathrm{th}}$ component for $\overline{X}_F$ and $\overline{X}_G$
+via
+\begin{eqnarray*}
+    \frac{d}{dt}\biggm|_{t=0}(x+ty)^{N-k}(tx+y)^k
+                     &=& (N-k)\dir k+1. +k\dirs k-1. \\
+    \frac{d}{dt}\biggm|_{t=0}(1+t)^{N-k}(1-t)^k\dirs k.
+                     &=& (N-2k)\dirs k. 
+\end{eqnarray*}
+respectively.  
+For illustration, calculations for $N=4$ result in
+
+\begin{eqnarray*}
+\overline{X}_F = 
+         \pmatrix{0&4&0&0&0\cr 
+                  1&0&3&0&0\cr 
+                  0&2&0&2&0\cr 
+                  0&0&3&0&1\cr
+                  0&0&0&4&0\cr},&\qquad&
+\overline{H}_4 = \pmatrix{1&4&6&4&1\cr
+                    1&2&0&-2&-1\cr 
+                    1&0&-2&0&1\cr
+                    1&-2&0&2&-1\cr
+                    1&-4&6&-4&1\cr} \\ 
+\mathstrut\\
+\overline{X}_G  = \pmatrix{4&0&0&0&0\cr
+                     0&2&0&0&0\cr
+                     0&0&0&0&0\cr
+                     0&0&0&-2&0\cr
+                     0&0&0&0&-4\cr},&&
+\end{eqnarray*}
+
+We have a simple
+
+\begin{corollary}
+The spectrum of $\overline{X}_N$ is
+$N,N-2,\ldots,2-N,-N$, which coincides with the support 
+of the classical random walk.
+\end{corollary}
+
+
+We note that the top row of $(I+tF)^{\otimes N}$ is $t^{f(k)}$, where
+$f(k)$ is the binary shuffling function of Section \ref{sec:result}. 
+This is seen by noting that each time one tensors with $I+tF$, 
+the original top row is reproduced then it is concatenated with a replica 
+of itself modified in that each entry picks up a factor of $t$ 
+(compare with \ref{r:shuffle}).
+Now, collapsing to the symmetric tensor space,
+the top row will have entries ${N\choose k}t^k$. This
+follows as well by direct calculation of the $0^{\mathrm{th}}$ component
+matrix elements in degree $N$: expanding $(x+ty)^N$.
+
+
+
+%----------------------------------------------------
+\subsection{Expectation values}
+To find the distributions, we must calculate expectation values. In
+the present context, expectation values in
+two particular states are especially interesting. Namely,
+in the state $e_0$ and the normalized trace --- the uniform distribution
+on the spectrum. In the $N$-fold tensor product, we want to consider
+expectation values in the ``ground state" $\dir 000\ldots0.$ 
+and normalized traces. Then we can go to the symmetric tensors.
+\\
+
+Since everything factors, 
+one easily obtains the expectation value of $\exp(zX_N)$ 
+in the ground state $\dir 000\ldots0.$ to be $(\cosh z)^N$. 
+For the trace, $\tr \exp(zF)=2\cosh z$ implies
+$\tr\exp(zX_F)=2^N(\cosh z)^N$ and, after normalizing, this yields
+$(\cosh z)^N$.
+\\
+
+For the barred operators, we consider the symmetric trace. Here we can use
+the {\bf symmetric trace theorem}, detailed in Appendix 2. It tells us
+that the generating function for the symmetric traces of any operator
+$A$ in the various degrees is $\det(I-tA)^{-1}$. Taking
+$A=\exp(zF)$, we have
+
+\begin{eqnarray*}
+  \det(I-te^{zF})^{-1} &=& [(1-te^z)(1-te^{-z})]^{-1}\\
+                       &=& (1-2t\cosh z+t^2)^{-1}
+\end{eqnarray*}
+
+The latter is the generating function for Chebyshev polynomials of the
+second kind, so that the normalized symmetric trace is
+$$
+   (N+1)^{-1}\tr_{Sym}^N \exp(zF) = U_N(\cosh z)/(N+1)
+$$
+This equals as well
+$$
+      \frac{e^{z(N+1)} - e^{-z(N+1)}}{(e^z-e^{-z})(N+1)}
+$$
+
+And that completes our study.
+
+
+
+\vskip.3in
+{\bf Acknowledgement.} We would like to thank M. Viana for inviting us
+to participate in the special session and we extend our appreciation
+for all the hard work involved in organizing the session as well as
+related activities.
+
+%====================== A1 ==========================
+\section*{Appendix 1: Tensor products}
+\label{sec:A1}
+
+
+Let $V$ be a $d$-dimensional vector space over ${\bf R}$. 
+We fix an orthonormal basis $\{e_0,\ldots,e_\delta\}$
+with $d=1+\delta$. Denote tensor powers of $V$ by
+$V^{\otimes N}$, so that $V^{\otimes 2}=V\otimes V$, etc. 
+A basis for $V^{\otimes N}$ is given by all $N$-fold tensor products 
+of the basis vectors $e_i$. 
+
+$$ 
+\dir n_1n_2\ldots n_N. = 
+      e_{n_1}\otimes e_{n_2}\otimes \cdots\otimes e_{n_N}
+$$
+
+Note that we can label these $d^N$ basis elements by all  
+numbers $0$ to $d^N-1$ and recover the tensor products 
+by decomposing these numbers in numerical base $d$ 
+putting leading zeros so that all extended labels are of length $N$. 
+\\
+
+Now let $\{A_i:\; 1\le i\le N\}$ be a set of $N$ linear operators on $V$. 
+The linear operator on $V^{\otimes N}$, 
+$A=A_1\otimes A_2\otimes\cdots\otimes A_N$ acts on a basis vector
+$\dir n_1n_2\ldots n_N.$ by
+$$ 
+ A \dir n_1n_2\ldots n_N. =
+       A_1e_{n_1}\otimes\cdots\otimes A_Ne_{n_N}
+$$
+This needs to be expanded and terms regrouped using bilinearity.\\
+
+If $A$ and $B$ are two $d\times d$ matrices, the matrix corresponding
+to the operator $A\otimes B$ is the Kronecker product, a
+$d^2\times d^2$ matrix having the block form:
+$$\pmatrix{
+       a_{00}B&\ldots&a_{0\delta}B\cr
+       a_{10}B&\ldots&a_{1\delta}B\cr
+              \vdots&\vdots&\vdots\cr
+       a_{\delta0}B&\ldots&a_{\delta\delta}B\cr}
+$$
+and iteratively, associating from the left, for higher-order tensor
+products.
+The rows and columns of the matrix of a linear operator acting on
+$V^{\otimes N}$ are conveniently labelled by associating to each basic tensor
+$\dir d_1d_2\ldots d_N.$ the corresponding integer label
+$\sum\limits_{k=1}^N n_kd^{N-k}$, which thus provides a canonical
+ordering.
+
+
+%======================= A2 ============================
+\section*{Appendix 2: Symmetric tensor spaces}
+\label{sec:A2}
+
+Here we review relation between tensor spaces and symmetric tensor spaces
+and the role of symmetric polynomials.
+\\
+
+ 
+The space $V^{\otimes N}$ can be mapped onto the space of symmetric
+tensors, $V^{\otimes_S N}$ by identifying basis vectors 
+(in $V^{\otimes N}$) that are equivalent under all permutations. 
+Alternatively, one can identify the basic tensor
+$\dir d_1d_2\ldots d_N.$ with the monomial $x_{d_1}x_{d_2}\cdots x_{d_N}$
+in the commuting variables $x_0,\ldots,x_\delta$. 
+This equivalence class will be denoted $\dirs d_1d_2\ldots d_N.$ 
+Hence we have a linear map
+from tensor space into the space of symmetric polynomials, itself 
+isomorphic to the space of symmetric tensors:
+
+\begin{equation}
+\label{eq:proj}
+  \overline{\phantom{W}}:\quad V^{\otimes N} 
+                \ \longrightarrow \ 
+                \hbox{Sym}(x)  \cong V^{\otimes_S N}
+\end{equation}
+
+In the symmetric tensor space, tensor labels
+need to count only `occupancy,' that is, the number of times a
+basis vector of $V$ occurs in a given basic tensor of $V^{\otimes N}$. 
+We indicate occupancy by a multi-index which is the exponent of the
+corresponding monomial. 
+The dimension of $V^{\otimes_S N}$ is thus
+$$
+     \hbox{dim}\; V^{\otimes_S N} = {N+d-1\choose d-1}
+$$
+that is, the number of monomials homogeneous of degree $N$. 
+A canonical labelling is $\dirs k_1\ldots k_\delta.$, 
+with $k_0$ understood to equal $N-\sum\limits_{j=1}^\delta k_j$. 
+\\
+
+Given an operator $A$ on $V$, let $A_N=A^{\otimes N}$. Then $A_N$  
+induces an operator $\overline{A}_N$ on $V^{\otimes_S N}$ from the action of
+$A$ on polynomials,  which we call the {\bf symmetric representation 
+of $A$ in degree $N$}.  Denote the matrix elements of the action of
+$\overline{A}_N$ by $\overline{A}_{mn}$. If $A$ has matrix entries
+$A_{ij}$ let
+$$
+       y_i=\sum_i A_{ij}x^j
+$$
+Then the matrix elements are defined by the relation (expansion):
+$$
+   y_0^{m_0}\cdots y_\delta^{m_\delta}=
+               \sum_n \overline{A}_{mn}
+                     x_0^{n_0}\cdots x_\delta^{n_\delta}
+$$
+with multi-indices $m$ and $n$.
+\\
+
+Successive application of $A_1$ then $A_2$ shows that mapping 
+(\ref{eq:proj}) is an algebra homomorphism, i.e., 
+$$
+\overline{A_1A_2}=\overline{A}_1\overline{A}_2
+$$
+Explicitly, in basis notation
+$$ 
+\overline{(A_1A_2)}_{mn}=
+          \sum_r (\overline{A_1})_{mr}
+                 (\overline{A_2})_{rn}
+$$ 
+
+Define the {\bf symmetric trace} in degree $N$ of $A$ as the trace of
+the matrix elements of $\overline{A}_N$, i.e., the sum of the diagonal
+matrix elements:
+$$
+     \tr_{\rm Sym}^N A=\sum_{|m|=N}\overline{A}_{mn}
+$$
+with $|m|$ denoting ---as usual--- the sum of the components of $m$.
+Observe that if $A$ is upper-triangular, 
+with eigenvalues $\lambda_1,\ldots,\lambda_d$, then the trace of
+this action on the space of polynomials homogeneous of degree $N$ is 
+exactly  $h_N(\lambda_1,\ldots,\lambda_d)$, the $N^{\mathrm{th}}$ 
+homogeneous symmetric function in the $\lambda$'s. 
+We recall a useful theorem on calculating the symmetric trace.
+Since the mapping from $A$ to $\overline{A}_N$ is a homomorphism, a
+similarity transformation on $A$ extends to one on $\overline{A}_N$ thus
+preserving traces. Now, any matrix is similar to an upper-triangular 
+one with the same eigenvalues, thus follows (\cite{Spr}):
+
+\begin{thm}{\bf Symmetric trace theorem}
+\label{thm:symmtr}
+Denoting by $\mathrm{tr}_{\mathrm{Sym}}^N$ the trace of the symmetric
+representation on polynomials homogeneous of degree $N$, 
+$$
+     \frac{1}{\det(I-tA)}=\sum_{N=0}^\infty t^N\tr_{\mathrm{Sym}}^N A
+$$
+\end{thm}
+
+\begin{proof} 
+With $\{\lambda_i\}$ denoting the eigenvalues of $A$,
+\begin{eqnarray*}
+\frac{1}{\det(I-tA)} 
+           &=&\prod_i\frac{1}{1-t\lambda_i}\cr
+           &=&\sum_{N=0}^\infty t^Nh_N(\lambda_1,\ldots,\lambda_d)\cr
+           &=&\sum_{N=0}^\infty t^N\tr_{\mathrm{Sym}}^N A\cr
+\end{eqnarray*}
+as stated above.
+\end{proof}
+
+%%%%%%%%%
+%Observe that with 
+%$\displaystyle \det(I-tA)=1-\sum_{k\ge1} a_kt^k$, $\det(I-tA)^{-1}$ is
+%the generating function for the fundamental solution to the recurrence
+%$$ 
+%   y_n=\sum_{k=1}^d a_k y_{n-k}
+%$$
+%In particular, if $A$ is a $2\times2$ matrix, with $\tr A=\tau$, 
+%$\det A=\Delta$, then $\det(I-tA)^{-1}$ is the generating function for 
+%the fundamental solution to the recurrence
+%\begin{equation}
+%  \label{eq:tau-delta}
+% y_n=\tau y_{n-1}-\Delta y_{n-2} 
+%\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+
+
+
+If $A$ is represented by a matrix, given the matrix form 
+$A_N=A^{\otimes N}$ computed as an $N$-fold Kronecker product, to reduce
+to $\overline{A}_N$, we see that acting on polynomials, for a fixed row
+label in the full tensor space, the column entries corresponding to
+basic tensors equivalent under permutation are summed to a single
+column. Then the matrix elements are chosen, one row from each
+equivalence class of basic tensors. What if $d=2$? Then row and column
+labels are single indices so that $\overline{A}_N$ is an 
+$(N+1)\times(N+1)$ matrix with labels according to the exponent of $x_1$.
+That is, the basis for polynomials in degree $N$ is given by the
+monomials $x_0^{N-k}x_1^k$, $0\le k\le N$. The binary shuffling
+function and contraction operations of Section \ref{s:result} 
+are exactly the reduction to symmetric tensors and then computing 
+the induced matrix, respectively. 
+
+
+
+
+
+%==================================================================
+\begin{thebibliography}{10}
+
+\bibitem{B}
+Bose N:
+\emph{Digital filters: theory and applications},
+North-Holland, 1985.
+
+
+\bibitem{Del}
+Delsarte P:
+Bounds for restricted codes, by linear programming,
+\emph{Philips Res. Reports}, {\bf 27} (1972) 272--289.
+
+\bibitem{Del2}
+Delsarte P:
+Four fundamental parameters of a code and their combinatorial significance,  
+\emph{Info. \&\ Control}, {\bf 23} (1973) 407--438
+
+\bibitem{Del3}
+Delsarte P:  
+An algebraic approach to the associacion schemes of coding theory, 
+\emph{Philips Research Reports Supplements}, No. 10 (1973)
+
+\bibitem{Dun}
+Dunkl C F:
+A Krawtchouk polynomial addition theorem and  wreath products of symmetric
+groups, 
+\emph{Indiana Univ. Math. J.},  {\bf 25} (1976) 335--358
+
+\bibitem{DR}
+Dunkl C F and Ramirez D F:
+Krawtchouk polynomials and the symmetrization of hypergraphs,
+\emph{SIAM J. Math. Anal.}, {\bf 5} (1974) 351--366
+
+\bibitem{Eag}
+Eagelson G K:
+A characterization theorem for positive definite sequences of the
+Krawtchouk polynomials,  
+\emph{Australian J. Stat}, {\bf 11} (1069) 29--38
+
+\bibitem{FF}
+Feinsilver P and Fitzgerald R: 
+The spectrum of symmetric Krawtchouk matrices, 
+\emph{Lin. Alg. \& Appl.}, 235, 1996, 121-139. 
+
+\bibitem{FS}
+Feinsilver P and Schott R:
+Krawtchouk polynomials and finite probability theory,
+\emph{Probability Measures on Groups X}, Plenum, 1991, pp. 129--135
+
+\bibitem{FH}
+Fulton W and Harris J:
+\emph{Representation theory, a first course,}
+Graduate texts in mathematics, {\bf 129},
+Springer-Verlag, 1991.
+
+\bibitem{Kra}
+Krawtchouk M:
+Sur une generalisation des polynomes d'Hermite,
+\emph{Comptes Rendus}, {\bf 189} (1929) 620--622
+
+\bibitem{Kra2}
+Krawtchouk M: 
+Sur la distribution des racinesdel polynomes orthogonaux,
+\emph{Comptes Rendus}, {\bf 196} (1933) 739--741
+
+\bibitem{Lev}
+Levenstein V I:
+Krawtchouk polynomials and universal bounds for codes and design in Hamming
+spaces,
+\emph{ISEE Transactions on Information Theory}, {\bf 41} 5 1995 (sep)  pp
+1303--1321
+
+\bibitem{MS}
+MacWilliams F J and Sloane N J A: 
+\emph{The theory of Error-Correcting Codes.}
+The Netherlands, North Holland, 1977.
+
+\bibitem{Spr}
+Springer T A:
+\emph{Invariant theory,}
+Lecture notes in mathematics, {\bf 585},
+Springer-Verlag, 1977.
+
+
+\bibitem{Sze}
+Szeg\"o G:
+{\sl Orthogonal Polynomials}, 
+Colloquium Publications, Vol. 23, New York, AMS, revised eddition 1959, p.
+35--37
+
+
+\bibitem{V-J}
+Vera-Jones D:
+Finite bivariate distributions and semi-groups of nonnegative matrices,
+\emph{Q. J. Math. Oxford}, {\bf 22} 2 (1971)
+247--270.
+
+
+\bibitem{YH} Yarlagadda R K Rao and Hershey J E:
+\emph{Hadamard matrix analysis and synthesis: with applications
+to communications and signal/image processing,}
+Kluwer Academic Publishers, 1997.
+
+\end{thebibliography}
+
+
+
+\end{document}
+

@@ -1,0 +1,22 @@
+\chapter{Urn Model}
+\label{ch:3}
+\section{Markov chains}
+\label{sec:3-1}
+In the discrete-time Ehrenfest chain, the state $j$ is the number of balls in one of two urns. Moving one uniformly chosen ball gives
+\[
+(Pf)(j)=\frac{N-j}{N}f(j+1)+\frac jN f(j-1).
+\]
+The Krawtchouk difference equation gives
+\[
+P K_n(\cdot;N)=\left(1-\frac{2n}{N}\right)K_n(\cdot;N).
+\]
+Here $N\geq1$, and terms outside the state space have zero transition coefficient.
+
+\section{Initial and invariant distributions}
+\label{sec:3-2}
+The invariant distribution is $w_N(j)=2^{-N}\binom Nj$. Detailed balance follows from
+\[
+w_N(j)\frac{N-j}{N}=w_N(j+1)\frac{j+1}{N}.
+\]
+The non-lazy discrete-time chain has period two; invariance should not be confused with convergence to equilibrium from every initial distribution.
+

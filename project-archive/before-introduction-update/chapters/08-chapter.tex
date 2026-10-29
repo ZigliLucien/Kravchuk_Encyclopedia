@@ -1,0 +1,18 @@
+\chapter{Representations}
+\label{ch:8}
+\section{Splitting formula}
+\label{sec:8-1}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\section{Hilbert space structure}
+\label{sec:8-2}
+With $w_N(j)=2^{-N}\binom Nj$,
+\begin{equation}\label{eq:orth}
+\sum_{j=0}^Nw_N(j)K_n(j;N)K_m(j;N)=\binom Nn\delta_{nm}.
+\end{equation}
+Indeed, the weighted product of two generating functions equals $(1+uv)^N$, and coefficient comparison proves \eqref{eq:orth}. Thus
+\[
+\psi_{n,N}(j)=\sqrt{\frac{w_N(j)}{\binom Nn}}K_n(j;N)
+\]
+is an orthonormal basis for the counting-measure space on $\{0,\ldots,N\}$.
+

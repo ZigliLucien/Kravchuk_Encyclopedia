@@ -1,0 +1,155 @@
+\contentsline {chapter}{\tocchapter {Chapter}{}{Editorial Preface}}{iv}{chapter*.1}%
+\contentsline {chapter}{\tocchapter {Chapter}{}{Notation and Conventions}}{v}{chapter*.2}%
+\contentsline {section}{\tocsection {}{}{Dictionary for the integrated Kocik article}}{v}{section*.3}%
+\contentsline {section}{\tocsection {}{}{Preferred conventions for the newly supplied summary papers}}{v}{section*.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{1}{Introduction}}{1}{chapter.1}%
+\contentsline {section}{\tocsection {}{1}{Mikhail Kravchuk (1892--1942): life and mathematical legacy}}{1}{section.1.1}%
+\contentsline {subsection}{\tocsubsection {}{}{Education and scientific career}}{1}{section*.5}%
+\contentsline {subsection}{\tocsubsection {}{}{The polynomials and the scope of his work}}{2}{section*.6}%
+\contentsline {subsection}{\tocsubsection {}{}{Persecution, death, and rehabilitation}}{2}{section*.7}%
+\contentsline {subsection}{\tocsubsection {}{}{Names and conventions in this Encyclopedia}}{2}{section*.8}%
+\contentsline {section}{\tocsection {}{}{Starting points}}{3}{section*.9}%
+\contentsline {section}{\tocsection {}{}{Archival note}}{3}{section*.10}%
+\contentsline {chapter}{\tocchapter {Chapter}{2}{Pascal's Triangle}}{4}{chapter.2}%
+\contentsline {section}{\tocsection {}{1}{Pascal's triangle and binomial identities}}{4}{section.2.1}%
+\contentsline {section}{\tocsection {}{2}{Krawtchouk polynomials}}{4}{section.2.2}%
+\contentsline {section}{\tocsection {}{3}{Generating functions}}{5}{section.2.3}%
+\contentsline {section}{\tocsection {}{4}{Krawtchouk matrices}}{5}{section.2.4}%
+\contentsline {section}{\tocsection {}{5}{First view and cross properties}}{6}{section.2.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{3}{Random Walks}}{7}{chapter.3}%
+\contentsline {section}{\tocsection {}{1}{Paths and path integrals}}{7}{section.3.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Weighted paths and the two-parameter deformation}}{7}{subsection.3.1.1}%
+\contentsline {section}{\tocsection {}{2}{$A$, $K$, and $\Lambda $}}{8}{section.3.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Intertwining and diagonalization}}{8}{subsection.3.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Transition probabilities}}{9}{subsection.3.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{The cases $N=3$ and $N=5$}}{9}{subsection.3.2.3}%
+\contentsline {section}{\tocsection {}{3}{Nonsymmetric walks}}{9}{section.3.3}%
+\contentsline {section}{\tocsection {}{4}{Symmetric Krawtchouk matrices and binomial expectations}}{9}{section.3.4}%
+\contentsline {section}{\tocsection {}{}{Connection to the supplied article sources}}{10}{section*.11}%
+\contentsline {chapter}{\tocchapter {Chapter}{4}{Urn Model}}{11}{chapter.4}%
+\contentsline {section}{\tocsection {}{1}{Markov chains}}{11}{section.4.1}%
+\contentsline {section}{\tocsection {}{2}{Initial and invariant distributions}}{11}{section.4.2}%
+\contentsline {section}{\tocsection {}{}{Connection to the supplied article sources}}{11}{section*.12}%
+\contentsline {chapter}{\tocchapter {Chapter}{5}{Symmetric Functions and Energy}}{12}{chapter.5}%
+\contentsline {section}{\tocsection {}{1}{Elementary symmetric functions and determinants}}{12}{section.5.1}%
+\contentsline {section}{\tocsection {}{2}{Traces on Grassmann algebras}}{12}{section.5.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{6}{Martingales}}{14}{chapter.6}%
+\contentsline {section}{\tocsection {}{1}{Iterated integrals}}{14}{section.6.1}%
+\contentsline {section}{\tocsection {}{2}{Orthogonal functionals}}{14}{section.6.2}%
+\contentsline {section}{\tocsection {}{3}{Krawtchouk polynomials and multinomial distribution}}{15}{section.6.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{7}{Lie Algebras and Krawtchouk Polynomials}}{16}{chapter.7}%
+\contentsline {section}{\tocsection {}{1}{Finite raising and lowering matrices}}{16}{section.7.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Differential-operator dictionary}}{16}{subsection.7.1.1}%
+\contentsline {section}{\tocsection {}{2}{$\mathfrak {so}(2,1)$ explained}}{17}{section.7.2}%
+\contentsline {section}{\tocsection {}{3}{$\mathfrak {so}(2,1)$ spinors}}{17}{section.7.3}%
+\contentsline {section}{\tocsection {}{4}{Quaternions and Clifford algebras}}{18}{section.7.4}%
+\contentsline {section}{\tocsection {}{5}{$S$ and $\mathfrak {so}(2,1)$ tensors}}{18}{section.7.5}%
+\contentsline {section}{\tocsection {}{6}{Three-dimensional simple Lie algebras}}{18}{section.7.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{8}{Lie Groups and Reflections}}{20}{chapter.8}%
+\contentsline {section}{\tocsection {}{1}{Reflections}}{20}{section.8.1}%
+\contentsline {section}{\tocsection {}{2}{Krawtchouk matrices as group elements}}{20}{section.8.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{9}{Representations}}{21}{chapter.9}%
+\contentsline {section}{\tocsection {}{1}{Splitting formula}}{21}{section.9.1}%
+\contentsline {section}{\tocsection {}{2}{Hilbert space structure}}{22}{section.9.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Column vectors, covectors, and the binomial metric}}{22}{subsection.9.2.1}%
+\contentsline {section}{\tocsection {}{}{Connection to the supplied article sources}}{22}{section*.13}%
+\contentsline {chapter}{\tocchapter {Chapter}{10}{Quantum Probability and Tensor Algebra}}{23}{chapter.10}%
+\contentsline {section}{\tocsection {}{1}{Flip operator and quantum random walk}}{23}{section.10.1}%
+\contentsline {section}{\tocsection {}{2}{Krawtchouk matrices as eigenvectors}}{23}{section.10.2}%
+\contentsline {section}{\tocsection {}{3}{Trace formulas and MacMahon's theorem}}{23}{section.10.3}%
+\contentsline {section}{\tocsection {}{4}{Chebyshev polynomials}}{24}{section.10.4}%
+\contentsline {section}{\tocsection {}{5}{Supersymmetry}}{24}{section.10.5}%
+\contentsline {section}{\tocsection {}{6}{Twistons}}{24}{section.10.6}%
+\contentsline {section}{\tocsection {}{7}{Hadamard compression in the Encyclopedia normalization}}{24}{section.10.7}%
+\contentsline {chapter}{\tocchapter {Chapter}{11}{Heisenberg Algebra}}{26}{chapter.11}%
+\contentsline {section}{\tocsection {}{1}{Representations of the Heisenberg algebra}}{26}{section.11.1}%
+\contentsline {section}{\tocsection {}{2}{Raising and velocity operators; number operator}}{26}{section.11.2}%
+\contentsline {section}{\tocsection {}{3}{Evolution structure and Hamiltonian}}{26}{section.11.3}%
+\contentsline {section}{\tocsection {}{4}{Time-zero polynomials}}{26}{section.11.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{12}{Central Limit Theorem}}{27}{chapter.12}%
+\contentsline {section}{\tocsection {}{1}{Hermite polynomials}}{27}{section.12.1}%
+\contentsline {section}{\tocsection {}{2}{Discrete stochastic differential equations}}{27}{section.12.2}%
+\contentsline {section}{\tocsection {}{3}{Bilinear kernels and the Mehler limit}}{28}{section.12.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{13}{Clebsch--Gordan Coefficients}}{29}{chapter.13}%
+\contentsline {section}{\tocsection {}{1}{Clebsch--Gordan coefficients and Krawtchouk polynomials}}{29}{section.13.1}%
+\contentsline {section}{\tocsection {}{2}{Racah coefficients}}{29}{section.13.2}%
+\contentsline {section}{\tocsection {}{3}{Clebsch--Gordan coefficients for Heisenberg algebras}}{29}{section.13.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{14}{Orthogonal Polynomials}}{30}{chapter.14}%
+\contentsline {section}{\tocsection {}{1}{Three-term recurrence in terms of $A$, $K$, and $\Lambda $}}{30}{section.14.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Matrix form of the two recurrences}}{31}{subsection.14.1.1}%
+\contentsline {section}{\tocsection {}{2}{Nonsymmetric case}}{31}{section.14.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{15}{Krawtchouk Transforms}}{32}{chapter.15}%
+\contentsline {section}{\tocsection {}{1}{Orthogonal transformation associated to $K$}}{32}{section.15.1}%
+\contentsline {section}{\tocsection {}{2}{Exponential function in the Krawtchouk basis}}{32}{section.15.2}%
+\contentsline {section}{\tocsection {}{3}{Krawtchouk transform}}{33}{section.15.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{The ordinary-generating-function matrix}}{33}{subsection.15.3.1}%
+\contentsline {section}{\tocsection {}{4}{Krawtchouk transform and FFT}}{33}{section.15.4}%
+\contentsline {section}{\tocsection {}{5}{Binomial bases and dual transforms}}{33}{section.15.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Explicit eigenvectors of the raw transform}}{34}{subsection.15.5.1}%
+\contentsline {section}{\tocsection {}{6}{Kravchuk sums}}{34}{section.15.6}%
+\contentsline {subsection}{\tocsubsection {}{6.1}{A dictionary of sums}}{35}{subsection.15.6.1}%
+\contentsline {subsection}{\tocsubsection {}{6.2}{Signed sums and discrete antiderivatives}}{35}{subsection.15.6.2}%
+\contentsline {subsection}{\tocsubsection {}{6.3}{Weighted squares versus raw square sums}}{35}{subsection.15.6.3}%
+\contentsline {subsection}{\tocsubsection {}{6.4}{Absolute sums: bounds and exact boundary columns}}{36}{subsection.15.6.4}%
+\contentsline {subsection}{\tocsubsection {}{6.5}{Boundary expansion of the total absolute sum}}{37}{subsection.15.6.5}%
+\contentsline {subsection}{\tocsubsection {}{6.6}{Exact numerical checks}}{38}{subsection.15.6.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{16}{Hypergeometric Functions}}{39}{chapter.16}%
+\contentsline {section}{\tocsection {}{1}{Krawtchouk polynomials as hypergeometric functions}}{39}{section.16.1}%
+\contentsline {section}{\tocsection {}{2}{Addition formulas}}{39}{section.16.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{17}{Symmetric Krawtchouk Matrices}}{40}{chapter.17}%
+\contentsline {section}{\tocsection {}{1}{Definition and small-order examples}}{40}{section.17.1}%
+\contentsline {section}{\tocsection {}{2}{The matrix $T$}}{40}{section.17.2}%
+\contentsline {section}{\tocsection {}{3}{$S^2$ and trace formulas}}{40}{section.17.3}%
+\contentsline {section}{\tocsection {}{4}{Spectrum of $S$}}{41}{section.17.4}%
+\contentsline {section}{\tocsection {}{5}{Symmetry sectors and block decompositions}}{41}{section.17.5}%
+\contentsline {section}{\tocsection {}{6}{Beta-function kernel and spectral asymptotics}}{41}{section.17.6}%
+\contentsline {chapter}{\tocchapter {Chapter}{18}{Gaussian Quadrature}}{42}{chapter.18}%
+\contentsline {section}{\tocsection {}{1}{Zeros of Krawtchouk polynomials}}{42}{section.18.1}%
+\contentsline {section}{\tocsection {}{2}{Integral zeros}}{43}{section.18.2}%
+\contentsline {paragraph}{\tocparagraph {}{}{The trivial terminal zeros.}}{43}{section*.14}%
+\contentsline {section}{\tocsection {}{3}{Gaussian--Krawtchouk summation}}{44}{section.18.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Error and the finite-support endpoint}}{44}{subsection.18.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Accurate examples for $N=5,10,15$}}{45}{subsection.18.3.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{19}{Coding Theory}}{47}{chapter.19}%
+\contentsline {section}{\tocsection {}{1}{MacWilliams's theorem}}{47}{section.19.1}%
+\contentsline {section}{\tocsection {}{2}{Association schemes}}{47}{section.19.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{20}{Source conventions and the general Krawtchouk transform}}{48}{chapter.20}%
+\contentsline {section}{\tocsection {}{1}{The two source conventions}}{48}{section.20.1}%
+\contentsline {section}{\tocsection {}{2}{Orthogonality and inversion}}{48}{section.20.2}%
+\contentsline {section}{\tocsection {}{3}{Operator coefficients and positivity}}{49}{section.20.3}%
+\contentsline {section}{\tocsection {}{4}{Low-degree checks and connection to sums}}{50}{section.20.4}%
+\contentsline {section}{\tocsection {}{5}{Scope of this integration}}{50}{section.20.5}%
+\contentsline {chapter}{\tocappendix {Appendix}{A}{Tables of Krawtchouk and Symmetric Matrices}}{51}{appendix.A}%
+\contentsline {section}{\tocsection {}{1}{Verified tables for $N=2,3,4,5,7,8$}}{51}{section.A.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{$N=2$}}{51}{subsection.A.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{$N=3$}}{52}{subsection.A.1.2}%
+\contentsline {subsection}{\tocsubsection {}{1.3}{$N=4$}}{52}{subsection.A.1.3}%
+\contentsline {subsection}{\tocsubsection {}{1.4}{$N=5$}}{53}{subsection.A.1.4}%
+\contentsline {subsection}{\tocsubsection {}{1.5}{$N=7$}}{54}{subsection.A.1.5}%
+\contentsline {subsection}{\tocsubsection {}{1.6}{$N=8$}}{55}{subsection.A.1.6}%
+\contentsline {section}{\tocsection {}{2}{Additional orders through $N=14$}}{56}{section.A.2}%
+\contentsline {chapter}{\tocappendix {Appendix}{B}{Polynomial Tables}}{57}{appendix.B}%
+\contentsline {section}{\tocsection {}{1}{Centered variables $x$ and $N$}}{57}{section.B.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{$N=3$}}{57}{subsection.B.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{$N=5$}}{57}{subsection.B.1.2}%
+\contentsline {section}{\tocsection {}{2}{Degree and lattice variables $i$ and $j$}}{58}{section.B.2}%
+\contentsline {section}{\tocsection {}{3}{Lattice variables $j$ and $N$; orders 1 through 20}}{58}{section.B.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{$N=3$}}{58}{subsection.B.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{$N=5$}}{59}{subsection.B.3.2}%
+\contentsline {chapter}{\tocappendix {Appendix}{C}{Spectral Tables}}{60}{appendix.C}%
+\contentsline {section}{\tocsection {}{1}{Eigenvalues of $S$}}{60}{section.C.1}%
+\contentsline {section}{\tocsection {}{2}{Normalization and numerical verification}}{60}{section.C.2}%
+\contentsline {chapter}{\tocappendix {Appendix}{D}{Multivariate Extensions}}{61}{appendix.D}%
+\contentsline {section}{\tocsection {}{1}{Remarks on the multivariate case}}{61}{section.D.1}%
+\contentsline {chapter}{\tocappendix {Appendix}{E}{Time-Zero Polynomial Tables}}{62}{appendix.E}%
+\contentsline {section}{\tocsection {}{1}{Definitions and tables}}{62}{section.E.1}%
+\contentsline {chapter}{\tocappendix {Appendix}{F}{Mikhail Kravchuk: A Biographical Sketch}}{63}{appendix.F}%
+\contentsline {section}{\tocsection {}{1}{Biographical chronology}}{63}{section.F.1}%
+\contentsline {section}{\tocsection {}{2}{Primary sources and historical bibliography}}{63}{section.F.2}%
+\contentsline {chapter}{\tocchapter {\chaptername }{}{Bibliography and Source Register}}{64}{appendix*.15}%
+\contentsline {chapter}{Bibliography and Source Register}{64}{appendix*.15}%
+\contentsline {section}{\tocsection {}{}{Supplied source materials}}{64}{section*.16}%
+\contentsline {section}{\tocsection {}{}{Integration guide for the two uploaded TeX sources}}{64}{section*.17}%
+\contentsline {section}{\tocsection {}{}{Current integration and verification status}}{65}{section*.18}%
+\contentsline {section}{\tocsection {}{}{Literature bibliography}}{65}{section*.19}%
+\contentsline {chapter}{\tocchapter {\chaptername }{}{Bibliography}}{66}{appendix*.20}%

@@ -1,0 +1,32 @@
+[
+  {
+    "N": 1,
+    "p": "2/3",
+    "orthogonality": "passed",
+    "low_degree": "passed"
+  },
+  {
+    "N": 2,
+    "p": "2/3",
+    "orthogonality": "passed",
+    "low_degree": "passed"
+  },
+  {
+    "N": 3,
+    "p": "2/3",
+    "orthogonality": "passed",
+    "low_degree": "passed"
+  },
+  {
+    "N": 4,
+    "p": "2/3",
+    "orthogonality": "passed",
+    "low_degree": "passed"
+  },
+  {
+    "N": 5,
+    "p": "2/3",
+    "orthogonality": "passed",
+    "low_degree": "passed"
+  }
+]

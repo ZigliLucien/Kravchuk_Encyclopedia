@@ -1,0 +1,7 @@
+{
+  "exact_checks": 2036,
+  "orders_checked": "1..6; categorical model 1..4",
+  "duplicate_labels": 0,
+  "unresolved_references": [],
+  "tex_compiled": false
+}

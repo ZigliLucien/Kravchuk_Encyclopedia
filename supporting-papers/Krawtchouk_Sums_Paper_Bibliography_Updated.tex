@@ -1,0 +1,591 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\He}{\operatorname{He}}
+\newcommand{\Cat}{\operatorname{Cat}}
+\DeclareMathOperator{\RowSum}{RowSum}
+\DeclareMathOperator{\ColSum}{ColSum}
+\DeclareMathOperator{\TotalSum}{TotalSum}
+\DeclareMathOperator{\RowSq}{RowSq}
+\DeclareMathOperator{\ColSq}{ColSq}
+\DeclareMathOperator{\TotalSq}{TotalSq}
+\DeclareMathOperator{\RowMod}{RowMod}
+\DeclareMathOperator{\ColMod}{ColMod}
+\DeclareMathOperator{\TotalMod}{TotalMod}
+\DeclareMathOperator{\PartColSum}{PartColSum}
+\DeclareMathOperator{\PartColSq}{PartColSq}
+\DeclareMathOperator{\WtPartColSum}{WtPartColSum}
+\DeclareMathOperator{\WtPartColSq}{WtPartColSq}
+\DeclareMathOperator{\BinRowSq}{BinRowSq}
+\DeclareMathOperator{\InvBinColSq}{InvBinColSq}
+\title[Krawtchouk sums]{Krawtchouk Sums:\\Recurrences, Telescoping, Squares, and Absolute Values}
+\date{Working manuscript; notation and signed sums revised October 15, 2026}
+\subjclass[2020]{33C45, 05A10, 60C05}
+\keywords{Krawtchouk polynomials, difference equations, square sums, absolute sums, Catalan numbers, Hermite polynomials}
+\begin{document}
+\begin{abstract}
+We organize sums of Krawtchouk matrix entries by direction and type: signed sums, square sums, and sums of moduli. Pascal relations yield discrete antiderivatives and differences of squares, while the spatial difference equation supplies the spectral multiplier $N-2n$. These mechanisms produce partial-sum identities, complete square sums, and Catalan evaluations. For the total modulus sum, the first three boundary columns at either end give
+\[
+\TotalMod(N)=2^{N+1}\left[1+\sqrt{\frac{2}{\pi N}}+
+\frac{4}{\sqrt{2\pi e}\,N}+O(N^{-3/2})\right].
+\]
+Fixed-column constants are absolute Gaussian moments of Hermite polynomials. By contrast, the raw signed total is exactly $\TotalSum(N)=2^N$. Explicit notation, proofs, and numerical examples are intended to make individual results usable independently as encyclopedia entries.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction and a dictionary of sums}\label{sec:dictionary}
+Three kinds of summation must be kept distinct. A signed sum retains cancellation; a sum of squares measures quadratic size; a modulus sum discards signs without squaring. The notation below makes this distinction visible in every formula.
+
+Define
+\begin{equation}\label{gen}
+(1+v)^{N-j}(1-v)^j=\sum_{n=0}^N K_n(j;N)v^n,
+\qquad \Phi_N=(K_n(j;N))_{n,j=0}^N.
+\end{equation}
+The row index $n$ is polynomial degree; the column index $j$ is the lattice argument. The parameter is symmetric ($p=1/2$), but the unweighted matrix $\Phi_N$ is generally not a symmetric matrix. All indices start at zero.
+
+\begin{center}\small
+\begin{tabular}{lll}
+\textbf{Quantity}&\textbf{Definition}&\textbf{Direction}\\\hline
+$\RowSum(n;N)$&$\sum_{j=0}^N K_n(j;N)$&Across row $n$\\[3pt]
+$\ColSum(j;N)$&$\sum_{n=0}^N K_n(j;N)$&Down column $j$\\[3pt]
+$\RowSq(n;N)$&$\sum_{j=0}^N K_n(j;N)^2$&Across row $n$\\[3pt]
+$\ColSq(j;N)$&$\sum_{n=0}^N K_n(j;N)^2$&Down column $j$\\[3pt]
+$\RowMod(n;N)$&$\sum_{j=0}^N|K_n(j;N)|$&Across row $n$\\[3pt]
+$\ColMod(j;N)$&$\sum_{n=0}^N|K_n(j;N)|$&Down column $j$
+\end{tabular}
+\end{center}
+For the whole matrix, define
+\begin{align*}
+\TotalSum(N)&=\sum_{n,j=0}^N K_n(j;N),\\
+\TotalSq(N)&=\sum_{n,j=0}^N K_n(j;N)^2=\sum_n\RowSq(n;N)=\sum_j\ColSq(j;N),\\
+\TotalMod(N)&=\sum_{n,j=0}^N|K_n(j;N)|=\sum_n\RowMod(n;N)=\sum_j\ColMod(j;N).
+\end{align*}
+``Mod'' always means the sum of entrywise moduli (absolute values), not the modulus of a signed sum and not modular arithmetic. ``Sq'' means unweighted squares unless a weight is explicitly named. We write the row or column index before the semicolon and the matrix order after it.
+
+Our organizing mechanism is discrete calculus. Pascal subtraction telescopes linearly; Pascal multiplication telescopes quadratically; the spatial equation creates weighted identities. We integrate the square-sum, Catalan, and Boolean-lattice results of Feinsilver \cite{Feinsilver2016} with modulus-sum calculations and asymptotics. The former results are attributed; no bibliographic priority claim is made for the modulus-sum analysis. No conjectural spectral asymptotic is used.
+
+\section{Recurrences: the discrete calculus behind the sums}
+Put $b_j=\binom Nj$, with binomial coefficients outside their integer support equal to zero. Polynomial coefficients outside degree range also vanish.
+
+\subsection{Pascal relations: changing the matrix order}
+For $0\le j\le N-1$,
+\begin{align}
+K_n(j;N)&=K_n(j;N-1)+K_{n-1}(j;N-1),\label{pascalplus}\\
+K_n(j+1;N)&=K_n(j;N-1)-K_{n-1}(j;N-1).\label{pascalminus}
+\end{align}
+These follow by multiplying the order-$N-1$ generating function by $1+v$ or $1-v$. Their product gives the decisive quadratic identity
+\begin{equation}\label{product}
+K_n(j;N)K_n(j+1;N)=K_n(j;N-1)^2-K_{n-1}(j;N-1)^2.
+\end{equation}
+
+\subsection{Spatial difference equation: changing the column}
+The generating function gives
+\begin{equation}\label{spatial}
+(N-j)K_n(j+1;N)+jK_n(j-1;N)=(N-2n)K_n(j;N).
+\end{equation}
+At endpoints omit terms with zero coefficients. The left side acts in $j$, while its spectral value depends on degree $n$. This explains the multiplier in weighted column sums.
+
+\subsection{Centered coordinates and degree recurrence}
+Set $x=N-2j$ and use the factorial normalization
+\[
+(1+v)^{(N+x)/2}(1-v)^{(N-x)/2}
+=\sum_{n=0}^N\frac{v^n}{n!}k_n(x,N).
+\]
+Thus $k_n(N-2j,N)=n!K_n(j;N)$. The generating function equals
+\begin{equation}\label{centeredlog}
+(1-v^2)^{N/2}\exp(x\operatorname{artanh}v).
+\end{equation}
+Differentiation yields
+\begin{equation}\label{degree}
+k_{n+1}(x,N)=xk_n(x,N)-n(N-n+1)k_{n-1}(x,N).
+\end{equation}
+The spatial equation becomes
+\begin{equation}\label{xspatial}
+\frac{N-x}{2}[k_n(x+2,N)-k_n(x,N)]
++\frac{N+x}{2}[k_n(x-2,N)-k_n(x,N)]
+=-2n k_n(x,N).
+\end{equation}
+The degree recurrence is the convenient input for Hermite limits; the spatial equation and Pascal identities are the input for summation.
+
+\section{Duality, symmetry, and weighted orthogonality}
+The basic identities are
+\begin{equation}\label{dual}
+b_jK_n(j;N)=b_nK_j(n;N),
+\end{equation}
+\begin{equation}\label{reflections}
+K_n(N-j;N)=(-1)^nK_n(j;N),\qquad K_{N-n}(j;N)=(-1)^jK_n(j;N).
+\end{equation}
+\begin{proposition}\label{orthprop}
+For $w_N(j)=2^{-N}b_j$,
+\begin{align}
+\sum_jw_N(j)K_n(j;N)K_m(j;N)&=b_n\delta_{nm},\label{orth}\\
+\sum_n\frac{K_n(j;N)K_n(\ell;N)}{b_n}&=\frac{2^N}{b_j}\delta_{j\ell}.\label{dualorth}
+\end{align}
+In particular, if weighted square sums are denoted by
+\[
+\BinRowSq(n;N)=\sum_jw_N(j)K_n(j;N)^2,\quad
+\InvBinColSq(j;N)=\sum_n b_n^{-1}K_n(j;N)^2,
+\]
+then $\BinRowSq(n;N)=b_n$ and $\InvBinColSq(j;N)=2^N/b_j$.
+\end{proposition}
+\begin{proof}
+The weighted product of the generating functions is $(1+uv)^N$. Compare coefficients to obtain \eqref{orth}, then use duality to obtain \eqref{dualorth}.
+\end{proof}
+These weighted quantities are not $\RowSq$ or $\ColSq$.
+
+\section{Signed sums and discrete antiderivatives}
+\subsection{Raw row sums, column sums, and total sum}
+The complete signed sums have particularly short formulas:
+\begin{equation}\label{signedsums}
+\boxed{\ColSum(j;N)=\begin{cases}2^N,&j=0,\\0,&1\le j\le N,\end{cases}
+\quad
+\RowSum(n;N)=\begin{cases}\binom{N+1}{n+1},&n\text{ even},\\0,&n\text{ odd}.\end{cases}}
+\end{equation}
+Indeed, evaluate the generating function at $v=1$ for the column sum. For the row sum, sum the generating functions over columns:
+\[
+\sum_{j=0}^N(1+v)^{N-j}(1-v)^j
+=\frac{(1+v)^{N+1}-(1-v)^{N+1}}{2v}.
+\]
+The apparent singularity at $v=0$ is removable. Coefficient extraction proves the row formula. Thus
+\begin{equation}\label{rawtotal}
+\boxed{\TotalSum(N)=2^N.}
+\end{equation}
+This is a raw signed sum, with no absolute values or squares. Summing the even-degree row formula gives the same result.
+
+\subsection{Partial sums and weighted partial sums}
+To make the truncation and weight explicit, write
+\begin{align*}
+\PartColSum(m,j;N)&=\sum_{n=0}^m K_n(j;N),\\
+\WtPartColSum(m,j;N)&=\sum_{n=0}^m (N-2n)K_n(j;N).
+\end{align*}
+\begin{proposition}\label{linear}
+For $1\le j\le N$ and $0\le m\le N$,
+\begin{equation}\label{colpartial}
+\PartColSum(m,j;N)=K_m(j-1;N-1).
+\end{equation}
+For $2\le j\le N-1$,
+\begin{equation}\label{weightedlinear}
+\WtPartColSum(m,j;N)=(N-j)K_m(j;N-1)+jK_m(j-2;N-1).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Sum the minus Pascal relation to telescope. Sum the spatial equation and use this linear antiderivative on its two neighboring columns. These are the partial-sum mechanisms used in \cite{Feinsilver2016}.
+\end{proof}
+A spatial antiderivative is also available:
+\begin{equation}\label{rowprimitive}
+K_{i+1}(j;N+1)-K_{i+1}(j+1;N+1)=2K_i(j;N).
+\end{equation}
+Subtracting adjacent generating functions proves it. This formula will be used on each interval of constant sign to evaluate $\RowMod$.
+
+\section{Partial square sums: why the recurrence telescopes}
+Define the unweighted and spectrally weighted truncated quantities by
+\[
+\PartColSq(m,j;N)=\sum_{n=0}^m K_n(j;N)^2,\qquad
+\WtPartColSq(m,j;N)=\sum_{n=0}^m(N-2n)K_n(j;N)^2.
+\]
+Only the second has the boundary formula below; they should not be conflated.
+
+\subsection{Symmetric parameter}
+\begin{theorem}[Feinsilver's partial-square identity \cite{Feinsilver2016}]\label{partialsquare}
+For $N\ge1$, $0\le m\le N$, and $0\le j\le N$,
+\begin{equation}\label{partialformula}
+\boxed{\WtPartColSq(m,j;N)
+=(N-j)K_m(j;N-1)^2+jK_m(j-1;N-1)^2.}
+\end{equation}
+Endpoint terms with zero coefficients are omitted.
+\end{theorem}
+\begin{proof}
+Multiply \eqref{spatial} by $K_n(j;N)$. Apply the product identity \eqref{product} at $j$ and $j-1$:
+\begin{align*}
+(N-2n)K_n(j;N)^2
+={}&(N-j)[K_n(j;N-1)^2-K_{n-1}(j;N-1)^2]\\
+&+j[K_n(j-1;N-1)^2-K_{n-1}(j-1;N-1)^2].
+\end{align*}
+Both differences telescope in $n$.
+\end{proof}
+\begin{corollary}
+$\WtPartColSq(m,j;N)\ge0$ for every truncation, while $\WtPartColSq(N,j;N)=0$.
+\end{corollary}
+The complete cancellation follows also from degree reflection. The boundary formula is stronger: it evaluates each intermediate partial sum.
+
+\subsection{The general parameter and the disappearing correction}
+For $r>0$ set
+\[
+(1+v)^{N-j}(1-rv)^j=\sum_n\phi_{nj}^{(N,r)}v^n.
+\]
+The spatial equation is
+\[
+[N+(r-1)j-n(1+r)]\phi_{nj}^{(N,r)}
+=(N-j)\phi_{n,j+1}^{(N,r)}+rj\phi_{n,j-1}^{(N,r)}.
+\]
+Suppress order-$N$ superscripts and put $a_n=\phi_{nj}^{(N-1,r)}$. Pascal multiplication gives
+\begin{equation}\label{generalproduct}
+\phi_{nj}\phi_{n,j+1}=\frac{1-r}{2}\phi_{nj}^{\,2}
++\frac{1+r}{2}(a_n^2-a_{n-1}^2).
+\end{equation}
+It follows by expanding $(a+b)(a-rb)$ and using $(a+b)^2$ to eliminate $ab$.
+\begin{theorem}[Parameter-dependent identity \cite{Feinsilver2016}]
+For $1\le j\le N-1$ and $0\le m\le N$,
+\begin{align}\label{generalsquare}
+\sum_{n=0}^m(N-2n)(\phi_{nj}^{(N,r)})^2
+={}&(N-j)(\phi_{mj}^{(N-1,r)})^2+rj(\phi_{m,j-1}^{(N-1,r)})^2\notag\\
+&+\frac{1-r}{1+r}j\sum_{n=0}^m
+[r(\phi_{n,j-1}^{(N,r)})^2+(\phi_{nj}^{(N,r)})^2].
+\end{align}
+\end{theorem}
+\begin{proof}
+Multiply the spatial equation by $\phi_{nj}$, substitute \eqref{generalproduct} for its neighboring products, and sum. Differences telescope; collecting the remaining squares gives the correction term.
+\end{proof}
+At $r=1$ the correction vanishes, leaving a pure boundary identity. We reserve the named sums without an $r$ argument for the symmetric case throughout.
+
+\section{Complete square sums: columns, rows, and the whole matrix}\label{sec:complete}
+\subsection{Column squares and the super Catalan evaluation}
+\begin{theorem}[Complete column squares; cf.\ \cite{Feinsilver2016}]\label{columnsquares}
+\begin{equation}\label{ColSqExact}
+\boxed{\ColSq(j;N)=
+\frac{\binom{2j}{j}\binom{2N-2j}{N-j}}{\binom Nj}
+=\frac{(2j)!(2N-2j)!}{j!(N-j)!N!}.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Parseval gives
+\[
+\ColSq(j;N)=\frac{4^N}{\pi}\int_0^\pi
+\cos^{2N-2j}(\theta/2)\sin^{2j}(\theta/2)\,d\theta
+=\frac{4^N}{\pi}\mathrm B(j+\tfrac12,N-j+\tfrac12).
+\]
+Evaluate the half-integer gamma factors.
+\end{proof}
+The factorial quotient is the super Catalan number with parameters $j,N-j$, under $\operatorname{SC}(a,b)=(2a)!(2b)!/[a!b!(a+b)!]$. In particular,
+\[
+\ColSq(0;N)=\binom{2N}{N},\qquad
+\ColSq(1;N)=2\Cat_{N-1},\quad
+\Cat_m=\frac1{m+1}\binom{2m}{m}.
+\]
+
+\subsection{Bilinear extension and the distinction from a weighted trace}
+The same Parseval calculation gives
+\begin{equation}\label{bilinear}
+\sum_nK_n(j;N)K_n(\ell;N)
+=\frac{4^N}{\pi}\cos\frac{\pi(j-\ell)}2
+\mathrm B\left(\frac{j+\ell+1}{2},\frac{2N-j-\ell+1}{2}\right).
+\end{equation}
+The diagonal gives $\ColSq$; opposite-parity columns have zero inner product. If $S_N=\Phi_N\operatorname{diag}(b_j)$, then
+\[
+(S_N^2)_{j\ell}=b_jb_\ell\sum_nK_n(j;N)K_n(\ell;N),
+\]
+so
+\begin{equation}\label{traceS}
+\operatorname{tr}(S_N^2)=\sum_jb_j^2\ColSq(j;N)
+=\sum_j\binom Nj\binom{2j}{j}\binom{2N-2j}{N-j}.
+\end{equation}
+This is not $\TotalSq(N)$: it contains an additional squared binomial weight.
+
+\subsection{Row squares from a bivariate generating function}
+\begin{theorem}[Row-square formula recorded in \cite{Feinsilver2016}]\label{rowsquares}
+\begin{equation}\label{RowSqExact}
+\boxed{\RowSq(i;N)=\sum_{k=0}^{\min(i,\lfloor N/2\rfloor)}
+\binom{N+1}{2k+1}\binom{2k}{k}\binom{N-2k}{i-k}.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Let $A=(1+u)(1+v)$ and $B=(1-u)(1-v)$. Then
+\begin{align*}
+\sum_{j=0}^NG_{N,j}(u)G_{N,j}(v)
+&=\frac{A^{N+1}-B^{N+1}}{A-B}\\
+&=\sum_{k=0}^{\lfloor N/2\rfloor}
+\binom{N+1}{2k+1}(1+uv)^{N-2k}(u+v)^{2k}.
+\end{align*}
+The quotient has removable singularities. Extract $[u^iv^i]$.
+\end{proof}
+For example, $\RowSq(0;N)=N+1$ and $\RowSq(1;N)=N(N+1)(N+2)/3$.
+
+\subsection{Total square sum}
+Summing either direction gives the explicit whole-matrix identity
+\begin{equation}\label{TotalSqExact}
+\boxed{\TotalSq(N)=\sum_{j=0}^N
+\frac{\binom{2j}{j}\binom{2N-2j}{N-j}}{\binom Nj}
+=\sum_{k=0}^{\lfloor N/2\rfloor}
+\binom{N+1}{2k+1}\binom{2k}{k}2^{N-2k}.}
+\end{equation}
+For the second expression, sum \eqref{RowSqExact} over $i$ and use $\sum_i\binom{N-2k}{i-k}=2^{N-2k}$. These are exact finite sums, not weighted orthogonality evaluations.
+
+\section{Catalan values and a Boolean-lattice application}
+\subsection{Middle-row evaluations}
+The middle column at $N=2m$ has generating function $(1-v^2)^m$. Duality gives
+\begin{equation}\label{middlerow}
+K_m(j;2m)=\begin{cases}
+(-1)^{j/2}\binom m{j/2}\displaystyle\frac{\binom{2m}{m}}{\binom{2m}{j}},&j\text{ even},\\0,&j\text{ odd}.
+\end{cases}
+\end{equation}
+For odd order, $(1+v)(1-v^2)^m$ gives
+\[
+K_m(j;2m+1)=(-1)^{\lfloor j/2\rfloor}\binom m{\lfloor j/2\rfloor}
+\frac{\binom{2m+1}{m}}{\binom{2m+1}{j}}.
+\]
+As in \cite{Feinsilver2016}, for $m\ge1$ these yield
+\begin{align*}
+K_{m-1}(1;2m)&=\Cat_m,&K_{m+1}(1;2m)&=-\Cat_m,&K_m(2;2m)&=-2\Cat_{m-1},\\
+K_m(1;2m+1)&=\Cat_m,&K_{m+1}(1;2m+1)&=-\Cat_m,\\
+K_m(2;2m+1)&=-\Cat_m,&K_{m+1}(2;2m+1)&=-\Cat_m.
+\end{align*}
+
+\subsection{Multiplicity squares}
+In the Boolean-lattice raising/lowering decomposition, the chain lengths and multiplicities are
+\[
+d_\alpha=n+1-2\alpha,\qquad
+m_\alpha=\binom n\alpha-\binom n{\alpha-1},\qquad
+0\le\alpha\le\lfloor n/2\rfloor.
+\]
+The representation-theoretic construction is background here; its numerical consequences in \cite{Feinsilver2016} follow from our sum formulas:
+\[
+\sum_\alpha m_\alpha d_\alpha=2^n,\qquad
+\sum_\alpha d_\alpha^2=\binom{n+3}{3},\qquad
+\sum_\alpha m_\alpha^2=\Cat_n.
+\]
+For the first identity expand the binomial differences and telescope. The second is half of $\RowSq(1;n+1)$, pairing reflected terms; the middle term, if present, vanishes. Since $m_\alpha=K_\alpha(1;n+1)$, the last is half of $\ColSq(1;n+1)$. Thus the Catalan commutant dimension is literally a half-column square sum.
+
+\section{Modulus sums: sign intervals and boundary columns}
+\subsection{Exact row formulas from discrete antiderivatives}
+If row $i$ has constant sign $\epsilon$ on $a\le j\le b$, \eqref{rowprimitive} gives
+\begin{equation}\label{absrow}
+\sum_{j=a}^b|K_i(j;N)|=\frac\epsilon2
+[K_{i+1}(a;N+1)-K_{i+1}(b+1;N+1)].
+\end{equation}
+Partitioning into sign intervals evaluates $\RowMod(i;N)$ by boundary values. Zero entries can be attached to either neighboring interval. Orthogonality implies exactly $i$ sign changes when zero entries are omitted: fewer permit a lower-degree polynomial with matching signs, contradicting orthogonality; more are impossible by degree.
+Examples are
+\[
+\RowMod(0;N)=\RowMod(N;N)=N+1,
+\]
+\[
+\RowMod(1;N)=\RowMod(N-1;N)=
+\begin{cases}N(N+2)/2,&N\text{ even},\\(N+1)^2/2,&N\text{ odd}.
+\end{cases}
+\]
+
+\subsection{General bounds and weighted duality}
+Cauchy--Schwarz and orthogonality give
+\begin{equation}\label{absbounds}
+\ColMod(j;N)\le\frac{2^N}{\sqrt{b_j}},\qquad
+\RowMod(i;N)\le\left(2^Nb_i\sum_j b_j^{-1}\right)^{1/2}.
+\end{equation}
+Reflection gives $\ColMod(N-j;N)=\ColMod(j;N)$ and $\RowMod(N-i;N)=\RowMod(i;N)$. Duality gives
+\[
+\sum_jb_j|K_i(j;N)|=b_i\ColMod(i;N).
+\]
+Only the weighted row modulus sum directly dualizes to $\ColMod$.
+
+\subsection{Three boundary columns: the exact formulas behind the asymptotics}
+The endpoints have
+\[
+\ColMod(0;N)=\ColMod(N;N)=2^N.
+\]
+Consequently the induced matrix norm is $\|\Phi_N\|_1=2^N$, whereas the total entrywise modulus sum is $\TotalMod(N)$.
+Since column one is the first difference of a unimodal binomial sequence,
+\begin{equation}\label{C1}
+\ColMod(1;N)=\ColMod(N-1;N)=2\binom{N-1}{\lfloor(N-1)/2\rfloor}.
+\end{equation}
+For $N=2m$, the middle column has $\ColMod(m;2m)=2^m$.
+
+For column two, let $N>2$ and $r_N=\lfloor(N-\sqrt N)/2\rfloor$. Then
+\begin{equation}\label{C2}
+\ColMod(2;N)=4\left[\binom{N-2}{r_N}-\binom{N-2}{r_N-1}\right]
+=4\binom{N-2}{r_N}\frac{N-1-2r_N}{N-1-r_N}.
+\end{equation}
+Indeed,
+\[
+K_i(2;N)=\binom{N-2}i-2\binom{N-2}{i-1}+\binom{N-2}{i-2}
+=\binom Ni\frac{(N-2i)^2-N}{N(N-1)}.
+\]
+The quadratic factor identifies the positive tails. Their masses are equal; the signed total is zero. The left tail telescopes to the bracket, so the modulus sum is four times that boundary difference. Integer roots give zero entries and cause no ambiguity.
+
+\section{Stirling and Hermite limits}
+\subsection{Recurrence and differential limits}
+Set $p_{j,N}(z)=N^{-j/2}k_j(\sqrt Nz,N)$. Equation \eqref{degree} becomes
+\[
+p_{j+1,N}(z)=zp_{j,N}(z)-j\left(1-\frac{j-1}{N}\right)p_{j-1,N}(z).
+\]
+For fixed $j$ this converges coefficientwise to the Hermite recurrence. We use probabilists' polynomials defined by
+\[
+e^{zt-t^2/2}=\sum_{j\ge0}\He_j(z)t^j/j!.
+\]
+Taylor expansion of \eqref{xspatial} under $x=\sqrt Nz$ gives $p_j''-zp_j'+jp_j=0$. The limit is for fixed degree, not degrees proportional to $N$.
+
+\subsection{Fixed-column modulus asymptotics}
+Let $I_N\sim\operatorname{Bin}(N,1/2)$ and $Z_N=(N-2I_N)/\sqrt N$. Duality gives
+\begin{equation}\label{Cexpect}
+\frac{\ColMod(j;N)}{2^N}=\frac{\E|K_j(I_N;N)|}{\binom Nj}.
+\end{equation}
+\begin{theorem}\label{fixedcolumn}
+For every fixed nonnegative integer $j$,
+\begin{equation}\label{fixedasym}
+\boxed{\frac{\ColMod(j;N)}{2^N}=N^{-j/2}
+[\E|\He_j(Z)|+o(1)],\qquad Z\sim N(0,1).}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The recurrence gives coefficientwise convergence $p_{j,N}\to\He_j$. The central limit theorem and bounded moments of every fixed order give convergence of absolute expectations. Finally $\binom Nj\sim N^j/j!$ in \eqref{Cexpect} cancels the factorial normalization.
+\end{proof}
+The first constants are
+\[
+\E|\He_0(Z)|=1,\quad \E|\He_1(Z)|=\sqrt{2/\pi},\quad
+\E|\He_2(Z)|=\frac4{\sqrt{2\pi e}}.
+\]
+For the last, $\E|Z^2-1|=4\int_1^\infty(z^2-1)\varphi(z)\,dz=4\varphi(1)$.
+
+\subsection{Boundary control and the total modulus sum}
+\begin{lemma}\label{tails}
+For each fixed positive integer $q$,
+\[
+\sum_{j=q}^{N-q}\binom Nj^{-1/2}=O(N^{-q/2}).
+\]
+\end{lemma}
+\begin{proof}
+For $u_j=\binom Nj^{-1/2}$ and $q\le j\le\lfloor N/4\rfloor$,
+$u_{j+1}/u_j=\sqrt{(j+1)/(N-j)}$ is uniformly bounded by a constant below one for large $N$. This part is $O(u_q)=O(N^{-q/2})$. Between $N/4$ and $N/2$ the terms are exponentially small and there are only $O(N)$ of them. Reflect to handle the other half.
+\end{proof}
+\begin{theorem}[Total modulus sum]\label{totaltheorem}
+\begin{equation}\label{TotalModAsym}
+\boxed{\TotalMod(N)=2^{N+1}\left[1+\sqrt{\frac2{\pi N}}+
+\frac4{\sqrt{2\pi e}\,N}+O(N^{-3/2})\right].}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Separate the first three columns at both ends. The modulus bound and Lemma~\ref{tails}, with $q=3$, give
+\[
+\frac{\TotalMod(N)}{2^{N+1}}=1+
+\frac{\ColMod(1;N)}{2^N}+\frac{\ColMod(2;N)}{2^N}+O(N^{-3/2}).
+\]
+Stirling in \eqref{C1} gives $\ColMod(1;N)/2^N=\sqrt{2/(\pi N)}+O(N^{-3/2})$.
+For \eqref{C2}, $r_N=N/2-\sqrt N/2+O(1)$, and
+\begin{align*}
+\binom{N-2}{r_N}&=2^{N-2}\sqrt{\frac2{\pi N}}e^{-1/2}(1+O(N^{-1/2})),\\
+\frac{N-1-2r_N}{N-1-r_N}&=\frac2{\sqrt N}(1+O(N^{-1/2})).
+\end{align*}
+Thus $\ColMod(2;N)/2^N=4/(\sqrt{2\pi e}\,N)+O(N^{-3/2})$.
+\end{proof}
+
+\subsubsection*{Numerical examples for Theorem~\ref{totaltheorem}}
+To make the approximation names self-explanatory, define
+\begin{align*}
+\operatorname{TotalModApprox}_{2}(N)
+&=2^{N+1}\left[1+\sqrt{\frac2{\pi N}}\right],\\
+\operatorname{TotalModApprox}_{3}(N)
+&=2^{N+1}\left[1+\sqrt{\frac2{\pi N}}+\frac4{\sqrt{2\pi e}\,N}\right].
+\end{align*}
+The subscripts count the displayed terms, including the leading constant. Table~\ref{tab:approx} compares them with exact integer totals; its error is $100(\operatorname{TotalModApprox}_3/\TotalMod-1)$ percent.
+\begin{table}[htbp]
+\caption{Exact $\TotalMod$ and its two- and three-term approximations.}\label{tab:approx}
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{r|r|r|r|r}
+$N$&$\TotalMod(N)$&$\operatorname{TotalModApprox}_2$&$\operatorname{TotalModApprox}_3$&Error (\%)\\\hline
+10&3,016&2,564.74&2,762.96&$-8.390$\\
+15&88,656&79,037.26&83,266.01&$-6.080$\\
+20&2,655,112&2,471,309.95&2,572,799.82&$-3.100$\\
+32&10,181,521,568&9,801,522,497.04&10,061,336,584.14&$-1.180$\\
+\end{tabular}
+\end{table}
+
+The correction improves every listed approximation. Underestimation in these examples is an observation, not a one-sided theorem.
+
+For the exact boundary accounting, define
+\[
+\operatorname{BoundaryPairMod}_r(N)=2\ColMod(r;N)\quad(r=0,1,2),
+\qquad\operatorname{InteriorMod}(N)=\sum_{j=3}^{N-3}\ColMod(j;N).
+\]
+Their sum is exactly $\TotalMod(N)$ for these examples. The three pair contributions correspond to the three terms of \eqref{TotalModAsym}.
+\begin{table}[htbp]
+\caption{Exact contributions from the first three boundary-column pairs.}\label{tab:boundary}
+\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{r|r|r|r|r}
+$N$&Pair $0$&Pair $1$&Pair $2$&$\operatorname{InteriorMod}(N)$\\\hline
+10&2,048&504&224&240\\
+15&65,536&13,728&4,576&4,816\\
+20&2,097,152&369,512&106,080&82,368\\
+32&8,589,934,592&1,202,160,780&266,133,000&123,293,196\\
+\end{tabular}
+\end{table}
+
+A useful scaled discrepancy is
+\[
+\operatorname{ScaledModError}(N)=N^{3/2}
+\frac{\TotalMod(N)-\operatorname{TotalModApprox}_3(N)}{2^{N+1}}.
+\]
+For $N=10,15,20,32$, respectively, its values are
+\[
+3.9071,\qquad4.7780,\qquad3.5106,\qquad2.5327.
+\]
+The theorem asserts boundedness, not convergence to a single coefficient. These examples illustrate the scale but do not prove the remainder estimate.
+
+\begin{remark}
+The Hermite limit explains the constants; the tail lemma justifies summing the boundary contributions. An additional asymptotic term requires corrections to earlier columns as well as the next column's leading term. Parity and lattice-root rounding may matter. No universal coefficient at order $N^{-3/2}$ is asserted here.
+\end{remark}
+
+\subsection{Fixed-column squares have a different scale}
+For fixed $j$, Stirling in \eqref{ColSqExact} gives
+\[
+\ColSq(j;N)\sim\frac{4^N}{\sqrt{\pi N}}\frac{j!\binom{2j}{j}}{4^jN^j}.
+\]
+Each successive fixed column loses a factor $N^{-1}$ in its unweighted square sum, versus $N^{-1/2}$ in its modulus sum. These are different asymptotic statements.
+Finally, the signed and modulus totals have the instructive comparison
+\[
+\TotalSum(N)=2^N,\qquad
+\frac{\TotalMod(N)}{\TotalSum(N)}
+=2\left[1+\sqrt{\frac2{\pi N}}+
+\frac4{\sqrt{2\pi e}\,N}+O(N^{-3/2})\right].
+\]
+The absolute sum has no cancellation, whereas every noninitial column has zero signed sum.
+
+\section{Examples and an encyclopedia-ready result map}
+For $N=4$,
+\begin{align*}
+(\ColMod(j;4))_{j=0}^4&=(16,6,4,6,16),\\
+(\ColSq(j;4))_{j=0}^4&=(70,10,6,10,70),\\
+(\RowSq(i;4))_{i=0}^4&=(5,40,76,40,5).
+\end{align*}
+Thus $\TotalMod(4)=48$, $\TotalSq(4)=226$, and $\TotalSum(4)=16$.
+For $N=10$,
+\begin{align*}
+(\RowMod(i;10))_{i=0}^{10}&=(11,60,187,384,574,584,574,384,187,60,11),\\
+(\ColMod(j;10))_{j=0}^{10}&=(1024,252,112,60,44,32,44,60,112,252,1024),\\
+(\RowSum(i;10))_{i=0}^{10}&=(11,0,165,0,462,0,330,0,55,0,1),\\
+(\ColSum(j;10))_{j=0}^{10}&=(1024,0,0,0,0,0,0,0,0,0,0).
+\end{align*}
+Here $\TotalMod(10)=3016$, while $\TotalSum(10)=1024$. Whole-matrix square sums are supplied independently by \eqref{TotalSqExact}.
+
+For reuse, every named sum refers to entries of the ordinary-generating-function matrix \eqref{gen}. The following map records where to find its principal evaluation:
+\begin{center}\small
+\begin{tabular}{ll}
+\textbf{Quantity}&\textbf{Result or mechanism}\\\hline
+$\RowSum$, $\ColSum$, $\TotalSum$&Exact formulas \eqref{signedsums}--\eqref{rawtotal}\\
+$\PartColSum$, $\WtPartColSum$&Pascal telescoping, \eqref{colpartial}--\eqref{weightedlinear}\\
+$\WtPartColSq$&Spatial recurrence plus square differences, \eqref{partialformula}\\
+$\ColSq$&Beta/super Catalan evaluation, \eqref{ColSqExact}\\
+$\RowSq$&Bivariate coefficient extraction, \eqref{RowSqExact}\\
+$\TotalSq$&Two exact finite sums, \eqref{TotalSqExact}\\
+$\RowMod$&Sign-interval antiderivative, \eqref{absrow}\\
+$\ColMod$&Boundary formulas and fixed-column limit, \eqref{C1}, \eqref{C2}, \eqref{fixedasym}\\
+$\TotalMod$&Sharp boundary expansion, Theorem~\ref{totaltheorem}
+\end{tabular}
+\end{center}
+These descriptive names preserve the summation direction and operation when a result is excerpted from its surrounding discussion. The recurrence relations explain the summation, orthogonality fixes the weights, and asymptotic analysis enters only after exact expressions and tail bounds are established.
+
+\begin{thebibliography}{9}
+\bibitem{Feinsilver2016}
+Philip Feinsilver,
+\emph{Sums of squares of Krawtchouk polynomials, Catalan numbers,
+and some algebras over the Boolean lattice},
+International Journal of Mathematics and Computer Science
+\textbf{12} (2017), no.~1, 65--83.
+Available as \href{https://arxiv.org/abs/1603.07023}{arXiv:1603.07023}.
+
+\end{thebibliography}
+\end{document}

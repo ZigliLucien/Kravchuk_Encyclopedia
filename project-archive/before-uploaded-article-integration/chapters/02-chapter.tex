@@ -1,0 +1,194 @@
+\chapter{Random Walks}
+\label{ch:2}
+\section{Paths and path integrals}
+\label{sec:2-1}
+Consider length-$N$ binary paths $w=(w_1,\ldots,w_N)$, where
+$w_a\in\{0,1\}$ and $|w|=\sum_aw_a$ is the endpoint coordinate.
+Fix $j$ distinguished steps and assign the signed weight
+\[
+\omega_j(w)=(-1)^{w_1+\cdots+w_j}.
+\]
+The particular first-$j$ choice is inessential; any fixed subset of $j$
+steps gives the same endpoint sums. A path with endpoint $n$ and $r$
+right steps among the distinguished steps has weight $(-1)^r$.
+There are $\binom jr\binom{N-j}{n-r}$ such paths, so
+\begin{equation}\label{eq:signed-path-Krawtchouk}
+\sum_{|w|=n}\omega_j(w)
+=\sum_r(-1)^r\binom jr\binom{N-j}{n-r}
+=K_n(j;N).
+\end{equation}
+This is a path interpretation of the coefficient formula in
+Section~\ref{sec:1-2}, not a new definition. For $j=0$ it counts ordinary
+paths and gives $\binom Nn$; for $j>0$, cancellation produces signed
+entries of column $j$ of $\Phi_N$. For instance, $N=4$, $j=2$ gives
+endpoint sums $(1,0,-2,0,1)$.
+
+The signed Galton-board construction of \cite[Section~6]{KocikFeynman}
+is an elementary analogue of a sum over paths. Its weights are not
+probabilities. In quantum mechanics one sums amplitudes before taking
+an appropriately normalized absolute square; a physical unitary model
+requires more structure than this combinatorial identity. The unsigned
+walk and the stochastic Ehrenfest transition operator should likewise
+not be identified with a unitary evolution.
+
+
+\subsection{Weighted paths and the two-parameter deformation}
+\label{sec:weighted-path-deformation}
+Over a commutative ring, define a separate coefficient array
+\[
+\mathcal K_n(j;N;\alpha,\beta)
+=[v^n](1+\alpha v)^{N-j}(1+\beta v)^j.
+\]
+A consistent path rule gives every left step weight $1$, and a right
+step weight $\beta$ at each of $j$ distinguished times and $\alpha$ at
+all other times. Thus
+\[
+\mathcal K_n(j;N;\alpha,\beta)
+=\sum_r\binom jr\binom{N-j}{n-r}\beta^r\alpha^{n-r}.
+\]
+This recovers $K_n(j;N)$ at $(\alpha,\beta)=(1,-1)$ without changing
+its normalization. Coefficient comparison gives
+\begin{align*}
+\mathcal K_n(j;N+1)&=\mathcal K_n(j;N)+\alpha\mathcal K_{n-1}(j;N),\\
+\mathcal K_n(j+1;N+1)&=\mathcal K_n(j;N)+\beta\mathcal K_{n-1}(j;N).
+\end{align*}
+For adjacent entries $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ in this
+array, $\beta a+c=\alpha b+d$.
+These identities require no division by $\alpha-\beta$ and remain valid
+when parameters coincide or are not invertible.
+
+\begin{remark}[A discrepancy in the source's path rule]
+The displayed generating function of \cite[Section~6.2]{KocikFeynman}
+is the one used here. However, the preceding prose assigns left/right
+weights $\alpha,\beta$ only at the $j$ distinguished times, and weights
+$1,1$ elsewhere. That different rule produces
+$(1+v)^{N-j}(\alpha+\beta v)^j$, not the displayed generating function.
+We retain the displayed coefficient array and specify the compatible
+rule explicitly. No stochastic normalization, orthogonality, or
+involution property is asserted for arbitrary parameters.
+\end{remark}
+
+\section{$A$, $K$, and $\Lambda$}
+\label{sec:2-2}
+For the symmetric walk on $\{0,\ldots,N\}$, use column vectors for
+state distributions and the zero-based standard basis $e_j$. Put
+\[
+A_Ne_j=(N-j)e_{j+1}+je_{j-1},\qquad
+\Lambda_N=\operatorname{diag}(N,N-2,\ldots,-N),
+\]
+with endpoint terms omitted. In this section the matrix symbol $K$
+is explicitly defined to mean $\Phi_N=(K_n(j;N))_{n,j=0}^N$.
+It is not a single polynomial $K_n$ or the symmetric matrix
+$S_N=\Phi_NB_N$.
+
+\subsection{Intertwining and diagonalization}
+Writing $G_j(v)=(1+v)^{N-j}(1-v)^j$, differentiation gives
+\[
+(1-v^2)G_j'(v)=(N-2j-Nv)G_j(v).
+\]
+Equating coefficients yields
+\[
+(N-n+1)K_{n-1}(j;N)+(n+1)K_{n+1}(j;N)
+=(N-2j)K_n(j;N).
+\]
+The spatial recurrence is
+\[
+jK_n(j-1;N)+(N-j)K_n(j+1;N)=(N-2n)K_n(j;N).
+\]
+Absent endpoint terms are zero. In matrix form these identities read
+\[
+A_N\Phi_N=\Phi_N\Lambda_N,\qquad
+\Phi_NA_N=\Lambda_N\Phi_N.
+\]
+This is the coefficient proof of the master equation; its symmetric-power
+interpretation is given in Section~\ref{sec:8-1}.
+Since $\Phi_N^2=2^NI$, we obtain
+\[
+\Phi_N^{-1}=2^{-N}\Phi_N,\qquad
+A_N=2^{-N}\Phi_N\Lambda_N\Phi_N.
+\]
+Column $j$ of $\Phi_N$ is a right eigenvector with eigenvalue $N-2j$;
+row $n$ is a left eigenvector with eigenvalue $N-2n$.
+
+\subsection{Transition probabilities}
+For $N\geq1$, $T_N=A_N/N$ is column-stochastic. Hence
+$p_{t+1}=T_Np_t$ and, for integers $t\geq0$,
+\[
+T_N^t=2^{-N}\Phi_N(\Lambda_N/N)^t\Phi_N.
+\]
+The backward operator on column vectors of function values is $T_N^T$,
+not $T_N$; its eigenfunctions are $j\mapsto K_n(j;N)$.
+The stationary column distribution is
+$2^{-N}(\binom N0,\ldots,\binom NN)^T$, the normalized first column
+of $\Phi_N$. The eigenvalue $-1$ of $T_N$ expresses period two;
+stationarity does not imply convergence from arbitrary initial data.
+
+\subsection{The cases $N=3$ and $N=5$}
+For $N=3$,
+\begingroup
+\small
+\setlength{\arraycolsep}{3pt}
+\[
+A_{3}=\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+3 & 0 & 2 & 0 \\
+0 & 2 & 0 & 3 \\
+0 & 0 & 1 & 0
+\end{pmatrix}.
+\]
+\endgroup
+\begingroup
+\small
+\setlength{\arraycolsep}{3pt}
+\[
+\Lambda_{3}=\begin{pmatrix}
+3 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & -3
+\end{pmatrix}.
+\]
+\endgroup
+The transition eigenvalues are $1,\frac{1}{3},- \frac{1}{3},-1$.
+For $N=5$,
+\begingroup
+\small
+\setlength{\arraycolsep}{3pt}
+\[
+A_{5}=\begin{pmatrix}
+0 & 1 & 0 & 0 & 0 & 0 \\
+5 & 0 & 2 & 0 & 0 & 0 \\
+0 & 4 & 0 & 3 & 0 & 0 \\
+0 & 0 & 3 & 0 & 4 & 0 \\
+0 & 0 & 0 & 2 & 0 & 5 \\
+0 & 0 & 0 & 0 & 1 & 0
+\end{pmatrix}.
+\]
+\endgroup
+\begingroup
+\small
+\setlength{\arraycolsep}{3pt}
+\[
+\Lambda_{5}=\begin{pmatrix}
+5 & 0 & 0 & 0 & 0 & 0 \\
+0 & 3 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & -1 & 0 & 0 \\
+0 & 0 & 0 & 0 & -3 & 0 \\
+0 & 0 & 0 & 0 & 0 & -5
+\end{pmatrix}.
+\]
+\endgroup
+The transition eigenvalues are $1,\frac{3}{5},\frac{1}{5},- \frac{1}{5},- \frac{3}{5},-1$.
+The corresponding $R_N$, $L_N$, $\Phi_N$ and $S_N$ tables are in
+Appendix~\ref{app:matrix-tables}. Centered and lattice polynomial tables
+are in Appendix~\ref{app:polynomial-tables}.
+
+\section{Nonsymmetric walks}
+\label{sec:2-3}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\section{Symmetric Krawtchouk matrices and binomial expectations}
+\label{sec:2-4}
+% TODO: Develop this section; add verified references, examples, and exercises.
+

@@ -1,0 +1,114 @@
+\documentclass[11pt,oneside]{amsbook}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\setcounter{tocdepth}{1}
+\title{Kravchuk Encyclopedia\\ A Working Book Skeleton}
+
+\date{}
+\usepackage{graphicx}
+\begin{document}
+\frontmatter
+\maketitle
+\input{chapters/kravchuk-frontispiece}
+\chapter*{Editorial Preface}
+This editable skeleton follows the eighteen main topics and appendix program in Section 6.1 of the supplied article source, \texttt{KravFeinsKocik.tex}. Additional headings from the supplied archived website, \texttt{Kravchuk.zip}, have been placed within the closest corresponding chapters. The archived introduction now appears as the first numbered chapter; the eighteen topical chapters follow it. The contents preserve the original program rather than impose a new textbook sequence.
+
+This remains a working encyclopedia, not a completed literature review. Developed sections now include finite matrix identities, source-based representation material, martingales, orthogonality, and Gaussian--Krawtchouk summation. Remaining gaps carry visible uppercase NEEDS TO BE DONE notices, including narrower unfinished tasks within otherwise developed sections. Spectral-asymptotic working material remains explicitly distinguished from proved identities. The source register below separates supplied materials, editorial derivations, and bibliography records awaiting independent verification.
+
+The title retains ``Kravchuk'' while the polynomial notation uses the conventional spelling ``Krawtchouk.'' Historical names and original terminology should be checked as chapters are developed. In particular, the operator symbols $A$, $K$, $\Lambda$, and $T$ require definitions from their original source contexts before they are used interchangeably.
+\chapter*{Notation and Conventions}
+Throughout the starter material, $K_n(j;N)$ is defined by the ordinary generating function, $k_n(N-2j,N)=n!K_n(j;N)$, $\Phi_N=(K_n(j;N))$, $B_N=\operatorname{diag}(\binom Nj)$, and $S_N=\Phi_NB_N$. All matrix indices begin at zero. In the standard column-vector basis,
+$R_Ne_j=(N-j)e_{j+1}$, $L_Ne_j=je_{j-1}$, and $A_N=R_N+L_N$.
+The diagonal matrix $\Lambda_N$ has entries $N-2j$.
+These conventions, including the distinction between $\Phi_N$ and
+$S_N$, are developed in Sections~\ref{sec:finite-sl2-matrices},
+\ref{sec:matrix-Phi-definition}, and~\ref{sec:matrix-S-definition}.
+Appendix~\ref{app:matrix-tables} contains verified examples for
+$N=2,3,4,5,7,8$. Physicists' and probabilists' Hermite normalizations must be explicitly distinguished. Binomial coefficients outside their usual integer range vanish.
+
+\section*{Dictionary for the integrated Kocik article}
+The notation of \cite{KocikFeynman} is translated rather than adopted.
+Its total order $n$, row $p$ and column $q$ become our $N,n,j$;
+its Krawtchouk matrix $K$ becomes $\Phi_N$, its Kac matrix $M$ becomes
+$A_N$, and its eigenvalue matrix becomes $\Lambda_N$.
+The source's diagonal binomial metric $\Gamma$ becomes $B_N$;
+its Pascal matrix $B$ becomes the already established $P_N$.
+The source's operator $N=[L,R]$ becomes $\Lambda_N$ on the fixed-order
+space, not the scalar order $N$. We use the ordinary commutator
+$[X,Y]=XY-YX$, distinguishing it from the source's half-commutator.
+The symbols $\Phi_N$, $S_N=\Phi_NB_N$, and $U_N$ retain their distinct
+meanings throughout. The parity matrix is $D_N$; powers-of-two weights
+in Pascal coordinates are $W_N$.
+
+
+\section*{Preferred conventions for the newly supplied summary papers}
+For general-parameter transform material we retain the supplied
+\texttt{KravPQ.tex} notation $K_n(x,N)$ with exponential coefficients.
+For the sums material we retain $\phi^N_{nj}$ and its symmetric
+specialization $\Phi^N_{nj}$ from \texttt{KravSums.tex}.
+Chapter~\ref{chap:pq-source-summary} supplies the parameter interchange,
+factorial scaling, and dictionary to earlier chapters. Previously established
+symmetric notation is retained there to avoid silently altering formulas.
+
+\tableofcontents
+\mainmatter
+\include{chapters/00-introduction}
+\include{chapters/01-chapter}
+\include{chapters/02-chapter}
+\include{chapters/03-chapter}
+\include{chapters/04-chapter}
+\include{chapters/05-chapter}
+\include{chapters/06-chapter}
+\include{chapters/07-chapter}
+\include{chapters/08-chapter}
+\include{chapters/09-chapter}
+\include{chapters/10-chapter}
+\include{chapters/11-chapter}
+\include{chapters/12-chapter}
+\include{chapters/13-chapter}
+\include{chapters/14-chapter}
+\include{chapters/15-chapter}
+\include{chapters/16-chapter}
+\include{chapters/17-chapter}
+\include{chapters/18-chapter}
+\include{chapters/pq-source-summary}
+\appendix
+\include{chapters/appendix-01}
+\include{chapters/appendix-02}
+\include{chapters/appendix-03}
+\include{chapters/appendix-04}
+\include{chapters/appendix-05}
+\include{chapters/appendix-06}
+\backmatter
+\chapter*{Bibliography and Source Register}
+\addcontentsline{toc}{chapter}{Bibliography and Source Register}
+\section*{Supplied source materials}
+\begin{itemize}
+\item \texttt{sources/KravFeinsKocik.tex}: the uploaded article source supplying the encyclopedia outline in Section 6.1.
+\item \texttt{sources/jkhadamard\_Oct\_08\_00.tex}: the uploaded Hadamard, tensor, and random-walk article source.
+\item \texttt{Kravchuk.zip}: historical website source supplying additional headings and the introductory chapter. This original archive is not present under that filename in the active source package; the extracted heading inventory and prior project archives preserve the available local provenance.
+\item \texttt{KravConvolutions.pdf}: supporting material named in the earlier project register, but not present in the active project. No new integration or claim of source inspection is made for this unavailable file.
+\item \texttt{sources/KravEstimate.tex}: the newly supplied absolute-entry-sum estimate note, retained unchanged; selected results and corrections are developed in Section~\ref{sec:kravchuk-sums}. The retained local sums manuscripts in \texttt{supporting-papers/} supply further selected formulas with proofs in that section.
+\item \texttt{sources/KrawtchoukFeynman.pdf}: the locally retained article underlying the integrated \texttt{KocikFeynman} discussions; normalization and source corrections are recorded in the integration notes.
+\item \texttt{KrawtchoukReferences\_bibliography.tex}: the supplied list of fifty references, archived unchanged in \texttt{sources/}.
+\end{itemize}
+\input{sources/uploaded-source-guide}
+\input{sources/current-integration-status}
+\section*{Literature bibliography}
+The supplied list is incorporated below with its original citation keys
+\texttt{ref01}--\texttt{ref50} and bibliographic wording preserved.
+These records are user-supplied and have not been independently
+validated in this integration; the separate review file records items
+requiring attention. The previously verified integrated-article entry
+\texttt{KocikFeynman} is retained.
+\input{bibliography/references}
+
+\end{document}

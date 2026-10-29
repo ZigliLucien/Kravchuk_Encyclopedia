@@ -1,0 +1,108 @@
+\chapter{Gaussian Quadrature}
+\label{ch:17}
+\noindent\emph{Source and derivation note.}
+The orthogonal system and normalization are those of Sections~\ref{sec:1-2}, \ref{sec:5-2}, and \ref{sec:13-1}. The product-martingale source is the supplied \texttt{sources/KravFeinsKocik.tex}, identified in the source register. The Gaussian rule, terminal factorization, proofs, and numerical examples here are developed from those identities; they are not attributed to an unread item in the supplied literature list. Numerical provenance and reproduction details are in \texttt{sources/INTEGRATION\_gaussian\_summation.md} and \texttt{sources/compute\_gaussian\_krawtchouk.py}.
+
+\section{Zeros of Krawtchouk polynomials}
+\label{sec:17-1}
+The measure in this chapter is finite and discrete:
+\[
+\mu_N=2^{-N}\sum_{j=0}^N\binom Nj\delta_j,\qquad
+\mathcal S_N[f]=2^{-N}\sum_{j=0}^N\binom Nj f(j).
+\]
+Thus Gaussian quadrature here compresses a weighted sum, not an ordinary integral. Keep two integers distinct: $N$ specifies the $N+1$ support points, whereas $n$ specifies the degree of the orthogonal polynomial and the number of Gaussian nodes. We take $1\le n\le N$ unless stated otherwise.
+
+Extend $K_n(j;N)$ polynomially off the integer lattice via the recurrence of Section~\ref{sec:1-3}. Its leading coefficient in $j$ is $(-2)^n/n!$. The monic polynomials
+\[
+p_n(j)=\frac{(-1)^n n!}{2^n}K_n(j;N)
+=\frac{(-1)^n}{2^n}k_n(N-2j,N)
+\]
+therefore satisfy
+\begin{equation}\label{eq:quadrature-monic-recurrence}
+p_{r+1}(j)=(j-N/2)p_r(j)-\frac{r(N-r+1)}4p_{r-1}(j),\qquad p_0=1.
+\end{equation}
+Their squared norms under $\mu_N$ are
+\begin{equation}\label{eq:quadrature-monic-norm}
+h_r=\mathcal S_N[p_r^2]=\frac{(r!)^2}{4^r}\binom Nr
+=\frac{r!N!}{4^r(N-r)!}.
+\end{equation}
+The Gaussian nodes $z_1<\cdots<z_n$ are the zeros of $p_n$, equivalently the eigenvalues of the $n\times n$ real symmetric Jacobi matrix
+\begin{equation}\label{eq:quadrature-Jacobi}
+\mathcal J_{N,n}=\begin{pmatrix}
+N/2&b_1& & &\\
+b_1&N/2&b_2& &\\
+ &b_2&N/2&\ddots&\\
+ & &\ddots&\ddots&b_{n-1}\\
+ & & &b_{n-1}&N/2
+\end{pmatrix},\qquad b_r=\frac12\sqrt{r(N-r+1)}.
+\end{equation}
+For $n=1$ this means the scalar matrix $(N/2)$. Positivity of $b_r$ gives simple real eigenvalues; the Rayleigh quotient is the weighted average of $j$ against the square of a nonzero polynomial of degree at most $n-1$. Such a polynomial cannot vanish on all $N$ other support points, so $0<z_a<N$. The zeros of successive degrees strictly interlace. Reflection symmetry gives
+$z_{n+1-a}=N-z_a$.
+These nodes are generally not integers: polynomial extension, rather than a table of lattice values alone, is essential.
+
+\section{Integral zeros}
+\label{sec:17-2}
+\paragraph{The trivial terminal zeros.}
+Remark~\ref{rem:terminal-integral-zeros} gives a universal family of integral zeros at the terminal degree:
+\[
+k_{N+1}(x,N)=\prod_{j=0}^{N}(x-(N-2j)).
+\]
+For even $N=2m$ this is $x\prod_{r=1}^{m}(x^2-4r^2)$; for odd $N=2m+1$ it is $\prod_{r=0}^{m}(x^2-(2r+1)^2)$. Thus all centered spectral points are zeros. For example,
+\[
+k_6(x,5)=(x^2-1)(x^2-9)(x^2-25).
+\]
+In the uncentered coordinate $j=(N-x)/2$, this is precisely the monic terminal polynomial $p_{N+1}(j)=\prod_{r=0}^{N}(j-r)$ discussed below. This terminal case is automatic and should be distinguished from the nontrivial question of integral zeros in degrees $1\le n\le N$.
+
+Integer zeros are special cases of these polynomial zeros, not a prerequisite for Gaussian summation. Since
+$K_n(N-j;N)=(-1)^nK_n(j;N)$, every odd degree has the central zero $j=N/2$; this is integral exactly when $N$ is even. For degree two,
+\[
+K_2(j;N)=\frac{(N-2j)^2-N}{2},\qquad
+z_\pm=\frac{N\pm\sqrt N}{2}.
+\]
+For $N\ge2$ these two zeros are integers exactly when $N$ is a perfect square: a square and its square root have the same parity. For example, $N=9$ gives nodes $3$ and $6$, each with Gaussian weight $1/2$. Consequently the two-node rule integrates, in the discrete sense, every cubic exactly under $\mu_9$.
+For $N=5$ the degree-three centered polynomial is $k_3(x,5)=x(x^2-13)$, giving $j=(5-\sqrt{13})/2,5/2,(5+\sqrt{13})/2$, none integral.
+These examples are not a classification of integral zeros at higher degree.
+\par\noindent\textbf{A GENERAL CLASSIFICATION OF INTEGRAL ZEROS NEEDS TO BE DONE.}
+
+\section{Gaussian--Krawtchouk summation}
+\label{sec:17-3}
+For each Gaussian node define the Lagrange polynomial
+\[
+\ell_a(j)=\frac{p_n(j)}{(j-z_a)p_n'(z_a)},\qquad
+\lambda_a=\mathcal S_N[\ell_a].
+\]
+Then the $n$-node formula is
+\begin{equation}\label{eq:gaussian-Krawtchouk-sum}
+2^{-N}\sum_{j=0}^N\binom Nj f(j)
+=\sum_{a=1}^n\lambda_a f(z_a),\qquad \deg f\le2n-1.
+\end{equation}
+To prove exactness, divide $f=q p_n+r$ with $\deg q,\deg r\le n-1$. Orthogonality annihilates $\mathcal S_N[q p_n]$, while interpolation of $r$ evaluates its sum exactly. Since $p_n(z_a)=0$, the right side is also unchanged by removing $q p_n$.
+Applying exactness to $\ell_a^2$ shows
+$\lambda_a=\mathcal S_N[\ell_a^2]>0$, and applying it to $1$ gives $\sum_a\lambda_a=1$. The rule is symmetric: $\lambda_{n+1-a}=\lambda_a$.
+Two equivalent computable weight formulas are
+\begin{equation}\label{eq:quadrature-Christoffel}
+\lambda_a=\left[\sum_{r=0}^{n-1}\frac{K_r(z_a;N)^2}{\binom Nr}\right]^{-1}
+=\frac{h_{n-1}}{p_n'(z_a)p_{n-1}(z_a)}.
+\end{equation}
+Alternatively, if $u_a$ is the unit eigenvector of \eqref{eq:quadrature-Jacobi} for $z_a$, then $\lambda_a=|(u_a)_0|^2$. The spectral measure of the first coordinate gives this identity; the Christoffel formula follows by summing squares of orthonormal polynomials. These formulas use the probability-normalized binomial measure. For the unnormalized sum $\sum_j\binom Nj f(j)$ multiply every weight by $2^N$.
+
+\subsection{Error and the finite-support endpoint}
+For $f\in C^{2n}([0,N])$, Hermite interpolation at the $n$ nodes, followed by summation against the positive measure, gives
+\[
+\mathcal S_N[f]-\sum_a\lambda_a f(z_a)
+=\frac{h_n}{(2n)!}f^{(2n)}(\xi),\qquad \xi\in[0,N].
+\]
+In particular, the error on the monic polynomial $j^{2n}$ is exactly $h_n>0$, so degree $2n-1$ is sharp. The rule remains meaningful for nonpolynomial functions provided values between lattice points are defined. If only the $N+1$ discrete data values are known, choosing an off-lattice interpolation is extra information; one cannot assume an arbitrary data array has prescribed Gaussian-node values.
+For $n=N+1$, the terminal polynomial is $p_{N+1}(j)=\prod_{r=0}^N(j-r)$ and its norm is zero. The full Jacobi matrix recovers the original nodes $0,\ldots,N$ and weights $2^{-N}\binom Nj$. This is the original finite sum, exact for every lattice function; it is not a new compressed rule, and the positive-norm error discussion above is restricted to $n\le N$.
+
+\subsection{Accurate examples for $N=5,10,15$}
+The following tables give both reduced-node rules $(N,n)=(5,3),(10,5),(15,8)$ and the degree-$N$ rules $(5,5),(10,10),(15,15)$. Thus the reduced rules replace respectively $6,11,16$ summands by $3,5,8$ evaluations and are exact through degrees $5,9,15$. The degree-$N$ rules are exact through degrees $9,19,29$. All nodes below are in the original $j$ coordinate; centered nodes are $x_a=N-2z_a$ with the same weights.
+
+For $(N,n)=(5,3)$ one also has the exact formula
+\[
+\mathcal S_5[f]=\frac5{26}f\!\left(\frac{5-\sqrt{13}}2\right)
++\frac8{13}f\!\left(\frac52\right)
++\frac5{26}f\!\left(\frac{5+\sqrt{13}}2\right),\qquad\deg f\le5.
+\]
+The tables show 18 significant digits. Their machine-readable companions retain 65 digits. Computation used a symmetric Jacobi eigensystem at 90-decimal working precision, independently checked against the centered polynomial recurrence, the Christoffel weight formula, positivity, and every scaled moment $(j/N)^r$ for $0\le r\le2n-1$. Maximum absolute scaled-moment error over all six rules was below $10^{-85}$ at working precision. These numerical residuals are consistency checks, not interval-certified error bounds; the printed rounded tables have correspondingly lower accuracy.
+\input{chapters/tables/gaussian-krawtchouk-rules.tex}

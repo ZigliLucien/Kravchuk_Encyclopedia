@@ -1,0 +1,116 @@
+% Extracted section; already included in the complete working note.
+\section{The Lie-algebra interpretation: squeezing and imaginary time}
+\label{sec:Lie-algebra}
+The supplied preliminary notes \cite{Notes} provide a useful algebraic
+interpretation. We spell it out with explicit coordinate and domain
+conventions to distinguish the finite representation from the oscillator
+representation.
+
+\subsection{The quadratic oscillator realization}
+On the Schwartz space $\mathcal S(\RR)$, let $D=d/dx$ and set
+\begin{equation}\label{eq:oscillator-sl2}
+\mathsf R=\frac{x^2}{2},\qquad
+\mathsf L=\frac{D^2}{2},\qquad
+\rho=xD+\frac12.
+\end{equation}
+The Heisenberg relation $[D,x]=1$ gives
+\begin{equation}\label{eq:oscillator-sl2-brackets}
+[\mathsf L,\mathsf R]=\rho,\qquad
+[\mathsf L,\rho]=2\mathsf L,\qquad
+[\rho,\mathsf R]=2\mathsf R.
+\end{equation}
+Thus this is an $\mathfrak{sl}(2)$ realization; a sign change of a
+lowering generator gives another common convention.
+The frequency-$\omega$ Hamiltonian and number operator are
+\begin{equation}\label{eq:omega-oscillator}
+\mathscr H_\omega=\frac12(-D^2+\omega^2x^2),\qquad
+\mathcal N_\omega=\frac{\mathscr H_\omega}{\omega}-\frac12
+=\omega\mathsf R-\omega^{-1}\mathsf L-\frac12.
+\end{equation}
+The natural Hilbert space for the wavefunctions and the unitary Fourier
+transform is $L^2(\RR,dx)$. A Gaussian-weighted polynomial realization
+requires conjugating the operators; it is not the same realization
+with its measure changed silently.
+
+\subsection{Squeezing is the exponential of $\rho$}
+The closure of $\rho$ generates the unitary dilation group
+\begin{equation}\label{eq:dilation}
+V_r=e^{r\rho},\qquad (V_rf)(x)=e^{r/2}f(e^rx),\qquad r\in\RR.
+\end{equation}
+Direct calculation gives
+\[
+V_rxV_r^{-1}=e^rx,\qquad V_rDV_r^{-1}=e^{-r}D.
+\]
+For $e^{2r}=\omega$ this implies
+\begin{equation}\label{eq:squeezed-conjugacy}
+V_r\mathscr H_1V_r^{-1}=\frac{\mathscr H_\omega}{\omega},\qquad
+\mathcal N_\omega=V_r\mathcal N_1V_r^{-1}.
+\end{equation}
+In particular,
+\[
+V_r(\pi^{-1/4}e^{-x^2/2})
+=(\omega/\pi)^{1/4}e^{-\omega x^2/2}.
+\]
+Thus the changed width of our Perron profile is an actual dilation
+in the oscillator representation, not only an analogy with squeezing.
+
+\subsection{The limiting kernel as an algebraic semigroup}
+Using \eqref{eq:omega-oscillator} in the variable $y$, the exact
+Mehler operator can be written
+\begin{equation}\label{eq:Lie-semigroup}
+\boxed{
+\mathcal G=c\,e^{\tau/2}
+\exp\left[\tau(\alpha^{-1}\mathsf L-\alpha\mathsf R)\right],
+\qquad \alpha=\sqrt8.
+}
+\end{equation}
+Equivalently,
+\[
+\mathcal G=cV_{\frac12\log\alpha}
+ e^{-\tau\mathcal N_1}V_{\frac12\log\alpha}^{-1}.
+\]
+For positive real $\tau$, this is a bounded imaginary-time oscillator
+semigroup, rather than a unitary real-time rotation. Algebraically it
+is the semigroup continuation of the same quadratic oscillator
+construction used for fractional Fourier transformations.
+
+With the positive-sign Fourier convention of the supplied notes,
+\[
+(\mathcal F_+f)(\xi)=\frac1{\sqrt{2\pi}}\int e^{i\xi x}f(x)\,dx,
+\qquad
+\mathcal F_+=e^{i\pi\mathcal N_1/2}.
+\]
+This contrasts with the negative-sign convention used in much of the
+optics literature. The notes derive this identity from
+$\psi_n=(x-D)^ne^{-x^2/2}$ and
+$\mathscr H_1\psi_n=(n+1/2)\psi_n$.
+In their generating-function calculation the intermediate exponent
+is $-\xi^2/2+2i\xi t+t^2$; the factor $2$ in the mixed term is needed.
+We use normalized Hermite wavefunctions and the unweighted $L^2$ space
+when passing from the algebraic calculation to unitary operators.
+
+\subsection{What this says, and does not say, about the finite algebra}
+Equation \eqref{eq:T-enveloping} places the finite $T_N$ in the universal
+enveloping algebra of \eqref{eq:finite-sl2}. Equation
+\eqref{eq:Lie-semigroup} places the candidate limiting kernel in the
+oscillator semigroup associated with \eqref{eq:oscillator-sl2-brackets}.
+These are two different representations. We have not exhibited an
+exact finite-$N$ Lie-group conjugacy between them, and $T_N$ is not
+simply the standard normalized finite-oscillator generator.
+The centered scaling of $H_N$, its Perron localization, and the
+weighted kernel asymptotics are the analytic bridge that must be
+controlled. The algebraic interpretation organizes that bridge but
+does not replace its estimates.
+
+The even and odd Hermite subspaces are each preserved by
+$\mathsf R,\mathsf L,\rho$. This oscillator parity should not be
+confused with the even/odd \emph{lattice-index} blocks of the finite
+matrices. Each finite lattice block samples the entire real line in
+the central scaling and can support both even and odd continuum modes.
+
+Finally, the notes ask about an intertwiner with convolution.
+Identifying a finite mode basis with the first $N+1$ Hermite modes
+intertwines diagonal fractional phases on that subspace. It does not
+by itself intertwine ordinary convolution with a finite Kravchuk
+convolution, or identify the physical position operators. We leave
+that stronger question separate from the spectral argument.

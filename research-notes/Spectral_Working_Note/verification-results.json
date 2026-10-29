@@ -1,0 +1,32 @@
+[
+  {
+    "N": 4,
+    "Gaussian_Rayleigh_sqrt": 15.917904930810094,
+    "numerical_lambda_max": 16.000000000000004,
+    "common_Perron_overlap": 1.0000000000000002
+  },
+  {
+    "N": 10,
+    "Gaussian_Rayleigh_sqrt": 5254.861928113286,
+    "numerical_lambda_max": 5256.904661099881,
+    "common_Perron_overlap": 1.0
+  },
+  {
+    "N": 20,
+    "Gaussian_Rayleigh_sqrt": 122520911.63898343,
+    "numerical_lambda_max": 122534402.67014383,
+    "common_Perron_overlap": 1.0
+  },
+  {
+    "N": 50,
+    "Gaussian_Rayleigh_sqrt": 2.7367120747921544e+21,
+    "numerical_lambda_max": 2.7367586277730775e+21,
+    "common_Perron_overlap": 1.0
+  },
+  {
+    "N": 100,
+    "Gaussian_Rayleigh_sqrt": 7.319951192148695e+43,
+    "numerical_lambda_max": 7.31998198046317e+43,
+    "common_Perron_overlap": 1.0000000000000002
+  }
+]
