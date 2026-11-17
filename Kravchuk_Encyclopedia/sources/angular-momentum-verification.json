@@ -1,0 +1,9 @@
+{
+  "orders_exactly_checked": "0..8",
+  "exact_matrix_identity_checks": 72,
+  "max_numeric_quarter_turn_error": 6.106226635438361e-16,
+  "active_tex_files": 41,
+  "unresolved_references": [],
+  "duplicate_labels": 0,
+  "tex_compiled": false
+}

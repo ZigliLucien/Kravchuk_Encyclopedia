@@ -1,0 +1,128 @@
+\chapter{Quantum Probability and Tensor Algebra}
+\label{ch:9}
+\section{Flip operator and quantum random walk}
+\label{sec:9-1}
+On $(\mathbb R^2)^{\otimes N}$ let $F_r$ flip the $r$th binary factor
+and set $\mathcal A_N=\sum_{r=1}^NF_r$. In the binary-string basis this
+is the adjacency operator of the $N$-cube. Choosing one factor uniformly
+to flip gives the stochastic operator $\mathcal A_N/N$.
+The symmetric sector is indexed by Hamming weight $j$ and yields the
+Ehrenfest chain.
+
+Basis normalization matters. For the orbit averages
+\[
+a_j=\binom Nj^{-1}\sum_{|\epsilon|=j}e_\epsilon,
+\]
+one obtains $\mathcal A_Na_j=(N-j)a_{j+1}+ja_{j-1}$, hence the book's
+matrix $A_N$. The unnormalized orbit sums instead give
+$(j+1)s_{j+1}+(N-j+1)s_{j-1}$ with endpoint terms omitted.
+The single flip $F$ is also a real quantum gate, but a unitary quantum
+walk must be specified separately; the stochastic averaging above is
+not itself a unitary evolution.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{Krawtchouk matrices as eigenvectors}
+\label{sec:9-2}
+The local Hadamard identity $FH=HG$ yields
+\[
+\mathcal A_NH^{\otimes N}=H^{\otimes N}\mathcal G_N,\qquad
+\mathcal G_N=\sum_{r=1}^NG_r.
+\]
+A binary string of weight $j$ is an eigenvector of $\mathcal G_N$ with
+eigenvalue $N-2j$. On the orbit-average symmetric sector, this reduces to the master
+equation proved in Section~\ref{sec:2-2} and interpreted through
+symmetric powers in Section~\ref{sec:8-1}.
+On the full cube the multiplicity is $\binom Nj$; in the symmetric sector
+each eigenvalue occurs once. This distinction explains why the
+$(N+1)$-dimensional Krawtchouk matrix is smaller than the $2^N$-dimensional
+Hadamard tensor matrix. Normalizing $H$ by $1/\sqrt2$ gives an orthogonal
+tensor transform.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{Trace formulas and MacMahon's theorem}
+\label{sec:9-3}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\noindent\textbf{TRACE FORMULAS AND MACMAHON'S THEOREM NEEDS TO BE DONE.}
+
+
+\section{Chebyshev polynomials}
+\label{sec:9-4}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\noindent\textbf{CHEBYSHEV POLYNOMIALS NEEDS TO BE DONE.}
+
+
+\section{Supersymmetry}
+\label{sec:9-5}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\noindent\textbf{SUPERSYMMETRY NEEDS TO BE DONE.}
+
+
+\section{Twistons}
+\label{sec:9-6}
+The twistons of \cite[Section~5, pp.~9--10]{KocikFeynman} are a toy model,
+not a claim about physical particles. Represent an untwisted band by
+$\epsilon=+1$ and a M\"obius band by $\epsilon=-1$. The model's combination
+rule multiplies signs: two negative bands give a positive sign, while one
+negative and one positive give a negative sign. This stipulates parity of
+twisting; it does not specify a general topological gluing operation.
+
+For $N$ bands, of which $j$ are M\"obius bands, define the order-$n$
+interaction energy to be the sum of products over all $n$-element subsets.
+By \eqref{eq:sign-energy-Krawtchouk},
+\[
+E_n=K_n(j;N)=(\Phi_N)_{nj},\qquad 0\leq n\leq N.
+\]
+Column $j$ of $\Phi_N$ therefore lists all interaction energies of that
+configuration. The algebraic identity and its proof belong to
+Section~\ref{sec:4-1}; no second polynomial normalization is introduced here.
+For $N=3$ and one M\"obius band, the signs $(+1,+1,-1)$ yield
+\[
+(E_0,E_1,E_2,E_3)=(1,1,-1,-1),
+\]
+which is column $1$ of $\Phi_3$ in Appendix~\ref{app:matrix-tables}.
+
+\begin{remark}[Counting convention in the source]
+Section~5 initially counts nonorientable bands, but its concluding
+sentence on page~10 says ``untwisted bands.'' Here $j$ consistently counts
+M\"obius bands, as required by \eqref{eq:gen}. Pair interactions mean
+$\sum_{a<b}\epsilon_a\epsilon_b$, not an unrestricted double sum.
+\end{remark}
+
+
+\section{Hadamard compression in the Encyclopedia normalization}
+\label{sec:uploaded-hadamard-compression}
+The supplied \texttt{jkhadamard\_Oct\_08\_00.tex}, Sections~4 and~6,
+and \texttt{KravFeinsKocik.tex}, Sections~2--3, connect Hadamard matrices,
+Krawtchouk matrices, and symmetric tensors. Here is the compression
+formula in the notation fixed by this book.
+Set
+\begin{equation*}
+H=\begin{pmatrix}1&1\\1&-1\end{pmatrix},\qquad
+T_N=H^{\otimes N},\qquad
+s_j=\sum_{|\epsilon|=j}e_\epsilon,\qquad
+b_j=\binom Nj,\qquad a_j=s_j/b_j.
+\end{equation*}
+For an input string of weight $j$, the sum of the output coefficients
+at weight $n$ is the coefficient of $v^n$ in
+$(1+v)^{N-j}(1-v)^j$, namely $K_n(j;N)$.
+Permutation symmetry then shows that each output coefficient at that
+weight in $T_Na_j$ is $K_n(j;N)/b_n$. Consequently
+\begin{equation*}
+T_Na_j=\sum_{n=0}^N K_n(j;N)a_n.
+\end{equation*}
+Thus the restriction of $T_N$ to the symmetric sector has matrix
+$\Phi_N$ in the orbit-average basis, not in every choice of basis.
+In the orthonormal basis $q_j=s_j/\sqrt{b_j}$, the normalized transform
+$2^{-N/2}T_N$ has matrix
+\begin{equation*}
+2^{-N/2}B_N^{-1/2}\Phi_N B_N^{1/2}.
+\end{equation*}
+This matrix is orthogonal because $H/\sqrt2$ is orthogonal and the
+symmetric sector is invariant. This is a unitary (real orthogonal)
+transform, distinct from the stochastic flip average $A_N/N$.
+The uploaded articles are preserved as historical source documents;
+this derivation explicitly fixes the basis and normalization rather
+than importing their standalone preambles or macros.

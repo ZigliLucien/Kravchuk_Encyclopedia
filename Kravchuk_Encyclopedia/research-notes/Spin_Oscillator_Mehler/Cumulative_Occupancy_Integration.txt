@@ -1,0 +1,23 @@
+Cumulative occupancy integration
+================================
+Updated active encyclopedia source: Chapters 3 and 11, bibliography/references.tex,
+and the short bibliography-status paragraph in main.tex.
+The archived original sources/KrawtchoukReferences_bibliography.tex is unchanged.
+The current tensor/multinomial lecture-note .tex and PDF have been updated.
+
+References added to both active bibliographies:
+CooperHoareRahman1977, DOI 10.1016/0022-247X(77)90160-3;
+HoareRahman1984, DOI 10.1016/0304-4149(84)90014-0.
+The 1984 issue date and 1983 copyright distinction is explicit.
+A convenient BibTeX copy is bibliography/cumulative-occupancy.bib.
+
+The saved-success presentation is derived with explicitly declared parameters;
+it does not claim a page-by-page comparison of the unavailable original PDFs.
+Publisher descriptions and verified bibliographic records support attribution.
+
+The lecture notes (20 pages) and the standalone encyclopedia update excerpt
+(3 pages) were compiled, structurally verified, and visually sampled.
+The entire encyclopedia main.pdf was NOT rebuilt; its active source now
+contains additions not yet reflected in that older master PDF.
+Previous active files are retained in
+project-archive/before-cumulative-occupancy-integration.zip.

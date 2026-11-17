@@ -1,0 +1,49 @@
+\chapter{Lie Groups and Reflections}
+\label{ch:7}
+\section{Reflections}
+\label{sec:7-1}
+Let $u$ be a non-null pure split quaternion. The reflection in the
+plane $Q$-orthogonal to $u$ is
+\[
+r_u(v)=-uvu^{-1}.
+\]
+It sends $u$ to $-u$ and fixes any pure $v$ orthogonal to $u$, since
+then $uv=-vu$. Null vectors cannot be used in this formula because
+they are not invertible. Composing two such reflections yields a
+conjugation action and hence a determinant-one orthogonal map.
+
+For $H=F+G$ one has $H^2=2I$, $H^{-1}=H/2$, and
+\[
+HFH^{-1}=G,\quad HGH^{-1}=F,\quad HiH^{-1}=-i.
+\]
+This exchanges the two spacelike axes and reverses the timelike axis.
+It preserves $Q$ and has determinant one on the pure space, but lies
+outside the time-orientation-preserving component.
+See Section~\ref{sec:7-2} for the determinant issue in the spinor space.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{Krawtchouk matrices as group elements}
+\label{sec:7-2}
+Set $H=F+G=\begin{pmatrix}1&1\\1&-1\end{pmatrix}$. Then
+\[
+FH=HG,\qquad GH=HF,\qquad H^2=2I.
+\]
+These elementary identities generate the Krawtchouk intertwining and
+reflection symmetries under symmetric powers.
+
+A qualification to the supplied source is necessary:
+$\det H=-2$, and $\det(cH)=-2c^2<0$ for every nonzero real scalar $c$.
+Thus no real scalar normalization puts $H$ in $SL(2,\mathbb R)$.
+Likewise $\det F=\det G=-1$.
+The conjugations are valid in $GL(2,\mathbb R)$ (or its projective
+quotient); $F,G$ are also traceless Lie algebra elements. These are
+distinct statements, and must not be conflated.
+Over $\mathbb C$, $(\mathrm{i}/\sqrt2)H$ has determinant one, where
+$\mathrm{i}$ denotes the scalar imaginary unit.
+
+The lift to degree-$N$ polynomials is developed once in
+Section~\ref{sec:8-1}; orthogonal normalization is treated in
+Section~\ref{sec:14-1}. Neither construction requires the real matrix
+$H$ to belong to $SL(2,\mathbb R)$.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+

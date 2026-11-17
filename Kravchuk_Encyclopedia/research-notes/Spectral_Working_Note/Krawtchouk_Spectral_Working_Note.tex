@@ -1,0 +1,642 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\title{Symmetric Krawtchouk Matrices:\\A Commuting Difference Operator and a Squeezed Mehler Limit}
+\date{Working research note; Lie-algebra interpretation incorporated}
+\keywords{Krawtchouk matrix, commuting difference operator, Perron eigenvector, Rayleigh quotient, Mehler kernel, squeezing, Lie algebra}
+\begin{document}
+\begin{abstract}
+The skew-symmetric operator of Feinsilver--Fitzgerald anticommutes with
+the symmetric Krawtchouk matrix $S_N$. A sign conjugation turns its
+negative square into positive irreducible Jacobi blocks on the parity
+sublattices, with the same Perron eigenvectors as the corresponding
+blocks of $S_N^2$. Gaussian Rayleigh quotients select a width
+$\alpha=\sqrt8$ and yield the asymptotic lower constant
+$(\sqrt8-2)/\pi$ for $N\lambda_{\max}(S_N)^2/8^N$.
+The central-window kernel is a squeezed Mehler semigroup. We compare
+this construction with the finite oscillator and fractional
+Fourier--Kravchuk framework of Atakishiyev, Vicent, and Wolf, and use
+supplied preliminary notes to express squeezing and imaginary-time
+evolution through an $\mathfrak{sl}(2)$ triple. Exact finite identities,
+proved lower bounds, exact properties of the candidate limit, and
+unproved convergence assertions are separated throughout.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Conventions, scope, and proof status}
+Define the ordinary-generating-function polynomials by
+\begin{equation}\label{eq:gen}
+(1+v)^{N-j}(1-v)^j=\sum_{n=0}^N K_n(j;N)v^n,
+\qquad 0\le j\le N.
+\end{equation}
+Set
+\begin{equation}\label{eq:matrices}
+\Phi_N=(K_n(j;N))_{n,j=0}^N,\qquad
+B_N=\diag\left(\binom Nj\right)_{j=0}^N,\qquad
+S_N=\Phi_NB_N.
+\end{equation}
+All indices start at zero; binomial coefficients outside their support
+are zero. The weighted duality
+\[
+\binom NjK_n(j;N)=\binom NnK_j(n;N)
+\]
+makes $S_N$ real symmetric. Throughout, the matrix called $H_N$ below
+is a positive finite difference operator, not the oscillator Hamiltonian
+$\mathscr H_\omega$ introduced later.
+
+The finite anticommutation, exceptional eigenvector, and spectral pairing
+are from Feinsilver--Fitzgerald \cite{FF}. The finite-oscillator and
+fractional-transform background is from \cite{AW,AVW}. The supplied
+preliminary notes \cite{Notes} motivate our explicit algebraic
+interpretation. We make no bibliographic priority claim for the further
+consequences developed here.
+
+\subsection*{What is established and what remains open}
+We prove the common-Perron-mode reduction, compact-window Rayleigh
+limits, an asymptotic lower bound, and exact spectral formulas for the
+candidate Mehler integral operator. The predicted equivalence
+\begin{equation}\label{eq:predicted-asymptotic}
+\lambda_{\max}(S_N)\sim
+\frac{\sqrt{\sqrt8-2}}{\sqrt{\pi N}}(\sqrt8)^N
+\end{equation}
+is \emph{not} asserted as a theorem in this note. A matching upper bound
+or suitable global operator convergence remains to be established.
+Likewise, the spectrum of the candidate limiting kernel is not, by
+itself, a proof of convergence of the finite excited eigenvalues.
+
+\section{The finite skew-symmetric operator}
+\subsection{The finite $\mathfrak{sl}(2)$ representation}
+On the standard coordinate basis let
+\[
+R_Ne_n=(N-n)e_{n+1},\qquad L_Ne_n=ne_{n-1},\qquad
+\Lambda_Ne_n=(N-2n)e_n.
+\]
+Endpoint terms are omitted. Direct calculation gives
+\begin{equation}\label{eq:finite-sl2}
+[L_N,R_N]=\Lambda_N,\qquad
+[\Lambda_N,R_N]=-2R_N,\qquad
+[\Lambda_N,L_N]=2L_N.
+\end{equation}
+These are an $\mathfrak{sl}(2)$ representation after a choice of sign
+and generator convention. They need not be adjoints in the ordinary
+Euclidean coordinate inner product.
+
+The operator in \cite{FF} is
+\begin{equation}\label{eq:T-enveloping}
+T_N=(\Lambda_N-NI)R_N+(\Lambda_N+NI)L_N.
+\end{equation}
+Thus $T_N$ is an explicit element of the universal enveloping algebra,
+quadratic plus linear in these generators. Equivalently,
+\begin{equation}\label{eq:T-action}
+\frac12T_Ne_n=n(N-n+1)e_{n-1}-(n+1)(N-n)e_{n+1}.
+\end{equation}
+For $a_n=2(n+1)(N-n)$, $0\le n<N$, its superdiagonal is $a_n$
+and its subdiagonal is $-a_n$.
+
+\begin{proposition}[Feinsilver--Fitzgerald \cite{FF}]
+\label{prop:T}
+The operator satisfies
+\begin{equation}\label{eq:anticommutation}
+T_N^T=-T_N,\qquad T_NS_N=-S_NT_N.
+\end{equation}
+For odd $N$ its kernel is zero. For even $N=2M$, its kernel is spanned
+by the vector $z$ given by
+\begin{equation}\label{eq:exceptional-vector}
+z_{2m}=\binom{2m}{m}\binom{N-2m}{M-m},\qquad z_{2m+1}=0,
+\end{equation}
+and $S_Nz=\binom N{N/2}z$.
+\end{proposition}
+Skew symmetry is immediate from \eqref{eq:T-action}. The null-vector
+recurrence and anticommutation are proved in \cite{FF}; they can also
+be verified from \eqref{eq:gen} and the displayed finite generators.
+In particular,
+\begin{equation}\label{eq:square-commutation}
+[T_N,S_N^2]=0,\qquad [T_N^2,S_N]=0.
+\end{equation}
+Nonzero images under $T_N$ pair eigenvectors for $\lambda$ and $-\lambda$.
+For odd $N$ the characteristic polynomial is even; for even $N$ it is
+$(\lambda-\binom N{N/2})$ times an even polynomial, as stated in \cite{FF}.
+
+\section{Positive parity blocks and the common Perron mode}
+Let
+\begin{equation}\label{eq:sign-conjugation}
+\sigma_N=\diag((-1)^{\lfloor n/2\rfloor}),\qquad
+H_N=\sigma_N(-T_N^2)\sigma_N,\qquad
+G_N=\sigma_NS_N^2\sigma_N.
+\end{equation}
+Since $\sigma_{n+2}=-\sigma_n$, the nonzero entries of $H_N$ are
+\begin{equation}\label{eq:H-entries}
+(H_N)_{nn}=a_{n-1}^2+a_n^2,\qquad
+(H_N)_{n,n+2}=a_na_{n+1}=(H_N)_{n+2,n},
+\end{equation}
+with $a_{-1}=a_N=0$. Each parity restriction is a nonnegative,
+irreducible symmetric tridiagonal matrix. For a singleton block the
+same statements about its positive Perron vector are interpreted directly.
+
+\subsection{A positive formula for $G_N$}
+Put $d_i=\binom Ni$. Parseval on the generating functions gives
+\begin{equation}\label{eq:bilinear}
+\sum_nK_n(i;N)K_n(j;N)
+=\frac{4^N}{\pi}\cos\frac{\pi(i-j)}2\,
+\mathrm B\left(\frac{i+j+1}{2},\frac{2N-i-j+1}{2}\right).
+\end{equation}
+Because $S_N$ is symmetric, $(S_N^2)_{ij}$ is $d_id_j$ times this
+column inner product. Equal-parity indices satisfy
+$\sigma_i\sigma_j\cos(\pi(i-j)/2)=1$. Therefore
+\begin{equation}\label{eq:G-entries}
+(G_N)_{ij}=\begin{cases}
+\displaystyle d_id_j\frac{4^N}{\pi}
+\mathrm B\left(\frac{i+j+1}{2},\frac{2N-i-j+1}{2}\right),
+&i\equiv j\pmod2,\\[4pt]
+0,&i\not\equiv j\pmod2.
+\end{cases}
+\end{equation}
+Each parity block is strictly positive, and $[H_N,G_N]=0$.
+
+\begin{theorem}[Common Perron eigenvectors]\label{thm:common-PF}
+On each parity sublattice the Perron eigenvector of $H_N$ is the
+Perron eigenvector of $G_N$. For $N\ge1$, the two parity blocks of
+$H_N$ have the same largest eigenvalue, and the two parity blocks of
+$G_N$ have the same largest eigenvalue. Moreover,
+$\lambda_{\max}(S_N)=\norm{S_N}_2$.
+\end{theorem}
+\begin{proof}
+The top eigenspace of each irreducible Jacobi block of $H_N$ is
+one-dimensional and has a positive vector $u$. Commutation implies
+$G_Nu=cu$. Since the corresponding block of $G_N$ is strictly positive,
+this is its Perron eigenpair.
+
+The operator $T_N$ exchanges parity and commutes with $-T_N^2$.
+Every positive eigenvalue of $-T_N^2$ therefore has equal multiplicities
+on the two parity subspaces: if $-T_N^2v=hv$ with $h>0$, then
+$T_Nv\ne0$, and $T_N$ has inverse $-T_N/h$ on that eigenspace.
+Consequently the largest $H_N$ eigenvalues agree. Their common
+positive eigenspace, before sign conjugation, has dimension two.
+The commuting $S_N^2$ acts on each parity line by its respective
+Perron eigenvalue; commutation with $T_N$ makes these scalars equal.
+Thus this two-dimensional space carries the largest eigenvalue of
+$S_N^2$. On it, $T_N$ is invertible and anticommutes with $S_N$,
+so the two $S_N$ eigenvalues are opposite. This proves the last assertion.
+\end{proof}
+The eigenvalues of $H_N$ and $G_N$ are \emph{not} equated by this
+argument. It identifies their largest-mode eigenvectors, which is the
+useful reduction from a dense matrix to a sparse difference operator.
+
+\section{Gaussian Rayleigh quotients for the sparse operator}
+Fix a parity and set
+\begin{equation}\label{eq:trial}
+y_n=\frac{n-N/2}{\sqrt N},\qquad
+f_n^{(\alpha)}=e^{-\alpha y_n^2/2},\qquad \alpha>0.
+\end{equation}
+The exact sparse Rayleigh quotient is
+\begin{equation}\label{eq:RH-exact}
+R_{H,N}(\alpha)=
+\frac{\sum_n(a_{n-1}^2+a_n^2)f_n^2
++2\sum_n a_na_{n+1}f_nf_{n+2}}{\sum_n f_n^2}.
+\end{equation}
+Each sum is over the appropriate parity indices and valid edges.
+
+\begin{proposition}[Sparse Gaussian quotient]\label{prop:RH}
+For fixed $\alpha>0$,
+\begin{equation}\label{eq:RH-asymptotic}
+R_{H,N}(\alpha)=N^4+N^3\left(4-\frac\alpha2-\frac4\alpha\right)+O(N^2).
+\end{equation}
+The $N^3$ coefficient is maximized at $\alpha=\sqrt8$.
+\end{proposition}
+\begin{proof}
+Let $r_n$ be the row sum of $H_N$. The exact energy identity is
+\[
+\ip f{H_Nf}=\sum_n r_nf_n^2
+-\sum_n a_na_{n+1}(f_{n+2}-f_n)^2.
+\]
+Polynomial expansion about $n=N/2+\sqrt N\,y$ gives
+\[
+r_n=N^4+N^3(4-8y^2)
++N^2(16y^4-16y^2)+48Ny^2-8N.
+\]
+The parity mesh in $y$ is $h_N=2/\sqrt N$.
+Gaussian Riemann sums yield
+$\sum y_n^2f_n^2/\sum f_n^2=1/(2\alpha)+o(1)$,
+with exponentially small sampling and endpoint errors. On the central
+scale $a_na_{n+1}=N^4/4+O(N^{7/2}|y|+N^3(1+y^2))$;
+expanding the edge difference gives the leading energy
+$N^3\int(f')^2/\int f^2=N^3\alpha/2$.
+Using the edge midpoint, or cancellation of odd terms, bounds the
+remaining contribution by $O(N^2)$ for this fixed Gaussian.
+Gaussian tails control all polynomial remainder terms.
+This proves \eqref{eq:RH-asymptotic}.
+Finally $\alpha/2+4/\alpha\ge\sqrt8$, with equality at $\sqrt8$.
+\end{proof}
+The local differential expression suggested by this calculation is
+\begin{equation}\label{eq:local-H}
+H_N=N^4+N^3\left(\frac{d^2}{dy^2}+4-8y^2\right)+\cdots.
+\end{equation}
+Equation \eqref{eq:local-H} is a local scaling expression, not an
+assertion of global operator convergence. Proposition~\ref{prop:RH}
+does give a genuine trial lower bound with leading terms
+$N^4+(4-\sqrt8)N^3$ for the largest eigenvalue of $H_N$.
+
+\section{The central kernel and a rigorous spectral lower bound}
+\subsection{Compact-window Stirling asymptotics}
+Write $i=N/2+\sqrt N\,y$ and $j=N/2+\sqrt N\,z$.
+Uniformly for $y,z$ in a fixed compact set, the binomial and beta
+factors in \eqref{eq:G-entries} give, on equal-parity indices,
+\begin{equation}\label{eq:G-local}
+(G_N)_{ij}=\frac{8^N}{N^{3/2}}\frac{2\sqrt2}{\pi^{3/2}}
+ e^{-3(y^2+z^2)/2+yz}\bigl(1+O(N^{-1/2})\bigr).
+\end{equation}
+Indeed,
+\[
+\binom Ni=2^N\sqrt{\frac2{\pi N}}e^{-2y^2}
+(1+O(N^{-1/2})),
+\]
+and the beta factor is
+\[
+2^{-N}\sqrt{\frac{2\pi}N}\,e^{(y+z)^2/2}
+(1+O(N^{-1/2})).
+\]
+The parity spacing $2/\sqrt N$, rather than $1/\sqrt N$, is essential
+to the resulting integral-operator constant.
+
+Define the candidate limiting operator on $L^2(\RR,dy)$ by
+\begin{equation}\label{eq:limiting-kernel}
+(\mathcal Gf)(y)=\frac{\sqrt2}{\pi^{3/2}}
+\int_{\RR}e^{-3(y^2+z^2)/2+yz}f(z)\,dz.
+\end{equation}
+For nonzero continuous compactly supported $f$, sampling $f(y_n)$
+on either parity gives the proved Rayleigh limit
+\begin{equation}\label{eq:compact-Rayleigh}
+\lim_{N\to\infty}\frac N{8^N}
+\frac{\ip{f_N}{G_Nf_N}}{\ip{f_N}{f_N}}
+=\frac{\ip f{\mathcal Gf}}{\ip f f}.
+\end{equation}
+This follows from uniform compact asymptotics and Riemann sums; it
+does not require control of matrix entries outside that compact window.
+
+\subsection{Optimizing the limiting Gaussian quotient}
+For $f_\alpha(y)=e^{-\alpha y^2/2}$, Gaussian integration gives
+\begin{equation}\label{eq:limiting-Rayleigh}
+\frac{\ip{f_\alpha}{\mathcal Gf_\alpha}}{\ip{f_\alpha}{f_\alpha}}
+=\frac{2\sqrt{2\alpha}}{\pi\sqrt{\alpha^2+6\alpha+8}}.
+\end{equation}
+The maximum over this Gaussian family is attained at
+\begin{equation}\label{eq:optimal-parameters}
+\alpha=\sqrt8,\qquad c=\frac{\sqrt8-2}{\pi}.
+\end{equation}
+For example, differentiating the logarithm of the quotient leaves
+$\alpha^2=8$. This is the same width selected by the sparse quotient.
+
+\begin{theorem}[Asymptotic Rayleigh lower bound]\label{thm:lower-bound}
+\begin{equation}\label{eq:lower-bound}
+\boxed{\liminf_{N\to\infty}
+\frac{\pi N\lambda_{\max}(S_N)^2}{8^N}\ge\sqrt8-2.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Choose compactly supported continuous cutoffs of $f_{\sqrt8}$.
+For each fixed cutoff, apply Rayleigh's principle and
+\eqref{eq:compact-Rayleigh}. Then enlarge the cutoff.
+The operator \eqref{eq:limiting-kernel} is Hilbert--Schmidt because
+its squared kernel has a strictly negative definite quadratic exponent;
+its Rayleigh quotient is continuous under $L^2$ approximation.
+Thus the cutoff quotients tend to $c$. The largest eigenvalue of each
+$G_N$ block is $\lambda_{\max}(S_N)^2$ by
+Theorem~\ref{thm:common-PF}. This proves the bound.
+\end{proof}
+No step of this proof replaces a missing global upper estimate by a
+formal Gaussian tail assertion for the finite matrices.
+
+\section{The exact Mehler structure of the candidate limit}
+For $\alpha>0$ let
+\[
+\psi_r^{(\alpha)}(y)=
+\frac{\alpha^{1/4}}{\pi^{1/4}\sqrt{2^r r!}}
+H_r(\sqrt\alpha\,y)e^{-\alpha y^2/2},
+\]
+where $H_r$ are physicists' Hermite polynomials. Define
+\[
+\mathcal N_\alpha=
+\frac1{2\alpha}\left(-\frac{d^2}{dy^2}+\alpha^2y^2\right)-\frac12.
+\]
+Its normalized eigenfunctions are $\psi_r^{(\alpha)}$ with eigenvalues $r$.
+
+\begin{proposition}[Mehler identification]\label{prop:Mehler}
+With $\alpha=\sqrt8$, $q=3-\sqrt8$, and $c=(\sqrt8-2)/\pi$,
+\begin{equation}\label{eq:Mehler-expansion}
+\mathcal G(y,z)=c\sum_{r=0}^\infty
+q^r\psi_r^{(\alpha)}(y)\psi_r^{(\alpha)}(z).
+\end{equation}
+Consequently the eigenvalues of $\mathcal G$ are $cq^r$, and
+\begin{equation}\label{eq:Mehler-semigroup}
+\mathcal G=c\exp(-\tau\mathcal N_\alpha),\qquad
+\tau=-\log q=2\log(1+\sqrt2).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The normalized Hermite Mehler sum is
+\[
+\sum_{r\ge0}q^r\psi_r^{(\alpha)}(y)\psi_r^{(\alpha)}(z)
+=\sqrt{\frac\alpha\pi}\frac1{\sqrt{1-q^2}}
+\exp\left[-\frac{\alpha(1+q^2)}{2(1-q^2)}(y^2+z^2)
++\frac{2\alpha q}{1-q^2}yz\right].
+\]
+The stated parameters give diagonal coefficient $3/2$, mixed
+coefficient $1$, and, after multiplication by $c$, amplitude
+$\sqrt2/\pi^{3/2}$. This is \eqref{eq:limiting-kernel}.
+\end{proof}
+The Gaussian Rayleigh vector is thus the \emph{exact} ground state of
+the candidate integral operator. Excited Hermite modes have geometric
+multipliers $q^r$. These statements about $\mathcal G$ are exact, while
+their transfer to the finite spectrum is conditional on a suitable
+convergence theorem.
+
+% ALGEBRA-SECTION-START
+\section{The Lie-algebra interpretation: squeezing and imaginary time}
+\label{sec:Lie-algebra}
+The supplied preliminary notes \cite{Notes} provide a useful algebraic
+interpretation. We spell it out with explicit coordinate and domain
+conventions to distinguish the finite representation from the oscillator
+representation.
+
+\subsection{The quadratic oscillator realization}
+On the Schwartz space $\mathcal S(\RR)$, let $D=d/dx$ and set
+\begin{equation}\label{eq:oscillator-sl2}
+\mathsf R=\frac{x^2}{2},\qquad
+\mathsf L=\frac{D^2}{2},\qquad
+\rho=xD+\frac12.
+\end{equation}
+The Heisenberg relation $[D,x]=1$ gives
+\begin{equation}\label{eq:oscillator-sl2-brackets}
+[\mathsf L,\mathsf R]=\rho,\qquad
+[\mathsf L,\rho]=2\mathsf L,\qquad
+[\rho,\mathsf R]=2\mathsf R.
+\end{equation}
+Thus this is an $\mathfrak{sl}(2)$ realization; a sign change of a
+lowering generator gives another common convention.
+The frequency-$\omega$ Hamiltonian and number operator are
+\begin{equation}\label{eq:omega-oscillator}
+\mathscr H_\omega=\frac12(-D^2+\omega^2x^2),\qquad
+\mathcal N_\omega=\frac{\mathscr H_\omega}{\omega}-\frac12
+=\omega\mathsf R-\omega^{-1}\mathsf L-\frac12.
+\end{equation}
+The natural Hilbert space for the wavefunctions and the unitary Fourier
+transform is $L^2(\RR,dx)$. A Gaussian-weighted polynomial realization
+requires conjugating the operators; it is not the same realization
+with its measure changed silently.
+
+\subsection{Squeezing is the exponential of $\rho$}
+The closure of $\rho$ generates the unitary dilation group
+\begin{equation}\label{eq:dilation}
+V_r=e^{r\rho},\qquad (V_rf)(x)=e^{r/2}f(e^rx),\qquad r\in\RR.
+\end{equation}
+Direct calculation gives
+\[
+V_rxV_r^{-1}=e^rx,\qquad V_rDV_r^{-1}=e^{-r}D.
+\]
+For $e^{2r}=\omega$ this implies
+\begin{equation}\label{eq:squeezed-conjugacy}
+V_r\mathscr H_1V_r^{-1}=\frac{\mathscr H_\omega}{\omega},\qquad
+\mathcal N_\omega=V_r\mathcal N_1V_r^{-1}.
+\end{equation}
+In particular,
+\[
+V_r(\pi^{-1/4}e^{-x^2/2})
+=(\omega/\pi)^{1/4}e^{-\omega x^2/2}.
+\]
+Thus the changed width of our Perron profile is an actual dilation
+in the oscillator representation, not only an analogy with squeezing.
+
+\subsection{The limiting kernel as an algebraic semigroup}
+Using \eqref{eq:omega-oscillator} in the variable $y$, the exact
+Mehler operator can be written
+\begin{equation}\label{eq:Lie-semigroup}
+\boxed{
+\mathcal G=c\,e^{\tau/2}
+\exp\left[\tau(\alpha^{-1}\mathsf L-\alpha\mathsf R)\right],
+\qquad \alpha=\sqrt8.
+}
+\end{equation}
+Equivalently,
+\[
+\mathcal G=cV_{\frac12\log\alpha}
+ e^{-\tau\mathcal N_1}V_{\frac12\log\alpha}^{-1}.
+\]
+For positive real $\tau$, this is a bounded imaginary-time oscillator
+semigroup, rather than a unitary real-time rotation. Algebraically it
+is the semigroup continuation of the same quadratic oscillator
+construction used for fractional Fourier transformations.
+
+With the positive-sign Fourier convention of the supplied notes,
+\[
+(\mathcal F_+f)(\xi)=\frac1{\sqrt{2\pi}}\int e^{i\xi x}f(x)\,dx,
+\qquad
+\mathcal F_+=e^{i\pi\mathcal N_1/2}.
+\]
+This contrasts with the negative-sign convention used in much of the
+optics literature. The notes derive this identity from
+$\psi_n=(x-D)^ne^{-x^2/2}$ and
+$\mathscr H_1\psi_n=(n+1/2)\psi_n$.
+In their generating-function calculation the intermediate exponent
+is $-\xi^2/2+2i\xi t+t^2$; the factor $2$ in the mixed term is needed.
+We use normalized Hermite wavefunctions and the unweighted $L^2$ space
+when passing from the algebraic calculation to unitary operators.
+
+\subsection{What this says, and does not say, about the finite algebra}
+Equation \eqref{eq:T-enveloping} places the finite $T_N$ in the universal
+enveloping algebra of \eqref{eq:finite-sl2}. Equation
+\eqref{eq:Lie-semigroup} places the candidate limiting kernel in the
+oscillator semigroup associated with \eqref{eq:oscillator-sl2-brackets}.
+These are two different representations. We have not exhibited an
+exact finite-$N$ Lie-group conjugacy between them, and $T_N$ is not
+simply the standard normalized finite-oscillator generator.
+The centered scaling of $H_N$, its Perron localization, and the
+weighted kernel asymptotics are the analytic bridge that must be
+controlled. The algebraic interpretation organizes that bridge but
+does not replace its estimates.
+
+The even and odd Hermite subspaces are each preserved by
+$\mathsf R,\mathsf L,\rho$. This oscillator parity should not be
+confused with the even/odd \emph{lattice-index} blocks of the finite
+matrices. Each finite lattice block samples the entire real line in
+the central scaling and can support both even and odd continuum modes.
+
+Finally, the notes ask about an intertwiner with convolution.
+Identifying a finite mode basis with the first $N+1$ Hermite modes
+intertwines diagonal fractional phases on that subspace. It does not
+by itself intertwine ordinary convolution with a finite Kravchuk
+convolution, or identify the physical position operators. We leave
+that stronger question separate from the spectral argument.
+% ALGEBRA-SECTION-END
+
+\section{Comparison with Atakishiyev--Vicent--Wolf}
+\label{sec:AVW}
+The finite-oscillator interpretation and its fractional Fourier
+transforms are established background \cite{AW,AVW}, not novelty
+claims of this note. In particular, \cite{AVW}, equations (21)--(28),
+organizes the finite oscillator through angular-momentum generators;
+equations (33)--(35) give normalized Kravchuk functions and their
+oscillator contraction; equation (37) gives the fractional-transform
+spectral factorization.
+
+\subsection{A normalization dictionary}
+Their variables translate as $N=2\ell$, $m=j-N/2$. Their polynomial
+normalization in equation (34), denoted here only in this paragraph
+by $k_n^{\mathrm{AVW}}$, satisfies
+\[
+k_n^{\mathrm{AVW}}(j;N)=(-1)^n2^{-n}K_n(j;N).
+\]
+This is \emph{not} the factorially normalized centered polynomial that
+is also sometimes denoted $k_n$ in other work.
+Their normalized functions are consequently
+\begin{equation}\label{eq:AVW-functions}
+\phi_n(j-N/2)=(-1)^n2^{-N/2}
+\sqrt{\frac{\binom Nj}{\binom Nn}}K_n(j;N).
+\end{equation}
+Set
+\begin{equation}\label{eq:U}
+U_N=2^{-N/2}B_N^{-1/2}\Phi_NB_N^{1/2}.
+\end{equation}
+Duality and orthogonality give $U_N^T=U_N$, $U_N^TU_N=I$.
+Up to the mode-dependent sign, \eqref{eq:AVW-functions} is its row
+basis. The spectral construction can therefore be written in our
+convention as
+\[
+\mathcal F_{N,\theta}
+=U_N\diag(e^{-in\theta})_{n=0}^NU_N^T.
+\]
+The paper's fractional parameter rescales $\theta$; Fourier signs and
+global phases must be fixed before equating kernels literally.
+The mode signs in \eqref{eq:AVW-functions} cancel in this spectral sum.
+
+For our spectral problem the essential relation is
+\begin{equation}\label{eq:congruence}
+S_N=2^{N/2}B_N^{1/2}U_NB_N^{1/2}.
+\end{equation}
+This is a congruence, not a similarity. The unitary transform's simple
+spectral structure therefore does not directly determine the growing
+eigenvalues of $S_N$.
+
+\subsection{Standard versus squeezed oscillator contraction}
+The standard finite ground state is
+$2^{-N/2}\sqrt{\binom Nj}$, with central shape $e^{-y^2}$.
+The paper's continuum coordinate is
+\[
+x=\frac m{\sqrt\ell}=\sqrt2\,y.
+\]
+For unit continuum normalization the discrete functions acquire the
+factor $\ell^{1/4}$, the inverse square root of their lattice spacing.
+The fixed-degree contraction, with sign conventions consistently
+chosen, gives the usual normalized Hermite functions. In particular
+the standard ground state has shape $e^{-x^2/2}$.
+
+Our Rayleigh profile is instead
+\[
+e^{-\sqrt2 y^2}=e^{-\sqrt2 x^2/2}.
+\]
+It is the frequency-$\sqrt2$ squeezed ground state in the paper's
+coordinate, with dilation parameter
+\begin{equation}\label{eq:physical-squeeze}
+r=\frac14\log2.
+\end{equation}
+Its width is smaller than the standard ground-state width by
+$2^{-1/4}$. The fractional-transform framework supplies the natural
+basis and group interpretation; the binomial congruence in
+\eqref{eq:congruence} and the commuting $T_N$ construction lead to
+this particular squeezing and positive limiting kernel.
+
+\section{Numerical evidence and the remaining proof program}
+\subsection{Finite Gaussian Rayleigh calculations}
+The following values use the even-parity Gaussian trial
+$\alpha=\sqrt8$, without finite-$N$ width optimization. By
+Theorem~\ref{thm:common-PF}, $\sqrt{R_{G,N}}$ is a trial lower bound
+for $\lambda_{\max}(S_N)$ in exact arithmetic. The displayed values
+are floating-point evaluations, not certified numerical enclosures.
+\begin{center}\small
+\begin{tabular}{r|r|r}
+$N$&$\sqrt{R_{G,N}(\sqrt8)}$&Numerical $\lambda_{\max}(S_N)$\\\hline
+4&15.91790493&16.00000000\\
+10&5254.861928&5256.904661\\
+20&$1.225209116\times10^8$&$1.225344027\times10^8$\\
+50&$2.736712075\times10^{21}$&$2.736758628\times10^{21}$\\
+100&$7.319951192\times10^{43}$&$7.319981980\times10^{43}$
+\end{tabular}
+\end{center}
+The sparse and dense Perron vectors agree to numerical precision,
+as predicted by the exact common-mode theorem. Numerical evidence
+supports \eqref{eq:predicted-asymptotic} but is not its proof.
+
+\subsection{A route to a matching upper bound}
+One option is to embed each parity block into $L^2(\RR)$ by step
+functions of width $2/\sqrt N$. The kernel corresponding to
+$NG_N/8^N$ then has cell values $(\sqrt N/2)NG_{ij}/8^N$.
+Compact-window convergence is \eqref{eq:G-local}; a uniform integrable
+bound on the squared kernels would imply Hilbert--Schmidt convergence
+and hence operator-norm convergence to $\mathcal G$.
+Such a bound must control central, moderate-deviation, and edge
+regions. It has not been supplied here.
+
+An alternative is to use the common Perron vector, obtain global
+localization and a spectral-gap estimate for the Jacobi operator
+$H_N$, and prove sufficient convergence of that vector to the squeezed
+Gaussian. Transferring this convergence to the dense quadratic form
+still requires an adequate bound on the scaled $G_N$; a local
+oscillator expansion alone is insufficient.
+
+Once either route is completed, $\norm{\mathcal G}=c$ gives the missing
+upper bound and \eqref{eq:predicted-asymptotic}. Stronger compact
+operator convergence would also make the geometric excited-mode
+predictions accessible. The finite Lie-algebra structure and the
+oscillator semigroup clarify the expected result, but the global
+analytic estimates remain the principal unfinished task.
+
+\begin{thebibliography}{9}
+\bibitem{FF}
+Philip Feinsilver and Robert Fitzgerald,
+\emph{The spectrum of symmetric Krawtchouk matrices},
+Linear Algebra and its Applications (1996),
+\href{https://doi.org/10.1016/0024-3795(94)00123-5}
+{doi:10.1016/0024-3795(94)00123-5}.
+The supplied source \texttt{kravspec.tex} is used for the operator
+$T_N$, its kernel, and the spectral pairing.
+
+\bibitem{AW}
+N.~M. Atakishiyev and K.~B. Wolf,
+\emph{Fractional Fourier--Kravchuk transform},
+Journal of the Optical Society of America A \textbf{14} (1997),
+1467--1477,
+\href{https://doi.org/10.1364/JOSAA.14.001467}
+{doi:10.1364/JOSAA.14.001467}.
+Cited as the antecedent of the construction analyzed in \cite{AVW}.
+
+\bibitem{AVW}
+N.~M. Atakishiyev, L.~E. Vicent, and K.~B. Wolf,
+\emph{Continuous vs.\ discrete fractional Fourier transforms},
+Journal of Computational and Applied Mathematics \textbf{107}
+(1999), 73--95,
+\href{https://doi.org/10.1016/S0377-0427(99)00082-5}
+{doi:10.1016/S0377-0427(99)00082-5}.
+\href{https://www.fis.unam.mx/~bwolf/Articles/106.pdf}{Author-hosted PDF}.
+
+\bibitem{Notes}
+Supplied preliminary notes, dated 28 April 2011,
+\texttt{FeinNotes11-2.PDF}, three pages, unpublished.
+Sections on Hermite functions, $\mathfrak{sl}(2)$ operators, the
+Kravchuk connection, and a question about convolution intertwiners.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,159 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\title{Cumulative Bernoulli Trials and the Mehler Limit}
+\date{Integrated additions to the Kravchuk Encyclopedia, Chapters 3 and 11}
+\begin{document}\maketitle
+\section{Cumulative Bernoulli trials: saved and recouped successes}
+\label{sec:cumulative-bernoulli}
+Hoare and Rahman \cite{HoareRahman1984} develop Krawtchouk processes
+from combinations of Bernoulli trials with saved and recouped successes.
+The earlier dynamic-occupancy program of Cooper, Hoare, and Rahman
+\cite{CooperHoareRahman1977} starts from a Hahn kernel with
+negative-hypergeometric factors. The following independent-site
+construction presents our Bernoulli case with explicit conventions;
+its parameters are defined here rather than implicitly identified with
+all conventions in those papers.
+
+Starting from $i$ successes among $N$ sites, save each success with
+probability $\alpha$. If $k$ are saved, retry the remaining $N-k$ sites
+with success probability $\beta$. With
+$b(j;m,p)=\binom mjp^j(1-p)^{m-j}$ (zero outside $0\le j\le m$), the
+positive transition kernel is
+\begin{equation}\label{eq:ency-cumulative}
+\mathcal K(j\mid i)=\sum_{k=0}^{\min(i,j)}
+b(k;i,\alpha)b(j-k;N-k,\beta).
+\end{equation}
+Its backward action is $(\mathcal Kf)(i)=\sum_j\mathcal K(j\mid i)f(j)$;
+the column-vector forward transition matrix is its transpose.
+For $0\le\alpha<1$, $0<\beta<1$, the one-site transition and its
+stationary parameter are
+\[
+P=\begin{pmatrix}1-\beta&\beta\\
+(1-\alpha)(1-\beta)&\alpha+(1-\alpha)\beta\end{pmatrix},\qquad
+r=\alpha(1-\beta),\quad p=\frac{\beta}{1-r}.
+\]
+Indeed $\mathbb E[Y-p\mid X]=r(X-p)$. The invariant occupation law is
+$w_{N,p}(i)=\binom Ni p^i(1-p)^{N-i}$, and the biased Krawtchouk
+coefficients defined by
+\[
+(1+(1-p)z)^i(1-pz)^{N-i}=\sum_{n=0}^NC_n(i;N,p)z^n
+\]
+satisfy
+\[
+\mathcal KC_n=r^nC_n,\qquad
+\sum_iw_{N,p}(i)C_n(i)C_m(i)=\binom Nn[p(1-p)]^n\delta_{nm}.
+\]
+Both statements follow by expanding products of centered site variables
+$X_a-p$. Thus the positive formula \eqref{eq:ency-cumulative} has the
+exact bilinear expansion
+\begin{equation}\label{eq:ency-cumulative-spectral}
+\frac{\mathcal K(j\mid i)}{w_{N,p}(j)}
+=\sum_{n=0}^N\frac{r^nC_n(i;N,p)C_n(j;N,p)}{\binom Nn[p(1-p)]^n}.
+\end{equation}
+
+For our symmetric convention, take $p=1/2$ and
+$\beta=(1-r)/2$, $\alpha=2r/(1+r)$, with $0\le r<1$.
+Then $P=\frac12\left(\begin{smallmatrix}1+r&1-r\\1-r&1+r\end{smallmatrix}\right)$
+and $C_n(i;N,1/2)=(-1/2)^nK_n(i;N)$ in ordinary coefficient
+normalization. For $r=e^{-t}$ this is the time-$t$ independent-bit
+transition. It is not the single-flip Ehrenfest step: the spectra are
+$r^n$ and $1-2n/N$, respectively.
+
+At stationarity the $N$ input--output site pairs give a four-category
+multinomial table. Its input and output margins $I,J$ obey
+\[
+\frac{\mathcal K(j\mid i)}{w_{N,p}(j)}
+=\frac{\Pr(I=i,J=j)}{w_{N,p}(i)w_{N,p}(j)}.
+\]
+This is the symmetric-tensor occupation kernel, interpreted as a joint
+law relative to the product of its margins. Conditioning instead on a
+fixed flip count gives hypergeometric overlap laws. Central Gaussian
+scaling of the joint density ratio produces the Mehler kernel in
+Section~\ref{sec:11-3}.
+
+\section{Bilinear kernels and the Mehler limit}
+\label{sec:11-3}
+The saved-success model of Section~\ref{sec:cumulative-bernoulli}
+gives a finite positive-kernel derivation of the Mehler limit,
+following the dynamic-occupancy viewpoint
+\cite{CooperHoareRahman1977,HoareRahman1984}. Fix $0<r<1$ in its
+symmetric case. Write
+\[
+w_N(k)=2^{-N}\binom Nk,\quad
+p_{n,N}(k)=\binom Nn^{-1/2}K_n(k;N),\quad
+(1+z)^{N-k}(1-z)^k=\sum_nK_n(k;N)z^n.
+\]
+The finite kernel relative to $w_N$ is
+\begin{equation}\label{eq:ency-finite-mehler}
+m_{r,N}(k,\ell)=\sum_{n=0}^Nr^np_{n,N}(k)p_{n,N}(\ell)
+=\sum_{n=0}^N\frac{r^nK_n(k;N)K_n(\ell;N)}{\binom Nn}.
+\end{equation}
+For stationary input and output counts $K,L$,
+$m_{r,N}(k,\ell)=\Pr(K=k,L=\ell)/(w_N(k)w_N(\ell))$ and
+\[
+\mathbb E[u^Kv^L]=
+\left[\tfrac{1+r}{4}(1+uv)+\tfrac{1-r}{4}(u+v)\right]^N.
+\]
+Set $x_k=(N-2k)/\sqrt{2N}$ and $\delta_N=\sqrt{2/N}$.
+The joint local central limit theorem gives, on compact central windows,
+\[
+\frac{\Pr(K=k,L=\ell)}{\delta_N^2}\longrightarrow
+\frac{\exp[-(x^2-2rxy+y^2)/(1-r^2)]}{\pi\sqrt{1-r^2}},
+\qquad \frac{w_N(k)}{\delta_N}\longrightarrow
+w(x)=\pi^{-1/2}e^{-x^2}.
+\]
+Consequently
+\begin{equation}\label{eq:ency-mehler-ratio}
+m_{r,N}(k,\ell)\longrightarrow m_r(x,y)
+=\frac1{\sqrt{1-r^2}}
+\exp\left[\frac{2rxy-r^2(x^2+y^2)}{1-r^2}\right].
+\end{equation}
+The density is relative to $d\mu=w(x)dx$, of variance $1/2$.
+The transition is $Y=rx+\sqrt{1-r^2}Z$ for $Z\sim\mu$.
+For $r=e^{-t}$ its generator is $G=\frac12D^2-xD$.
+The unitary $Uf=w^{1/2}f$ conjugates $-G$ to
+$H-\frac12I$, where $H=\frac12(x^2-D^2)$. Thus
+\[
+\sqrt{w(x)}m_r(x,y)\sqrt{w(y)}
+=\frac{\exp[-(1+r^2)(x^2+y^2)/(2(1-r^2))+2rxy/(1-r^2)]}
+{\sqrt{\pi(1-r^2)}}
+\]
+is the kernel of $r^{H-1/2}$, and multiplication by $\sqrt r$ gives
+$r^H$. This is Mehler's kernel in oscillator coordinates.
+
+In the probabilists' Hermite convention,
+the bilinear identity is
+\[
+\sum_{n\ge0}\frac{r^n}{n!}\operatorname{He}_n(\xi)
+\operatorname{He}_n(\eta)
+=\frac1{\sqrt{1-r^2}}
+\exp\left[\frac{2r\xi\eta-r^2(\xi^2+\eta^2)}{2(1-r^2)}\right],
+\qquad |r|<1.
+\]
+It converges absolutely in that disk, with the square root equal to
+$1$ at $r=0$. The fixed-degree Krawtchouk--Hermite limit identifies the
+spectral modes; the local-limit argument above proves convergence of
+the finite kernels without an unproved interchange of an expanding
+spectral sum with a limit. Neither assertion alone proves convergence
+of an unrelated weighted finite-matrix spectrum.
+
+\begin{thebibliography}{9}
+\bibitem{CooperHoareRahman1977}
+R.~D. Cooper, M.~R. Hoare, and M.~Rahman,
+\emph{Stochastic processes and special functions: On the probabilistic
+origin of some positive kernels associated with classical orthogonal
+polynomials}, J. Math. Anal. Appl. \textbf{61} (1977), no.~1, 262--291.
+\href{https://doi.org/10.1016/0022-247X(77)90160-3}{doi:10.1016/0022-247X(77)90160-3}.
+
+\bibitem{HoareRahman1984}
+M.~R. Hoare and M.~Rahman, \emph{Cumulative Bernoulli trials and
+Krawtchouk processes}, Stochastic Process. Appl. \textbf{16} (1984),
+no.~2, 113--139.
+\href{https://doi.org/10.1016/0304-4149(84)90014-0}{doi:10.1016/0304-4149(84)90014-0}.
+The publisher dates the issue February 1984; its copyright notice is 1983.
+
+\end{thebibliography}\end{document}

@@ -1,0 +1,39 @@
+\chapter{Hypergeometric Functions}
+\label{ch:15}
+\section{Krawtchouk polynomials as hypergeometric functions}
+\label{sec:15-1}
+Comparing coefficients in \eqref{eq:gen} gives the terminating form
+\begin{equation}\label{eq:K-hypergeometric}
+K_n(j;N)=\binom Nn\,{}_2F_1\!\left(-n,-j;-N;2\right),\qquad 0\le n,j\le N.
+\end{equation}
+The denominator parameter $-N$ causes no difficulty: the series stops at
+$\min(n,j)\le N$.
+
+\subsection{The bilinear formula}
+For $t\notin\{0,-1,-2,\ldots\}$ and $A=1-(1-v)w$, Euler integrals give
+\[
+\sum_{n\ge0}\frac{(t)_n}{n!}w^n
+{}_2F_1(-n,X;t;v){}_2F_1(-n,Y;t;v)
+=(1-w)^{X+Y-t}A^{-X-Y}{}_2F_1\!\left(X,Y;t;\frac{wv^2}{A^2}\right),
+\]
+initially near $w=0$; it converges absolutely when
+$|w|\max\{1,|1-v|^2\}<1$. Setting $X=-k$, $Y=-\ell$ and then $t=-N$
+gives a finite polynomial identity. With $v=2$, $w=-r$ and
+\eqref{eq:K-hypergeometric},
+\begin{equation}\label{eq:closed-bilinear}
+\sum_{n=0}^N\frac{r^n}{\binom Nn}K_n(k;N)K_n(\ell;N)
+=(1+r)^{N-k-\ell}(1-r)^{k+\ell}\,
+{}_2F_1\!\left(-k,-\ell;-N;-\frac{4r}{(1-r)^2}\right).
+\end{equation}
+Apparent poles cancel when $k+\ell>N$. The left side is the kernel
+$m_{r,N}$ of \eqref{eq:ency-finite-mehler}; Chapter~\ref{ch:11} uses this
+closed form for the Mehler limit. With $X=-x$, $Y=-y$ and $v=1-c^{-1}$,
+the same identity is the Meixner bilinear kernel.
+
+\section{Addition formulas}
+\label{sec:15-2}
+% TODO: Develop this section; add verified references, examples, and exercises.
+
+\noindent\textbf{ADDITION FORMULAS NEEDS TO BE DONE.}
+
+

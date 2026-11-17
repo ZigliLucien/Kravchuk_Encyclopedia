@@ -1,6 +1,6 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.10.16)  28 OCT 2026 15:57
- system commands enabled.
-**main.tex
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.10.16)  9 NOV 2026 21:57
+ restricted system commands enabled.
+**main
 (./main.tex
 LaTeX2e <2022-11-01> patch level 1
 Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
@@ -1235,7 +1235,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 13460 strings out of 478285
+ 13459 strings out of 478285
  100000,1977958 words of node,token memory allocated
  4964 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 4 glue, 4 kern, 1 glyph, 1102 attribute, 63 glue_sp
@@ -1243,7 +1243,7 @@ ec, 1102 attribute_list, 1 write, 3 pdf_action nodes
    avail lists: 2:1920,3:408,4:172,5:672,6:119,7:8468,8:125,9:1466,10:20,11:727
  32002 multiletter control sequences out of 65536+600000
  101 fonts using 6417239 bytes
- 72i,13n,72p,697b,535s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,13n,72p,693b,535s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texli
 ve/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive

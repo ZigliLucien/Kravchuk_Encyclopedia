@@ -1,0 +1,647 @@
+[
+  {
+    "archive_path": "Kravchuk/Path_integrals.html",
+    "headings": [
+      "Path integrals"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Lie_algebra_and_Krawtchouk_polynomials.html",
+    "headings": [
+      "Lie algebra and Krawtchouk polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_polynomials_and_multinomial_distribution.html",
+    "headings": [
+      "Krawtchouk polynomials and multinomial distribution"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/forms.html",
+    "headings": [
+      "Kravchuk Transforms"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/Coding_Theory.html",
+    "headings": [
+      "Coding Theory"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Zeros_of_Krawtchouk_polynomials.html",
+    "headings": [
+      "Zeros of Krawtchouk polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Nonsymmetric_Walks.html",
+    "headings": [
+      "Nonsymmetric Walks"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/S_and_so21_tensors.html",
+    "headings": [
+      "S and so(2,1) tensors"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Association_schemes.html",
+    "headings": [
+      "Association schemes"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Hypergeometric_Functions.html",
+    "headings": [
+      "Hypergeometric Functions"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/MacWilliams_theorem.html",
+    "headings": [
+      "MacWilliams' theorem"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Traces_on_Grassman_algebras.html",
+    "headings": [
+      "Traces on Grassman algebras"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/MATHSCIBASE/MathSci.searchpage.html",
+    "headings": [
+      "Search"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/MATHSCIBASE/listing.html",
+    "headings": [
+      "home phjf WEB Kravchuk MATHSCIBASE"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/MATHSCIBASE/index.html",
+    "headings": [
+      "MATHSCIBASE"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/MATHSCIBASE/.dirxml/.1listing.html",
+    "headings": [
+      "/home/phjf/WEB/Kravchuk/MATHSCIBASE : Listing 1"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/MATHSCIBASE/.dirxml/.2listing.html",
+    "headings": [
+      "/home/phjf/WEB/Kravchuk/MATHSCIBASE : Listing 2"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/Urn_Model.html",
+    "headings": [
+      "Urn Model"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Central_Limit_Theorem.html",
+    "headings": [
+      "Central Limit Theorem"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Orthogonal_Polynomials.html",
+    "headings": [
+      "Orthogonal Polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Nonsymmetric_case.html",
+    "headings": [
+      "Nonsymmetric case"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Paths.html",
+    "headings": [
+      "Paths"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Symmetric_Krawtchouk_matrices_and_binomial_expectations.html",
+    "headings": [
+      "Symmetric Krawtchouk matrices and binomial expectations"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Flip_operator_and_quantum_random_walk.html",
+    "headings": [
+      "Flip operator and quantum random walk"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Elementary_symmetric_functions_and_determinants.html",
+    "headings": [
+      "Elementary symmetric functions and determinants"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Symmetric_Functions._Energy.html",
+    "headings": [
+      "Symmetric Functions. Energy"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Kravchuk_Polynomials.html",
+    "headings": [
+      "Kravchuk Polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Addition_formulas.html",
+    "headings": [
+      "Addition formulas"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/krav.html",
+    "headings": [
+      "Kravchuk Encyclopedia"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_matrices_as_group_elements.html",
+    "headings": [
+      "Krawtchouk matrices as group elements"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Eigenvalues_of_S.html",
+    "headings": [
+      "Eigenvalues of S"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/K_and_S_matrices_for_N_from_1_to_14.html",
+    "headings": [
+      "K and S matrices for N from 1 to 14"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Martingales.html",
+    "headings": [
+      "Martingales"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Initial_and_invariant_distributions.html",
+    "headings": [
+      "Initial and invariant distributions"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_Polynomials.html",
+    "headings": [
+      "Krawtchouk Polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Gaussian-Krawtchouk_summation.html",
+    "headings": [
+      "Gaussian-Krawtchouk summation"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/First_View.html",
+    "headings": [
+      "First View"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_Transforms.html",
+    "headings": [
+      "Krawtchouk Transforms"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Orthogonal_transformation_associated_to_K.html",
+    "headings": [
+      "Orthogonal transformation associated to K"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/KijN_1-20.html",
+    "headings": [
+      "Krawtchouk polynomials in the variables x,N, i,j, j,N for N from 1 to 20"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/index.html",
+    "headings": [],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/Quantum_Probability_and_Tensor_Algebra.html",
+    "headings": [
+      "Quantum Probability and Tensor Algebra"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Cross_properties.html",
+    "headings": [
+      "Cross properties"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Clebsch-Gordan_Coefficients_for_Heisenberg_Algebras.html",
+    "headings": [
+      "Clebsch-Gordan Coefficients for Heisenberg Algebras"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Pascals_Triangle.html",
+    "headings": [
+      "Pascal's Triangle"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Hilbert_space_structure.html",
+    "headings": [
+      "Hilbert space structure"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Heisenberg_Algebra.html",
+    "headings": [
+      "Heisenberg Algebra"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Test.html",
+    "headings": [
+      "Testing"
+    ],
+    "technical_or_administrative": true
+  },
+  {
+    "archive_path": "Kravchuk/Exponential_function_in_Krawtchouk_basis.html",
+    "headings": [
+      "Exponential function in Krawtchouk basis"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/AKKL.html",
+    "headings": [
+      "A,K, and Lambda"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Supersymmetry.html",
+    "headings": [
+      "Supersymmetry"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Spectrum_of_S.html",
+    "headings": [
+      "Spectrum of S"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Symmetric_Krawtchouk_Matrices.html",
+    "headings": [
+      "Symmetric Krawtchouk Matrices"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Lie_Groups._Reflections.html",
+    "headings": [
+      "Lie Groups. Reflections"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Racah_coefficients.html",
+    "headings": [
+      "Racah coefficients"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Lie_Algebras.html",
+    "headings": [
+      "Lie Algebras"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Quaternions_and_Clifford_algebras.html",
+    "headings": [
+      "Quaternions and Clifford algebras"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/S_Squared_and_trace_formulas.html",
+    "headings": [
+      "S Squared and trace formulas"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Twistons.html",
+    "headings": [
+      "Twistons"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Three-term_recurrence_in_terms_of_A_K_Lambda.html",
+    "headings": [
+      "Three-term recurrence in terms of A, K, \\Lambda"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_transform_and_FFT.html",
+    "headings": [
+      "Krawtchouk transform and FFT"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Mikhail_Philippovitch_Krawtchouk:_a_biographical_sketch.html",
+    "headings": [
+      "Mikhail Philippovitch Krawtchouk: a biographical sketch"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Three-dimensional_simple_Lie_algebras.html",
+    "headings": [
+      "Three-dimensional simple Lie algebras"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Splitting_formula.html",
+    "headings": [
+      "Splitting formula"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Orthogonal_functionals.html",
+    "headings": [
+      "Orthogonal functionals"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Some_K_and_S_Matrices.html",
+    "headings": [
+      "Some K and S Matrices",
+      "Kravchuk Matrices",
+      "Symmetric Krawtchouk matrices"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_polynomials_as_hypergeometric_functions.html",
+    "headings": [
+      "Krawtchouk polynomials as hypergeometric functions"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/so21_explained.html",
+    "headings": [
+      "so(2,1) explained"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/so21_spinors.html",
+    "headings": [
+      "so(2,1) spinors"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Iterated_integrals.html",
+    "headings": [
+      "Iterated integrals"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Introduction.html",
+    "headings": [
+      "Introduction",
+      "The Kravchuk Encyclopedia"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Gaussian_Quadrature.html",
+    "headings": [
+      "Gaussian Quadrature"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Discrete_stochastic_differential_equations.html",
+    "headings": [
+      "Discrete stochastic differential equations"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Reflections.html",
+    "headings": [
+      "Reflections"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Generating_functions.html",
+    "headings": [
+      "Generating functions"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_Matrices.html",
+    "headings": [
+      "Krawtchouk Matrices"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Further_remarks_on_the_multivariate_case.html",
+    "headings": [
+      "Further remarks on the multivariate case"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Clebsch-Gordan_coefficients_and_Krawtchouk_polynomials.html",
+    "headings": [
+      "Clebsch-Gordan coefficients and Krawtchouk polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Representations_of_the_Heisenberg_algebra.html",
+    "headings": [
+      "Representations of the Heisenberg algebra"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Krawtchouk_matrices_as_eigenvectors.html",
+    "headings": [
+      "Krawtchouk matrices as eigenvectors"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Hermite_polynomials.html",
+    "headings": [
+      "Hermite polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Iterated_integral.html",
+    "headings": [
+      "Iterated integral"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Random_Walks.html",
+    "headings": [
+      "Random Walks"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Raising_and_velocity_operator._Number_operator.html",
+    "headings": [
+      "Raising and velocity operator. Number operator"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Time-zero_polynomials.html",
+    "headings": [
+      "Time-zero polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Appendix.html",
+    "headings": [
+      "Appendix"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Chebyshev_polynomials.html",
+    "headings": [
+      "Chebyshev polynomials"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/The_matrix_T.html",
+    "headings": [
+      "The matrix T"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Evolution_structure_Hamiltonian.html",
+    "headings": [
+      "Evolution structure. Hamiltonian."
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Trace_formulas._MacMahon's_Theorem.html",
+    "headings": [
+      "Trace formulas. MacMahon's Theorem"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Markov_chains.html",
+    "headings": [
+      "Markov chains"
+    ],
+    "technical_or_administrative": false
+  },
+  {
+    "archive_path": "Kravchuk/Other_Examples.html",
+    "headings": [
+      "Other Examples"
+    ],
+    "technical_or_administrative": false
+  }
+]

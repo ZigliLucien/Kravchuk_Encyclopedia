@@ -1,0 +1,162 @@
+\chapter{Urn Model}
+\label{ch:3}
+\section{Markov chains}
+\label{sec:3-1}
+In the discrete-time Ehrenfest chain, the state $j$ is the number of balls in one of two urns. Moving one uniformly chosen ball gives
+\[
+(Pf)(j)=\frac{N-j}{N}f(j+1)+\frac jN f(j-1).
+\]
+The Krawtchouk difference equation gives
+\[
+P K_n(\cdot;N)=\left(1-\frac{2n}{N}\right)K_n(\cdot;N).
+\]
+Here $N\geq1$, and terms outside the state space have zero transition coefficient.
+
+\section{Initial and invariant distributions}
+\label{sec:3-2}
+The invariant distribution is $w_N(j)=2^{-N}\binom Nj$. Detailed balance follows from
+\[
+w_N(j)\frac{N-j}{N}=w_N(j+1)\frac{j+1}{N}.
+\]
+The non-lazy discrete-time chain has period two; invariance should not be confused with convergence to equilibrium from every initial distribution.
+
+
+
+\section{Induced matrices and multinomial chains: the SFA II framework}
+\label{sec:ency-sfa-ii}
+The multinomial extension of a one-site chain is the induced-matrix
+construction of SFA II \cite{FeinsilverSFAII2023}. It provides the finite
+framework for the cumulative-trial example below and the Mehler limit
+in Section~\ref{sec:11-3}. We declare row-stochastic conventions here;
+column-vector probability evolution uses the transpose.
+
+For a $q$-state matrix $A$, its degree-$N$ induced matrix is defined by
+\begin{equation}\label{eq:ency-induced-definition}
+\prod_a\left(\sum_bA_{ab}z_b\right)^{n_a}
+=\sum_{|\mathbf m|=N}A^{[N]}(\mathbf n,\mathbf m)\mathbf z^{\mathbf m},
+\qquad |\mathbf n|=N.
+\end{equation}
+Substitution gives $(AB)^{[N]}=A^{[N]}B^{[N]}$. If $A=P$ is stochastic,
+$P^{[N]}$ is the transition for $N$ independent sites with their labels
+forgotten. Equivalently,
+\[
+P^{[N]}(\mathbf n,\mathbf m)
+=\sum_{\substack{\sum_b c_{ab}=n_a\\\sum_a c_{ab}=m_b}}
+\prod_a\frac{n_a!}{\prod_b c_{ab}!}\prod_{a,b}P_{ab}^{c_{ab}}.
+\]
+Thus the contingency-table model and the induced matrix are exactly
+the same finite construction. The coordinate matrix of the symmetric
+tensor power depends on basis normalization; the stochastic occupation
+basis should not be confused with an orthonormal tensor basis.
+
+If $\boldsymbol\eta$ is stationary, then
+\[
+\Pi_N(\mathbf n)=\frac{N!}{\prod_a n_a!}\prod_a\eta_a^{n_a}
+\]
+is stationary. For a complete one-site eigenbasis with eigenvalues
+$1,r_1,\ldots,r_{q-1}$, symmetric products give occupation eigenvalues
+$\prod_{j=1}^{q-1}r_j^{\nu_j}$ for $|\boldsymbol\nu|\le N$.
+Reversibility permits orthogonal one-site modes and the associated
+multivariate Krawtchouk eigenbasis; stochasticity alone does not imply
+this orthogonality.
+
+For $P_t=e^{tQ}$ the induced generator is
+\[
+(\mathcal L_Nf)(\mathbf n)=\sum_{a\ne b}n_aQ_{ab}
+[f(\mathbf n-e_a+e_b)-f(\mathbf n)].
+\]
+Cumulative Bernoulli trials specify a particular one-site $P$ and
+therefore a particular $P^{[N]}$; they are not a different multinomial
+extension. Their sampling interpretation makes positivity transparent,
+while the induced construction explains composition and spectrum.
+Matrix composition, polynomial linearization, and positive radial
+convolution are distinct products, related only through their specified
+spectral realizations.
+
+Under stationary input the joint site probabilities are
+$J_{ab}=\eta_aP_{ab}$. Recording $N$ such pairs gives a multinomial table
+with margins $\mathbf N,\mathbf M$, and
+\[
+\frac{P^{[N]}(\mathbf n,\mathbf m)}{\Pi_N(\mathbf m)}
+=\frac{\Pr(\mathbf N=\mathbf n,\mathbf M=\mathbf m)}
+{\Pi_N(\mathbf n)\Pi_N(\mathbf m)}.
+\]
+This density ratio is the finite kernel whose central local limit is
+Mehler's kernel. In the reversible case, diagonal fluctuation modes
+give $q-1$ Gaussian factors and, after conjugation, $q-1$ oscillator
+number operators. These limiting assertions require the local-limit
+and mode-contraction arguments, beyond the induced-matrix identity.
+
+\section{Cumulative Bernoulli trials: saved and recouped successes}
+\label{sec:cumulative-bernoulli}
+Hoare and Rahman \cite{HoareRahman1984} develop Krawtchouk processes
+from combinations of Bernoulli trials with saved and recouped successes.
+The earlier dynamic-occupancy program of Cooper, Hoare, and Rahman
+\cite{CooperHoareRahman1977} starts from a Hahn kernel with
+negative-hypergeometric factors. The following independent-site
+construction is the binary specialization of Section~\ref{sec:ency-sfa-ii}
+and presents our Bernoulli case with explicit conventions;
+its parameters are defined here rather than implicitly identified with
+all conventions in those papers.
+
+Starting from $i$ successes among $N$ sites, save each success with
+probability $\alpha$. If $k$ are saved, retry the remaining $N-k$ sites
+with success probability $\beta$. With
+$b(j;m,p)=\binom mjp^j(1-p)^{m-j}$ (zero outside $0\le j\le m$), the
+positive transition kernel is
+\begin{equation}\label{eq:ency-cumulative}
+\mathcal K(j\mid i)=\sum_{k=0}^{\min(i,j)}
+b(k;i,\alpha)b(j-k;N-k,\beta).
+\end{equation}
+Its backward action is $(\mathcal Kf)(i)=\sum_j\mathcal K(j\mid i)f(j)$;
+the column-vector forward transition matrix is its transpose.
+For $0\le\alpha<1$, $0<\beta<1$, the one-site transition and its
+stationary parameter are
+\[
+P=\begin{pmatrix}1-\beta&\beta\\
+(1-\alpha)(1-\beta)&\alpha+(1-\alpha)\beta\end{pmatrix},\qquad
+r=\alpha(1-\beta),\quad p=\frac{\beta}{1-r}.
+\]
+Indeed $\mathbb E[Y-p\mid X]=r(X-p)$. The invariant occupation law is
+$w_{N,p}(i)=\binom Ni p^i(1-p)^{N-i}$, and, with $q=1-p$, the biased polynomials
+$Q_n^{(p)}$ of \eqref{eq:biased-generating} in Section~\ref{sec:13-2}
+satisfy
+\[
+\mathcal KQ_n^{(p)}=r^nQ_n^{(p)},\qquad
+\sum_iw_{N,p}(i)Q_n^{(p)}(i;N)Q_m^{(p)}(i;N)=\binom Nn(pq)^n\delta_{nm}.
+\]
+Both statements follow by expanding products of centered site variables
+$X_a-p$. Thus the positive formula \eqref{eq:ency-cumulative} has the
+exact bilinear expansion
+\begin{equation}\label{eq:ency-cumulative-spectral}
+\frac{\mathcal K(j\mid i)}{w_{N,p}(j)}
+=\sum_{n=0}^N\frac{r^nQ_n^{(p)}(i;N)Q_n^{(p)}(j;N)}{\binom Nn(pq)^n}.
+\end{equation}
+
+For our symmetric convention, take $p=1/2$ and
+$\beta=(1-r)/2$, $\alpha=2r/(1+r)$, with $0\le r<1$.
+Then $P=\frac12\left(\begin{smallmatrix}1+r&1-r\\1-r&1+r\end{smallmatrix}\right)$
+and $Q_n^{(1/2)}(i;N)=2^{-n}K_n(i;N)$. For $r=e^{-t}$ this is the time-$t$ independent-bit
+transition. It is not the single-flip Ehrenfest step: the spectra are
+$r^n$ and $1-2n/N$, respectively.
+
+At stationarity the $N$ input--output site pairs give a four-category
+multinomial table. Its input and output margins $I,J$ obey
+\[
+\frac{\mathcal K(j\mid i)}{w_{N,p}(j)}
+=\frac{\Pr(I=i,J=j)}{w_{N,p}(i)w_{N,p}(j)}.
+\]
+This is the symmetric-tensor occupation kernel, interpreted as a joint
+law relative to the product of its margins. Conditioning instead on a
+fixed flip count gives hypergeometric overlap laws. Central Gaussian
+scaling of the joint density ratio produces the Mehler kernel in
+Section~\ref{sec:11-3}.
+
+\section*{Connection to the supplied article sources}
+Section~4 (``Ehrenfest urn model'') of the supplied
+\texttt{KravFeinsKocik.tex} belongs to this chapter.
+The urn state is the Hamming weight of a binary configuration: flipping
+a uniformly selected coordinate moves from $j$ to $j+1$ with probability
+$(N-j)/N$ and to $j-1$ with probability $j/N$, for $N\geq1$.
+In the book's column-vector convention the transition matrix is
+$A_N/N$. The tensor-space realization is discussed in Chapter~\ref{ch:9}.

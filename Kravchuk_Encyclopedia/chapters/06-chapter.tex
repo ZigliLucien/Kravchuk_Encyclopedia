@@ -1,0 +1,292 @@
+\chapter{Lie Algebras and Krawtchouk Polynomials}
+\label{ch:6}
+
+\section{Finite raising and lowering matrices}
+\label{sec:finite-sl2-matrices}
+Let $e_0,\ldots,e_N$ be the standard column-vector basis of
+$\mathbb R^{N+1}$. Define
+\begin{equation}\label{eq:ency-RL-definition}
+R_Ne_j=(N-j)e_{j+1},\qquad L_Ne_j=je_{j-1},\qquad
+A_N=R_N+L_N,
+\end{equation}
+with endpoint terms omitted, and put
+$\Lambda_N=\operatorname{diag}(N,N-2,\ldots,-N)$.
+Equivalently, the only nonzero entries of $R_N$ and $L_N$ are
+\[
+(R_N)_{j+1,j}=N-j,\qquad (L_N)_{j,j+1}=j+1,
+\qquad 0\le j<N.
+\]
+Thus $R_N$ raises the basis index, while $L_N$ lowers it.
+Their sum is tridiagonal, but is not symmetric in this basis when
+$N>1$. In general $R_N^T\ne L_N$; the normalized angular-momentum
+matrices use a different diagonal normalization.
+
+Direct calculation gives
+\begin{equation}\label{eq:ency-sl2-brackets}
+[L_N,R_N]=\Lambda_N,\qquad
+[\Lambda_N,R_N]=-2R_N,\qquad
+[\Lambda_N,L_N]=2L_N.
+\end{equation}
+These relations fix the sign convention for the finite
+$\mathfrak{sl}(2)$ representation. For example,
+\[
+R_2=\begin{pmatrix}0&0&0\\2&0&0\\0&1&0\end{pmatrix},\quad
+L_2=\begin{pmatrix}0&1&0\\0&0&2\\0&0&0\end{pmatrix},\quad
+A_2=\begin{pmatrix}0&1&0\\2&0&2\\0&1&0\end{pmatrix}.
+\]
+The full matrices for $N=2,3,4,5,7,8$ are in
+Appendix~\ref{app:matrix-tables}. Their intertwining with the
+Krawtchouk matrix is explained in
+Section~\ref{sec:matrix-recurrence-intertwining}.
+
+
+\subsection{Differential-operator dictionary}
+\label{sec:differential-sl2-dictionary}
+Use independent auxiliary variables $\xi,\eta$ for homogeneous
+polynomials, to avoid confusing them with the centered lattice variable
+$x=N-2j$. On $e_j=\xi^{N-j}\eta^j$,
+\[
+R=\eta\partial_\xi,\qquad L=\xi\partial_\eta,\qquad
+\mathcal H=\xi\partial_\xi-\eta\partial_\eta.
+\]
+Their matrices are $R_N,L_N,\Lambda_N$, respectively. The Euler operator
+$\mathcal E=\xi\partial_\xi+\eta\partial_\eta$ acts as $NI$, and is
+not $\mathcal H$.
+For the group convention of Section~\ref{sec:8-1}, differentiation gives
+\[
+d\rho_N\!\begin{pmatrix}a&b\\c&d\end{pmatrix}
+=(a\xi+c\eta)\partial_\xi+(b\xi+d\eta)\partial_\eta.
+\]
+In particular,
+\[
+d\rho_N(F)=R+L,\qquad d\rho_N(G)=\mathcal H,\qquad
+d\rho_N(i)=L-R.
+\]
+The last sign follows from the fixed matrix
+$i=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ and the transpose in the
+polynomial substitution. It is not $R-L$ in this convention.
+This dictionary reconciles the operator treatment in
+\cite[Section~7.4]{KocikFeynman} with the book's column-vector basis.
+The commutators are those of \eqref{eq:ency-sl2-brackets}; no second
+normalization is needed.
+
+\section{Angular momentum and the spin-$N/2$ representation}
+\label{sec:angular-momentum}
+The matrices $R,L,A$ and the diagonal commutator matrix are a finite angular-momentum representation in nonorthonormal coordinates. To avoid confusing an operator with the scalar order $N$, write
+\[
+\mathsf N_N:=[L_N,R_N]=\Lambda_N.
+\]
+Thus the operator sometimes called $N$ is $\mathsf N_N$, not the scalar $N$ or the Euler operator $NI$. The following dictionary concerns the symmetric finite matrices already defined; it does not identify their symbols with differently normalized Appell operators in the general-$p,q$ source.
+
+\subsection{Orthonormalization and the angular-momentum dictionary}
+Set $B_N=\operatorname{diag}\binom Nj$ and $C=B_N^{1/2}$. The column metric of Section~\ref{sec:binomial-dual-metrics} is $\langle u,v\rangle=u^*B_N^{-1}v$. Hence $f_j=\sqrt{\binom Nj}\,e_j$ is an orthonormal basis for this metric, and the matrix in that basis is $\widehat M=C^{-1}MC$. In particular,
+\begin{align*}
+\widehat R\,|j\rangle&=\sqrt{(N-j)(j+1)}\,|j+1\rangle,\\
+\widehat L\,|j\rangle&=\sqrt{j(N-j+1)}\,|j-1\rangle,\\
+\widehat\Lambda\,|j\rangle&=(N-2j)|j\rangle.
+\end{align*}
+Here $|j\rangle$ denotes the orthonormal coordinate vector, and $0\le j\le N$; absent endpoint terms are zero. Now $\widehat L=\widehat R^*$ and $\widehat A=\widehat R+\widehat L$ is real symmetric. With physical units retained, define
+\begin{equation}\label{eq:angular-dictionary}
+J_+=\hbar\widehat L,\qquad J_-=\hbar\widehat R,\qquad
+J_z=\frac\hbar2\widehat\Lambda,\qquad
+J_x=\frac\hbar2\widehat A,\qquad
+J_y=\frac{\hbar}{2\mathrm i}(\widehat L-\widehat R).
+\end{equation}
+The symbol $\mathrm i$ here is the complex scalar, not the real split-quaternion matrix named $i$ elsewhere in this chapter. The operators $J_x,J_y,J_z$ are Hermitian in these orthonormal coordinates and satisfy
+\[
+[J_x,J_y]=\mathrm i\hbar J_z,\qquad
+[J_y,J_z]=\mathrm i\hbar J_x,\qquad
+[J_z,J_x]=\mathrm i\hbar J_y.
+\]
+Equivalently, $[J_z,J_\pm]=\pm\hbar J_\pm$ and $[J_+,J_-]=2\hbar J_z$.
+The corresponding operators before normalization are $\hbar A_N/2$, $\hbar(L_N-R_N)/(2\mathrm i)$, and $\hbar\Lambda_N/2$; these are self-adjoint for the $B_N^{-1}$ metric, not generally for the Euclidean metric.
+
+\subsection{Spin, magnetic quantum number, and the Casimir}
+Use $s=N/2$ for spin, keeping $j$ for the book's lattice index, and identify
+\[
+|j\rangle=|s,m\rangle,\qquad m=s-j.
+\]
+Then
+\begin{align*}
+J_z|s,m\rangle&=\hbar m|s,m\rangle,\\
+J_+|s,m\rangle&=\hbar\sqrt{(s-m)(s+m+1)}\,|s,m+1\rangle,\\
+J_-|s,m\rangle&=\hbar\sqrt{(s+m)(s-m+1)}\,|s,m-1\rangle.
+\end{align*}
+Thus $R$ raises the index $j$ but \emph{lowers} $m$: it corresponds to $J_-$, not $J_+$. This reversal is forced by the book's diagonal convention $\Lambda_Ne_j=(N-2j)e_j$.
+The quadratic Casimir is
+\begin{equation}\label{eq:angular-Casimir}
+J_x^2+J_y^2+J_z^2
+=\frac12(J_+J_-+J_-J_+)+J_z^2
+=\hbar^2s(s+1)I.
+\end{equation}
+For example, on $|j\rangle$, the dimensionless first term contributes
+$[j(N-j+1)+(N-j)(j+1)]/2$ and the second contributes $(N-2j)^2/4$; their sum is $N(N+2)/4$. The highest-weight vector is $|0\rangle$, all adjacent ladder coefficients are nonzero, and its successive descendants span the $N+1=2s+1$ states. This is the irreducible spin-$s$ representation.
+
+\subsection{Symmetric tensors and the compact real form}
+On $(\mathbb C^2)^{\otimes N}$ let
+\[
+J_a^{\mathrm{tot}}=\frac\hbar2\sum_{r=1}^N\sigma_a^{(r)},\qquad a=x,y,z,
+\]
+where $\sigma_a$ are the Pauli matrices, with $\sigma_z=\operatorname{diag}(1,-1)$. The normalized symmetric state with exactly $j$ down spins is the sum of those $\binom Nj$ tensor states divided by $\sqrt{\binom Nj}$. Counting flips gives exactly the ladder coefficients above. The symmetric sector therefore realizes $\operatorname{Sym}^N(\mathbb C^2)$ and has spin $N/2$. It is the maximal-spin component of the tensor product, not the whole $2^N$-dimensional tensor space; other spin sectors occur outside it.
+
+The Hermitian $J_a$ generate unitary rotations $\exp(-\mathrm i\theta J_a/\hbar)$. Their anti-Hermitian multiples describe the compact real form $\mathfrak{su}(2)$ of $\mathfrak{sl}(2,\mathbb C)$. The real differential matrices $R,L,\Lambda$ also span the split real form $\mathfrak{sl}(2,\mathbb R)$ discussed below. These real forms share the complexified representation but are not the same real Lie algebra. In particular, the positive-definite unitary angular-momentum action is the compact one, not a nontrivial finite-dimensional unitary representation of the noncompact group.
+A full $2\pi$ rotation acts as $(-1)^NI$. For even $N$ the representation descends to $SO(3)$; for odd $N$ it is half-integral spin and naturally a representation of its double cover $SU(2)$.
+
+\subsection{The Krawtchouk transform as a change of quantization axis}
+Let $U_N=2^{-N/2}B_N^{-1/2}\Phi_NB_N^{1/2}$, exactly as in Section~\ref{sec:14-1}. The intertwining $A_N\Phi_N=\Phi_N\Lambda_N$ becomes
+\begin{equation}\label{eq:angular-U-intertwining}
+J_xU_N=U_NJ_z,\qquad U_N^*J_xU_N=J_z.
+\end{equation}
+Thus column $k$ of $U_N$ is the $J_x$ eigenstate with eigenvalue $\hbar(s-k)$, expressed in the $J_z$ basis. Its coefficients are
+\[
+\langle j_z|k_x\rangle=(U_N)_{jk}
+=2^{-N/2}\sqrt{\frac{\binom Nk}{\binom Nj}}\,K_j(k;N).
+\]
+This is the angular-momentum meaning of the Krawtchouk eigenvector matrix: it changes between two perpendicular quantization axes.
+
+For an exact rotation dictionary, use the already established parity matrix $D_N=\operatorname{diag}((-1)^j)$, distinguished from the normalization matrix $C=B_N^{1/2}$ used above. With the displayed $J_y$ sign convention,
+\begin{equation}\label{eq:angular-Wigner-d}
+U_N=\exp\!\left(-\frac{\mathrm i\pi J_y}{2\hbar}\right)D_N.
+\end{equation}
+The rightmost factor supplies the column phases: the real symmetric involution $U_N$ is not itself a bare quarter-turn rotation. To prove the identity, at $N=1$ write
+\[
+\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+=\frac1{\sqrt2}\begin{pmatrix}1&-1\\1&1\end{pmatrix}
+\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\]
+and take the $N$th symmetric tensor power in the normalized basis. If the Wigner small-$d$ matrix is defined by
+$d^{(s)}_{m',m}(\theta)=\langle s,m'|\exp(-\mathrm i\theta J_y/\hbar)|s,m\rangle$, this says
+\[
+d^{(s)}_{s-j,s-k}(\pi/2)=(-1)^k(U_N)_{jk}.
+\]
+The phase convention is stated explicitly because changing basis phases or the sign of the rotation angle changes common printed Wigner formulas.
+
+\subsection{Small representations}
+For $N=1$ one obtains spin $1/2$, $J_a=\hbar\sigma_a/2$. For $N=2$ one obtains spin one:
+\[
+J_z=\hbar\begin{pmatrix}1&0&0\\0&0&0\\0&0&-1\end{pmatrix},\qquad
+J_x=\frac\hbar{\sqrt2}\begin{pmatrix}0&1&0\\1&0&1\\0&1&0\end{pmatrix},\qquad
+J_y=\frac\hbar{\sqrt2}\begin{pmatrix}0&-\mathrm i&0\\\mathrm i&0&-\mathrm i\\0&\mathrm i&0\end{pmatrix}.
+\]
+Their Casimir is $2\hbar^2I$. The order-$N$ tables in Appendix~\ref{app:matrix-tables} similarly give spin $N/2$ after the same binomial normalization.
+
+\section{$\mathfrak{so}(2,1)$ explained}
+\label{sec:6-1}
+The pure split quaternions form a real three-dimensional space
+\[
+V=\{ti+xF+yG:t,x,y\in\mathbb R\},\qquad Q(t,x,y)=t^2-x^2-y^2.
+\]
+Here $i^2=-1$, $F^2=G^2=1$, $iF=G$, $FG=-i$, and $Gi=F$;
+distinct units anticommute. With the ordinary commutator $[X,Y]=XY-YX$,
+\[
+[i,F]=2G,\qquad [F,G]=-2i,\qquad [G,i]=2F.
+\]
+These are the structure constants of $\mathfrak{sl}(2,\mathbb R)$ in a
+split-quaternion basis. The form $Q$ is invariant under conjugation, so
+$X\mapsto\operatorname{ad}_X$, where $\operatorname{ad}_X(Y)=[X,Y]$,
+maps this algebra isomorphically onto $\mathfrak{so}(1,2)$.
+Changing the overall sign of the metric identifies the same algebra
+with the notation $\mathfrak{so}(2,1)$ used in this chapter.
+
+For example, in the ordered basis $(i,F,G)$ the infinitesimal actions are
+\[
+\operatorname{ad}_i=\begin{pmatrix}0&0&0\\0&0&-2\\0&2&0\end{pmatrix},\quad
+\operatorname{ad}_F=\begin{pmatrix}0&0&-2\\0&0&0\\-2&0&0\end{pmatrix},\quad
+\operatorname{ad}_G=\begin{pmatrix}0&2&0\\2&0&0\\0&0&0\end{pmatrix}.
+\]
+Each satisfies $M^T\eta+\eta M=0$ for $\eta=\operatorname{diag}(1,-1,-1)$.
+The source uses $\tfrac12(XY-YX)$ on pure quaternions; consequently its
+structure constants lack the factors of two displayed here.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{$\mathfrak{so}(2,1)$ spinors}
+\label{sec:6-2}
+The real spinor space is $\mathbb R^2$. The split units act by
+\[
+i=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
+F=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+G=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+The spinor action $u\mapsto gu$ of $g\in SL(2,\mathbb R)$ is distinct
+from the vector action $X\mapsto gXg^{-1}$ on traceless matrices.
+The latter preserves $\det X$ and gives the double covering
+\[
+SL(2,\mathbb R)\longrightarrow SO^+(1,2),\qquad
+\ker=\{I,-I\}.
+\]
+The superscript $+$ specifies the identity component; this covering
+must not be asserted onto every component of $SO(1,2)$.
+
+The compact generator gives
+$\exp(\theta i)=\cos\theta\,I+\sin\theta\,i$; the noncompact generator gives
+$\exp(tF)=\cosh t\,I+\sinh t\,F$.
+On the vector space, the adjoint action of $\exp(\theta i)$ rotates the
+$(F,G)$ plane by $2\theta$, while $\exp(tF)$ produces a boost in the
+$(i,G)$ plane with parameter $2t$ (with the signs fixed by the commutators).
+This doubling explains why $g$ and $-g$ have the same vector action.
+Higher symmetric powers of this two-dimensional spinor representation
+produce the finite Krawtchouk construction in Section~\ref{sec:8-1}.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{Quaternions and Clifford algebras}
+\label{sec:6-3}
+The split quaternion algebra is
+\[
+\mathbb H_s=\{a+bi+cF+dG:a,b,c,d\in\mathbb R\},
+\]
+with the multiplication rules of Section~\ref{sec:6-1}. Define
+\[
+\overline q=a-bi-cF-dG,\qquad
+\operatorname{N}(q)=q\overline q=a^2+b^2-c^2-d^2.
+\]
+Conjugation reverses products, and the norm is multiplicative. Thus
+$q^{-1}=\overline q/\operatorname{N}(q)$ precisely when
+$\operatorname{N}(q)\ne0$. Unlike ordinary quaternions, this algebra
+contains nonzero zero divisors, for example $(1+F)(1-F)=0$.
+The matrix realization is
+\[
+q\longmapsto\begin{pmatrix}a+d&b+c\\-b+c&a-d\end{pmatrix},
+\qquad \det q=\operatorname{N}(q).
+\]
+It identifies $\mathbb H_s$ with $M_2(\mathbb R)$, and its norm-one group
+with $SL(2,\mathbb R)$.
+
+Using the Clifford convention $v^2=Q(v)$, the generators $F,G$ have
+square $+1$ and anticommute, while $FG=-i$ has square $-1$.
+Consequently $\mathbb H_s\cong\mathrm{Cl}_{2,0}(\mathbb R)$.
+This Clifford realization should not be confused with the quadratic
+form on the three-dimensional pure subspace: for pure $v$,
+$v^2=-\operatorname{N}(v)I$.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+
+\section{$S$ and $\mathfrak{so}(2,1)$ tensors}
+\label{sec:6-4}
+The tensor construction of Section~\ref{sec:8-1} identifies the
+infinitesimal actions of $F,G$ with $A_N,\Lambda_N$, while the group
+lift of $H=F+G$ is $\Phi_N$. These are two different representation
+constructions, not interchangeable tensor powers.
+
+The symmetric weighted matrix is $S_N=\Phi_NB_N$
+(Section~\ref{sec:matrix-S-definition}); the orthogonally normalized
+involution is $U_N$ of \eqref{eq:ency-U-normalization}. The binomial
+weights relate these matrices, but do not make their spectral problems
+identical. In particular, the explicit eigenvectors of $\Phi_N$ in
+Section~\ref{sec:14-5} are not automatically eigenvectors of $S_N$.
+
+\section{Three-dimensional simple Lie algebras}
+\label{sec:6-5}
+The compact real Lie algebra $\mathfrak{su}(2)\cong\mathfrak{so}(3)$
+and the split real algebra
+$\mathfrak{sl}(2,\mathbb R)\cong\mathfrak{so}(1,2)$ are not isomorphic
+as real Lie algebras. Their complexifications are both
+$\mathfrak{sl}(2,\mathbb C)$. In the compact quaternion model all three
+pure basis units square to $-1$; in the split model only $i$ does.
+This is the algebraic distinction between rotations and boosts.
+
+At the group level $SU(2)\to SO(3)$ and
+$SL(2,\mathbb R)\to SO^+(1,2)$ have kernel $\{I,-I\}$.
+An isomorphism of Lie algebras does not imply an isomorphism of these
+groups, nor does a statement about the identity component describe
+all disconnected orthogonal-group components.
+See \cite[Section~7]{KocikFeynman}; notation follows the book conventions.
+

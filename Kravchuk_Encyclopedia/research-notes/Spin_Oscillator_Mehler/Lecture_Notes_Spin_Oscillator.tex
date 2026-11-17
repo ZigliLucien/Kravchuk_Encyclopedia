@@ -1,0 +1,864 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\F}{\mathcal F}
+\newcommand{\NN}{\mathcal N}
+\newcommand{\Id}{I}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\arsinh}{arsinh}
+\title[Finite Spin to the Harmonic Oscillator]{From Finite Spin to the Harmonic Oscillator:\\Krawtchouk Transforms, Mehler Kernels, and Convolution}
+\subjclass[2020]{33C45, 22E70, 47D06, 60J60, 42A38}
+\keywords{Krawtchouk polynomials, Hermite functions, harmonic oscillator, Mehler kernel, $\mathfrak{sl}_2$, contraction, Ornstein--Uhlenbeck process, Hamming scheme}
+\date{Lecture notes}
+\begin{document}
+\begin{abstract}
+These lecture notes develop the passage from the finite-dimensional
+(spin) representations of $\mathfrak{sl}_2$ to the quantum harmonic
+oscillator. On the finite side the protagonists are the Krawtchouk
+polynomials, the Krawtchouk transform, and the Ehrenfest urn chain; on
+the continuum side they are the Hermite functions, the Fourier transform,
+and the Ornstein--Uhlenbeck semigroup, whose kernel is Mehler's. We
+treat the oscillator semigroup in real and imaginary time, general
+Gaussian kernels as squeezed oscillator semigroups, the contraction of
+spin to the Heisenberg algebra, the scaling of Krawtchouk to Hermite
+polynomials, and the fate of Krawtchouk convolution in the limit.
+Exercises are included at the end of each lecture.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section*{Introduction}
+The finite-dimensional irreducible representations of $\mathfrak{sl}_2$
+have a distinguished family of orthogonal polynomials attached to them:
+the Krawtchouk polynomials, introduced as discrete analogues of the
+Hermite polynomials \cite{Krawtchouk1929}. In matrix form they appear as
+group elements of the spin representations \cite{FeinsilverKocik2005},
+and in coding theory as the eigenvalues of the Hamming association scheme
+\cite{Delsarte1973,MacWilliamsSloane1977}. The harmonic oscillator, by
+contrast, lives on the infinite-dimensional space $L^2(\R)$, where the
+Hermite functions diagonalize simultaneously the Hamiltonian and the
+Fourier transform. The aim of these notes is to make precise the many
+ways in which the finite picture tends to the infinite one, and to be
+equally precise about where the analogy fails.
+
+The overall plan may be summarized as follows.
+\[
+\begin{array}{ccccc}
+\text{finite spin}&\longrightarrow&\text{Heisenberg algebra}
+ &\longrightarrow&\text{quadratic (metaplectic) $\mathfrak{sl}_2$}\\
+\text{Krawtchouk polynomials}&\longrightarrow&\text{Hermite polynomials}
+ &\longrightarrow&\text{Hermite functions}\\
+\text{Ehrenfest chain}&\longrightarrow&\text{Ornstein--Uhlenbeck}
+ &\longrightarrow&\text{oscillator heat semigroup}\\
+\text{finite bilinear kernels}&\longrightarrow&\text{OU transition kernel}
+ &\longrightarrow&\text{Mehler kernel}.
+\end{array}
+\]
+The first arrow in each row is a limit as $N\to\infty$; the second is
+an exact construction (forming quadratic expressions, multiplying by a
+Gaussian, or conjugating by a unitary map).
+
+Lectures~\ref{L:hermite}--\ref{L:gauss} are purely about the continuum.
+Lectures~\ref{L:spin}--\ref{L:limits} set up the finite theory and pass to
+the limit. Lecture~\ref{L:conv} discusses convolution, and
+Lecture~\ref{L:end} treats the degenerate Gaussian kernels at the edge
+of the oscillator region.
+
+\subsection*{Standing conventions}
+$D=d/dx$. Operators on $L^2(\R)$ are first defined on the Schwartz
+space $\mathcal S(\R)$ and then closed; $H$ always denotes the
+self-adjoint oscillator realization. All square roots of positive numbers
+are positive. The Fourier transform is
+\begin{equation}\label{eq:F}
+(\F f)(\xi)=\frac1{\sqrt{2\pi}}\int_\R e^{-ix\xi}f(x)\,dx,\qquad
+(\F^*f)(\xi)=\frac1{\sqrt{2\pi}}\int_\R e^{+ix\xi}f(x)\,dx,
+\end{equation}
+so $\F^*=\F^{-1}$. Both are unitary on $L^2(\R)$.
+
+%======================================================================
+\section{Hermite functions, the oscillator, and the Fourier transform}\label{L:hermite}
+
+\subsection{Two-parameter Hermite polynomials}
+\begin{definition}
+For $\tau\in\R$ define polynomials $H_n(x,\tau)$ by
+\begin{equation}\label{eq:Hgen}
+e^{zx-\tau z^2/2}=\sum_{n\ge0}H_n(x,\tau)\frac{z^n}{n!}.
+\end{equation}
+Write $H_n(x)=H_n(x,1)$ for the probabilists' Hermite polynomials.
+\end{definition}
+Replacing $z$ by $z\sqrt\tau$ shows $H_n(x,\tau)=\tau^{n/2}H_n(x/\sqrt\tau)$
+for $\tau>0$; in particular $H_n(x,\tfrac12)=2^{-n/2}H_n(\sqrt2x)$.
+Differentiating \eqref{eq:Hgen} with respect to $x$, to $z$, and to
+$\tau$ gives
+\begin{equation}\label{eq:Hrec}
+\partial_xH_n=nH_{n-1},\qquad
+H_{n+1}=xH_n-n\tau H_{n-1},\qquad
+\partial_\tau H_n+\tfrac12\partial_x^2H_n=0.
+\end{equation}
+Combining the first two, $\tau H_n''-xH_n'+nH_n=0$.
+
+\subsection{Hermite functions and ladder operators}
+Put
+\[
+\psi_n(x)=2^nH_n(x,\tfrac12)e^{-x^2/2},\qquad
+H=\tfrac12(x^2-D^2).
+\]
+\begin{proposition}\label{prop:ladder}
+For all $n\ge0$, with $\psi_{-1}=0$,
+\[
+(x+D)\psi_n=2n\psi_{n-1},\qquad
+(x-D)\psi_n=\psi_{n+1},\qquad
+H\psi_n=(n+\tfrac12)\psi_n.
+\]
+Consequently $\psi_n=(x-D)^ne^{-x^2/2}$ and
+\begin{equation}\label{eq:psigen}
+\sum_{n\ge0}\psi_n(x)\frac{u^n}{n!}=e^{-x^2/2+2ux-u^2}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write $H_n=H_n(x,\frac12)$. By the product rule
+$(x+D)(f e^{-x^2/2})=f'e^{-x^2/2}$ and
+$(x-D)(fe^{-x^2/2})=(2xf-f')e^{-x^2/2}$. The first and second
+identities follow from \eqref{eq:Hrec} with $\tau=\frac12$, since
+$2xH_n-nH_{n-1}=2H_{n+1}$. Then
+$2H=(x+D)(x-D)-1$ gives $2H\psi_n=(2n+1)\psi_n$.
+The generating function is \eqref{eq:Hgen} with $z=2u$, $\tau=\frac12$.
+\end{proof}
+
+The normalized Hermite functions
+\[
+h_n=\frac{\psi_n}{\pi^{1/4}\sqrt{2^nn!}}
+=\frac{H_n(\sqrt2x)e^{-x^2/2}}{\pi^{1/4}\sqrt{n!}}
+\]
+form an orthonormal basis of $L^2(\R,dx)$. With
+\[
+a=\frac{x+D}{\sqrt2},\qquad a^\dagger=\frac{x-D}{\sqrt2},\qquad
+\NN=a^\dagger a=H-\tfrac12\Id,
+\]
+one has $[a,a^\dagger]=\Id$, $ah_n=\sqrt n\,h_{n-1}$,
+$a^\dagger h_n=\sqrt{n+1}\,h_{n+1}$, and $\NN h_n=nh_n$.
+The self-adjoint operator $H$ is defined spectrally by this basis.
+
+\subsection{The Fourier transform as a quarter period}
+\begin{theorem}\label{thm:fourier}
+$\F h_n=(-i)^nh_n$ and $\F^*h_n=i^nh_n$. Consequently
+\begin{equation}\label{eq:Fosc}
+\F=e^{-i\pi\NN/2},\qquad
+e^{-i\pi H/2}=e^{-i\pi/4}\F,\qquad
+e^{i\pi H/2}=e^{i\pi/4}\F^*.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The Gaussian integral
+$(2\pi)^{-1/2}\int e^{zx-x^2/2}dx=e^{z^2/2}$, valid for complex $z$,
+applied to \eqref{eq:psigen} gives
+\[
+\F^*\Big(\sum\psi_n\tfrac{u^n}{n!}\Big)(\xi)
+=e^{-u^2}e^{(i\xi+2u)^2/2}=e^{-\xi^2/2+2i\xi u+u^2}
+=\sum\psi_n(\xi)\frac{(iu)^n}{n!}.
+\]
+Comparing coefficients yields $\F^*\psi_n=i^n\psi_n$, and taking
+inverses $\F\psi_n=(-i)^n\psi_n$. Both sides of \eqref{eq:Fosc} are
+unitary and agree on an orthonormal basis.
+\end{proof}
+
+\begin{remark}[Signs]
+The sign in \eqref{eq:F} matters. If the positive-exponent transform is
+called $\F$, then $\F$ and $\F^*$ must be exchanged everywhere, and the
+formula reads $e^{i\pi H/2}=\sqrt i\,\F$ with $\sqrt i=e^{i\pi/4}$.
+In particular, with \eqref{eq:F}, the correct statement is
+$e^{i\pi H/2}=\sqrt i\,\F^{-1}$. A common source of error is a lost
+factor $2$ in the mixed term: the exponent is $2i\xi u$, not $i\xi u$.
+\end{remark}
+More generally $e^{-i\theta\NN}$ is the fractional Fourier transform of
+angle $\theta$. Its discrete counterpart built from Krawtchouk functions
+is studied in \cite{AtakishievWolf1997}; we meet it in
+Lecture~\ref{L:limits}.
+
+\subsection{The quadratic $\mathfrak{sl}_2$}
+On $\mathcal S(\R)$ put
+\begin{equation}\label{eq:quad}
+\mathsf R=\tfrac12x^2,\qquad \mathsf L=\tfrac12D^2,\qquad \rho=xD+\tfrac12.
+\end{equation}
+Using $[D,x]=1$ one checks
+\begin{equation}\label{eq:quadbr}
+[\mathsf L,\mathsf R]=\rho,\qquad[\mathsf L,\rho]=2\mathsf L,\qquad
+[\rho,\mathsf R]=2\mathsf R,\qquad H=\mathsf R-\mathsf L.
+\end{equation}
+The closure of $\rho$ is skew-adjoint and generates the unitary
+dilations $(e^{s\rho}f)(x)=e^{s/2}f(e^sx)$. Thus
+$\{\mathsf L,\mathsf R,\rho\}$ generate rotations (Fourier),
+dilations (squeezing), and, in imaginary time, heat semigroups. These
+quadratic operators preserve parity, so this representation splits into
+even and odd pieces; it is very different from a finite irreducible
+representation, a point we return to in Lecture~\ref{L:limits}.
+
+\begin{exercise}
+Verify \eqref{eq:quadbr}, and show that
+$K_+=\frac12(a^\dagger)^2$, $K_-=\frac12a^2$, $K_0=\frac12H$ satisfy
+$[K_0,K_\pm]=\pm K_\pm$, $[K_-,K_+]=2K_0$. Find the lowest $K_0$
+weights on even and odd functions.
+\end{exercise}
+\begin{exercise}
+Show that $\F x\F^{-1}=-D_\xi/i$ in the sense
+$\widehat{xf}=iD_\xi\widehat f$ and $\widehat{Df}=i\xi\widehat f$, and
+deduce $\F(x-D)\F^{-1}=-i(x-D)$. Use this to give a second proof of
+Theorem~\ref{thm:fourier}.
+\end{exercise}
+
+%======================================================================
+\section{The oscillator semigroup and Mehler's formula}\label{L:mehler}
+
+\subsection{The heat kernel of $H$}
+\begin{theorem}\label{thm:heat}
+For $s>0$, $e^{-sH}$ is the integral operator on $L^2(\R,dx)$ with kernel
+\begin{equation}\label{eq:heat}
+K_s(x,y)=\frac1{\sqrt{2\pi\sinh s}}
+\exp\left[-\frac{(x^2+y^2)\cosh s-2xy}{2\sinh s}\right].
+\end{equation}
+\end{theorem}
+\begin{proof}[Derivation]
+The kernel must satisfy $\partial_sK=\frac12(\partial_x^2-x^2)K$ with
+$K_s\to\delta(x-y)$ as $s\downarrow0$. The symmetric Gaussian ansatz
+$K=A(s)\exp[-\frac a2(x^2+y^2)+bxy]$ gives
+$a'=1-a^2=-b^2$, $b'=-ab$, $A'/A=-a/2$, and the initial condition
+forces $a\sim b\sim1/s$, $A\sim(2\pi s)^{-1/2}$. Thus
+$a=\coth s$, $b=1/\sinh s$, $A=(2\pi\sinh s)^{-1/2}$.
+A complete proof that this kernel represents $e^{-sH}$ follows from
+Corollary~\ref{cor:mehlerL2} below, which verifies the action on the
+Hermite basis.
+\end{proof}
+
+\begin{proposition}\label{prop:onbasis}
+For $t<0$, with $K_{-t}$ as in \eqref{eq:heat},
+\[
+\int_\R K_{-t}(x,y)\psi_n(y)\,dy=e^{t(n+1/2)}\psi_n(x).
+\]
+\end{proposition}
+\begin{proof}
+Integrate the kernel against the generating function \eqref{eq:psigen}.
+A Gaussian integral gives
+$e^{t/2}e^{-x^2/2+2e^tux-e^{2t}u^2}$, which is
+$\sum_n\frac{u^n}{n!}e^{t(n+1/2)}\psi_n(x)$. Compare coefficients.
+\end{proof}
+
+\subsection{Positive time and analytic continuation}
+For real $t>0$ the spectral operator $e^{tH}$ is unbounded, with domain
+\[
+\mathcal D(e^{tH})=\Big\{\sum c_nh_n:\ \sum e^{2t(n+1/2)}|c_n|^2<\infty\Big\},
+\]
+which contains every $h_n$, and $e^{tH}h_n=e^{t(n+1/2)}h_n$. However, the
+kernel \eqref{eq:heat} with $s=-t<0$ does \emph{not} give a convergent
+integral, even on $\psi_n$: after multiplying by $\psi_n(y)$ the
+coefficient of $y^2$ in the exponent is
+$\frac12(\coth t-1)=(e^{2t}-1)^{-1}>0$. For complex $t$ with
+$\operatorname{Re}t<0$, the kernel
+\[
+\frac1{\sqrt{-2\pi\sinh t}}
+\exp\left[\frac{(x^2+y^2)\cosh t-2xy}{2\sinh t}\right]
+\]
+is analytic, with the root continued from the positive root on
+$t<0$. Its boundary value at $t=i\pi/2$ is
+$(2\pi)^{-1/2}e^{i\pi/4}e^{ixy}$, recovering \eqref{eq:Fosc}.
+Boundary values are understood as oscillatory integrals or strong
+limits, not as absolutely convergent kernels on all of $L^2$.
+
+\subsection{Mehler's formula}
+\begin{theorem}[Mehler \cite{Mehler1866}]\label{thm:mehler}
+For real $x,y$ and complex $|r|<1$,
+\begin{equation}\label{eq:mehler}
+\sum_{n\ge0}\frac{r^n}{n!}H_n(x)H_n(y)
+=\frac1{\sqrt{1-r^2}}
+\exp\left(\frac{2rxy-r^2(x^2+y^2)}{2(1-r^2)}\right),
+\end{equation}
+the root being the branch equal to $1$ at $r=0$. The series converges
+absolutely and locally uniformly in the disk, and its radius of
+convergence is exactly $1$.
+\end{theorem}
+\begin{proof}
+For real $0\le r<1$ and Gaussian measure
+$d\gamma(z)=(2\pi)^{-1/2}e^{-z^2/2}dz$, use
+$\int e^{uz-u^2/2}e^{vz-v^2/2}d\gamma(z)=e^{uv}$, i.e.\
+$\int H_mH_n\,d\gamma=n!\,\delta_{mn}$, together with
+$H_n(x)=\int(x+iz)^n\,d\gamma(z)$. Then
+\[
+\sum_n\frac{r^n}{n!}H_n(x)H_n(y)
+=\iint\exp\big(r(x+iz)(y+iw)\big)\,d\gamma(z)\,d\gamma(w),
+\]
+which is a Gaussian integral equal to the right side of \eqref{eq:mehler}.
+Both sides are analytic in $|r|<1$, so the identity extends.
+At $r=\pm1$ the right side is singular, so the radius is $1$.
+\end{proof}
+
+\begin{corollary}\label{cor:mehlerL2}
+For $0<r<1$,
+\begin{equation}\label{eq:mehlernorm}
+\sum_{n\ge0}r^nh_n(x)h_n(y)
+=\frac1{\sqrt{\pi(1-r^2)}}
+\exp\left[-\frac{1+r^2}{2(1-r^2)}(x^2+y^2)+\frac{2r}{1-r^2}xy\right],
+\end{equation}
+and this is the kernel of $r^{\NN}$ on $L^2(\R,dx)$. With $r=e^{-s}$,
+multiplying by $e^{-s/2}$ gives \eqref{eq:heat}.
+\end{corollary}
+\begin{proof}
+Substitute $h_n$ into \eqref{eq:mehler} at $(\sqrt2x,\sqrt2y)$.
+The kernel is square-integrable, hence defines a bounded operator,
+which agrees with $r^{\NN}$ on the Hermite basis.
+\end{proof}
+
+\begin{remark}[Which operator is Mehler's sum?]
+The bare sum \eqref{eq:mehler} is a kernel relative to $\gamma$:
+\[
+(T_rf)(x)=\int M_r(x,y)f(y)\,d\gamma(y)
+\]
+satisfies $T_rH_n=r^nH_n$, so $T_r=r^{L}$ with $L=-D^2+xD$ on
+$L^2(\gamma)$. This is the Ornstein--Uhlenbeck semigroup. The unitary
+$f\mapsto(2\pi)^{-1/4}e^{-x^2/4}f(x)$ followed by the dilation
+$x\mapsto\sqrt2x$ intertwines $L$ with $\NN$. Thus Mehler's sum is
+$r^{H-1/2}$ \emph{after} Gaussian conjugation and rescaling.
+\end{remark}
+
+\begin{exercise}
+Show $\|e^{tH}\|=e^{t/2}$ for $t<0$, and that $e^{tH}$ is trace class
+with $\operatorname{tr}e^{tH}=1/(2\sinh(-t/2))$. Verify this by
+integrating \eqref{eq:heat} along the diagonal.
+\end{exercise}
+\begin{exercise}
+Show that the semigroup property $K_s*K_{s'}=K_{s+s'}$ (composition of
+kernels) reduces to the addition formulas for $\cosh$ and $\sinh$.
+\end{exercise}
+
+%======================================================================
+\section{Gaussian kernels as squeezed oscillator semigroups}\label{L:gauss}
+Consider, for $a>0$ and real $b$, the operator $A_{a,b}$ with kernel
+\[
+G_{a,b}(x,y)=e^{-a(x^2+y^2)+bxy}.
+\]
+\begin{theorem}\label{thm:gauss}
+Suppose $|b|<2a$ and set
+\[
+\omega=\sqrt{4a^2-b^2},\qquad r=\frac{b}{2a+\omega},\qquad
+C=\sqrt{\frac{\pi(1-r^2)}{\omega}}.
+\]
+Let $H_\omega=\frac12(-D^2+\omega^2x^2)$,
+$\NN_\omega=H_\omega/\omega-\frac12$, and
+$h^{(\omega)}_n(x)=\omega^{1/4}h_n(\sqrt\omega x)$. Then
+\[
+G_{a,b}(x,y)=C\sum_{n\ge0}r^nh^{(\omega)}_n(x)h^{(\omega)}_n(y).
+\]
+Thus $A_{a,b}$ is trace class with eigenvalues $Cr^n$;
+$A_{a,b}=Cr^{\NN_\omega}$ for $r>0$,
+$A_{a,b}=CP|r|^{\NN_\omega}$ for $r<0$ (with $Pf(x)=f(-x)$), and
+$A_{a,0}$ is rank one.
+\end{theorem}
+\begin{proof}
+One checks $a=\frac{\omega(1+r^2)}{2(1-r^2)}$ and
+$b=\frac{2\omega r}{1-r^2}$, and then applies \eqref{eq:mehlernorm} in
+the variables $\sqrt\omega x,\sqrt\omega y$. For $r<0$ use
+$Ph_n=(-1)^nh_n$.
+\end{proof}
+No translation is needed, because the quadratic form has no linear
+terms. The rescaling is the unitary dilation
+$V_\omega=e^{\frac12(\log\omega)\rho}$, with $\NN_\omega=V_\omega\NN V_\omega^{-1}$.
+So $A_{a,b}$ is a function of a \emph{squeezed} oscillator, not of $H$
+itself. For $0<b<2a$, writing $r=e^{-\tau}$,
+\begin{equation}\label{eq:gaussheat}
+a=\frac\omega2\coth\tau,\qquad b=\frac\omega{\sinh\tau},\qquad
+A_{a,b}=\sqrt{\frac{2\pi\sinh\tau}{\omega}}\,e^{-\tau H_\omega/\omega}.
+\end{equation}
+In the Lie-algebraic form of \eqref{eq:quad},
+$e^{-\tau H_\omega/\omega}=\exp[\tau(\omega^{-1}\mathsf L-\omega\mathsf R)]$.
+
+\begin{example}\label{ex:sqrt8}
+For $a=\frac32$, $b=1$ one finds $\omega=\sqrt8$, $r=3-\sqrt8$,
+$\tau=2\log(1+\sqrt2)$. Kernels of exactly this type arise as candidate
+central limits in the spectral analysis of the symmetric Krawtchouk
+matrices of Lecture~\ref{L:spin}, whose spectra were studied in
+\cite{FeinsilverFitzgerald1996}. The theorem identifies the Gaussian
+$e^{-\sqrt8x^2/2}$ as the \emph{exact} ground state of such a limiting
+operator. Transferring this to the finite matrices is a separate,
+genuinely asymptotic problem: compact-window kernel asymptotics give
+lower bounds via Rayleigh quotients, but convergence of the full spectrum
+requires global estimates.
+\end{example}
+
+\begin{exercise}
+Show that if $|b|>2a$ the kernel does not define a bounded operator on
+$L^2(\R)$.
+\end{exercise}
+
+%======================================================================
+\section{Finite spin and Krawtchouk polynomials}\label{L:spin}
+
+\subsection{The spin representations}
+Fix $N\ge1$ and a basis $e_0,\dots,e_N$. Define
+\[
+R_Ne_j=(N-j)e_{j+1},\qquad L_Ne_j=je_{j-1},\qquad
+\Lambda_Ne_j=(N-2j)e_j,
+\]
+with out-of-range terms zero. Then
+\begin{equation}\label{eq:finbr}
+[L_N,R_N]=\Lambda_N,\qquad [\Lambda_N,R_N]=-2R_N,\qquad
+[\Lambda_N,L_N]=2L_N.
+\end{equation}
+This is the irreducible representation of dimension $N+1$; on
+homogeneous polynomials $e_j=\xi^{N-j}\eta^j$ it is
+$R=\eta\partial_\xi$, $L=\xi\partial_\eta$,
+$\Lambda=\xi\partial_\xi-\eta\partial_\eta$. Comparing with
+\eqref{eq:quadbr}, the dictionary
+\begin{equation}\label{eq:dict}
+\mathsf L\leftrightarrow-L_N,\qquad\mathsf R\leftrightarrow R_N,\qquad
+\rho\leftrightarrow-\Lambda_N
+\end{equation}
+matches the bracket relations exactly. This is an isomorphism of
+abstract Lie algebras only: the finite and quadratic representations
+have different adjoint structures and are not unitarily equivalent.
+
+With $B_N=\diag\binom Nj$, conjugation by $B_N^{1/2}$ gives orthonormal
+coordinates in which
+\[
+\widehat R_N|j\rangle=\sqrt{(N-j)(j+1)}\,|j+1\rangle,\qquad
+\widehat L_N|j\rangle=\sqrt{j(N-j+1)}\,|j-1\rangle,
+\]
+and $\widehat L_N=\widehat R_N^*$. Thus $J_+=\widehat L_N$,
+$J_-=\widehat R_N$, $J_z=\frac12\Lambda_N$ is the spin-$\frac N2$
+representation, with $m=\frac N2-j$.
+
+\subsection{Krawtchouk polynomials}
+\begin{definition}
+The (symmetric) Krawtchouk polynomials $K_n(k;N)$ are defined by
+\begin{equation}\label{eq:Kgen}
+(1+z)^{N-k}(1-z)^k=\sum_{n=0}^NK_n(k;N)z^n,\qquad 0\le k\le N.
+\end{equation}
+\end{definition}
+Thus $K_0=1$, $K_1=N-2k$, $K_2=\frac12((N-2k)^2-N)$. With the binomial
+weight $\pi_N(k)=2^{-N}\binom Nk$,
+\begin{equation}\label{eq:Korth}
+\sum_{k=0}^N\pi_N(k)K_n(k;N)K_m(k;N)=\binom Nn\delta_{mn},
+\end{equation}
+and the duality $\binom NkK_n(k;N)=\binom NnK_k(n;N)$ holds.
+Write $p_{n,N}=K_n/\sqrt{\binom Nn}$ for the orthonormal polynomials.
+
+\subsection{The Krawtchouk transform}
+Let $(\Phi_N)_{nk}=K_n(k;N)$. From \eqref{eq:Kgen} one finds
+$\Phi_N^2=2^N\Id$; equivalently $\Phi_N$ is the matrix of the
+substitution $(\xi,\eta)\mapsto(\xi+\eta,\xi-\eta)$ in the spin
+representation \cite{FeinsilverKocik2005}. The orthogonal, symmetric
+version is
+\begin{equation}\label{eq:Q}
+Q_N=2^{-N/2}B_N^{-1/2}\Phi_NB_N^{1/2},\qquad
+(Q_N)_{kn}=\sqrt{\pi_N(k)}\,p_{n,N}(k),\qquad Q_N^2=\Id.
+\end{equation}
+The \emph{symmetric Krawtchouk matrix} $S_N=\Phi_NB_N$ is symmetric but
+not orthogonal; its spectrum is a different and harder problem
+\cite{FeinsilverFitzgerald1996}.
+
+\begin{proposition}\label{prop:Qdiag}
+Let $M_N=\frac N2\Id-\frac12(\widehat R_N+\widehat L_N)$. Then
+$M_NQ_N=Q_N\diag(0,1,\dots,N)$.
+\end{proposition}
+\begin{proof}
+This is the three-term recurrence of the $K_n$ in the variable $k$,
+rewritten in orthonormal coordinates (equivalently, the difference
+equation of Lecture~\ref{L:limits}).
+\end{proof}
+Thus $\widehat R_N+\widehat L_N=2J_x$ plays the role of a position
+operator, and $M_N$ is a ``finite oscillator'' Hamiltonian with exactly
+equally spaced spectrum $0,1,\dots,N$; compare
+\cite{AtakishievSuslov1990,AtakishievWolf1997}.
+
+\begin{exercise}
+Check $\Phi_2^2=4\Id$ and $Q_2^2=\Id$ explicitly, and verify
+Proposition~\ref{prop:Qdiag} for $N=2$.
+\end{exercise}
+\begin{exercise}
+Show that the Casimir $J_x^2+J_y^2+J_z^2$ equals
+$\frac N2(\frac N2+1)\Id$ and explain why no finite-dimensional
+representation can satisfy $[a,a^\dagger]=\Id$.
+\end{exercise}
+
+%======================================================================
+\section{From spin to oscillator: contraction and diffusion}\label{L:limits}
+
+\subsection{Contraction to the Heisenberg algebra}
+Set $a_N=\widehat L_N/\sqrt N$, $a_N^\dagger=\widehat R_N/\sqrt N$,
+$\NN_N=\frac12(N\Id-\Lambda_N)$. Then
+\begin{equation}\label{eq:contr}
+[a_N,a_N^\dagger]=\Id-\frac{2}{N}\NN_N,\qquad
+[\NN_N,a_N]=-a_N,\qquad[\NN_N,a_N^\dagger]=a_N^\dagger.
+\end{equation}
+For fixed $j$, $a_N|j\rangle\to\sqrt j\,|j-1\rangle$ and
+$a_N^\dagger|j\rangle\to\sqrt{j+1}\,|j+1\rangle$. Under $|j\rangle\mapsto h_j$
+this is the oscillator representation of Lecture~\ref{L:hermite}. The
+convergence holds on each fixed finite set of levels, near the
+highest-weight end; it is not uniform over all levels, as the trace
+obstruction to $[a,a^\dagger]=\Id$ demands.
+
+The quadratic algebra \eqref{eq:quad} is then obtained \emph{after} the
+limit, as quadratic expressions in $a,a^\dagger$. The spin algebra does
+not contract to the quadratic $\mathfrak{sl}_2$; it contracts to the
+Heisenberg algebra, from which $\mathfrak{sl}_2$ is rebuilt.
+
+\subsection{Krawtchouk to Hermite}
+Use the central coordinate and mesh
+\begin{equation}\label{eq:scale}
+x_k=\frac{N-2k}{\sqrt{2N}},\qquad\delta_N=\sqrt{2/N}.
+\end{equation}
+\begin{theorem}\label{thm:KH}
+If $x_{k_N}\to x$, then for each fixed $n$,
+\[
+n!\,(2N)^{-n/2}K_n(k_N;N)\to H_n(x,\tfrac12),\qquad
+p_{n,N}(k_N)\to\frac{H_n(\sqrt2x)}{\sqrt{n!}},
+\]
+and $\delta_N^{-1/2}(Q_N)_{k_Nn}\to h_n(x)$.
+\end{theorem}
+\begin{proof}
+Put $z=u/\sqrt{2N}$ in \eqref{eq:Kgen}. With $N-k=\frac N2+\sqrt{N/2}\,x_k$
+and $k=\frac N2-\sqrt{N/2}\,x_k$,
+\[
+(N-k)\log(1+z)+k\log(1-z)=xu-\tfrac{u^2}4+o(1),
+\]
+locally uniformly in complex $u$. Cauchy estimates give coefficientwise
+convergence to \eqref{eq:Hgen} with $\tau=\frac12$. The de Moivre--Laplace
+local limit $\pi_N(k_N)/\delta_N\to\pi^{-1/2}e^{-x^2}$ gives the last
+statement.
+\end{proof}
+Limit relations of this type between discrete and continuous classical
+families are discussed systematically in \cite{GodoyEtAl1998}.
+
+\subsection{Ehrenfest to Ornstein--Uhlenbeck}
+The Ehrenfest urn chain has generator
+\begin{equation}\label{eq:GN}
+(G_Nf)(k)=\frac{N-k}2\big(f(k+1)-f(k)\big)+\frac k2\big(f(k-1)-f(k)\big).
+\end{equation}
+It is reversible for $\pi_N$, and $G_Np_{n,N}=-np_{n,N}$. Equivalently,
+each of $N$ independent bits flips at rate $\frac12$.
+\begin{theorem}\label{thm:OU}
+For smooth $F$ and $f(k)=F(x_k)$,
+$G_Nf(k)\to(GF)(x)$ where $G=\frac12D^2-xD$. The invariant measures
+converge to $d\mu=\pi^{-1/2}e^{-x^2}dx$. The unitary
+$U:L^2(\mu)\to L^2(dx)$, $Uf=\pi^{-1/4}e^{-x^2/2}f$, satisfies
+\[
+-UGU^{-1}=H-\tfrac12\Id=\NN.
+\]
+At finite $N$, $U_Nf(k)=\sqrt{\pi_N(k)}f(k)$ gives $-U_NG_NU_N^{-1}=M_N$.
+\end{theorem}
+\begin{proof}
+Taylor expansion with step $\delta_N$: the drift is
+$\frac{N-2k}{2}\cdot(-\delta_N)\to-x$ and the diffusion coefficient is
+$\frac N2\cdot\frac{\delta_N^2}{2}\to\frac12$. The conjugation is a
+direct computation: $e^{x^2/2}(\frac12D^2-xD)e^{-x^2/2}=\frac12D^2-\frac12x^2+\frac12$.
+\end{proof}
+Note that the Hermite polynomials appear in two different stochastic
+roles. In the fixed-$N$ urn above they are eigenfunctions of a
+\emph{stationary} diffusion. Along a simple random walk $X_m$, by
+contrast, the polynomials $K_n$ with order parameter $m$ give discrete
+martingales, whose limits $H_n(B_\tau,\tau)$ are Brownian martingales by
+the heat equation in \eqref{eq:Hrec}. These are distinct scalings.
+
+\subsection{Finite fractional transforms}
+Define $\mathfrak F_{N,\theta}=Q_N\diag(e^{-in\theta})Q_N^T=e^{-i\theta M_N}$.
+These are unitary, and on each fixed limiting mode they converge to
+$e^{-i\theta\NN}$; at $\theta=\frac\pi2$ the limit is $\F$. This is the
+fractional Fourier--Krawtchouk transform of \cite{AtakishievWolf1997}.
+Note that $Q_N$ itself is an involution while $\F$ has order four;
+$Q_N$ is the analogue of a reflection in the spin group, not of the
+Fourier transform.
+
+\begin{exercise}
+Show that with the opposite coordinate $x_k=(2k-N)/\sqrt{2N}$ every
+limit in Theorem~\ref{thm:KH} acquires a factor $(-1)^n$.
+\end{exercise}
+
+%======================================================================
+\section{Finite bilinear kernels and the Mehler limit}\label{L:kernels}
+We recall the notation of Lecture~\ref{L:spin}. The binomial weight is
+\[
+\pi_N(\ell)=2^{-N}\binom N\ell,\qquad 0\le\ell\le N,
+\]
+and the orthonormal Krawtchouk polynomials are
+\[
+p_{n,N}(k)=\binom Nn^{-1/2}K_n(k;N),\qquad
+(1+z)^{N-k}(1-z)^k=\sum_{n=0}^NK_n(k;N)z^n,
+\]
+so that $\sum_k\pi_N(k)p_{n,N}(k)p_{m,N}(k)=\delta_{mn}$ by
+\eqref{eq:Korth}. For $0<r<1$, set
+\begin{equation}\label{eq:finmehler}
+m_{r,N}(k,\ell)=\sum_{n=0}^Nr^np_{n,N}(k)p_{n,N}(\ell)
+=\sum_{n=0}^N\frac{r^n}{\binom Nn}K_n(k;N)K_n(\ell;N),
+\qquad 0\le k,\ell\le N.
+\end{equation}
+Explicitly (see Proposition~\ref{prop:finmehler}),
+\[
+m_{r,N}(k,\ell)=\frac{2^N}{\binom N\ell}\sum_{j}
+\binom kj\binom{N-k}{\ell-j}
+\Big(\frac{1+r}2\Big)^{N-k-\ell+2j}
+\Big(\frac{1-r}2\Big)^{k+\ell-2j},
+\]
+the sum running over $\max(0,k+\ell-N)\le j\le\min(k,\ell)$. Here $j$ is
+the number of the $k$ initially occupied sites that remain occupied.
+\begin{proposition}\label{prop:finmehler}
+With $r=e^{-s}$, $P_s(k,\ell)=\pi_N(\ell)m_{r,N}(k,\ell)$ is the
+transition matrix $e^{sG_N}$. It is nonnegative and
+\[
+\sum_\ell P_s(k,\ell)z^\ell
+=\Big(\tfrac{1+r}2+\tfrac{1-r}2z\Big)^{N-k}
+ \Big(\tfrac{1-r}2+\tfrac{1+r}2z\Big)^{k}.
+\]
+Moreover $\sum_j\pi_N(j)m_{r,N}(k,j)m_{q,N}(j,\ell)=m_{rq,N}(k,\ell)$.
+\end{proposition}
+\begin{proof}
+The spectral expansion follows from $G_Np_{n,N}=-np_{n,N}$. In the bit
+picture, each bit is flipped at time $s$ with probability $\frac{1-r}2$,
+which gives the generating function. The composition law is
+orthonormality \eqref{eq:Korth}.
+\end{proof}
+Nonnegativity of such kernels is the finite counterpart of the
+positivity of Mehler's kernel; compare the characterization of positive
+definite Krawtchouk sequences in \cite{Eagleson1969}.
+
+\begin{theorem}\label{thm:finlimit}
+If $x_{k_N}\to x$, the law of $x_{\ell}$ under $P_s(k_N,\cdot)$
+converges to that of $rx+\sqrt{1-r^2}\,Z$ with $Z\sim\mu$. Equivalently,
+the limiting transition operator is
+\[
+(T_rf)(x)=\int f\big(rx+\sqrt{1-r^2}z\big)\,d\mu(z),
+\]
+whose density relative to $\mu$ is
+\[
+m_r(x,y)=\frac1{\sqrt{1-r^2}}
+\exp\left(\frac{2rxy-r^2(x^2+y^2)}{1-r^2}\right),
+\]
+and $Um_rU^{-1}$ is the kernel \eqref{eq:mehlernorm} of $r^{\NN}$.
+\end{theorem}
+\begin{proof}
+The generating function in Proposition~\ref{prop:finmehler} is a product
+of independent Bernoulli factors; the central limit theorem gives the
+stated Gaussian with mean $rx$ and variance $\frac{1-r^2}2$. This avoids
+interchanging the $N\to\infty$ limit with the infinite spectral sum.
+\end{proof}
+So Mehler's formula is the $N\to\infty$ shadow of the elementary
+statement that independent bit flips form a Markov semigroup.
+
+\begin{exercise}
+Derive \eqref{eq:mehlernorm} from Theorem~\ref{thm:finlimit} and the
+fixed-mode limits of Theorem~\ref{thm:KH}, justifying the interchange
+of limit and sum by a domination argument.
+\end{exercise}
+
+%======================================================================
+\section{Convolution: what survives the limit}\label{L:conv}
+
+\subsection{Krawtchouk convolution}
+Identify $\{0,1\}^N$ with subsets of $\{1,\dots,N\}$; the group law is
+symmetric difference. If independent uniform subsets have sizes
+$k,\ell$, the size of their sum is $k+\ell-2J$, with $J$ hypergeometric.
+This defines the radial (hypergroup) convolution
+\begin{equation}\label{eq:hyper}
+\delta_k*_N\delta_\ell=\sum_j
+\frac{\binom kj\binom{N-k}{\ell-j}}{\binom N\ell}\,\delta_{k+\ell-2j}.
+\end{equation}
+Its identity is $\delta_0$. The normalized characters
+$\chi_{n,N}(k)=K_n(k;N)/\binom Nn$ satisfy the product formula
+\begin{equation}\label{eq:char}
+\int\chi_{n,N}\,d(\delta_k*_N\delta_\ell)=\chi_{n,N}(k)\chi_{n,N}(\ell),
+\end{equation}
+so the transform $\widehat\nu(n)=\sum_k\chi_{n,N}(k)\nu(k)$ turns $*_N$
+into multiplication. These are the eigenvalues of the Hamming
+association scheme \cite{Delsarte1973,MacWilliamsSloane1977}; the
+product formula is a special case of the Krawtchouk addition theorem
+\cite{Dunkl1976}.
+
+\subsection{Central inputs: collapse}
+\begin{proposition}\label{prop:collapse}
+If $x_{k_N}\to x$ and $x_{\ell_N}\to y$, then the pushforward of
+$\delta_{k_N}*_N\delta_{\ell_N}$ to the $x$-coordinate converges to $\mu$,
+independently of $x,y$.
+\end{proposition}
+\begin{proof}
+The mean of $x_M$ is $\sqrt{2/N}\,x_{k_N}x_{\ell_N}\to0$ and its variance
+tends to $\frac12$; apply the hypergeometric central limit theorem.
+\end{proof}
+Two central inputs thus produce the invariant Gaussian, forgetting both.
+Spectrally, $\chi_{n,N}(k_N)=O(N^{-n/2})$, and the factor $N^{n/2}$ needed
+to obtain Hermite polynomials appears twice on the right of
+\eqref{eq:char} but once on the left. The reason is geometric: the
+identity $k=0$ has moved to $x_0=\sqrt{N/2}\to\infty$.
+
+\subsection{One macroscopic input: the Mehler kernel}
+\begin{theorem}\label{thm:mixed}
+Let $x_{k_N}\to x$ and $\ell_N/N\to\frac{1-r}2$ with $-1<r<1$. Then
+\[
+x_M\Longrightarrow rx+\sqrt{1-r^2}\,Z,\qquad Z\sim\mu,
+\]
+and $\chi_{n,N}(\ell_N)\to r^n$ for each fixed $n$.
+\end{theorem}
+Now one factor in \eqref{eq:char} stays of order one, and the product
+formula has a nontrivial limit: the Ornstein--Uhlenbeck kernel. There
+is an exact finite version. The radial binomial measure
+\[
+\nu_{r,N}(\ell)=\binom N\ell\Big(\frac{1-r}2\Big)^\ell\Big(\frac{1+r}2\Big)^{N-\ell}
+\]
+(flip each bit with probability $\frac{1-r}{2}$) has character
+multipliers $r^n$, so convolution by $\nu_{r,N}$ \emph{is} the finite
+Mehler operator of Proposition~\ref{prop:finmehler}, and
+$\nu_{r,N}*_N\nu_{q,N}=\nu_{rq,N}$. In the limit this becomes
+\[
+\int m_r(x,z)m_q(z,y)\,d\mu(z)=m_{rq}(x,y),
+\]
+i.e.\ the semigroup law $e^{-sH}e^{-tH}=e^{-(s+t)H}$.
+
+\subsection{Other products}
+Ordinary convolution on $\R$ is addition of independent variables,
+diagonalized by characters $e^{ix\xi}$. The OU operation instead
+contracts one input and adds independent noise. The Hermite polynomials
+satisfy the binomial identity
+\[
+H_n(ax+by,\tfrac12)=\sum_j\binom nja^jb^{n-j}H_j(x,\tfrac12)H_{n-j}(y,\tfrac12),
+\qquad a^2+b^2=1,
+\]
+which splits degrees rather than multiplying characters. On polynomials
+one can also define the Wick product
+$H_m(\cdot,\frac12)\diamond H_n(\cdot,\frac12)=H_{m+n}(\cdot,\frac12)$,
+equivalently $f\diamond g=W((W^{-1}f)(W^{-1}g))$ with $W=e^{-D^2/4}$.
+It is an algebraic product, not a positive convolution.
+
+\begin{remark}[An intertwining question]
+One may ask for an intertwiner between ordinary convolution with the
+Fourier transform and Krawtchouk convolution with the Krawtchouk
+transform. The discussion above shows that the question needs
+qualification: a finite convolution theorem exists, and a natural
+Mehler/OU limit exists, but under central scaling Krawtchouk convolution
+does not tend to ordinary convolution. Any proposed intertwiner must
+specify the product, the measure, and the topology to be preserved.
+\end{remark}
+
+\begin{exercise}
+Compute the mean and variance of $k+\ell-2J$ and prove
+Proposition~\ref{prop:collapse} and Theorem~\ref{thm:mixed}.
+\end{exercise}
+\begin{exercise}
+Verify that $\nu_{r,N}$ has character multipliers $r^n$, using
+\eqref{eq:Kgen} with $z$ replaced by a suitable ratio.
+\end{exercise}
+
+%======================================================================
+\section{The degenerate Gaussian kernels: $b=\pm2a$}\label{L:end}
+We return to Lecture~\ref{L:gauss} at the boundary of the region
+$|b|<2a$, where the oscillator picture breaks down.
+
+\subsection{$b=2a$: free heat flow}
+Here $G_{a,2a}(x,y)=e^{-a(x-y)^2}$, so $A_{a,2a}$ is ordinary convolution
+with a Gaussian. By \eqref{eq:F},
+$\F(A_{a,2a}f)(\xi)=\sqrt{\pi/a}\,e^{-\xi^2/(4a)}\F f(\xi)$, hence
+\[
+A_{a,2a}=\sqrt{\pi/a}\;e^{D^2/(4a)}.
+\]
+It is bounded with norm $\sqrt{\pi/a}$, but not compact; its spectrum is
+$[0,\sqrt{\pi/a}]$, purely continuous. Ordinary convolution appears
+exactly when the confining quadratic form degenerates.
+
+\subsection{$b=-2a$: heat flow with reflection}
+Here $G_{a,-2a}(x,y)=e^{-a(x+y)^2}$ and
+\[
+A_{a,-2a}=\sqrt{\pi/a}\;e^{D^2/(4a)}P,
+\]
+with $P$ commuting with the heat operator. It equals the previous
+operator on even functions and its negative on odd functions; its
+spectrum is $[-\sqrt{\pi/a},\sqrt{\pi/a}]$.
+
+\subsection{Approach to the endpoints}
+As $b\uparrow2a$ with $a$ fixed, $\omega\to0$, $r\to1$, and
+$\tau/\omega\to1/(2a)$. In \eqref{eq:gaussheat} the potential
+$\frac{\omega^2x^2}{2}$ disappears, the kinetic part tends to
+$D^2/(4a)$, and the scalar tends to $\sqrt{\pi/a}$. The uniform Schur
+bound
+\[
+\sup_x\int e^{-a(x^2+y^2)+bxy}\,dy=\sqrt{\frac\pi a}\,
+\sup_xe^{-(4a^2-b^2)x^2/(4a)}=\sqrt{\frac\pi a}\qquad(|b|\le2a)
+\]
+and pointwise convergence on compactly supported functions give strong
+convergence $A_{a,b}\to A_{a,2a}$ on $L^2$. Norm convergence fails,
+since the interior operators are compact and the endpoint operator is
+not. The case $b\downarrow-2a$ follows by composing with $P$. For
+$|b|>2a$ the form is indefinite, and the kernel no longer defines a
+bounded operator.
+
+\begin{exercise}
+Show that the eigenvalues $Cr^n$ of $A_{a,b}$ accumulate densely in
+$[0,\sqrt{\pi/a}]$ as $b\uparrow2a$, consistent with the spectrum of
+the endpoint operator.
+\end{exercise}
+
+%======================================================================
+\begin{thebibliography}{99}
+\bibitem{AtakishievSuslov1990}
+N.~M. Atakishiev and S.~K. Suslov, \emph{Difference analogs of the
+harmonic oscillator}, Theoret. and Math. Phys. \textbf{85} (1990).
+\href{https://doi.org/10.1007/BF01017247}{doi:10.1007/BF01017247}.
+
+\bibitem{AtakishievWolf1997}
+N.~M. Atakishiyev and K.~B. Wolf, \emph{Fractional Fourier--Kravchuk
+transform}, J. Opt. Soc. Amer. A \textbf{14} (1997), no.~7, 1467.
+\href{https://doi.org/10.1364/JOSAA.14.001467}{doi:10.1364/JOSAA.14.001467}.
+
+\bibitem{Delsarte1973}
+P.~Delsarte, \emph{An algebraic approach to the association schemes of
+coding theory}, Philips Research Reports Supplements, No.~10 (1973).
+
+\bibitem{Dunkl1976}
+C.~F. Dunkl, \emph{A Krawtchouk polynomial addition theorem and wreath
+products of symmetric groups}, Indiana Univ. Math. J. \textbf{25}
+(1976), 335--358.
+
+\bibitem{Eagleson1969}
+G.~K. Eagleson, \emph{A characterization theorem for positive definite
+sequences of the Krawtchouk polynomials}, Australian J. Statist.
+\textbf{11} (1969), 29--38.
+
+\bibitem{FeinsilverFitzgerald1996}
+P.~Feinsilver and R.~Fitzgerald, \emph{The spectrum of symmetric
+Krawtchouk matrices}, Linear Algebra Appl. \textbf{235} (1996), 121--139.
+\href{https://doi.org/10.1016/0024-3795(94)00123-5}{doi:10.1016/0024-3795(94)00123-5}.
+
+\bibitem{FeinsilverKocik2005}
+P.~Feinsilver and J.~Kocik, \emph{Krawtchouk polynomials and Krawtchouk
+matrices}, in: \emph{Recent Advances in Applied Probability}
+(R.~Baeza-Yates, J.~Glaz, H.~Gzyl, J.~H\"usler, and J.~L.~Palacios, eds.),
+Springer, New York, 2005, pp.~115--141.
+\href{https://doi.org/10.1007/0-387-23394-6_5}{doi:10.1007/0-387-23394-6\_5}.
+
+\bibitem{GodoyEtAl1998}
+E.~Godoy, A.~Ronveaux, A.~Zarzo, and I.~Area, \emph{On the limit
+relations between classical continuous and discrete orthogonal
+polynomials}, J. Comput. Appl. Math. \textbf{91} (1998), 97--105.
+\href{https://doi.org/10.1016/S0377-0427(98)00026-0}{doi:10.1016/S0377-0427(98)00026-0}.
+
+\bibitem{Krawtchouk1929}
+M.~Krawtchouk, \emph{Sur une g\'en\'eralisation des polyn\^omes
+d'Hermite}, C. R. Acad. Sci. Paris \textbf{189} (1929), 620--622.
+
+\bibitem{MacWilliamsSloane1977}
+F.~J. MacWilliams and N.~J.~A. Sloane, \emph{The Theory of
+Error-Correcting Codes}, North-Holland, Amsterdam, 1977.
+
+\bibitem{Mehler1866}
+F.~G. Mehler, \emph{Ueber die Entwicklung einer Function von beliebig
+vielen Variablen nach Laplaceschen Functionen h\"oherer Ordnung},
+J. Reine Angew. Math. \textbf{66} (1866), 161--176.
+\href{https://doi.org/10.1515/crll.1866.66.161}{doi:10.1515/crll.1866.66.161}.
+\end{thebibliography}
+\end{document}

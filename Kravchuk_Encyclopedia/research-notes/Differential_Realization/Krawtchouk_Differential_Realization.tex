@@ -1,0 +1,390 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}[proposition]{Remark}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\HeunG}{HeunG}
+\newcommand{\Id}{\mathbf 1}
+\newcommand{\cI}{\mathcal I}
+\newcommand{\Poly}{\mathcal P}
+\title{Differential Realization of the Krawtchouk Algebra\\and Its Heun Reductions}
+\author{Reference note}
+\date{18 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A separate record of the finite polynomial realization of the Krawtchouk
+operators, the cubic phase-modified transform, and the resulting Heun
+polynomial problems. All conventions use
+$\sigma=\diag((-1)^j)$ and $\mathcal I=\diag(i^j)$.
+The note records exact finite-dimensional identities, not a proof of a
+large-$N$ asymptotic. The current asymptotic strategy through a positive
+Jacobi eigenvector and binomially weighted norms does not require the
+Heun differential equations; they are retained here for reference.
+\end{abstract}
+\tableofcontents
+
+\section{Conventions and the finite polynomial model}
+Fix an integer $N\geq 1$ and use indices $0,\ldots,N$. Identify
+$e_j$ with $z^j$ in $\Poly_N=\{f:\deg f\leq N\}$.
+Write $D=d/dz$, $\mathcal E=zD$, and use $\Id$ for the identity.
+The coefficient inner product is
+\[
+ \left\langle\sum f_jz^j,\sum g_jz^j\right\rangle_{\rm coeff}
+ =\sum_{j=0}^N\overline{f_j}g_j.
+\]
+Adjoint and symmetry statements about matrices refer to this inner
+product, not to an unspecified integral inner product on a real interval.
+
+Our phase and parity conventions are
+\begin{equation}\label{eq:phases}
+ \sigma=\diag((-1)^j),\qquad \cI=\diag(i^j),\qquad i^2=-1.
+\end{equation}
+On polynomials,
+\[
+ (\sigma f)(z)=f(-z),\qquad (\cI f)(z)=f(iz),\qquad
+ \cI^2=\sigma,\quad \cI^{-1}=\overline{\cI}.
+\]
+Dependence of these matrices on $N$ is suppressed.
+
+\section{Raising, lowering, and diagonal generators}
+The finite generators are
+\[
+ R_Ne_j=(N-j)e_{j+1},\quad L_Ne_j=je_{j-1},\quad
+ \Lambda_Ne_j=(N-2j)e_j.
+\]
+Endpoint terms are omitted. Their differential realizations are
+\begin{equation}\label{eq:generators}
+ L_N=D,\qquad R_N=Nz-z^2D,\qquad \Lambda_N=N-2zD.
+\end{equation}
+Consequently,
+\[
+ A_N=R_N+L_N=(1-z^2)D+Nz,
+\]
+and
+\[
+ [L_N,R_N]=\Lambda_N,\quad
+ [\Lambda_N,R_N]=-2R_N,\quad
+ [\Lambda_N,L_N]=2L_N.
+\]
+All these operators preserve $\Poly_N$. Preservation depends on the
+cancellation of the apparent degree-$N+1$ term in $R_Nz^N$.
+
+\section{The Krawtchouk transform and the symmetric matrix}
+Define
+\[
+ (\Phi_N)_{kj}=[z^k](1+z)^{N-j}(1-z)^j,\qquad
+ B_N=\diag\binom Nj,\qquad S_N=\Phi_NB_N.
+\]
+The transform has the weighted-composition realization
+\begin{equation}\label{eq:Phi}
+ (\Phi_N f)(z)=(1+z)^N
+ f\!\left(\frac{1-z}{1+z}\right).
+\end{equation}
+This is a polynomial identity, with apparent poles canceled by the
+prefactor. It gives $\Phi_N^2=2^N\Id$.
+Weighted Krawtchouk duality implies $S_N^T=S_N$.
+
+For clarity, $S_N$ is not being claimed to be a fixed low-order
+local differential operator. Define on $\Poly_N$
+\[
+ \mathscr B_N\!\left(\sum f_jz^j\right)
+   =\sum\binom Nj f_jz^j.
+\]
+Then its exact realization is
+\begin{equation}\label{eq:S}
+ (S_Nf)(z)=(1+z)^N
+ (\mathscr B_N f)\!\left(\frac{1-z}{1+z}\right).
+\end{equation}
+If a differential expression is desired, $\mathscr B_N=b_N(\mathcal E)$,
+where $b_N$ is the interpolation polynomial of degree at most $N$ with
+$b_N(j)=\binom Nj$ for $0\leq j\leq N$. This is a finite-space identity.
+A useful exact relation, independent of differential realization, is
+\begin{equation}\label{eq:normbridge}
+ S_NB_N^{-1}S_N=2^NB_N.
+\end{equation}
+
+\section{The cubic phase-modified transform}
+Put $C_N=\cI\Phi_N$. Then
+\begin{equation}\label{eq:C}
+ (C_Nf)(z)=(1+iz)^N
+ f\!\left(\frac{1-iz}{1+iz}\right).
+\end{equation}
+Iteration gives
+\begin{align}
+ (C_N^2f)(z)&=(1+i)^N(1+z)^N
+ f\!\left(-i\frac{1-z}{1+z}\right),\label{eq:C2}\\
+ C_N^3&=[2(1+i)]^N\Id.\label{eq:cubic}
+\end{align}
+For example, the degree-one weighted-composition matrix is
+$\begin{pmatrix}-i&1\\i&1\end{pmatrix}$, whose cube is
+$2(1+i)\Id$; its degree-$N$ homogeneous action gives \eqref{eq:cubic}.
+Useful conjugation formulas are
+\begin{align}
+ C_N^2R_NC_N^{-2}&=\frac i2(R_N-L_N-\Lambda_N),\\
+ C_N^2L_NC_N^{-2}&=\frac i2(R_N-L_N+\Lambda_N),\\
+ C_N^2\Lambda_NC_N^{-2}&=R_N+L_N.
+\end{align}
+They provide an algebraic route to the differential operator below.
+
+\section{The skew operator and its positive Jacobi form}
+The finite skew operator is
+\begin{align}
+ T_N&=(\Lambda_N-N\Id)R_N+(\Lambda_N+N\Id)L_N,\\
+ T_Ne_j&=2j(N-j+1)e_{j-1}-2(j+1)(N-j)e_{j+1}.
+\end{align}
+Its differential realization is
+\begin{equation}\label{eq:T}
+ \boxed{T_N=2\left[z(z^2-1)D^2+
+ \bigl(N+(2-N)z^2\bigr)D-Nz\right].}
+\end{equation}
+It preserves $\Poly_N$ and satisfies
+\[
+ T_N^T=-T_N,\qquad T_NS_N=-S_NT_N.
+\]
+Thus $[T_N,S_N^2]=0$.
+
+The phase conjugate
+\begin{equation}\label{eq:J}
+ \mathsf J_N=-i\cI^{-1}T_N\cI
+\end{equation}
+is real symmetric, with off-diagonal entries
+$2(j+1)(N-j)>0$. Its polynomial expression is
+\begin{equation}
+ \mathsf J_N=2\left[-z(1+z^2)D^2+
+ \bigl(N+(N-2)z^2\bigr)D+Nz\right].
+\end{equation}
+Let $\tau_N$ denote its largest eigenvalue and $v_N$ its positive
+Perron eigenvector. A convenient normalization for this note is
+$(v_N)_0=1$. Set $f_N(z)=\sum i^j(v_N)_jz^j$.
+Then
+\begin{equation}\label{eq:f-eig}
+ T_Nf_N=i\tau_Nf_N,\qquad f_N(0)=1.
+\end{equation}
+Explicitly,
+\[
+ 2z(z^2-1)f_N''+2\bigl(N+(2-N)z^2\bigr)f_N'
+ -(2Nz+i\tau_N)f_N=0.
+\]
+
+\section{The cubic-conjugated, parity-preserving operator}
+Define
+\[
+ F_N=C_N^2f_N,\qquad
+ \mathscr H_N=\frac1iC_N^2T_NC_N^{-2}.
+\]
+(The symbol $\mathscr H_N$ here denotes this finite transformed operator,
+not the continuum harmonic oscillator.) Then
+\begin{equation}\label{eq:H}
+ \boxed{\begin{aligned}
+ \mathscr H_N={}&(z^4-1)D^2
+ -2\bigl((N-1)z^3+(N+1)z\bigr)D\\
+ &+N(N-1)z^2+N(N+1),
+ \end{aligned}}
+\end{equation}
+and $\mathscr H_NF_N=\tau_NF_N$.
+This operator preserves even and odd polynomials separately.
+
+For the Perron mode, $F_N$ is even. To see the selection algebraically,
+let $\mathcal Rf(z)=z^Nf(1/z)$ be coefficient reversal.
+The Jacobi matrix commutes with $\mathcal R$, so positivity and
+simplicity give $\mathcal Rv_N=v_N$. Directly,
+\[
+ C_N^{-2}\sigma C_N^2=\cI\mathcal R\cI^{-1}.
+\]
+It follows that $\sigma F_N=F_N$.
+
+Write $N=2M+d$ with $d\in\{0,1\}$ and put
+\begin{equation}\label{eq:g}
+ F_N(z)=g_N(z^2),\qquad \deg g_N=M.
+\end{equation}
+The degree is exactly $M$: otherwise the nonzero raising coefficient
+$(N-k)(N-k-1)$ at the highest even degree $k<2M$ would contradict the
+eigenvalue equation. The equation for $g_N$ is
+\begin{equation}\label{eq:g-ode}
+ \begin{aligned}
+ 4t(t^2-1)g_N''
+ &+\bigl((6-4N)t^2-4(N+1)t-2\bigr)g_N'\\
+ &+\bigl(N(N-1)t+N(N+1)-\tau_N\bigr)g_N=0.
+ \end{aligned}
+\end{equation}
+The other parity sector is obtained by substituting $F(z)=z g(z^2)$
+in \eqref{eq:H}; it is not the selected Perron sector used here.
+
+\section{The compact-interval Heun polynomial}
+Reverse the polynomial by
+\begin{equation}\label{eq:y-def}
+ y_N(x)=\frac{x^Mg_N(-1/x)}{(-1)^M[t^M]g_N(t)}.
+\end{equation}
+Then $y_N(0)=1$. Define
+\begin{equation}\label{eq:q}
+ \gamma=d+\frac12,\qquad
+ q_N^*=\frac{\tau_N+(N+1)(N-2d)}4.
+\end{equation}
+Substitution in \eqref{eq:g-ode} gives
+\begin{equation}\label{eq:heun}
+ \boxed{y_N''+
+ \left(\frac{\gamma}{x}+\frac1{x-1}-\frac N{x+1}\right)y_N'
+ +\frac{M(M-\frac12)x-q_N^*}{x(x-1)(x+1)}y_N=0.}
+\end{equation}
+In the convention
+\[
+ y''+\left(\frac\gamma x+\frac\delta{x-1}+\frac\epsilon{x-a}\right)y'
+ +\frac{\alpha\beta x-q}{x(x-1)(x-a)}y=0,
+ \quad \alpha+\beta+1=\gamma+\delta+\epsilon,
+\]
+our parameters are
+\[
+ a=-1,\quad \alpha=-M,\quad\beta=\frac12-M,\quad
+ \gamma=d+\frac12,\quad\delta=1,\quad\epsilon=-N,\quad q=q_N^*.
+\]
+Thus the analytic branch normalized at zero can be written
+\[
+ y_N(x)=\HeunG\left(-1,q_N^*;-M,\frac12-M,d+\frac12,1;x\right).
+\]
+The selected accessory parameter enforces polynomial termination and
+selects the highest polynomial mode; termination alone has $M+1$
+possible accessory parameters.
+
+\subsection{Coefficient recurrence}
+Writing $y_N(x)=\sum_{n=0}^Mc_nx^n$, with $c_{-1}=0,c_0=1$, gives
+\begin{equation}\label{eq:rec}
+ c_{n+1}=
+ \frac{((N+1)n-q)c_n+(n-M-1)(n-M-\frac12)c_{n-1}}
+ {(n+1)(n+\gamma)}.
+\end{equation}
+In particular, $c_1=-q/\gamma$. Termination is $c_{M+1}(q)=0$.
+This accessory polynomial is distinct from the spectral-return
+polynomials $p_N$ and $\widetilde q_N$ used elsewhere in the project.
+
+\section{Positive-weight Sturm--Liouville form}
+On $0<x<1$ define
+\[
+ w_N(x)=x^{d-1/2}(1+x)^{-N-1},\qquad
+ a_N(x)=x^{d+1/2}(1-x)(1+x)^{-N}.
+\]
+Equation \eqref{eq:heun} is equivalent to
+\begin{equation}\label{eq:SL}
+ -\frac1{w_N}(a_Ny_N')'
+ +M\left(M-\frac12\right)xy_N=q_N^*y_N.
+\end{equation}
+The weight is positive and integrable. Natural zero-flux conditions
+$\lim a_Ny'=0$ at both endpoints select the regular polynomial branch.
+The differential expression preserves $\Poly_M$ and is symmetric there
+in $L^2((0,1),w_Ndx)$.
+
+The selected $q_N^*$ is the largest eigenvalue in this finite invariant
+polynomial space, not the largest eigenvalue of the full unbounded
+Sturm--Liouville problem. The polynomial eigenfunctions occupy its
+first $M+1$ natural-boundary modes: each has at most $M$ zeros, while
+Sturm oscillation assigns distinct zero counts to distinct eigenvalues.
+Consequently the top polynomial has $M$ simple zeros in $(0,1)$:
+\begin{equation}\label{eq:zeros}
+ 0<x_{1,N}<\cdots<x_{M,N}<1.
+\end{equation}
+For $M=0$, all root products below are empty products.
+
+\section{Returning to the original symmetric matrix}
+Write $\lambda_N=\lambda_{\max}(S_N)$; the notation $L_N$ remains
+reserved for the lowering operator.
+The exact return identities are
+\begin{equation}\label{eq:return}
+ \boxed{\lambda_N
+ =2^{N/2}\left|\frac{g_N(1)}{g_N(-1)}\right|
+ =2^{N/2}\left|\frac{y_N(-1)}{y_N(1)}\right|.}
+\end{equation}
+For an explicit check, $S_Nf_N=c_N\sigma f_N$ and $\Phi_N^2=2^N\Id$
+imply, after applying $\Phi_N$ and taking the constant coefficient,
+\[
+ 2^Nf_N(0)=c_Nf_N(-1).
+\]
+On the other hand, \eqref{eq:C2} gives
+$g_N(-1)=F_N(i)=(2i)^Nf_N(-1)$ and
+$g_N(1)=F_N(1)=[2(1+i)]^Nf_N(0)$.
+Taking absolute values proves the first equality in \eqref{eq:return};
+\eqref{eq:y-def} proves the second.
+Equivalently, using \eqref{eq:zeros},
+\begin{equation}
+ \lambda_N=2^{N/2}\prod_{j=1}^M\frac{1+x_{j,N}}{1-x_{j,N}}.
+\end{equation}
+The coefficient of the next-to-highest power in \eqref{eq:heun} gives
+\begin{equation}
+ \tau_N=N(N+1)-2\sum_{j=1}^Mx_{j,N}.
+\end{equation}
+These are exact finite identities. They do not, by themselves, justify
+weak zero-measure limits, endpoint logarithmic statistics, or a sharp
+large-$N$ prefactor.
+
+\section{A second Heun chart with third singularity at two}
+For reference, set
+\begin{equation}\label{eq:U}
+ s=\frac{2x}{1+x},\qquad
+ U_N(s)=\left(1-\frac s2\right)^M
+ y_N\!\left(\frac{s}{2-s}\right).
+\end{equation}
+This is a degree-$M$ polynomial with $U_N(0)=1$ and Heun parameters
+\begin{equation}\label{eq:U-par}
+ \begin{gathered}
+ a=2,\quad Q_N=-q_N^*-M\gamma,\quad
+ \alpha=-M,\quad\beta=M+d+1,\\
+ \gamma=d+\frac12,\quad\delta=1,\quad\epsilon=\frac12.
+ \end{gathered}
+\end{equation}
+Thus $U_N''+(\gamma/s+1/(s-1)+1/(2(s-2)))U_N'
+ +(\alpha\beta s-Q_N)U_N/[s(s-1)(s-2)]=0$.
+Moreover,
+\[
+ U_N(1)=2^{-M}y_N(1),\qquad
+ [s^M]U_N=(-1)^M2^{-M}y_N(-1),
+\]
+so
+\begin{equation}
+ \lambda_N=2^{N/2}\left|\frac{[s^M]U_N}{U_N(1)}\right|.
+\end{equation}
+The third finite singularity is now outside the unit disk. The
+exponent difference at $s=1$ is nevertheless zero, and the difference
+at infinity is $N+1$. Generic nonresonant connection formulas therefore
+require a controlled limiting procedure. An expansion in $1/a=1/2$
+is not automatically uniform as the other parameters grow with $N$.
+
+\section{Relation to the current asymptotic approach}
+The differential route is an exact alternative description, not a
+necessary part of the present leading-asymptotic strategy. If $v_N$ is
+the Jacobi Perron vector (with any normalization), then
+\eqref{eq:normbridge} yields directly
+\begin{equation}\label{eq:positive-ratio}
+ \boxed{\lambda_N^2=2^N
+ \frac{\sum_{j=0}^N\binom Nj(v_N)_j^2}
+ {\sum_{j=0}^N\binom Nj^{-1}(v_N)_j^2}.}
+\end{equation}
+The expected central profile, with $\xi_j=(j-N/2)/\sqrt N$, is
+$(v_N)_j\propto e^{-\sqrt8\,\xi_j^2/2}$; a convenient discrete
+candidate is $(v_N)_j\propto\binom Nj^{1/\sqrt2}$.
+Local Gaussian convergence plus suitable inverse-binomial weighted tail
+control would give
+\[
+ \lambda_N\sim\sqrt{\frac{\sqrt8-2}{\pi}}\,
+ \frac{(\sqrt8)^N}{\sqrt N}.
+\]
+That weighted control is a separate proof obligation; no such
+asymptotic theorem is asserted here.
+
+\section*{Notation map}
+\begin{center}
+\begin{tabular}{ll}
+$f_N(z)$ & Original $T_N$ polynomial eigenfunction, $f_N(0)=1$.\\
+$F_N(z)$ & Cubic conjugate $C_N^2f_N$, even for the top mode.\\
+$g_N(t)$ & Half-degree polynomial, $F_N(z)=g_N(z^2)$.\\
+$y_N(x)$ & Reversed Heun polynomial, $y_N(0)=1$.\\
+$U_N(s)$ & Alternate Heun polynomial with $a=2$.\\
+$\tau_N$ & Largest eigenvalue of the positive Jacobi matrix.\\
+$q_N^*$ & Selected Heun accessory parameter in the $x$ chart.\\
+$Q_N$ & Accessory parameter in the $s$ chart.\\
+$\lambda_N$ & Largest eigenvalue of the symmetric matrix $S_N$.\\
+$\sigma,\cI$ & Parity and phase matrices; $\cI^2=\sigma$.
+\end{tabular}
+\end{center}
+\end{document}

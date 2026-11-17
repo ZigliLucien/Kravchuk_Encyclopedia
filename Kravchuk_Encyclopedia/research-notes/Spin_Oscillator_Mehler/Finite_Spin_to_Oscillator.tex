@@ -1,0 +1,784 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}[proposition]{Theorem}
+\theoremstyle{remark}\newtheorem{remark}[proposition]{Remark}
+\newcommand{\R}{\mathbb R}\newcommand{\F}{\mathcal F}
+\newcommand{\Id}{I}\newcommand{\NN}{\mathcal N}
+\DeclareMathOperator{\diag}{diag}
+\title[Finite Spin, Krawtchouk Systems, and Oscillators]{From Finite Spin to the Harmonic Oscillator:\\Krawtchouk Transforms, Mehler Kernels, and Convolution}
+\date{A synthesis of FeinNotes11, the Kravchuk Encyclopedia,\\the accompanying research notes, and the present discussion}
+\begin{document}
+\begin{abstract}
+We give a convention-explicit account of the passage from finite spin to
+Hermite functions and the harmonic oscillator. Three structures are kept
+separate: the finite spin representation of $\mathfrak{sl}_2$, its
+Heisenberg contraction near a weight endpoint, and the quadratic
+metaplectic realization on the limiting oscillator space. Krawtchouk
+polynomials become Hermite polynomials under central scaling; the
+Ehrenfest generator becomes the Ornstein--Uhlenbeck generator, and
+Gaussian conjugation gives the oscillator. The same construction
+identifies finite bilinear kernels with precursors of Mehler kernels.
+For convolution, a bulk--bulk limit loses its inputs, whereas a
+bulk--macroscopic limit retains a nontrivial Ornstein--Uhlenbeck kernel.
+We also identify the squeezed Gaussian kernel in the spectral working
+note, distinguishing its exact diagonalization from the still conditional
+transfer of its spectrum to finite matrices. The endpoint kernels
+$b=\pm2a$ are treated at the end.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Source map, scope, and principal distinctions}
+This note correlates the following materials in the supplied Drive project.
+\begin{description}
+\item[FeinNotes11 (F).] The working transcription in
+the FeinNotes11 research-note folder: Hermite wavefunctions,
+Fourier phases, the quadratic $\mathfrak{sl}_2$ triple, and the question
+of a convolution intertwiner.
+\item[Encyclopedia (E).] Chapters 3 (urn chains), 6 (finite spin), 10
+(Heisenberg algebra), 11 (central limits), 14 (transforms), 16 (symmetric
+matrices), and 18 (association schemes). The Mehler subsection in
+Chapter 11 is presently a placeholder; Sections~\ref{sec:finite-kernels}--\ref{sec:gaussian}
+below supply a standalone development of that connection.
+\item[Differential note (D).] The finite polynomial realization in
+the Differential Realization research-note folder. Its differential
+operators act on finite-degree auxiliary polynomials; they are not the
+Schrodinger oscillator merely because both models use derivatives.
+\item[Spectral note (S).] The working note in
+the Spectral Working Note folder: the matrix $S_N=\Phi_NB_N$,
+a commuting construction, local Gaussian asymptotics, and a candidate
+squeezed Mehler limit.
+\end{description}
+These are internal source correlations, not new bibliographic claims.
+F itself records that it is an editorial transcription, not a newly
+verified diplomatic reading of the original scan.
+
+The main logical chain is
+\[
+\begin{array}{ccccc}
+\text{finite spin}&\longrightarrow&\text{Heisenberg algebra}
+ &\longrightarrow&\text{quadratic oscillator algebra}\\
+\text{Krawtchouk}&\longrightarrow&\text{Hermite}
+ &\longrightarrow&\text{Hermite wavefunctions}\\
+\text{Ehrenfest}&\longrightarrow&\text{Ornstein--Uhlenbeck}
+ &\longrightarrow&\text{oscillator heat evolution}.
+\end{array}
+\]
+The second arrow in the last row is Gaussian conjugation, not another
+probabilistic scaling limit. The exact Mehler diagonalization of a
+candidate limiting kernel is not, by itself, a proof of convergence of
+finite matrix spectra.
+
+\section{Hermite normalization and the Fourier sign audit}\label{sec:hermite}
+Set $D=d/dx$ and define
+\begin{equation}\label{eq:hermite-gen}
+ e^{zx-\tau z^2/2}=\sum_{n\ge0}H_n(x,\tau)\frac{z^n}{n!}.
+\end{equation}
+We reserve $H_n(x)=H_n(x,1)$ for probabilists' Hermite polynomials.
+In particular,
+\[
+ H_n(x,\tfrac12)=2^{-n/2}H_n(\sqrt2x).
+\]
+Let
+\[
+ \psi_n(x)=2^nH_n(x,\tfrac12)e^{-x^2/2},\qquad
+ h_n(x)=\frac{\psi_n(x)}{\pi^{1/4}\sqrt{2^nn!}}.
+\]
+Their wavefunction generating function is
+\begin{equation}\label{eq:wave-gen}
+ \sum_{n\ge0}\psi_n(x)\frac{u^n}{n!}
+ =e^{-x^2/2+2ux-u^2}.
+\end{equation}
+Differentiating \eqref{eq:hermite-gen} in $x$ and $z$ gives
+\[
+ H_n'=nH_{n-1},\qquad
+ H_{n+1}(x,\tau)=xH_n(x,\tau)-n\tau H_{n-1}(x,\tau).
+\]
+Consequently,
+\begin{equation}\label{eq:ladder}
+ (x+D)\psi_n=2n\psi_{n-1},\quad
+ (x-D)\psi_n=\psi_{n+1},\quad
+ H\psi_n=(n+\tfrac12)\psi_n,
+ \qquad H=\tfrac12(x^2-D^2).
+\end{equation}
+The normalized $h_n$ form an orthonormal basis of $L^2(\R,dx)$.
+Write
+\[
+ a=\frac{x+D}{\sqrt2},\quad a^\dagger=\frac{x-D}{\sqrt2},\quad
+ \NN=H-\tfrac12\Id=a^\dagger a.
+\]
+Then $[a,a^\dagger]=\Id$, $ah_n=\sqrt n\,h_{n-1}$, and
+$a^\dagger h_n=\sqrt{n+1}\,h_{n+1}$.
+
+\subsection{One convention used consistently}
+Throughout this note,
+\begin{equation}\label{eq:fourier-def}
+ (\F f)(\xi)=\frac1{\sqrt{2\pi}}\int_\R e^{-ix\xi}f(x)\,dx,
+ \qquad
+ (\F^*f)(\xi)=\frac1{\sqrt{2\pi}}\int_\R e^{+ix\xi}f(x)\,dx.
+\end{equation}
+The Gaussian is fixed by both transforms. Applying the raising identity,
+or integrating \eqref{eq:wave-gen}, gives
+\[
+ \F h_n=(-i)^nh_n,\qquad \F^*h_n=i^nh_n.
+\]
+Therefore
+\begin{equation}\label{eq:fourier-osc}
+ \boxed{\F=e^{-i\pi\NN/2},\qquad
+ e^{i\pi H/2}=e^{i\pi/4}\F^*,\qquad
+ e^{-i\pi H/2}=e^{-i\pi/4}\F.}
+\end{equation}
+The square root $\sqrt i$ means $e^{i\pi/4}$.
+If the positive-exponent transform is instead named $\F$, the two names
+must be exchanged everywhere. One must not retain the negative exponent
+in \eqref{eq:fourier-def} while writing $e^{i\pi H/2}=\sqrt i\,\F$.
+The current F transcription already has the correct negative-exponent
+$\F$ and positive-exponent $\F^*$; the accompanying sign audit makes this
+explicit rather than introducing a new sign reversal. Its corrected
+Gaussian mixed term is $2i\xi u$, not $i\xi u$.
+
+\section{Finite spin and the convention dictionary}\label{sec:spin}
+The E and D conventions are
+\[
+ R_Ne_j=(N-j)e_{j+1},\quad L_Ne_j=je_{j-1},\quad
+ \Lambda_Ne_j=(N-2j)e_j,
+\]
+with endpoint terms zero. Thus
+\begin{equation}\label{eq:finite-brackets}
+ [L_N,R_N]=\Lambda_N,\quad
+ [\Lambda_N,R_N]=-2R_N,\quad [\Lambda_N,L_N]=2L_N.
+\end{equation}
+These are not literally F's signs
+\[
+ [\mathsf L,\mathsf R]=\rho,\qquad
+ [\mathsf L,\rho]=2\mathsf L,\qquad [\rho,\mathsf R]=2\mathsf R.
+\]
+An exact dictionary is
+\begin{equation}\label{eq:sign-dictionary}
+ \mathsf L_N=-L_N,\qquad \mathsf R_N=R_N,\qquad \rho_N=-\Lambda_N.
+\end{equation}
+This distinguishes an algebra convention from an adjoint convention.
+
+Put $B_N=\diag\binom Nj$. The coordinate metric in E is $B_N^{-1}$.
+Conjugating by $B_N^{1/2}$ gives the orthonormal-coordinate matrices
+\[
+ \widehat R_N=B_N^{-1/2}R_NB_N^{1/2},\quad
+ \widehat L_N=B_N^{-1/2}L_NB_N^{1/2},
+\]
+whose actions are
+\[
+ \widehat R_N|j\rangle=\sqrt{(N-j)(j+1)}|j+1\rangle,\quad
+ \widehat L_N|j\rangle=\sqrt{j(N-j+1)}|j-1\rangle.
+\]
+Now $\widehat L_N=\widehat R_N^*$. Taking $\hbar=1$,
+\[
+ J_+=\widehat L_N,\quad J_-=\widehat R_N,\quad J_z=\Lambda_N/2
+\]
+is the spin-$N/2$ representation, with magnetic number $m=N/2-j$.
+Its Casimir is $(N/2)(N/2+1)\Id$.
+
+On auxiliary polynomials of degree at most $N$, the same unnormalized
+finite model is
+\[
+ L_N=\partial_z,\qquad R_N=Nz-z^2\partial_z,\qquad
+ \Lambda_N=N-2z\partial_z.
+\]
+The cancellation in $R_Nz^N=0$ is essential. This is D's finite
+polynomial realization, not the oscillator acting on $L^2(\R)$.
+
+\section{The contraction and the two oscillator algebras}\label{sec:contraction}
+Define
+\[
+ a_N=\widehat L_N/\sqrt N,\quad
+ a_N^\dagger=\widehat R_N/\sqrt N,\quad
+ \NN_N=(N\Id-\Lambda_N)/2.
+\]
+Then
+\begin{equation}\label{eq:contraction}
+ [a_N,a_N^\dagger]=\Id-2\NN_N/N,
+ \qquad [\NN_N,a_N]=-a_N,\quad
+ [\NN_N,a_N^\dagger]=a_N^\dagger.
+\end{equation}
+For each fixed $j$, the two ladder coefficients tend to $\sqrt j$ and
+$\sqrt{j+1}$. Under $|j\rangle\mapsto h_j$, this gives the oscillator
+on the algebraic span of the Hermite basis. Convergence is on each
+fixed finite set of levels, not uniformly over all $N+1$ levels.
+Finite-dimensional commutators have trace zero, so an exact identity
+$[a_N,a_N^\dagger]=\Id$ is impossible; \eqref{eq:contraction} shows
+where the compensating high-level contribution resides.
+
+\subsection{Why F's quadratic triple is a further construction}
+On Schwartz space, F uses
+\begin{equation}\label{eq:quadratic}
+ \mathsf R=x^2/2,\qquad \mathsf L=D^2/2,\qquad \rho=xD+1/2,
+ \qquad H=\mathsf R-\mathsf L.
+\end{equation}
+These satisfy F's brackets. They are quadratic expressions in the
+limiting Heisenberg generators. Thus the logical route is a spin
+contraction to Heisenberg, followed by formation of quadratic operators;
+it is not a literal identification of F's triple with the finite spin
+matrices before taking a limit.
+
+Equivalently, put
+\[
+ K_+=\tfrac12(a^\dagger)^2,\quad K_-=\tfrac12a^2,\quad K_0=H/2.
+\]
+Then $[K_0,K_\pm]=\pm K_\pm$ and $[K_-,K_+]=2K_0$.
+These operators preserve parity. The even and odd subspaces have lowest
+$K_0$ weights $1/4$ and $3/4$, respectively. The quadratic oscillator
+representation is therefore reducible into two infinite-dimensional
+pieces, unlike one irreducible finite spin space. The complex Lie
+algebra is the same type; the real forms, adjoints, and representations
+must not be conflated.
+
+\section{Krawtchouk polynomials and the finite transform}\label{sec:K}
+Use ordinary coefficient normalization
+\begin{equation}\label{eq:Kgen}
+ (1+z)^{N-k}(1-z)^k=\sum_{n=0}^N K_n(k;N)z^n.
+\end{equation}
+Thus $K_0=1$, $K_1=N-2k$, and
+\[
+ K_2=\tfrac12\big((N-2k)^2-N\big).
+\]
+For $\pi_N(k)=2^{-N}\binom Nk$,
+\begin{equation}\label{eq:Korth}
+ \sum_{k=0}^N\pi_N(k)K_n(k;N)K_m(k;N)
+ =\binom Nn\delta_{nm}.
+\end{equation}
+Set $p_{n,N}=K_n/\sqrt{\binom Nn}$. In E's matrix convention,
+\[
+ (\Phi_N)_{nk}=K_n(k;N),\quad \Phi_N^2=2^N\Id,\quad S_N=\Phi_NB_N.
+\]
+The genuinely orthogonal, symmetric transform is
+\begin{equation}\label{eq:Q}
+ Q_N=2^{-N/2}B_N^{-1/2}\Phi_NB_N^{1/2},\qquad Q_N^TQ_N=\Id,
+\end{equation}
+with entries, by weighted duality,
+\[
+ (Q_N)_{kn}=\sqrt{\pi_N(k)}\,p_{n,N}(k).
+\]
+\emph{$S_N$ is symmetric but not orthogonal.} Its spectral problem in S
+is different from the finite oscillator diagonalized by $Q_N$.
+
+\subsection{The Hermite limit}
+Use the centered coordinate and mesh
+\begin{equation}\label{eq:scale}
+ x_k=\frac{N-2k}{\sqrt{2N}},\qquad \delta_N=\sqrt{2/N}.
+\end{equation}
+Putting $z=u/\sqrt{2N}$ in \eqref{eq:Kgen} gives, for $x_{k_N}\to x$,
+\[
+ \log\big((1+z)^{N-k_N}(1-z)^{k_N}\big)
+ \longrightarrow xu-u^2/4.
+\]
+Hence for fixed $n$,
+\begin{equation}\label{eq:KtoH}
+ n!(2N)^{-n/2}K_n(k_N;N)\longrightarrow H_n(x,\tfrac12),
+ \quad
+ p_{n,N}(k_N)\longrightarrow\frac{H_n(\sqrt2x)}{\sqrt{n!}}.
+\end{equation}
+The local binomial limit is
+\[
+ \pi_N(k_N)/\delta_N\longrightarrow\pi^{-1/2}e^{-x^2}.
+\]
+Combining these yields the normalized wavefunction limit
+\begin{equation}\label{eq:wave-limit}
+ \delta_N^{-1/2}(Q_N)_{k_Nn}\longrightarrow h_n(x).
+\end{equation}
+If instead $x_k=(2k-N)/\sqrt{2N}$ is used, each degree-$n$ limit gains
+$(-1)^n$. This is a coordinate reflection, not a new Fourier convention.
+
+\section{Ehrenfest diffusion and Gaussian conjugation}\label{sec:diffusion}
+The backward generator at fixed $N$ is
+\begin{equation}\label{eq:GN}
+ (G_Nf)(k)=\frac{N-k}{2}\big(f(k+1)-f(k)\big)
+          +\frac k2\big(f(k-1)-f(k)\big).
+\end{equation}
+It is reversible for $\pi_N$, and $G_Np_{n,N}=-np_{n,N}$.
+For a smooth function sampled in \eqref{eq:scale}, Taylor expansion gives
+\[
+ G_N\longrightarrow G=\tfrac12D^2-xD.
+\]
+Indeed the first-derivative coefficient is $-x$, and the second-derivative
+coefficient is $1/2$. The invariant measure tends to
+\[
+ d\mu(x)=\pi^{-1/2}e^{-x^2}\,dx.
+\]
+This is the Ornstein--Uhlenbeck generator with stationary variance $1/2$.
+The operator
+\[
+ U:L^2(d\mu)\to L^2(dx),\qquad
+ (Uf)(x)=\pi^{-1/4}e^{-x^2/2}f(x)
+\]
+is unitary and satisfies
+\begin{equation}\label{eq:OUconjugacy}
+ -UGU^{-1}=H-\tfrac12\Id=\NN.
+\end{equation}
+At finite $N$, $U_Nf(k)=\sqrt{\pi_N(k)}f(k)$ gives
+\[
+ -U_NG_NU_N^{-1}
+ =\frac N2\Id-\frac12(\widehat R_N+\widehat L_N)
+ =:M_N,
+\]
+with $M_NQ_N=Q_N\diag(0,1,\ldots,N)$.
+This is a rotated spin component shifted by $N/2$, not the unrotated
+number matrix $\NN_N$ from Section~\ref{sec:contraction}; the two are
+unitarily equivalent through $Q_N$.
+
+The random-walk Hermite martingales in E, Chapter 11, describe a different
+scaling: both the walk time and its polynomial order parameter change.
+Their Brownian limit uses
+$\partial_\tau H_n+\tfrac12\partial_x^2H_n=0$.
+The fixed-$N$ urn chain above instead yields the stationary OU process.
+Both are valid, but they are not the same finite dynamics.
+
+\section{Finite kernels, Mehler kernels, and fractional transforms}\label{sec:finite-kernels}
+For $s>0$ set $r=e^{-s}$. The finite Markov kernel relative to $\pi_N$ is
+\begin{equation}\label{eq:finite-mehler}
+ m_{r,N}(k,\ell)=\sum_{n=0}^N r^n p_{n,N}(k)p_{n,N}(\ell),
+\end{equation}
+so $P_s(k,\ell)=\pi_N(\ell)m_{r,N}(k,\ell)$.
+It satisfies the exact finite composition identity
+\[
+ \sum_j\pi_N(j)m_{r,N}(k,j)m_{q,N}(j,\ell)
+ =m_{rq,N}(k,\ell).
+\]
+This is the finite bilinear-kernel precursor missing from E's Mehler
+placeholder.
+
+At the process level, each of $N$ independent bits flips at rate $1/2$.
+A bit has probability $(1-r)/2$ of changing after time $s$. Therefore
+\[
+ \sum_\ell P_s(k,\ell)z^\ell
+ =\left(\frac{1+r}{2}+\frac{1-r}{2}z\right)^{N-k}
+  \left(\frac{1-r}{2}+\frac{1+r}{2}z\right)^k.
+\]
+This formula gives a direct central-limit route to the OU transition
+law, without interchanging an infinite spectral sum on the basis of
+fixed-degree convergence alone.
+
+\subsection{The limiting Markov and oscillator kernels}
+In the limit,
+\begin{equation}\label{eq:OUformula}
+ (T_rf)(x)=\int_\R f(rx+\sqrt{1-r^2}\,z)\,d\mu(z).
+\end{equation}
+Its density relative to $\mu$ is
+\begin{equation}\label{eq:OUkernel}
+ m_r(x,y)=\frac1{\sqrt{1-r^2}}
+ \exp\left(\frac{2rxy-r^2(x^2+y^2)}{1-r^2}\right).
+\end{equation}
+Conjugating gives the Lebesgue kernel of $r^{\NN}$:
+\begin{equation}\label{eq:normalized-mehler}
+ \sum_{n\ge0}r^nh_n(x)h_n(y)
+ =\frac1{\sqrt{\pi(1-r^2)}}
+ \exp\left[-\frac{1+r^2}{2(1-r^2)}(x^2+y^2)
+            +\frac{2r}{1-r^2}xy\right].
+\end{equation}
+Thus the oscillator heat kernel is
+\begin{equation}\label{eq:heat}
+ (e^{-sH})(x,y)=\frac1{\sqrt{2\pi\sinh s}}
+ \exp\left[-\frac{(x^2+y^2)\cosh s-2xy}{2\sinh s}\right].
+\end{equation}
+It is $e^{-s/2}$ times the kernel in \eqref{eq:normalized-mehler}.
+
+For the requested probabilists' convention $H_n(x)=H_n(x,1)$,
+\begin{equation}\label{eq:prob-mehler}
+ \boxed{\sum_{n\ge0}\frac{r^nH_n(x)H_n(y)}{n!}
+ =\frac1{\sqrt{1-r^2}}
+ \exp\left(\frac{2rxy-r^2(x^2+y^2)}{2(1-r^2)}\right).}
+\end{equation}
+For real fixed $x,y$, the series converges absolutely for $|r|<1$,
+locally uniformly in the disk; its radius is exactly $1$.
+The square root equals $1$ at $r=0$. Boundary convergence is not included
+in this assertion. Formula \eqref{eq:prob-mehler} uses the Gaussian
+measure $(2\pi)^{-1/2}e^{-y^2/2}dy$ when read as a Markov kernel.
+The factors of two in \eqref{eq:OUkernel} reflect the variance-$1/2$
+coordinate used for our oscillator.
+
+\subsection{Finite fractional transforms}
+A phase-modified finite transform can be defined spectrally by
+\[
+ \mathfrak F_{N,\theta}=Q_N\diag(e^{-i\theta n})Q_N^T=e^{-i\theta M_N}.
+\]
+It is unitary, and on fixed limiting Hermite modes it tends to
+$e^{-i\theta\NN}$. At $\theta=\pi/2$ this is $\F$.
+This fixed-mode assertion does not claim pointwise convergence of an
+oscillatory kernel everywhere. In particular $Q_N$ itself, which is
+an involution, must not simply be identified with the continuum Fourier
+transform, which has order four. D's cubic phase-modified composition
+operator $\mathcal I\Phi_N$ is another finite group element, not by
+notation the same matrix as $\mathfrak F_{N,\pi/2}$.
+
+\section{Positive time, analytic continuation, and domains}
+For $t<0$,
+\begin{equation}\label{eq:t-kernel}
+ (e^{tH})(x,y)=\frac1{\sqrt{-2\pi\sinh t}}
+ \exp\left[\frac{(x^2+y^2)\cosh t-2xy}{2\sinh t}\right].
+\end{equation}
+It defines a bounded operator on all $L^2$, of norm $e^{t/2}$, and its
+integral on each $\psi_n$ is absolutely convergent.
+For $t>0$, the spectral operator is unbounded, with domain
+\[
+ \mathcal D(e^{tH})=
+ \left\{\sum c_nh_n:\sum e^{2t(n+1/2)}|c_n|^2<\infty\right\}.
+\]
+It acts on each $h_n$ by $e^{t(n+1/2)}$. But substituting $t>0$ in
+\eqref{eq:t-kernel} does not yield a convergent real-line integral,
+even on those eigenfunctions: the resulting $y^2$ coefficient is
+\[
+ \tfrac12(\coth t-1)=\frac1{e^{2t}-1}>0.
+\]
+For $\operatorname{Re}t<0$, \eqref{eq:t-kernel} is analytic, with the
+square root continued from the positive one on the negative real axis.
+The boundary at $t=i\pi/2$ is
+\[
+ \frac{e^{i\pi/4}}{\sqrt{2\pi}}e^{ixy},
+\]
+recovering \eqref{eq:fourier-osc}. Such boundary kernels are interpreted
+oscillatorily, or through strong limits, not as absolutely integrable
+kernels acting on arbitrary $L^2$ functions.
+
+\section{General Gaussian kernels and squeezing}\label{sec:gaussian}
+Consider a kernel with a scalar amplitude $A$,
+\[
+ K(x,y)=A\exp[-a(x^2+y^2)+bxy],\qquad a>0,\quad |b|<2a.
+\]
+Set
+\begin{equation}\label{eq:abmatch}
+ \omega=\sqrt{4a^2-b^2},\qquad r=\frac{b}{2a+\omega},\qquad
+ C=\sqrt{\frac{\pi(1-r^2)}{\omega}}.
+\end{equation}
+Then
+\[
+ a=\frac{\omega(1+r^2)}{2(1-r^2)},\qquad
+ b=\frac{2\omega r}{1-r^2}.
+\]
+Define
+\[
+ H_\omega=\tfrac12(-D^2+\omega^2x^2),\quad
+ \NN_\omega=H_\omega/\omega-\tfrac12\Id,\quad
+ h_n^{(\omega)}(x)=\omega^{1/4}h_n(\sqrt\omega x).
+\]
+The exact expansion is
+\begin{equation}\label{eq:gauss-spectral}
+ K(x,y)=AC\sum_{n\ge0}r^nh_n^{(\omega)}(x)h_n^{(\omega)}(y).
+\end{equation}
+For $r>0$, this is $ACr^{\NN_\omega}$. For $r<0$, it is
+$AC P|r|^{\NN_\omega}$, where $Pf(x)=f(-x)$. At $r=0$ it is the
+rank-one ground-state projection times $AC$.
+For real $A$, the eigenvalues are $ACr^n$; absolute summability makes
+the operator trace class.
+
+The dilation
+\[
+ (V_\omega f)(x)=\omega^{1/4}f(\sqrt\omega x)
+\]
+satisfies
+\[
+ \NN_\omega=V_\omega\NN V_\omega^{-1},\qquad
+ V_\omega=e^{(\log\omega)\rho/2}.
+\]
+Here $\rho=xD+1/2$ is skew-adjoint after closure, so real dilation
+parameters give unitary squeezing. Thus the Gaussian kernel is a
+function of a squeezed oscillator, not generally a function of $H$ in
+the original coordinates. No translation is needed for this centered
+quadratic form.
+
+For $0<b<2a$, write $r=e^{-\tau}$, $\tau>0$. Equivalently,
+\[
+ a=\frac\omega2\coth\tau,\qquad b=\frac\omega{\sinh\tau},
+\]
+and
+\begin{equation}\label{eq:gauss-heat}
+ K=A\sqrt{\frac{2\pi\sinh\tau}{\omega}}\,
+ e^{-\tau H_\omega/\omega}.
+\end{equation}
+
+\subsection{A worked normalization check}
+For $a=3/2$, $b=1$, one obtains
+\[
+ \omega=\sqrt8,\qquad r=3-\sqrt8,\qquad
+ \tau=2\log(1+\sqrt2).
+\]
+The ground-state width is therefore $\sqrt8$, not the unsqueezed width
+$1$. This is exactly the parameter combination occurring in S.
+
+\section{Correlation with the spectral working note}\label{sec:spectral}
+The candidate kernel in S, in its own centered coordinate
+$y=(i-N/2)/\sqrt N$, is
+\begin{equation}\label{eq:S-kernel}
+ \mathcal G(y,z)=\frac{\sqrt2}{\pi^{3/2}}
+ \exp[-\tfrac32(y^2+z^2)+yz].
+\end{equation}
+Its coordinate is related to \eqref{eq:scale} by $x=-\sqrt2y$;
+frequency parameters must not be transferred without this rescaling.
+Applying \eqref{eq:abmatch} to \eqref{eq:S-kernel} gives exactly
+\begin{equation}\label{eq:S-identification}
+ \boxed{\mathcal G=cq^{\NN_\alpha},\qquad
+ \alpha=\sqrt8,\quad q=3-\sqrt8,\quad
+ c=\frac{\sqrt8-2}{\pi}.}
+\end{equation}
+Hence the candidate integral operator has eigenfunctions
+$h_n^{(\alpha)}$ and eigenvalues $cq^n$. Its Gaussian ground state is
+an exact eigenfunction, not merely a variational approximation to
+this integral operator. The equivalent Lie expression is
+\[
+ \mathcal G=c e^{\tau/2}
+ \exp[\tau(\alpha^{-1}\mathsf L-\alpha\mathsf R)],
+ \qquad \tau=-\log q.
+\]
+Thus F's algebra supplies the correct interpretation of S's squeezing
+and imaginary-time evolution.
+
+\subsection{What is proved, and what is not inferred}
+S derives compact-window asymptotics on equal-parity indices of a
+positive matrix associated with $S_N^2$. The spacing there is
+$2/\sqrt N$, not $1/\sqrt N$; that factor enters the amplitude in
+\eqref{eq:S-kernel}. It establishes a compactly supported Rayleigh
+limit and the lower bound
+\begin{equation}\label{eq:lower}
+ \liminf_{N\to\infty}\frac{\pi N\lambda_{\max}(S_N)^2}{8^N}
+ \ge\sqrt8-2.
+\end{equation}
+Equation \eqref{eq:S-identification} is an exact fact about the candidate
+integral operator. It does not replace the missing global upper estimate
+or prove that all finite eigenvalues converge to $cq^n$. Those claims
+require control outside compact central windows, exclusion of competing
+modes, and an appropriate operator or spectral convergence argument.
+The ordinary finite-spin/OU limit and the weighted $S_N$ spectral
+problem are related through oscillator structure, but are not the same
+asymptotic theorem.
+
+\section{Convolution: what survives, what collapses, and what must be specified}\label{sec:convolution}
+F asks for an intertwiner between ordinary convolution/Fourier analysis
+and Krawtchouk convolution/transform. There are several distinct questions
+hidden here. An exact finite transform identity, a positive convolution
+limit, and an abstract transport of a product are different assertions.
+
+\subsection{Positive radial convolution on the Hamming cube}
+Represent a cube point by a subset of $\{1,\ldots,N\}$ and add by symmetric
+difference. If independent uniform subsets have sizes $k,\ell$, their
+sum has size $M=k+\ell-2J$, where $J$ is the intersection size. Thus
+\begin{equation}\label{eq:hypergroup}
+ \delta_k*_N\delta_\ell
+ =\sum_j\frac{\binom kj\binom{N-k}{\ell-j}}{\binom N\ell}
+ \delta_{k+\ell-2j}.
+\end{equation}
+The sum uses precisely the feasible intersection indices. Its identity
+is $\delta_0$, and its invariant probability is $\pi_N$.
+The normalized characters are
+\[
+ \chi_{n,N}(k)=K_n(k;N)/\binom Nn.
+\]
+They obey the product formula
+\begin{equation}\label{eq:character}
+ \int\chi_{n,N}(m)\,d(\delta_k*_N\delta_\ell)(m)
+ =\chi_{n,N}(k)\chi_{n,N}(\ell).
+\end{equation}
+For finite measures, $\widehat\nu(n)=\sum_k\chi_{n,N}(k)\nu(k)$ therefore
+turns $*_N$ into pointwise multiplication. This is a precise finite
+convolution theorem. It does not by itself identify that convolution
+with ordinary addition on $\R$.
+
+\subsection{Bulk--bulk scaling: loss of the two inputs}
+Suppose both $x_{k_N}\to x$ and $x_{\ell_N}\to y$ in \eqref{eq:scale}.
+The hypergeometric mean and variance imply
+\[
+ \mathbb E x_M=\sqrt{2/N}\,x_{k_N}x_{\ell_N}\longrightarrow0,
+ \qquad \operatorname{Var}(x_M)\longrightarrow\tfrac12.
+\]
+The hypergeometric central limit theorem gives the pushforward limit
+\begin{equation}\label{eq:collapse}
+ \delta_{k_N}*_N\delta_{\ell_N}\Longrightarrow\mu.
+\end{equation}
+So two central inputs produce the invariant Gaussian, independently
+of their limiting coordinates. There is no ordinary point-addition
+convolution in this scaling. The finite identity $k=0$ has escaped to
+$x=\sqrt{N/2}\to+\infty$.
+
+The character calculation explains the same phenomenon: for fixed
+$n>0$, $\chi_{n,N}(k_N)$ is of order $N^{-n/2}$. The renormalization
+needed to obtain a nonzero Hermite polynomial does not preserve the
+character product formula, because it occurs twice on the right side
+and once on the left.
+
+\subsection{Bulk--macroscopic scaling: a nontrivial Mehler limit}\label{sec:mixed}
+There is an important refinement of the preceding collapse. Keep
+$x_{k_N}\to x$ but take
+\[
+ \ell_N/N\longrightarrow(1-r)/2,\qquad -1<r<1.
+\]
+Then the same hypergeometric calculation gives
+\[
+ \mathbb E x_M\longrightarrow rx,\qquad
+ \operatorname{Var}(x_M)\longrightarrow\frac{1-r^2}{2}.
+\]
+Its conditional central limit law is
+\begin{equation}\label{eq:mixed}
+ x_M\Longrightarrow rx+\sqrt{1-r^2}\,Z,\qquad Z\sim\mu.
+\end{equation}
+This is exactly \eqref{eq:OUformula}, including negative $r$ as a reflected
+OU kernel. For $r=\pm1$, bounded central-scale variances collapse and the
+corresponding transition limit is $x\mapsto\pm x$.
+
+Spectrally, for every fixed $n$,
+\[
+ \chi_{n,N}(\ell_N)\longrightarrow r^n.
+\]
+Unlike the bulk--bulk case, one character factor now remains of order
+one, so \eqref{eq:character} has a nontrivial Hermite limit.
+Thus it is too strong to say that Krawtchouk convolution has no useful
+continuum limit: it has a nontrivial action on the central variable
+when the other input is kept at macroscopic scale.
+
+There is even an exact finite connection. Convolution by the radial
+probability
+\[
+ \nu_{r,N}(\ell)=\binom N\ell
+ \left(\frac{1-r}{2}\right)^\ell
+ \left(\frac{1+r}{2}\right)^{N-\ell}
+\]
+means independently flipping each coordinate with probability
+$(1-r)/2$. Its character multipliers are $r^n$, so it is precisely the
+finite kernel \eqref{eq:finite-mehler}. For $r=e^{-s}$, it is the
+Ehrenfest semigroup. Moreover,
+\[
+ \nu_{r,N}*_N\nu_{q,N}=\nu_{rq,N}.
+\]
+The limiting parameter law is therefore multiplication of $r$'s, or
+addition of the times $s=-\log r$ for positive parameters.
+
+\subsection{Kernel convolution is preserved}
+The limiting identity is
+\begin{equation}\label{eq:kernel-compose}
+ \int_\R m_r(x,z)m_q(z,y)\,d\mu(z)=m_{rq}(x,y).
+\end{equation}
+After Gaussian conjugation it is the semigroup law for $r^{\NN}$,
+and after the scalar ground-energy correction it is
+$e^{-sH}e^{-tH}=e^{-(s+t)H}$.
+This is the most direct positive convolution connection between the
+finite kernels and the oscillator.
+
+\subsection{Ordinary convolution and Wick multiplication are different}
+Ordinary convolution uses addition of independent real variables and
+is diagonalized by $e^{ix\xi}$. OU evolution instead combines a
+contracted input with independent Gaussian noise. The identity
+\[
+ H_n(ax+by,\tfrac12)
+ =\sum_{j=0}^n\binom nj a^jb^{n-j}
+ H_j(x,\tfrac12)H_{n-j}(y,\tfrac12),\qquad a^2+b^2=1,
+\]
+follows directly from the generating function. It expresses Gaussian
+addition with degree splitting, not a same-degree character product.
+
+On polynomials one may separately define Wick multiplication by
+\[
+ H_m(x,\tfrac12)\diamond H_n(x,\tfrac12)=H_{m+n}(x,\tfrac12).
+\]
+Writing $W=e^{-D^2/4}$ on polynomials, one has $Wx^n=H_n(x,\tfrac12)$
+and
+\[
+ f\diamond g=W\big((W^{-1}f)(W^{-1}g)\big).
+\]
+This is a well-defined algebraic product because the derivative series
+terminate on polynomials. It is not the positive radial convolution
+\eqref{eq:hypergroup}, and no general function-space extension follows
+without additional domain choices.
+
+An arbitrary invertible finite transform also permits an abstractly
+transported product. Such a construction alone says nothing about
+positivity, locality, or a continuum limit. This qualifies the
+intertwiner question in F: a natural finite convolution theorem exists,
+and a natural OU/Mehler scaling exists, but an unqualified equivalence
+to ordinary real-line convolution is not established by either one.
+
+\section{A practical dictionary and a proof agenda}
+\begin{center}\small
+\begin{tabular}{p{0.28\textwidth}p{0.29\textwidth}p{0.30\textwidth}}
+\toprule
+Finite object & Limiting object & Qualification\\\midrule
+Spin ladders $\widehat L_N,\widehat R_N$ divided by $\sqrt N$
+& $a,a^\dagger$ & Fixed excitation levels\\
+$K_n(k;N)$ with central normalization
+& $H_n(x,1/2)$ & Fixed polynomial degree\\
+$Q_N$ columns divided by $\sqrt{\delta_N}$
+& $h_n(x)$ & Fixed column, central coordinates\\
+Ehrenfest generator $G_N$ & $\tfrac12D^2-xD$ & Diffusion scaling\\
+Symmetrized generator $M_N$ & $H-\tfrac12I$ & Gaussian conjugation\\
+$r^n$ bilinear kernels & OU and Mehler kernels & Measure must be specified\\
+Finite phases $e^{-i\theta n}$ & $e^{-i\theta\NN}$ & Fixed-mode contraction\\
+Weighted matrix $S_N$ problem & Squeezed candidate $cq^{\NN_\alpha}$
+& Spectral transfer requires more proof\\\bottomrule
+\end{tabular}
+\end{center}
+For further development, the main tasks are: specify embeddings and
+operator topologies for a full finite-transform convergence theorem;
+prove global tightness or domination when going beyond compact kernel
+windows; complete a matching upper bound in S; and state precisely
+which convolution product, measure, and topology any proposed
+intertwiner is to preserve. The mixed-scale observation in
+Section~\ref{sec:mixed} provides a particularly concrete formulation of
+the convolution question that leads directly to Mehler evolution.
+
+\section{Endpoint kernels: $b=\pm2a$}\label{sec:endpoints}
+We end with the boundary of the confining Gaussian region. For $a>0$,
+let $A_{a,b}$ have the unit-amplitude kernel
+$e^{-a(x^2+y^2)+bxy}$.
+
+\subsection{The positive endpoint: free heat evolution}
+At $b=2a$,
+\[
+ K(x,y)=e^{-a(x-y)^2}.
+\]
+The operator is ordinary convolution with a Gaussian. With
+\eqref{eq:fourier-def},
+\[
+ \F(A_{a,2a}f)(\xi)=\sqrt{\pi/a}\,e^{-\xi^2/(4a)}\F f(\xi),
+\]
+so
+\begin{equation}\label{eq:end-plus}
+ \boxed{A_{a,2a}=\sqrt{\pi/a}\,e^{D^2/(4a)}.}
+\end{equation}
+Its norm is $\sqrt{\pi/a}$. It is bounded but noncompact on $L^2(\R)$;
+it is neither Hilbert--Schmidt nor trace class. The Fourier multiplier
+has continuous spectrum with closure $[0,\sqrt{\pi/a}]$, rather than a
+geometric sequence of discrete Hermite eigenvalues.
+Thus ordinary Gaussian convolution appears exactly when the confining
+quadratic form degenerates.
+
+\subsection{The negative endpoint: heat evolution and reflection}
+At $b=-2a$,
+\[
+ K(x,y)=e^{-a(x+y)^2},\qquad
+ \boxed{A_{a,-2a}=\sqrt{\pi/a}\,e^{D^2/(4a)}P.}
+\]
+Reflection commutes with the free heat operator. On even functions this
+is the positive endpoint operator; on odd functions it is its negative.
+It is bounded and noncompact with the same norm, and its spectrum is
+$[-\sqrt{\pi/a},\sqrt{\pi/a}]$.
+
+\subsection{How the squeezed oscillator reaches the endpoint}
+As $b\uparrow2a$ with $a$ fixed,
+\[
+ \omega\to0,\quad r\to1,\quad \tau=-\log r\to0,
+ \qquad \tau/\omega\to1/(2a).
+\]
+In \eqref{eq:gauss-heat}, the potential disappears and the kinetic term
+approaches $D^2/(4a)$; the scalar tends to $\sqrt{\pi/a}$.
+The kernel operators converge strongly to \eqref{eq:end-plus}. One way
+to justify this is pointwise convergence on compactly supported inputs,
+an integrable Gaussian tail bound for those inputs, and the uniform
+Schur bound
+\[
+ \sup_x\int e^{-a(x^2+y^2)+bxy}\,dy
+ =\sqrt{\pi/a},\qquad |b|\le2a.
+\]
+Density then gives strong convergence on $L^2$. The negative endpoint
+follows by reflection. Convergence cannot be in operator norm: all
+interior operators are compact, and both endpoint operators are not.
+For $|b|>2a$, the quadratic form is indefinite and the displayed
+integral kernel does not define a bounded operator on all of $L^2$.
+\end{document}

@@ -1,0 +1,107 @@
+\chapter{Pascal's Triangle}
+\label{ch:1}
+\section{Pascal's triangle and binomial identities}
+\label{sec:1-1}
+Choosing an $n$-element subset of $\{1,\ldots,N\}$ according to whether it contains the last element proves
+\begin{equation}\label{eq:pascal-subsets}
+\binom Nn=\binom{N-1}n+\binom{N-1}{n-1}.
+\end{equation}
+We use $\binom Nn=0$ outside $0\le n\le N$. Expanding a product of $N$ factors gives
+\[
+(1+v)^N=\sum_{n=0}^N\binom Nn v^n.
+\]
+Taking coefficients in $(1+v)^{a+b}=(1+v)^a(1+v)^b$ gives Vandermonde's identity
+\[
+\binom{a+b}n=\sum_r\binom ar\binom b{n-r}.
+\]
+Replacing the second factor by $(1-v)^b$ yields the signed convolution defining $K_n(b;a+b)$ in Section~\ref{sec:1-2}. Thus the first column of the Krawtchouk array is Pascal's row, and its other columns are signed subset counts, not probability distributions.
+For example, at $N=3$, the columns for $j=0$ and $j=1$ are respectively $(1,3,3,1)^T$ and $(1,1,-1,-1)^T$.
+
+\section{Krawtchouk polynomials}
+\label{sec:1-2}
+For $0\leq n,j\leq N$, define the symmetric Krawtchouk polynomial values by
+\begin{equation}\label{eq:gen}
+(1+v)^{N-j}(1-v)^j=\sum_{n=0}^N K_n(j;N)v^n.
+\end{equation}
+Hence
+\[
+K_n(j;N)=\sum_r(-1)^r\binom jr\binom{N-j}{n-r}.
+\]
+Binomial coefficients outside their usual range are understood to vanish.
+In centered coordinates $x=N-2j$, write
+\[
+(1+v)^{(N+x)/2}(1-v)^{(N-x)/2}
+=\sum_{n=0}^N\frac{v^n}{n!}k_n(x,N).
+\]
+Thus $k_n(N-2j,N)=n!K_n(j;N)$.
+
+\section{Generating functions}
+\label{sec:1-3}
+Write $x=N-2j$ and use the generating function in \eqref{eq:gen}. Logarithmic differentiation gives the polynomial identity
+\[
+(1-v^2)\frac{\partial G_{N,j}}{\partial v}=(x-Nv)G_{N,j}.
+\]
+Coefficient comparison, with $K_{-1}=0$, yields
+\[
+(n+1)K_{n+1}(j;N)=xK_n(j;N)-(N-n+1)K_{n-1}(j;N).
+\]
+In particular,
+\[
+K_0=1,\qquad K_1=x,\qquad K_2=\frac{x^2-N}{2},\qquad
+K_3=\frac{x^3-(3N-2)x}{6}.
+\]
+The factorial-scaled polynomials are $k_n=n!K_n$, so their leading coefficient as polynomials in $x$ is one. This is why factorials must be retained when passing between ordinary and exponential generating functions.
+At the endpoints,
+\[
+K_n(0;N)=\binom Nn,\qquad K_n(N;N)=(-1)^n\binom Nn.
+\]
+Moreover, $G_{N,N-j}(v)=G_{N,j}(-v)$, giving $K_n(N-j;N)=(-1)^nK_n(j;N)$. These are fixed-order identities, distinct from the cross-order construction of Section~\ref{sec:1-5}.
+
+\section{Krawtchouk matrices}
+\label{sec:1-4}
+Set $\Phi_N=(K_n(j;N))_{n,j=0}^N$ and
+$B_N=\operatorname{diag}(\binom N0,\ldots,\binom NN)$. Binomial duality is
+\[
+\binom Nj K_n(j;N)=\binom Nn K_j(n;N).
+\]
+Consequently $S_N=\Phi_NB_N$ is symmetric. The symmetric transform satisfies
+\[
+\Phi_N^2=2^NI.
+\]
+For orientation,
+\[
+\Phi_1=\begin{pmatrix}1&1\\1&-1\end{pmatrix},\qquad
+\Phi_2=\begin{pmatrix}1&1&1\\2&0&-2\\1&-1&1\end{pmatrix}.
+\]
+
+\section{First view and cross properties}
+\label{sec:1-5}
+Write $G_{N,j}(v)=(1+v)^{N-j}(1-v)^j$, as in \eqref{eq:gen}.
+Multiplying by $1+v$ or $1-v$ and comparing coefficients gives
+\begin{align}
+K_n(j;N+1)&=K_n(j;N)+K_{n-1}(j;N),\label{eq:cross-plus}\\
+K_n(j+1;N+1)&=K_n(j;N)-K_{n-1}(j;N).\label{eq:cross-minus}
+\end{align}
+Here $0\leq j\leq N$, and coefficients outside $0\leq n\leq N$
+vanish at order $N$. Adding and subtracting yields the inverse cross rules
+\begin{align*}
+K_n(j;N+1)+K_n(j+1;N+1)&=2K_n(j;N),\\
+K_n(j;N+1)-K_n(j+1;N+1)&=2K_{n-1}(j;N).
+\end{align*}
+These are cross-order identities: the order parameter must not be
+suppressed when they are used to construct successive tables.
+For example, $K_2(1;3)=-1$ and $K_1(1;3)=1$ give
+$K_2(1;4)=0$ and $K_2(2;4)=-2$.
+
+There is also a fixed-order local relation. If
+\[
+\begin{pmatrix}a&b\\c&d\end{pmatrix}
+=\begin{pmatrix}K_n(j;N)&K_n(j+1;N)\\
+K_{n+1}(j;N)&K_{n+1}(j+1;N)\end{pmatrix},
+\]
+then $-a+c=b+d$. Indeed,
+$(1-v)G_{N,j}=(1+v)G_{N,j+1}$.
+Column reversal and row reversal are instead the fixed-order
+symmetries proved in Section~\ref{sec:8-1}; these should be distinguished
+from the cross-order rules above. Compare \cite[Appendix~C]{KocikFeynman}.
+

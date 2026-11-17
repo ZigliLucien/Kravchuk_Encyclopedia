@@ -1,0 +1,51 @@
+{
+  "orders_checked": "0..32",
+  "exact_identity_and_bound_checks": 4084,
+  "numerical_rows": [
+    {
+      "N": 5,
+      "signed_total": 32,
+      "square_total": 584,
+      "absolute_total": 104,
+      "boundary_pair_0": 64,
+      "boundary_pair_1": 24,
+      "boundary_pair_2": 16
+    },
+    {
+      "N": 10,
+      "signed_total": 1024,
+      "square_total": 394404,
+      "absolute_total": 3016,
+      "boundary_pair_0": 2048,
+      "boundary_pair_1": 504,
+      "boundary_pair_2": 224
+    },
+    {
+      "N": 15,
+      "signed_total": 32768,
+      "square_total": 322494208,
+      "absolute_total": 88656,
+      "boundary_pair_0": 65536,
+      "boundary_pair_1": 13728,
+      "boundary_pair_2": 4576
+    },
+    {
+      "N": 20,
+      "signed_total": 1048576,
+      "square_total": 283443548276,
+      "absolute_total": 2655112,
+      "boundary_pair_0": 2097152,
+      "boundary_pair_1": 369512,
+      "boundary_pair_2": 106080
+    },
+    {
+      "N": 32,
+      "signed_total": 4294967296,
+      "square_total": 3726566597989349958,
+      "absolute_total": 10181521568,
+      "boundary_pair_0": 8589934592,
+      "boundary_pair_1": 1202160780,
+      "boundary_pair_2": 266133000
+    }
+  ]
+}

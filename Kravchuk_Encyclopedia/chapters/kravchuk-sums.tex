@@ -1,0 +1,150 @@
+\section{Kravchuk sums}
+\label{sec:kravchuk-sums}
+This section collects sums of entries, squares, and absolute values of the raw matrix $\Phi_N=(K_n(j;N))$. The attached estimate note is preserved unchanged as \texttt{sources/KravEstimate.tex}. Selected exact formulas also occur in the retained local sums manuscripts in \texttt{supporting-papers/}; the proofs below fix the book's normalization and do not import those standalone documents' preambles or bibliography keys. These formulas concern $\Phi_N$, not its symmetric weighted form $S_N=\Phi_NB_N$ or orthogonal normalization $U_N$.
+
+\subsection{A dictionary of sums}
+Write $b_j=\binom Nj$ and define
+\begin{align*}
+R_n&=\sum_{j=0}^N K_n(j;N),& C_j&=\sum_{n=0}^N K_n(j;N),\\
+Q_n^{\mathrm{row}}&=\sum_{j=0}^N K_n(j;N)^2,&Q_j^{\mathrm{col}}&=\sum_{n=0}^N K_n(j;N)^2,\\
+A_n^{\mathrm{row}}&=\sum_{j=0}^N|K_n(j;N)|,&A_j^{\mathrm{col}}&=\sum_{n=0}^N|K_n(j;N)|.
+\end{align*}
+The corresponding whole-matrix totals are $T_1(N)=\sum_{n,j}K_n(j;N)$, $T_2(N)=\sum_{n,j}K_n(j;N)^2$, and $T_{\mathrm{abs}}(N)=\sum_{n,j}|K_n(j;N)|$. Unless explicitly stated, these are unweighted sums. They must not be identified with binomially weighted expectations.
+
+\subsection{Signed sums and discrete antiderivatives}
+The complete signed sums are
+\begin{equation}\label{eq:sums-signed}
+C_j=\begin{cases}2^N,&j=0,\\0,&1\le j\le N,\end{cases}
+\qquad
+R_n=\begin{cases}\binom{N+1}{n+1},&n\text{ even},\\0,&n\text{ odd},\end{cases}
+\qquad T_1(N)=2^N.
+\end{equation}
+Evaluate the column generating function at $v=1$ to obtain $C_j$. For the row sum, the finite geometric identity gives
+\[
+\sum_{j=0}^N(1+v)^{N-j}(1-v)^j
+=\frac{(1+v)^{N+1}-(1-v)^{N+1}}{2v};
+\]
+the singularity at zero is removable, and coefficient comparison gives $R_n$.
+For $1\le j\le N$ and $0\le m\le N$, division by $1-v$ gives the partial column sum
+\begin{equation}\label{eq:sums-partial-column}
+\sum_{n=0}^m K_n(j;N)=K_m(j-1;N-1).
+\end{equation}
+Here coefficients of degree above $N-1$ vanish. The cross-order identities also give the spatial antiderivative
+\begin{equation}\label{eq:sums-spatial-primitive}
+K_{n+1}(j;N+1)-K_{n+1}(j+1;N+1)=2K_n(j;N).
+\end{equation}
+Thus truncated signed row sums telescope, and the same formula evaluates absolute row sums interval by interval once the signs are known.
+
+\subsection{Weighted squares versus raw square sums}
+The attachment correctly derives from binomial duality and orthogonality that
+\begin{equation}\label{eq:sums-weighted-squares}
+\sum_{j=0}^N b_jK_n(j;N)^2=2^Nb_n,\qquad
+\sum_{n=0}^N\frac{K_n(j;N)^2}{b_n}=\frac{2^N}{b_j}.
+\end{equation}
+These are weighted identities, not formulas for the raw row or column square sums. For the latter one has
+\begin{equation}\label{eq:sums-column-squares}
+Q_j^{\mathrm{col}}=
+\frac{\binom{2j}{j}\binom{2N-2j}{N-j}}{\binom Nj}
+=\frac{(2j)!(2N-2j)!}{j!(N-j)!N!},
+\end{equation}
+and
+\begin{equation}\label{eq:sums-row-squares}
+Q_n^{\mathrm{row}}=\sum_{k=0}^{\min(n,\lfloor N/2\rfloor)}
+\binom{N+1}{2k+1}\binom{2k}{k}\binom{N-2k}{n-k}.
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:sums-total-squares}
+T_2(N)=\sum_{j=0}^N\frac{\binom{2j}{j}\binom{2N-2j}{N-j}}{\binom Nj}
+=\sum_{k=0}^{\lfloor N/2\rfloor}\binom{N+1}{2k+1}\binom{2k}{k}2^{N-2k}.
+\end{equation}
+For \eqref{eq:sums-column-squares}, apply coefficient Parseval to $(1+v)^{N-j}(1-v)^j$ on the unit circle. Substitution $v=e^{i\theta}$ reduces the integral to
+$4^N\mathrm B(j+1/2,N-j+1/2)/\pi$, whose half-integer gamma factors give the displayed quotient.
+For \eqref{eq:sums-row-squares}, put $A=(1+u)(1+v)$ and $B=(1-u)(1-v)$. Then
+\[
+\sum_{j=0}^N G_{N,j}(u)G_{N,j}(v)
+=\frac{A^{N+1}-B^{N+1}}{A-B}
+=\sum_{k=0}^{\lfloor N/2\rfloor}\binom{N+1}{2k+1}(1+uv)^{N-2k}(u+v)^{2k}.
+\]
+Extract $[u^nv^n]$ and then sum over $n$ for \eqref{eq:sums-total-squares}. Examples are $Q_0^{\mathrm{row}}=N+1$ and $Q_1^{\mathrm{row}}=N(N+1)(N+2)/3$.
+
+\subsection{Absolute sums: bounds and exact boundary columns}
+Cauchy--Schwarz applied to \eqref{eq:sums-weighted-squares} gives the attachment's valid estimates
+\begin{equation}\label{eq:sums-absolute-bounds}
+A_n^{\mathrm{row}}\le\left(2^Nb_n\sum_{j=0}^N b_j^{-1}\right)^{1/2},\qquad
+A_j^{\mathrm{col}}\le\frac{2^N}{\sqrt{b_j}}.
+\end{equation}
+For $N\ge1$ the endpoint columns each contribute $2^N$, so the correct summed bound is
+\begin{equation}\label{eq:sums-total-absolute-bound}
+2^{N+1}\le T_{\mathrm{abs}}(N)\le
+2^N\sum_{j=0}^N\binom Nj^{-1/2}
+=2^N\left(2+\sum_{j=1}^{N-1}\binom Nj^{-1/2}\right).
+\end{equation}
+The summation on the upper bound is essential. For $N\ge6$, unimodality gives the explicit estimate
+\[
+\sum_{j=1}^{N-1}\binom Nj^{-1/2}\le
+\frac2{\sqrt N}+\frac2{\sqrt{\binom N2}}
++\frac{N-5}{\sqrt{\binom N3}}=O(N^{-1/2}).
+\]
+Thus $T_{\mathrm{abs}}(N)\sim2^{N+1}$, as in the attachment. For $N=0$ the single-entry total is one, so the two-endpoint lower bound is not applicable.
+
+More precisely,
+\begin{equation}\label{eq:sums-boundary-modulus}
+A_0^{\mathrm{col}}=A_N^{\mathrm{col}}=2^N,\qquad
+A_1^{\mathrm{col}}=A_{N-1}^{\mathrm{col}}
+=2\binom{N-1}{\lfloor(N-1)/2\rfloor}\quad(N\ge1).
+\end{equation}
+Indeed, $K_n(1;N)=\binom{N-1}n-\binom{N-1}{n-1}$, and the absolute first differences of a unimodal sequence, extended by zero at both ends, sum to twice its maximum. For even $N$, this equals $\binom N{N/2}$. The attachment's general near-boundary-column expression misses the factor two. When $N\ge3$ the two near-boundary columns are distinct and give the corrected improvement
+\begin{equation}\label{eq:sums-improved-lower}
+T_{\mathrm{abs}}(N)\ge2^{N+1}+4\binom{N-1}{\lfloor(N-1)/2\rfloor}.
+\end{equation}
+At $N=2$ there is just one middle column and it must not be counted twice.
+The next boundary column has, for $N>2$,
+\begin{equation}\label{eq:sums-second-boundary}
+A_2^{\mathrm{col}}=A_{N-2}^{\mathrm{col}}
+=4\left[\binom{N-2}{r_N}-\binom{N-2}{r_N-1}\right],\qquad
+r_N=\left\lfloor\frac{N-\sqrt N}{2}\right\rfloor.
+\end{equation}
+To see this, use
+\[
+K_n(2;N)=\binom Nn\frac{(N-2n)^2-N}{N(N-1)}
+=\binom{N-2}n-2\binom{N-2}{n-1}+\binom{N-2}{n-2}.
+\]
+The first expression locates the two positive tails, the second telescopes on a tail, and the zero signed column total makes the full absolute sum four times the left-tail mass. Zero entries at an integral root cause no ambiguity.
+For even $N=2m$, the middle column additionally has $A_m^{\mathrm{col}}=2^m$, directly from $(1-v^2)^m$.
+These are entrywise absolute sums. In contrast, the induced matrix norm is the maximum column absolute sum, $\|\Phi_N\|_1=2^N$.
+
+For a row of constant sign $\epsilon$ on $a\le j\le b$, \eqref{eq:sums-spatial-primitive} gives
+\[
+\sum_{j=a}^b|K_n(j;N)|=\frac\epsilon2
+\bigl[K_{n+1}(a;N+1)-K_{n+1}(b+1;N+1)\bigr].
+\]
+Summing over constant-sign intervals is an exact finite evaluation of $A_n^{\mathrm{row}}$, without replacing it by a weighted expectation.
+
+\subsection{Boundary expansion of the total absolute sum}
+The selected sums manuscript sharpens the attachment's leading equivalence to
+\begin{equation}\label{eq:sums-absolute-asymptotic}
+T_{\mathrm{abs}}(N)=2^{N+1}\left[
+1+\sqrt{\frac2{\pi N}}+\frac4{\sqrt{2\pi e}\,N}+O(N^{-3/2})\right].
+\end{equation}
+Here is the mechanism. For any fixed positive integer $q$,
+\[
+\sum_{j=q}^{N-q}\binom Nj^{-1/2}=O(N^{-q/2}).
+\]
+On the range $q\le j\le N/4$, the ratio of consecutive terms is $\sqrt{(j+1)/(N-j)}$, bounded away from one for large $N$, so the sum is controlled by its first term. Between $N/4$ and $N/2$ the terms are exponentially small; reflection treats the other half. Hence the columns $3\le j\le N-3$ contribute $O(2^NN^{-3/2})$. Separating the first three columns at each end gives
+\[
+\frac{T_{\mathrm{abs}}(N)}{2^{N+1}}
+=1+\frac{A_1^{\mathrm{col}}}{2^N}+\frac{A_2^{\mathrm{col}}}{2^N}+O(N^{-3/2}).
+\]
+Stirling's formula in \eqref{eq:sums-boundary-modulus} gives $A_1^{\mathrm{col}}/2^N=\sqrt{2/(\pi N)}+O(N^{-3/2})$.
+For \eqref{eq:sums-second-boundary}, write the binomial difference as
+\[
+\binom{N-2}{r_N}\frac{N-1-2r_N}{N-1-r_N}.
+\]
+Since $r_N=N/2-\sqrt N/2+O(1)$, the two factors are respectively
+$2^{N-2}\sqrt{2/(\pi N)}e^{-1/2}(1+O(N^{-1/2}))$ and
+$2N^{-1/2}(1+O(N^{-1/2}))$. Including the factor four proves the $N^{-1}$ term. This is a boundary-column expansion, not an asymptotic interchange of an uncontrolled full matrix sum.
+
+\subsection{Exact numerical checks}
+The following totals are computed with integer arithmetic; $T_2$ is a raw, unweighted sum. The companion verification record checks signed sums, raw and weighted squares, absolute column bounds and boundary formulas through $N=32$.
+\input{chapters/tables/kravchuk-sums-examples}
+For the unchanged attachment, corrections and integration scope, see \texttt{sources/INTEGRATION\_KravEstimate.md}. The local supporting manuscripts remain preserved, not wholesale certified by their inclusion in the project.

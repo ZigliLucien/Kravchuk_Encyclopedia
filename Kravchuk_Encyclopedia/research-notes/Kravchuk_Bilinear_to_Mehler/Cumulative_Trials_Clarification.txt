@@ -1,0 +1,11 @@
+The current focused manuscript now explains the cumulative-trial update
+before Section 1.1: save old successes, retry every unsaved site, then
+count saved plus fresh successes. It explicitly clarifies that counts
+need not increase and no success is permanently protected.
+Section 1.1 derives the general one-site matrix and then specializes it
+to the symmetric P_r. The transition-density normalization is explained
+at its first occurrence and restated immediately before equation (8).
+No new numbered equations were inserted before (8), and Section 1.1
+retains its number. The previous focused revision is preserved in
+archive/Before_Cumulative_Trials_Clarification.zip.
+The rebuilt PDF remains 6 pages and has been structurally and visually checked.

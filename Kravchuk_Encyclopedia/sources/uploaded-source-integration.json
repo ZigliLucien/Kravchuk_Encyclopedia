@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "jkhadamard_Oct_08_00.tex": {
+      "path": "sources/jkhadamard_Oct_08_00.tex",
+      "sha256": "753e5e43beac618d7a6c7f8f46931e801fd18f7186297154df1c3a3e1e258f8e",
+      "unchanged": true
+    },
+    "KravFeinsKocik.tex": {
+      "path": "sources/KravFeinsKocik.tex",
+      "sha256": "b5618f5663d503fc3f21e5dbef4ff88b7fd9c2704e0970312ed6230e8dc1b257",
+      "unchanged": true
+    }
+  },
+  "updated": [
+    "chapters/02-chapter.tex",
+    "chapters/03-chapter.tex",
+    "chapters/08-chapter.tex",
+    "chapters/09-chapter.tex",
+    "main.tex",
+    "sources/uploaded-source-guide.tex"
+  ],
+  "pdf_rebuilt": false,
+  "reason": "No pdflatex or latexmk executable available"
+}

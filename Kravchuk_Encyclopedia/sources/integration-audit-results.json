@@ -1,0 +1,22 @@
+{
+  "active_tex_files": 38,
+  "bibliography_entries": 51,
+  "supplied_entry_texts_preserved": 50,
+  "used_citation_keys": [
+    "KocikFeynman"
+  ],
+  "supplied_entries_uncited": 50,
+  "missing_input_files": [],
+  "duplicate_labels": 0,
+  "unresolved_internal_references": [],
+  "unresolved_citations": [],
+  "environments_balanced": true,
+  "visible_gap_notices": 28,
+  "pdflatex_available": false,
+  "latexmk_available": false,
+  "compiled_this_audit": false,
+  "bibliographic_metadata_independently_verified_this_audit": false,
+  "latest_addition": "Kravchuk sums",
+  "attachment_preserved_sha256": "3b9f4415a956720e8b2a4c5fcb59a212e8cbc412bf8bc12deda3c302522d32a4",
+  "exact_sums_checks": 4084
+}

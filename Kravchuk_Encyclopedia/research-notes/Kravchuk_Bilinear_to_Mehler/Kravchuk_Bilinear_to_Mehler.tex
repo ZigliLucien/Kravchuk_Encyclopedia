@@ -1,0 +1,466 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\title[Kravchuk Bilinear Formula and the Mehler Limit]{From the Kravchuk Bilinear Formula\\to the Mehler Kernel}
+\date{A focused development}
+\begin{document}
+\begin{abstract}
+We establish the finite Kravchuk bilinear formula from a binary
+independent-site model and a hypergeometric summation identity. We
+then use the closed finite formula, in an equivalent coefficient form,
+to prove its central scaling limit by a one-dimensional saddle-point
+calculation. The result is the Mehler kernel. Probability is used to
+identify the finite kernel and its normalization, not as a substitute
+for the asymptotic calculation. No interchange of a growing polynomial
+sum with a limit is assumed.
+\end{abstract}
+\maketitle
+\section*{Plan and conventions}
+The argument has one direction:
+\[
+\text{binary occupation model}
+\ \longrightarrow\ \text{finite bilinear formula}
+\ \longrightarrow\ \text{coefficient asymptotics}
+\ \longrightarrow\ \text{Mehler kernel}.
+\]
+The general induced-matrix viewpoint is described in
+\cite{FeinsilverSFAII2023}; cumulative trials provide a concrete
+sampling mechanism \cite{HoareRahman1984}. We retain only the binary
+construction needed here. Throughout $N\ge1$ is an integer,
+$0\le k,\ell\le N$, and the correlation parameter satisfies $0<r<1$.
+The central coordinate and its mesh size are
+\begin{equation}\label{eq:coordinates}
+x_{k,N}=\frac{N-2k}{\sqrt{2N}},\qquad
+\delta_N=\sqrt{\frac2N}.
+\end{equation}
+The limiting probability measure is
+$d\mu(x)=g(x)dx$, where $g(x)=\pi^{-1/2}e^{-x^2}$; its variance is $1/2$.
+
+\section{The finite probabilistic basis}
+\subsection*{Cumulative Bernoulli trials: save, then retry}
+We first specify what one update of the process means. There are $N$
+labelled sites, each either a success (state $1$) or a failure (state
+$0$). Suppose the input contains $k$ successes. Choose parameters
+$0\le\alpha<1$ and $0<\beta<1$.
+\begin{enumerate}
+\item \emph{Save successes.} Independently save each of the $k$ current
+successes with probability $\alpha$. A failure cannot be saved.
+If $J$ successes are saved, then $J\sim\operatorname{Bin}(k,\alpha)$.
+\item \emph{Retry all other sites.} Leave the $J$ saved successes
+unchanged. Each of the other $N-J$ sites receives a fresh Bernoulli
+trial with success probability $\beta$, independently of the saving
+stage and of all other fresh trials. This includes both old failures
+and old successes that were not saved.
+\item \emph{Count the output.} If $R$ fresh trials succeed, the new
+success count is $L=J+R$, where
+$R\mid J=j\sim\operatorname{Bin}(N-j,\beta)$.
+\end{enumerate}
+Thus saved successes and newly obtained successes accumulate within
+one update. The count need not increase: an old success that is not
+saved can fail its fresh trial. On the next update the same rule is
+applied anew; no success is permanently protected.
+
+Writing $B_{m,p}(h)=\binom mhp^h(1-p)^{m-h}$, with value zero outside
+$0\le h\le m$, the rule gives the explicit positive transition sum
+\[
+\Pr(L=\ell\mid k\text{ input successes})
+=\sum_{j=0}^{\min(k,\ell)}B_{k,\alpha}(j)B_{N-j,\beta}(\ell-j).
+\]
+This is the saved-and-recouped-successes interpretation used here,
+following the cumulative-trial viewpoint of \cite{HoareRahman1984}.
+The independent one-site description below is the same update, not a
+second probabilistic model.
+
+\subsection{One-site transition and occupations}
+For an input failure, the output is a success with probability
+$\beta$. For an input success, it is a success either by being saved,
+or by not being saved and then succeeding on the fresh trial.
+The one-site matrix, with rows denoting input states and columns output
+states in the order $0,1$, is therefore
+\[
+P_{\alpha,\beta}=
+\begin{pmatrix}
+1-\beta&\beta\\
+(1-\alpha)(1-\beta)&\alpha+(1-\alpha)\beta
+\end{pmatrix}.
+\]
+To obtain the symmetric kernel needed for the limit, fix $0<r<1$ and
+choose
+\[
+\beta=\frac{1-r}{2},\qquad \alpha=\frac{2r}{1+r}.
+\]
+Then $\alpha(1-\beta)=r$, and the matrix reduces to
+\begin{equation}\label{eq:P}
+P_r=\begin{pmatrix}a&b\\b&a\end{pmatrix},\qquad
+a=\frac{1+r}{2},\quad b=\frac{1-r}{2}.
+\end{equation}
+Here ``preserves the uniform law'' means that a site with input
+probabilities $(1/2,1/2)$ has the same output probabilities:
+\[
+(\tfrac12,\tfrac12)P_r=(\tfrac12,\tfrac12).
+\]
+For functions on the two states, the matrix acts by conditional
+expectation, $(P_rf)(s)=\sum_{u=0}^1P_r(s,u)f(u)$.
+The function $\varepsilon(s)=(-1)^s$ has values $1,-1$, hence mean zero
+under the uniform law; this is the meaning of ``centered.'' Directly,
+\[
+P_r\begin{pmatrix}1\\-1\end{pmatrix}
+=\begin{pmatrix}a-b\\b-a\end{pmatrix}
+=r\begin{pmatrix}1\\-1\end{pmatrix}.
+\]
+Thus $\mathbb E[\varepsilon(S_{\mathrm{out}})\mid S_{\mathrm{in}}=s]
+=r\varepsilon(s)$: the constant mode has eigenvalue $1$, and the
+mean-zero mode has eigenvalue $r$.
+
+Apply $P_r$ independently to $N$ sites. Given $k$ input ones, let
+$T_{r,N}(k,\ell)$ be the probability of $\ell$ output ones. Forgetting
+site labels is the degree-$N$ induced-matrix construction. It gives
+\begin{equation}\label{eq:transitionGF}
+\sum_{\ell=0}^NT_{r,N}(k,\ell)z^\ell
+=(a+bz)^{N-k}(b+az)^k.
+\end{equation}
+The stationary occupation law is the binomial law $\pi_N$. We define
+$m_{r,N}$ to be the transition density \emph{relative to this law},
+rather than the transition probability itself:
+\begin{equation}\label{eq:density}
+\pi_N(k)=2^{-N}\binom Nk,\qquad
+m_{r,N}(k,\ell)=\frac{T_{r,N}(k,\ell)}{\pi_N(\ell)}.
+\end{equation}
+Thus $T_{r,N}(k,\ell)=m_{r,N}(k,\ell)\pi_N(\ell)$ and
+$\sum_\ell m_{r,N}(k,\ell)\pi_N(\ell)=1$. With stationary input, it is
+also the joint occupation law divided by the product of its margins:
+\[
+m_{r,N}(k,\ell)=
+\frac{\Pr(K_{\mathrm{in}}=k,K_{\mathrm{out}}=\ell)}
+{\pi_N(k)\pi_N(\ell)}.
+\]
+With stationary input, the probabilities of site pairs $00,01,10,11$
+are $a/2,b/2,b/2,a/2$. Thus the joint occupation generating function is
+\begin{equation}\label{eq:joint}
+\sum_{k,\ell}\pi_N(k)T_{r,N}(k,\ell)u^kv^\ell
+=\left[\frac{(1+u)(1+v)+r(1-u)(1-v)}4\right]^N.
+\end{equation}
+This is all the probabilistic structure required below.
+
+\subsection{Kravchuk polynomials and the exact bilinear sum}
+Define the ordinary-coefficient polynomials by
+\begin{equation}\label{eq:Kdef}
+(1+z)^{N-k}(1-z)^k=\sum_{n=0}^NK_n(k;N)z^n.
+\end{equation}
+For independent uniform input bits, the product of two such generating
+functions has expectation $(1+zs)^N$. Comparing coefficients proves
+\begin{equation}\label{eq:orthog}
+\sum_k\pi_N(k)K_n(k;N)K_j(k;N)=\binom Nn\delta_{nj}.
+\end{equation}
+There is also the elementary transform
+\[
+\sum_k\pi_N(k)u^kK_n(k;N)
+=\binom Nn\left(\frac{1+u}{2}\right)^{N-n}
+\left(\frac{1-u}{2}\right)^n.
+\]
+Apply it in both variables to
+$\sum_nr^nK_n(k;N)K_n(\ell;N)/\binom Nn$.
+The binomial theorem gives exactly \eqref{eq:joint}.
+Recall explicitly that the kernel on the left below is
+\[
+m_{r,N}(k,\ell):=\frac{T_{r,N}(k,\ell)}{2^{-N}\binom N\ell},
+\]
+where $T_{r,N}(k,\ell)$ is the output-count probability given $k$ input
+successes. Equality of coefficients therefore proves the bilinear
+identity
+\begin{equation}\label{eq:finite-sum}
+\boxed{\displaystyle
+m_{r,N}(k,\ell)=\sum_{n=0}^N
+\frac{r^n}{\binom Nn}K_n(k;N)K_n(\ell;N).}
+\end{equation}
+The model identifies the normalization and positivity; it does not yet
+supply the scaling limit.
+
+\section{The hypergeometric bilinear formula}
+\subsection{The general identity and its finite specialization}
+For $t\notin\{0,-1,-2,\ldots\}$ the bilinear identity is
+\begin{equation}\label{eq:general-bilinear}
+\begin{aligned}
+&\sum_{n\ge0}\frac{(t)_n}{n!}w^n
+{}_2F_1(-n,X;t;v){}_2F_1(-n,Y;t;v)\\
+&\quad=(1-w)^{X+Y-t}A^{-X-Y}
+{}_2F_1\left(X,Y;t;\frac{wv^2}{A^2}\right),\qquad
+A=1-(1-v)w.
+\end{aligned}
+\end{equation}
+It is first an identity near $w=0$, with the branches taking value $1$
+there; Appendix~\ref{app:bilinear} gives a short proof.
+
+To put $t=-N$, first set $X=-k$, $Y=-\ell$. Both terminating
+polynomials then involve denominator factors only up to
+$\min(k,\ell)\le N$. Passage to $t=-N$ is legitimate: in the series on
+the left all $n>N$ terms vanish, while the right-hand series terminates
+before a denominator zero. More explicitly, each factor on the left
+is a polynomial in $n$ of bounded degree with coefficients analytic
+near $t=-N$, so convergence is locally uniform for $|w|<1$.
+Since $(-N)_n/n!=(-1)^n\binom Nn$, we obtain
+\begin{equation}\label{eq:finite-v}
+\begin{aligned}
+&\sum_{n=0}^N(-1)^n\binom Nn w^n
+{}_2F_1(-n,-k;-N;v){}_2F_1(-n,-\ell;-N;v)\\
+&\quad=(1-w)^{N-k-\ell}A^{k+\ell}
+{}_2F_1\left(-k,-\ell;-N;\frac{wv^2}{A^2}\right).
+\end{aligned}
+\end{equation}
+If $k+\ell>N$, apparent denominators cancel. The right side is the
+polynomial specified by the finite left side, including at removable
+singularities.
+
+\subsection{The closed finite kernel: the starting point for the limit}
+In our convention,
+\[
+K_n(k;N)=\binom Nn{}_2F_1(-n,-k;-N;2).
+\]
+Take $v=2$, $w=-r$ in \eqref{eq:finite-v}. Equations
+\eqref{eq:finite-sum} and \eqref{eq:finite-v} give
+\begin{equation}\label{eq:closed-kernel}
+\boxed{\begin{aligned}
+m_{r,N}(k,\ell)
+={}&(1+r)^{N-k-\ell}(1-r)^{k+\ell}\\
+&\times{}_2F_1\left(-k,-\ell;-N;
+-\frac{4r}{(1-r)^2}\right).
+\end{aligned}}
+\end{equation}
+This closed bilinear expression is our asymptotic tool. Its parameters
+$-k,-\ell,-N$ all grow, so fixed-parameter hypergeometric limits do not
+apply. We evaluate it through its exact coefficient representation:
+\begin{equation}\label{eq:coefficient}
+m_{r,N}(k,\ell)
+=\frac{[z^\ell](a+bz)^{N-k}(b+az)^k}
+{2^{-N}\binom N\ell}.
+\end{equation}
+There is a direct algebraic conversion, independent of the model:
+for nonzero $c$, the binomial theorem gives
+\[
+[z^\ell](1+cz)^{N-k}(1+dz)^k
+=\binom N\ell c^\ell
+{}_2F_1(-k,-\ell;-N;1-d/c).
+\]
+Set $c=b/a$, $d=a/b$ and restore the factor $a^{N-k}b^k$.
+Then $1-d/c=-4r/(1-r)^2$, and division by
+$2^{-N}\binom N\ell$ gives exactly \eqref{eq:closed-kernel}.
+Thus \eqref{eq:coefficient} is an algebraic representation of the
+closed bilinear formula. Its coefficient asymptotics below evaluate
+that formula without assuming a joint central limit theorem.
+
+\section{Asymptotics of the closed finite formula}
+\begin{theorem}[Kravchuk bilinear kernel to Mehler]\label{thm:limit}
+Fix $0<r<1$. For any sequences $k_N,\ell_N$ such that
+$x_{k_N,N}\to x$ and $x_{\ell_N,N}\to y$,
+\begin{equation}\label{eq:mehler-ratio}
+\boxed{\displaystyle
+m_{r,N}(k_N,\ell_N)\longrightarrow
+m_r(x,y)=\frac1{\sqrt{1-r^2}}
+\exp\left(\frac{2rxy-r^2(x^2+y^2)}{1-r^2}\right).}
+\end{equation}
+Convergence is uniform on compact central windows, and locally uniform
+in $r\in(0,1)$.
+\end{theorem}
+\begin{proof}
+We evaluate the numerator and denominator of \eqref{eq:coefficient}.
+All error estimates below are uniform when the scaled coordinates
+belong to a fixed compact set.
+
+\smallskip\noindent\emph{Step 1: the stationary denominator.}
+Stirling's formula in the central window gives
+\begin{equation}\label{eq:binomial-asym}
+2^{-N}\binom N\ell
+=\sqrt{\frac2{\pi N}}\exp(-y_N^2)(1+o(1)),
+\qquad y_N=x_{\ell,N}.
+\end{equation}
+The prefactor is $\delta_Ng(y_N)$, as required by the lattice spacing.
+
+\smallskip\noindent\emph{Step 2: a coefficient integral.}
+Put $x_N=x_{k,N}$ and write the numerator as
+\begin{equation}\label{eq:integral}
+C_N=\frac1{2\pi}\int_{-\pi}^{\pi}
+e^{-i\ell\theta}(a+be^{i\theta})^{N-k}
+(b+ae^{i\theta})^k\,d\theta.
+\end{equation}
+Near $\theta=0$, logarithms continuous from $0$ satisfy
+\[
+\begin{aligned}
+\log(a+be^{i\theta})&=ib\theta-\tfrac12ab\theta^2+O(|\theta|^3),\\
+\log(b+ae^{i\theta})&=ia\theta-\tfrac12ab\theta^2+O(|\theta|^3).
+\end{aligned}
+\]
+Their combined linear coefficient before coefficient extraction is
+\[
+\mu_N=(N-k)b+ka=\frac N2+r\left(k-\frac N2\right),
+\qquad
+\mu_N-\ell=\sqrt{\frac N2}(y_N-rx_N).
+\]
+Consequently, for $\theta=u/\sqrt N$, the exponent in the integrand is
+\begin{equation}\label{eq:local-exponent}
+\frac{i(y_N-rx_N)u}{\sqrt2}
+-\frac{1-r^2}{8}u^2+O\left(\frac{|u|^3}{\sqrt N}\right).
+\end{equation}
+This is a direct saddle-point expansion of the coefficient form of
+\eqref{eq:closed-kernel}.
+
+\smallskip\noindent\emph{Step 3: justify localization.}
+Both factors have the same modulus squared:
+\[
+|a+be^{i\theta}|^2=|b+ae^{i\theta}|^2
+=1-(1-r^2)\sin^2(\theta/2).
+\]
+Thus the modulus of their product in \eqref{eq:integral} is at most
+\[
+\exp\left[-\frac N2(1-r^2)\sin^2(\theta/2)\right].
+\]
+Since $\sin(|\theta|/2)\ge |\theta|/\pi$ on $[-\pi,\pi]$, the scaled
+integrand is bounded by the integrable function
+$\exp[-(1-r^2)u^2/(2\pi^2)]$, independently of $N,k,\ell$.
+A fixed-$u$ expansion followed by dominated convergence therefore
+justifies the Gaussian integral, without using a probabilistic limit
+theorem. Uniformity follows by the same bound and uniform expansion
+on compact sets.
+
+\smallskip\noindent\emph{Step 4: evaluate and divide.}
+Equations \eqref{eq:integral}--\eqref{eq:local-exponent} give
+\begin{equation}\label{eq:numerator-asym}
+C_N=\sqrt{\frac{2}{\pi N(1-r^2)}}
+\exp\left[-\frac{(y_N-rx_N)^2}{1-r^2}\right](1+o(1)).
+\end{equation}
+Dividing by \eqref{eq:binomial-asym},
+\[
+m_{r,N}(k,\ell)
+=\frac1{\sqrt{1-r^2}}
+\exp\left[y_N^2-\frac{(y_N-rx_N)^2}{1-r^2}\right](1+o(1)).
+\]
+The exponent equals
+$[2rx_Ny_N-r^2(x_N^2+y_N^2)]/(1-r^2)$, proving the theorem.
+\end{proof}
+
+Combining the theorem with the closed bilinear formula makes the
+hypergeometric asymptotic explicit:
+\begin{equation}\label{eq:hypergeo-limit}
+\begin{aligned}
+&(1+r)^{N-k_N-\ell_N}(1-r)^{k_N+\ell_N}
+{}_2F_1\left(-k_N,-\ell_N;-N;-\frac{4r}{(1-r)^2}\right)\\
+&\hspace{2em}\longrightarrow
+\frac1{\sqrt{1-r^2}}
+\exp\left(\frac{2rxy-r^2(x^2+y^2)}{1-r^2}\right).
+\end{aligned}
+\end{equation}
+The coefficient representation has handled the large cancellations in
+the terminating hypergeometric polynomial. Expanding its summands
+individually would not justify this limit.
+
+\section{Identification as the Mehler kernel}
+\subsection{Density relative to Gaussian measure}
+Multiplying \eqref{eq:mehler-ratio} by $g(y)$ gives
+\begin{equation}\label{eq:gaussian-transition}
+m_r(x,y)g(y)=\frac1{\sqrt{\pi(1-r^2)}}
+\exp\left[-\frac{(y-rx)^2}{1-r^2}\right].
+\end{equation}
+It integrates to $1$. Thus the limiting bilinear expression is the
+Mehler transition density relative to $d\mu(y)=g(y)dy$, not relative
+to Lebesgue measure. This distinction accounts for the quadratic terms
+in \eqref{eq:mehler-ratio}.
+
+\subsection{Hermite normalization and the bilinear series}
+Let $H_n$ denote the physicists' Hermite polynomials,
+\[
+e^{2xs-s^2}=\sum_{n\ge0}H_n(x)\frac{s^n}{n!},\qquad
+\int H_nH_j\,d\mu=2^nn!\delta_{nj}.
+\]
+For fixed $n$, rescale \eqref{eq:Kdef} by $z=\sqrt{2/N}\,s$.
+Its logarithm tends locally uniformly to $2xs-s^2$, so
+\begin{equation}\label{eq:fixed-degree}
+\frac{K_n(k_N;N)}{\sqrt{\binom Nn}}
+\longrightarrow\frac{H_n(x)}{\sqrt{2^nn!}}.
+\end{equation}
+This identifies the individual modes but was not used to interchange
+the finite sum with the limit.
+
+For completeness, Gaussian integration in \eqref{eq:gaussian-transition}
+gives
+\[
+\int m_r(x,y)e^{2ys-s^2}\,d\mu(y)=e^{2rxs-r^2s^2}.
+\]
+Comparing coefficients shows that $H_n$ has multiplier $r^n$.
+Orthogonality and completeness therefore give the Mehler expansion
+\begin{equation}\label{eq:hermite-mehler}
+\boxed{\displaystyle
+\sum_{n=0}^{\infty}\frac{r^n}{2^nn!}H_n(x)H_n(y)
+=\frac1{\sqrt{1-r^2}}
+\exp\left(\frac{2rxy-r^2(x^2+y^2)}{1-r^2}\right).}
+\end{equation}
+The expansion is absolutely convergent for $|r|<1$ and real $x,y$;
+Cauchy estimates for the Hermite generating function give subexponential
+growth of the normalized modes on compact $x$-sets. In particular the
+series identifies the continuous kernel, not merely its $L^2$ class.
+Our limit proof concerns $0<r<1$ and has not assumed this expansion.
+
+\subsection{The Hermite-function version}
+If a kernel with respect to $dy$ rather than $d\mu(y)$ is desired,
+symmetric Gaussian conjugation gives
+\begin{equation}\label{eq:wavefunction-kernel}
+\begin{aligned}
+\sqrt{g(x)}m_r(x,y)\sqrt{g(y)}
+={}&\frac1{\sqrt{\pi(1-r^2)}}\\
+&\times\exp\left[-\frac{(1+r^2)(x^2+y^2)-4rxy}{2(1-r^2)}\right].
+\end{aligned}
+\end{equation}
+Equivalently this is $\sum_{n\ge0}r^n\phi_n(x)\phi_n(y)$ for
+$\phi_n(x)=\pi^{-1/4}e^{-x^2/2}H_n(x)/\sqrt{2^nn!}$.
+This is only a normalization change of the Mehler kernel already
+obtained; no additional operator theory is needed.
+
+\appendix
+\section{Proof of the general bilinear identity}\label{app:bilinear}
+Initially take $t>X,Y>0$, $0<v<1$, and $w>0$ small. Euler's beta
+integral represents ${}_2F_1(-n,X;t;v)$ as the average of $(1-vs)^n$
+against the beta$(X,t-X)$ density. Use it for both factors in
+\eqref{eq:general-bilinear} and sum
+$\sum_n(t)_nz^n/n!=(1-z)^{-t}$. The resulting double integral has
+integrand $[1-w(1-vs)(1-vu)]^{-t}$.
+
+Integrating over $s$ first, and setting $c=1-w$, $d=wv$, $A=c+d$,
+gives
+\[
+\frac1{B(Y,t-Y)}\int_0^1
+u^{Y-1}(1-u)^{t-Y-1}
+(c+du)^{X-t}[A+d(1-v)u]^{-X}\,du.
+\]
+Make the substitution $u=ch/(A-dh)$. The integral becomes
+\[
+\frac{c^{X+Y-t}A^{-X-Y}}{B(Y,t-Y)}\int_0^1
+h^{Y-1}(1-h)^{t-Y-1}
+\left(1-\frac{wv^2}{A^2}h\right)^{-X}dh.
+\]
+Euler's integral now gives \eqref{eq:general-bilinear}. Analytic
+continuation proves it for general parameters wherever the indicated
+functions are defined, initially as analytic germs at $w=0$.
+
+
+\begin{thebibliography}{9}
+\bibitem{FeinsilverSFAII2023}
+P.~Feinsilver, \emph{Symmetric Functions Algebras (SFA) II: Induced
+Matrices}, Journal of Stochastic Analysis \textbf{4} (2023), no.~2,
+Article~1.
+\href{https://doi.org/10.31390/josa.4.2.01}{doi:10.31390/josa.4.2.01}.
+
+\bibitem{HoareRahman1984}
+M.~R. Hoare and M.~Rahman, \emph{Cumulative Bernoulli trials and
+Krawtchouk processes}, Stochastic Process. Appl. \textbf{16} (1984),
+no.~2, 113--139.
+\href{https://doi.org/10.1016/0304-4149(84)90014-0}{doi:10.1016/0304-4149(84)90014-0}.
+The publisher dates the issue February 1984; its copyright notice is 1983.
+
+\end{thebibliography}
+\end{document}
