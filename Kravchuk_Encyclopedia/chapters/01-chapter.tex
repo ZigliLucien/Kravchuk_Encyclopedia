@@ -28,12 +28,23 @@ Hence
 K_n(j;N)=\sum_r(-1)^r\binom jr\binom{N-j}{n-r}.
 \]
 Binomial coefficients outside their usual range are understood to vanish.
-In centered coordinates $x=N-2j$, write
+Here $j$ counts negative signs (failures), while $N-j$ counts positive signs (successes).
+On the centered lattice $x=N-2j$, write
 \[
 (1+v)^{(N+x)/2}(1-v)^{(N-x)/2}
 =\sum_{n=0}^N\frac{v^n}{n!}k_n(x,N).
 \]
-Thus $k_n(N-2j,N)=n!K_n(j;N)$.
+Thus $k_n(N-2j,N)=n!K_n(j;N)$. This formula changes both
+normalization and argument; it must not be abbreviated as an equality
+of functions with the same argument. For general $x$, the polynomial
+extension is defined coefficientwise by the formal power series
+\[
+(1+v)^{(N+x)/2}(1-v)^{(N-x)/2}
+=\sum_{n=0}^{\infty}\frac{k_n(x,N)}{n!}v^n.
+\]
+The finite upper limit $N$ applies on the original lattice, not at
+arbitrary $x$. In particular, $k_{N+1}$ is a nonzero polynomial that
+vanishes on that lattice.
 
 \section{Generating functions}
 \label{sec:1-3}
@@ -50,7 +61,7 @@ In particular,
 K_0=1,\qquad K_1=x,\qquad K_2=\frac{x^2-N}{2},\qquad
 K_3=\frac{x^3-(3N-2)x}{6}.
 \]
-The factorial-scaled polynomials are $k_n=n!K_n$, so their leading coefficient as polynomials in $x$ is one. This is why factorials must be retained when passing between ordinary and exponential generating functions.
+The factorial-scaled centered polynomials satisfy $k_n(x,N)=n!K_n((N-x)/2;N)$ after polynomial extension. Their leading coefficient in $x$ is one; the leading coefficient of $K_n(j;N)$ in $j$ is $(-2)^n/n!$. This is why factorials must be retained when passing between ordinary and exponential generating functions.
 At the endpoints,
 \[
 K_n(0;N)=\binom Nn,\qquad K_n(N;N)=(-1)^n\binom Nn.
@@ -59,12 +70,19 @@ Moreover, $G_{N,N-j}(v)=G_{N,j}(-v)$, giving $K_n(N-j;N)=(-1)^nK_n(j;N)$. These 
 
 \section{Krawtchouk matrices}
 \label{sec:1-4}
+Define the entry convention explicitly by
+\[
+(\Phi_N)_{ij}=K_i(j;N)=\frac{k_i(N-2j,N)}{i!},\qquad 0\le i,j\le N.
+\]
+The first index is degree (row); the second is the negative-sign
+count (column). Thus the notation $\Phi_{ij}$ at a fixed level means
+an entry, not a factorial-scaled polynomial or an entry of $S_N$.
 Set $\Phi_N=(K_n(j;N))_{n,j=0}^N$ and
 $B_N=\operatorname{diag}(\binom N0,\ldots,\binom NN)$. Binomial duality is
 \[
 \binom Nj K_n(j;N)=\binom Nn K_j(n;N).
 \]
-Consequently $S_N=\Phi_NB_N$ is symmetric. The symmetric transform satisfies
+Consequently $S_N=\Phi_NB_N$ is symmetric. The raw symmetric-parameter transform satisfies
 \[
 \Phi_N^2=2^NI.
 \]

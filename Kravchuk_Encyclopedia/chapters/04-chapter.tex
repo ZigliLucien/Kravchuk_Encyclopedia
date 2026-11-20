@@ -31,14 +31,14 @@ different combinatorial construction. See also \cite[Sections~1 and~5]{KocikFeyn
 
 \section{Traces on Grassmann algebras}
 \label{sec:4-2}
-Let $V$ have dimension $N$ and let $T:V\to V$ be linear. On the $n$th exterior power define
+Let $V$ have dimension $N$ and let $\mathsf X:V\to V$ be linear. On the $n$th exterior power define
 \[
-(\bigwedge^n T)(v_1\wedge\cdots\wedge v_n)
+(\bigwedge^n \mathsf X)(v_1\wedge\cdots\wedge v_n)
 =Tv_1\wedge\cdots\wedge Tv_n.
 \]
-The trace of this induced map is the sum of the principal $n\times n$ minors of $T$. Consequently,
+The trace of this induced map is the sum of the principal $n\times n$ minors of $\mathsf X$. Consequently,
 \begin{equation}\label{eq:exterior-trace-determinant}
-\det(I+vT)=\sum_{n=0}^N v^n\operatorname{tr}(\bigwedge^n T).
+\det(I+vT)=\sum_{n=0}^N v^n\operatorname{tr}(\bigwedge^n \mathsf X).
 \end{equation}
 Indeed, in an exterior basis indexed by subsets, the diagonal entry indexed by a subset is precisely its principal minor; the determinant expansion gives the same coefficients. This argument does not require diagonalizability.
 For a sign operator $D$ with $N-j$ eigenvalues $+1$ and $j$ eigenvalues $-1$, the degree-$n$ trace is therefore
@@ -47,8 +47,8 @@ For a sign operator $D$ with $N-j$ eigenvalues $+1$ and $j$ eigenvalues $-1$, th
 \]
 For the full Grassmann algebra $\bigwedge V=\bigoplus_n\bigwedge^n V$, ordinary trace and supertrace are respectively
 \[
-\operatorname{tr}(\bigwedge T)=\det(I+T),\qquad
-\operatorname{str}(\bigwedge T)=\sum_n(-1)^n\operatorname{tr}(\bigwedge^n T)=\det(I-T).
+\operatorname{tr}(\bigwedge \mathsf X)=\det(I+\mathsf X),\qquad
+\operatorname{str}(\bigwedge \mathsf X)=\sum_n(-1)^n\operatorname{tr}(\bigwedge^n \mathsf X)=\det(I-\mathsf X).
 \]
-Here $\bigwedge^0T$ is the identity on the scalar space. These formulas concern multiplicative exterior powers, not the additive Lie-algebra action obtained by applying a generator to one wedge factor at a time. They develop the Grassmann-algebra heading of the supplied source outline from the determinant identity in Section~\ref{sec:4-1}.
+Here $\bigwedge^0\mathsf X$ is the identity on the scalar space. These formulas concern multiplicative exterior powers, not the additive Lie-algebra action obtained by applying a generator to one wedge factor at a time. They develop the Grassmann-algebra heading of the supplied source outline from the determinant identity in Section~\ref{sec:4-1}.
 

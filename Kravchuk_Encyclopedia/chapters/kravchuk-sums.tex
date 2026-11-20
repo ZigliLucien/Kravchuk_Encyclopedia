@@ -3,10 +3,10 @@
 This section collects sums of entries, squares, and absolute values of the raw matrix $\Phi_N=(K_n(j;N))$. The attached estimate note is preserved unchanged as \texttt{sources/KravEstimate.tex}. Selected exact formulas also occur in the retained local sums manuscripts in \texttt{supporting-papers/}; the proofs below fix the book's normalization and do not import those standalone documents' preambles or bibliography keys. These formulas concern $\Phi_N$, not its symmetric weighted form $S_N=\Phi_NB_N$ or orthogonal normalization $U_N$.
 
 \subsection{A dictionary of sums}
-Write $b_j=\binom Nj$ and define
+Write $b_j=\binom Nj$. Use $\operatorname{RowS}_n$ and $\operatorname{ColS}_n$ for the unweighted sums of row $n$ and column $n$, and $\operatorname{SqRowS}_n$ and $\operatorname{SqColS}_n$ for the corresponding sums of squared entries. The fixed level $N$ is suppressed in this notation. With separate free indices for rows and columns, define
 \begin{align*}
-R_n&=\sum_{j=0}^N K_n(j;N),& C_j&=\sum_{n=0}^N K_n(j;N),\\
-Q_n^{\mathrm{row}}&=\sum_{j=0}^N K_n(j;N)^2,&Q_j^{\mathrm{col}}&=\sum_{n=0}^N K_n(j;N)^2,\\
+\operatorname{RowS}_n&=\sum_{j=0}^N K_n(j;N),& \operatorname{ColS}_j&=\sum_{n=0}^N K_n(j;N),\\
+\operatorname{SqRowS}_n&=\sum_{j=0}^N K_n(j;N)^2,&\operatorname{SqColS}_j&=\sum_{n=0}^N K_n(j;N)^2,\\
 A_n^{\mathrm{row}}&=\sum_{j=0}^N|K_n(j;N)|,&A_j^{\mathrm{col}}&=\sum_{n=0}^N|K_n(j;N)|.
 \end{align*}
 The corresponding whole-matrix totals are $T_1(N)=\sum_{n,j}K_n(j;N)$, $T_2(N)=\sum_{n,j}K_n(j;N)^2$, and $T_{\mathrm{abs}}(N)=\sum_{n,j}|K_n(j;N)|$. Unless explicitly stated, these are unweighted sums. They must not be identified with binomially weighted expectations.
@@ -14,17 +14,17 @@ The corresponding whole-matrix totals are $T_1(N)=\sum_{n,j}K_n(j;N)$, $T_2(N)=\
 \subsection{Signed sums and discrete antiderivatives}
 The complete signed sums are
 \begin{equation}\label{eq:sums-signed}
-C_j=\begin{cases}2^N,&j=0,\\0,&1\le j\le N,\end{cases}
+\operatorname{ColS}_j=\begin{cases}2^N,&j=0,\\0,&1\le j\le N,\end{cases}
 \qquad
-R_n=\begin{cases}\binom{N+1}{n+1},&n\text{ even},\\0,&n\text{ odd},\end{cases}
+\operatorname{RowS}_n=\begin{cases}\binom{N+1}{n+1},&n\text{ even},\\0,&n\text{ odd},\end{cases}
 \qquad T_1(N)=2^N.
 \end{equation}
-Evaluate the column generating function at $v=1$ to obtain $C_j$. For the row sum, the finite geometric identity gives
+Evaluate the column generating function at $v=1$ to obtain $\operatorname{ColS}_j$. For the row sum, the finite geometric identity gives
 \[
 \sum_{j=0}^N(1+v)^{N-j}(1-v)^j
 =\frac{(1+v)^{N+1}-(1-v)^{N+1}}{2v};
 \]
-the singularity at zero is removable, and coefficient comparison gives $R_n$.
+the singularity at zero is removable, and coefficient comparison gives $\operatorname{RowS}_n$.
 For $1\le j\le N$ and $0\le m\le N$, division by $1-v$ gives the partial column sum
 \begin{equation}\label{eq:sums-partial-column}
 \sum_{n=0}^m K_n(j;N)=K_m(j-1;N-1).
@@ -43,13 +43,13 @@ The attachment correctly derives from binomial duality and orthogonality that
 \end{equation}
 These are weighted identities, not formulas for the raw row or column square sums. For the latter one has
 \begin{equation}\label{eq:sums-column-squares}
-Q_j^{\mathrm{col}}=
+\operatorname{SqColS}_j=
 \frac{\binom{2j}{j}\binom{2N-2j}{N-j}}{\binom Nj}
 =\frac{(2j)!(2N-2j)!}{j!(N-j)!N!},
 \end{equation}
 and
 \begin{equation}\label{eq:sums-row-squares}
-Q_n^{\mathrm{row}}=\sum_{k=0}^{\min(n,\lfloor N/2\rfloor)}
+\operatorname{SqRowS}_n=\sum_{k=0}^{\min(n,\lfloor N/2\rfloor)}
 \binom{N+1}{2k+1}\binom{2k}{k}\binom{N-2k}{n-k}.
 \end{equation}
 Consequently,
@@ -65,7 +65,7 @@ For \eqref{eq:sums-row-squares}, put $A=(1+u)(1+v)$ and $B=(1-u)(1-v)$. Then
 =\frac{A^{N+1}-B^{N+1}}{A-B}
 =\sum_{k=0}^{\lfloor N/2\rfloor}\binom{N+1}{2k+1}(1+uv)^{N-2k}(u+v)^{2k}.
 \]
-Extract $[u^nv^n]$ and then sum over $n$ for \eqref{eq:sums-total-squares}. Examples are $Q_0^{\mathrm{row}}=N+1$ and $Q_1^{\mathrm{row}}=N(N+1)(N+2)/3$.
+Extract $[u^nv^n]$ and then sum over $n$ for \eqref{eq:sums-total-squares}. Examples are $\operatorname{SqRowS}_0=N+1$ and $\operatorname{SqRowS}_1=N(N+1)(N+2)/3$.
 
 \subsection{Absolute sums: bounds and exact boundary columns}
 Cauchy--Schwarz applied to \eqref{eq:sums-weighted-squares} gives the attachment's valid estimates

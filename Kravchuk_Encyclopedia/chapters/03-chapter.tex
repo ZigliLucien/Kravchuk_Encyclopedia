@@ -30,9 +30,10 @@ framework for the cumulative-trial example below and the Mehler limit
 in Section~\ref{sec:11-3}. We declare row-stochastic conventions here;
 column-vector probability evolution uses the transpose.
 
+Use $u,v$ for category indices, reserving $a,b$ for success counts below.
 For a $q$-state matrix $A$, its degree-$N$ induced matrix is defined by
 \begin{equation}\label{eq:ency-induced-definition}
-\prod_a\left(\sum_bA_{ab}z_b\right)^{n_a}
+\prod_u\left(\sum_vA_{uv}z_v\right)^{n_u}
 =\sum_{|\mathbf m|=N}A^{[N]}(\mathbf n,\mathbf m)\mathbf z^{\mathbf m},
 \qquad |\mathbf n|=N.
 \end{equation}
@@ -41,8 +42,8 @@ $P^{[N]}$ is the transition for $N$ independent sites with their labels
 forgotten. Equivalently,
 \[
 P^{[N]}(\mathbf n,\mathbf m)
-=\sum_{\substack{\sum_b c_{ab}=n_a\\\sum_a c_{ab}=m_b}}
-\prod_a\frac{n_a!}{\prod_b c_{ab}!}\prod_{a,b}P_{ab}^{c_{ab}}.
+=\sum_{\substack{\sum_v c_{uv}=n_u\\\sum_u c_{uv}=m_v}}
+\prod_u\frac{n_u!}{\prod_v c_{uv}!}\prod_{u,v}P_{uv}^{c_{uv}}.
 \]
 Thus the contingency-table model and the induced matrix are exactly
 the same finite construction. The coordinate matrix of the symmetric
@@ -51,7 +52,7 @@ basis should not be confused with an orthonormal tensor basis.
 
 If $\boldsymbol\eta$ is stationary, then
 \[
-\Pi_N(\mathbf n)=\frac{N!}{\prod_a n_a!}\prod_a\eta_a^{n_a}
+\Pi_N(\mathbf n)=\frac{N!}{\prod_u n_u!}\prod_u\eta_u^{n_u}
 \]
 is stationary. For a complete one-site eigenbasis with eigenvalues
 $1,r_1,\ldots,r_{q-1}$, symmetric products give occupation eigenvalues
@@ -62,8 +63,8 @@ this orthogonality.
 
 For $P_t=e^{tQ}$ the induced generator is
 \[
-(\mathcal L_Nf)(\mathbf n)=\sum_{a\ne b}n_aQ_{ab}
-[f(\mathbf n-e_a+e_b)-f(\mathbf n)].
+(\mathcal L_Nf)(\mathbf n)=\sum_{u\ne v}n_uQ_{uv}
+[f(\mathbf n-e_u+e_v)-f(\mathbf n)].
 \]
 Cumulative Bernoulli trials specify a particular one-site $P$ and
 therefore a particular $P^{[N]}$; they are not a different multinomial
@@ -74,7 +75,7 @@ convolution are distinct products, related only through their specified
 spectral realizations.
 
 Under stationary input the joint site probabilities are
-$J_{ab}=\eta_aP_{ab}$. Recording $N$ such pairs gives a multinomial table
+$J_{uv}=\eta_uP_{uv}$. Recording $N$ such pairs gives a multinomial table
 with margins $\mathbf N,\mathbf M$, and
 \[
 \frac{P^{[N]}(\mathbf n,\mathbf m)}{\Pi_N(\mathbf m)}
@@ -99,16 +100,19 @@ and presents our Bernoulli case with explicit conventions;
 its parameters are defined here rather than implicitly identified with
 all conventions in those papers.
 
-Starting from $i$ successes among $N$ sites, save each success with
+Let $a$ and $b$ be the initial and final numbers of successes ($+1$ sites).
+The corresponding negative-sign counts are $N-a$ and $N-b$; neither
+success count is the negative-sign index $j$ of the defining Kravchuk
+generating function. Starting from $a$ successes, save each success with
 probability $\alpha$. If $k$ are saved, retry the remaining $N-k$ sites
 with success probability $\beta$. With
-$b(j;m,p)=\binom mjp^j(1-p)^{m-j}$ (zero outside $0\le j\le m$), the
+$\operatorname{BinMass}(k;m,\theta)=\binom mk\theta^k(1-\theta)^{m-k}$ (zero outside $0\le k\le m$), the
 positive transition kernel is
 \begin{equation}\label{eq:ency-cumulative}
-\mathcal K(j\mid i)=\sum_{k=0}^{\min(i,j)}
-b(k;i,\alpha)b(j-k;N-k,\beta).
+\mathcal K(b\mid a)=\sum_{k=0}^{\min(a,b)}
+\operatorname{BinMass}(k;a,\alpha)\operatorname{BinMass}(b-k;N-k,\beta).
 \end{equation}
-Its backward action is $(\mathcal Kf)(i)=\sum_j\mathcal K(j\mid i)f(j)$;
+Its backward action is $(\mathcal Kf)(a)=\sum_b\mathcal K(b\mid a)f(b)$;
 the column-vector forward transition matrix is its transpose.
 For $0\le\alpha<1$, $0<\beta<1$, the one-site transition and its
 stationary parameter are
@@ -118,33 +122,41 @@ P=\begin{pmatrix}1-\beta&\beta\\
 r=\alpha(1-\beta),\quad p=\frac{\beta}{1-r}.
 \]
 Indeed $\mathbb E[Y-p\mid X]=r(X-p)$. The invariant occupation law is
-$w_{N,p}(i)=\binom Ni p^i(1-p)^{N-i}$, and, with $q=1-p$, the biased polynomials
+$w_{N,p}(a)=\binom Na p^a(1-p)^{N-a}$, and, with $q=1-p$, the biased polynomials
 $Q_n^{(p)}$ of \eqref{eq:biased-generating} in Section~\ref{sec:13-2}
 satisfy
 \[
 \mathcal KQ_n^{(p)}=r^nQ_n^{(p)},\qquad
-\sum_iw_{N,p}(i)Q_n^{(p)}(i;N)Q_m^{(p)}(i;N)=\binom Nn(pq)^n\delta_{nm}.
+\sum_{a=0}^N w_{N,p}(a)Q_n^{(p)}(a;N)Q_m^{(p)}(a;N)=\binom Nn(pq)^n\delta_{nm}.
+\]
+Here the reference to $Q_n^{(p)}$ uses the current definition of
+Section~\ref{sec:13-2}, evaluated at a success count; it does not identify
+that count with the negative-sign index. Chapter~\ref{ch:13} is left
+unchanged pending review. With its present definition, the explicit
+coordinate bridge is
+\[
+Q_n^{(p)}(a;N)=(-1)^nQ_n^{(q)}(N-a;N).
 \]
 Both statements follow by expanding products of centered site variables
-$X_a-p$. Thus the positive formula \eqref{eq:ency-cumulative} has the
+$X_u-p$. Thus the positive formula \eqref{eq:ency-cumulative} has the
 exact bilinear expansion
 \begin{equation}\label{eq:ency-cumulative-spectral}
-\frac{\mathcal K(j\mid i)}{w_{N,p}(j)}
-=\sum_{n=0}^N\frac{r^nQ_n^{(p)}(i;N)Q_n^{(p)}(j;N)}{\binom Nn(pq)^n}.
+\frac{\mathcal K(b\mid a)}{w_{N,p}(b)}
+=\sum_{n=0}^N\frac{r^nQ_n^{(p)}(a;N)Q_n^{(p)}(b;N)}{\binom Nn(pq)^n}.
 \end{equation}
 
 For our symmetric convention, take $p=1/2$ and
 $\beta=(1-r)/2$, $\alpha=2r/(1+r)$, with $0\le r<1$.
 Then $P=\frac12\left(\begin{smallmatrix}1+r&1-r\\1-r&1+r\end{smallmatrix}\right)$
-and $Q_n^{(1/2)}(i;N)=2^{-n}K_n(i;N)$. For $r=e^{-t}$ this is the time-$t$ independent-bit
+and $Q_n^{(1/2)}(a;N)=2^{-n}K_n(a;N)=(-1)^n2^{-n}K_n(N-a;N)$. For $r=e^{-t}$ this is the time-$t$ independent-bit
 transition. It is not the single-flip Ehrenfest step: the spectra are
 $r^n$ and $1-2n/N$, respectively.
 
 At stationarity the $N$ input--output site pairs give a four-category
-multinomial table. Its input and output margins $I,J$ obey
+multinomial table. Its input and output margins $\mathsf S_{\mathrm{in}},\mathsf S_{\mathrm{out}}$ obey
 \[
-\frac{\mathcal K(j\mid i)}{w_{N,p}(j)}
-=\frac{\Pr(I=i,J=j)}{w_{N,p}(i)w_{N,p}(j)}.
+\frac{\mathcal K(b\mid a)}{w_{N,p}(b)}
+=\frac{\Pr(\mathsf S_{\mathrm{in}}=a,\mathsf S_{\mathrm{out}}=b)}{w_{N,p}(a)w_{N,p}(b)}.
 \]
 This is the symmetric-tensor occupation kernel, interpreted as a joint
 law relative to the product of its margins. Conditioning instead on a

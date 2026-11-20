@@ -20,11 +20,11 @@
 \maketitle
 \input{chapters/kravchuk-frontispiece}
 \chapter*{Editorial Preface}
-This editable skeleton follows the eighteen main topics and appendix program in Section 6.1 of the supplied article source, \texttt{KravFeinsKocik.tex}. Additional headings from the supplied archived website, \texttt{Kravchuk.zip}, have been placed within the closest corresponding chapters. The archived introduction now appears as the first numbered chapter; the eighteen topical chapters follow it. The contents preserve the original program rather than impose a new textbook sequence.
+This editable skeleton follows the eighteen main topics and appendix program in Section 6.1 of the supplied article source, \texttt{KravFeinsKocik.tex}. Additional headings from the supplied archived website, \texttt{Kravchuk.zip}, have been placed within the closest corresponding chapters. The archived Introduction is unnumbered front matter; the eighteen topical chapters are numbered 1 through 18, matching their source filenames. The source-conventions chapter follows as Chapter 19. The contents preserve the original program rather than impose a new textbook sequence.
 
 This remains a working encyclopedia, not a completed literature review. Developed sections now include finite matrix identities, source-based representation material, martingales, orthogonality, and Gaussian--Krawtchouk summation. Remaining gaps carry visible uppercase NEEDS TO BE DONE notices, including narrower unfinished tasks within otherwise developed sections. Spectral-asymptotic working material remains explicitly distinguished from proved identities. The source register below separates supplied materials, editorial derivations, and bibliography records awaiting independent verification.
 
-The title retains ``Kravchuk'' while the polynomial notation uses the conventional spelling ``Krawtchouk.'' Historical names and original terminology should be checked as chapters are developed. In particular, the operator symbols $A$, $K$, $\Lambda$, and $T$ require definitions from their original source contexts before they are used interchangeably.
+The title retains ``Kravchuk'' while the polynomial notation uses the conventional spelling ``Krawtchouk.'' Historical names and original terminology should be checked as chapters are developed. Source symbols are translated into the fixed finite-matrix conventions below; differently normalized polynomials and operators are not identified by a bare change of letter.
 \chapter*{Notation and Conventions}
 Throughout the starter material, $K_n(j;N)$ is defined by the ordinary generating function, $k_n(N-2j,N)=n!K_n(j;N)$, $\Phi_N=(K_n(j;N))$, $B_N=\operatorname{diag}(\binom Nj)$, and $S_N=\Phi_NB_N$. All matrix indices begin at zero. In the standard column-vector basis,
 $R_Ne_j=(N-j)e_{j+1}$, $L_Ne_j=je_{j-1}$, and $A_N=R_N+L_N$.
@@ -40,7 +40,7 @@ $Q_n^{(p)}(j;N)$ of Section~\ref{sec:13-2}; the source convention
 $K_n(x,N)$ of Chapter~\ref{chap:pq-source-summary} is kept distinct.
 Hermite polynomials: $\operatorname{He}_n$ is the probabilists' family,
 $H_n(x,t)$ the two-variable heat polynomials of Section~\ref{sec:11-2}.
-The letter $H$ alone denotes $F+G$; the oscillator Hamiltonian is
+The letter $H$ alone denotes $F+G$; boldface $\mathbf H$ denotes the Cartan differential operator of Section~\ref{sec:differential-sl2-dictionary}; the oscillator Hamiltonian is
 $\mathcal H=\frac12(x^2-D^2)$.
 
 \section*{Dictionary for the integrated Kocik article}
@@ -54,7 +54,7 @@ The source's operator $N=[L,R]$ becomes $\Lambda_N$ on the fixed-order
 space, not the scalar order $N$. We use the ordinary commutator
 $[X,Y]=XY-YX$, distinguishing it from the source's half-commutator.
 The symbols $\Phi_N$, $S_N=\Phi_NB_N$, and $U_N$ retain their distinct
-meanings throughout. The parity matrix is $D_N$; powers-of-two weights
+meanings throughout. The parity matrix is $\sigma_N$; powers-of-two weights
 in Pascal coordinates are $W_N$.
 
 
@@ -67,9 +67,21 @@ Chapter~\ref{chap:pq-source-summary} supplies the parameter interchange,
 factorial scaling, and dictionary to earlier chapters. Previously established
 symmetric notation is retained there to avoid silently altering formulas.
 
+\section*{Fixed finite-matrix notation}
+The approved level-$N$ symbols are $A_N,R_N,L_N,\Lambda_N,\Phi_N,
+J_N,\sigma_N,B_N,S_N,T_N$. Subscripts may be suppressed at fixed level.
+Here $A_N=R_N+L_N$, $\Lambda_N=[L_N,R_N]$,
+$J_Ne_j=e_{N-j}$, $\sigma_Ne_j=(-1)^je_j$, and $S_N=\Phi_NB_N$.
+The matrix $\Phi_N$ is defined by \eqref{eq:gen}.
+The symbol $T_N$ is reserved for the skew-symmetric anticommuting
+matrix of \eqref{eq:ency-T-definition}; it is not a transition matrix
+or the full tensor Hadamard transform. We denote those by
+$\mathsf P_N=A_N/N$ and $H^{\otimes N}$, respectively.
+
 \tableofcontents
-\mainmatter
 \include{chapters/00-introduction}
+\mainmatter
+\setcounter{chapter}{0}
 \include{chapters/01-chapter}
 \include{chapters/02-chapter}
 \include{chapters/03-chapter}

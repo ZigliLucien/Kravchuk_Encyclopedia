@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.10.16)  9 NOV 2026 22:19
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.10.16)  20 NOV 2026 10:48
  system commands enabled.
 **main.tex
 (./main.tex
@@ -466,7 +466,7 @@ Package hyperref Info: Link coloring ON on input line 18.
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./chap
 ters/kravchuk-frontispiece.tex [2]
-<figures/kravchuk-portrait.jpg, id=519, 158.5925pt x 180.675pt>
+<figures/kravchuk-portrait.jpg, id=523, 158.5925pt x 180.675pt>
 File: figures/kravchuk-portrait.jpg Graphic file (type jpg)
 <use figures/kravchuk-portrait.jpg>
 Package luatex.def Info: figures/kravchuk-portrait.jpg  used on input line 6.
@@ -491,54 +491,62 @@ Overfull \hbox (18.95338pt too wide) in paragraph at lines 62--69
 sup-plied \T1/lmtt/m/n/10.95 KravPQ.tex
  []
 
+
+Overfull \hbox (21.32515pt too wide) in paragraph at lines 71--80
+[]\T1/lmr/m/n/10.95 The ap-proved level-$\OML/cmm/m/it/10.95 N$ \T1/lmr/m/n/10.
+95 sym-bols are $\OML/cmm/m/it/10.95 A[]; R[]; L[]; \OT1/cmr/m/n/10.95 []\OML/
+cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 []\OML/cmm/m/it/10.95 ; J[]; []; B[]; S[]
+; T[]$\T1/lmr/m/n/10.95 .
+ []
+
 [5
 
 
-]
+] [6]
 Contents
-(./main.toc [6
+(./main.toc [7
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 46.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 47.
 
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [7] [8])
+) [8] [9])
 \tf@toc=\write4
 
 \openout4 = main.toc
- [9]
+ [10]
 \openout2 = chapters/00-introduction.aux
  (./chapters/00-introduction.tex
-Chapter 1
+Introduction
 
 Overfull \hbox (31.68489pt too wide) in paragraph at lines 35--36
 []\T1/lmr/m/n/10.95 This chap-ter tran-scribes the sub-stan-tive text of \T1/lm
 tt/m/n/10.95 Kravchuk/Introduction.html
  []
 
+[11
+
+
+
+]) [12]
+\openout2 = chapters/01-chapter.aux
+ (./chapters/01-chapter.tex
+Chapter 1
 [1
 
 
 
 
 
-]) [2]
-\openout2 = chapters/01-chapter.aux
- (./chapters/01-chapter.tex
-Chapter 2
-[3
 
 
-
-
-
-] [4]) [5]
+] [2]) [3]
 \openout2 = chapters/02-chapter.aux
  (./chapters/02-chapter.tex
-Chapter 3
-[6
+Chapter 2
+[4
 
 
 
@@ -581,44 +589,44 @@ OT1/cmr/m/n/10.95 ) = (1 + \OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 )[](1 \OMS/c
 msy/m/n/10.95 ^^@
  []
 
-[7])
-Overfull \hbox (4.27971pt too wide) in paragraph at lines 203--74
+[5])
+Overfull \hbox (4.27971pt too wide) in paragraph at lines 203--86
 \T1/lmr/m/n/10.95 book's or-di-nary generating-function nor-mal-iza-tion; source
  con-ven-tions should
  []
 
-[8] [9]
+[6] [7]
 \openout2 = chapters/03-chapter.aux
  (./chapters/03-chapter.tex
-Chapter 4
-[10
+Chapter 3
+[8
 
 
 
 
 
 ]
-Overfull \hbox (11.82555pt too wide) in paragraph at lines 55--62
+Overfull \hbox (11.82555pt too wide) in paragraph at lines 56--63
 \T1/lmr/m/n/10.95 is sta-tion-ary. For a com-plete one-site eigen-ba-sis with ei
 gen-val-ues $\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 ; r[]; [] ; r[]$\T1/lmr/m/
 n/10.95 ,
  []
 
-[11]) [12] [13]
+[9] [10]) [11]
 \openout2 = chapters/04-chapter.aux
  (./chapters/04-chapter.tex
-Chapter 5
-[14
+Chapter 4
+[12
 
 
 
 
 
-]) [15]
+]) [13]
 \openout2 = chapters/05-chapter.aux
  (./chapters/05-chapter.tex
-Chapter 6
-[16
+Chapter 5
+[14
 
 
 
@@ -636,17 +644,17 @@ Overfull \hbox (36.46797pt too wide) detected at line 57
 \OML/cmm/m/it/10.95 Q[]\OT1/cmr/m/n/10.95 ([]) = [] [] [](\OML/cmm/m/it/10.95 [] \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 \OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 ;  Q[]\OT1/cmr/m/n/10.95 ([] + \OT1/cmr/bx/n/10.95 e[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 Q[]\OT1/cmr/m/n/10.95 ([]) + (\OML/cmm/m/it/10.95 [] \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 \OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 Q[]\OT1/cmr/m/n/10.95 ([])\OML/cmm/m/it/10.95 :
  []
 
-) [17]
+) [15]
 \openout2 = chapters/06-chapter.aux
  (./chapters/06-chapter.tex
-Chapter 7
+Chapter 6
 
 Overfull \hbox (10.25389pt too wide) in paragraph at lines 45--48
  \T1/lmr/bx/n/10.95 1.1.Differential-operator dic-tio-nary.[] \T1/lmr/m/n/10.95
  Use in-de-pen-dent aux-il-iary vari-
  []
 
-[18
+[16
 
 
 
@@ -667,7 +675,7 @@ Overfull \hbox (6.86089pt too wide) in paragraph at lines 82--83
 .[]
  []
 
-[19] [20]
+[17] [18]
 Overfull \hbox (11.96736pt too wide) detected at line 170
 \OML/cmm/m/it/10.95 J[] \OT1/cmr/m/n/10.95 = \U/msb/m/n/10.95 ~ [] \OML/cmm/m/i
 t/10.95 ;  J[] \OT1/cmr/m/n/10.95 = [] [] \OML/cmm/m/it/10.95 ;  J[] \OT1/cmr/m
@@ -682,7 +690,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 173.
 
-[21]
+[19]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 202.
@@ -691,7 +699,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 202.
 
-[22]
+[20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 262.
@@ -708,11 +716,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 262.
 
-) [23]
+) [21]
 \openout2 = chapters/07-chapter.aux
  (./chapters/07-chapter.tex
-Chapter 8
-) [24
+Chapter 7
+) [22
 
 
 
@@ -721,18 +729,18 @@ Chapter 8
 ]
 \openout2 = chapters/08-chapter.aux
  (./chapters/08-chapter.tex
-Chapter 9
-[25
+Chapter 8
+[23
 
 
 
 
 
-]) [26]
+]) [24]
 \openout2 = chapters/09-chapter.aux
  (./chapters/09-chapter.tex
-Chapter 10
-[27
+Chapter 9
+[25
 
 
 
@@ -745,24 +753,16 @@ Overfull \hbox (72.2126pt too wide) in paragraph at lines 97--102
 T1/lmr/m/n/10.95 ,
  []
 
-
-Overfull \hbox (28.27258pt too wide) detected at line 107
-\OML/cmm/m/it/10.95 H \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 ;  T[] \OT1/c
-mr/m/n/10.95 = \OML/cmm/m/it/10.95 H[];  s[] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m
-/it/10.95 e[];  b[] \OT1/cmr/m/n/10.95 = []\OML/cmm/m/it/10.95 ;  a[] \OT1/cmr/
-m/n/10.95 = \OML/cmm/m/it/10.95 s[]=b[]:
- []
-
-[28]) [29]
+[26]) [27]
 \openout2 = chapters/10-chapter.aux
  (./chapters/10-chapter.tex
-Chapter 11
+Chapter 10
 
 Overfull \hbox (13.9489pt too wide) in paragraph at lines 7--8
 \T1/lmr/bx/n/10.95 REP-RE-SEN-TA-TIONS OF THE HEISEN-BERG AL-GE-BRA NEEDS
  []
 
-) [30
+) [28
 
 
 
@@ -771,8 +771,8 @@ Overfull \hbox (13.9489pt too wide) in paragraph at lines 7--8
 ]
 \openout2 = chapters/11-chapter.aux
  (./chapters/11-chapter.tex
-Chapter 12
-[31
+Chapter 11
+[29
 
 
 
@@ -801,16 +801,16 @@ Overfull \hbox (11.73111pt too wide) detected at line 91
 /n/10.95 )[] = []
  []
 
-[32]) [33]
+[30]) [31]
 \openout2 = chapters/12-chapter.aux
  (./chapters/12-chapter.tex
-Chapter 13
+Chapter 12
 
 Overfull \hbox (2.04498pt too wide) in paragraph at lines 21--22
 \T1/lmr/bx/n/10.95 CLEBSCH--GORDAN CO-EF-FI-CIENTS FOR HEISEN-BERG AL-
  []
 
-) [34
+) [32
 
 
 
@@ -819,7 +819,7 @@ Overfull \hbox (2.04498pt too wide) in paragraph at lines 21--22
 ]
 \openout2 = chapters/13-chapter.aux
  (./chapters/13-chapter.tex
-Chapter 14
+Chapter 13
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 3.
@@ -854,39 +854,39 @@ Overfull \hbox (19.0135pt too wide) detected at line 14
 /n/10.95 + 2\OML/cmm/m/it/10.95 ; N\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 k[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; N\OT1/cmr/m/n/10.95 )[] + [][]\OML/cmm/m/it/10.95 k[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x \OMS/cmsy/m/n/10.95 ^^@ \OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; N\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 k[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; N\OT1/cmr/m/n/10.95 )[] = \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 nk[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; N\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 :
  []
 
+[33
+
+
+
+
+
+]) [34]
+\openout2 = chapters/14-chapter.aux
+ (./chapters/14-chapter.tex
+Chapter 14
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3.
+
 [35
 
 
 
 
 
-]) [36]
-\openout2 = chapters/14-chapter.aux
- (./chapters/14-chapter.tex
-Chapter 15
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3.
-
-[37
-
-
-
-
-
 ]
-Overfull \hbox (12.65308pt too wide) in paragraph at lines 81--82
+Overfull \hbox (12.65308pt too wide) in paragraph at lines 82--83
 \T1/lmr/bx/n/10.95 KRAWTCHOUK TRANS-FORM AND FFT NEEDS TO BE DONE. 
  []
 
-[38]) [39]
+[36]) [37]
 \openout2 = chapters/15-chapter.aux
  (./chapters/15-chapter.tex
-Chapter 16
+Chapter 15
 
 Overfull \hbox (47.70082pt too wide) detected at line 18
 [] []\OML/cmm/m/it/10.95 w[][][]F[]\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^@\
@@ -904,7 +904,7 @@ Overfull \hbox (28.30284pt too wide) detected at line 27
 /cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 N\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 K[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 `\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 N\OT1/cmr/m/n/10.95 ) = (1 + \OML/cmm/m/it/10.95 r\OT1/cmr/m/n/10.95 )[](1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 r\OT1/cmr/m/n/10.95 )[] [][]\OML/cmm/m/it/10.95 F[]  [] :
  []
 
-) [40
+) [38
 
 
 
@@ -913,7 +913,7 @@ Overfull \hbox (28.30284pt too wide) detected at line 27
 ]
 \openout2 = chapters/16-chapter.aux
  (./chapters/16-chapter.tex
-Chapter 17
+Chapter 16
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 38.
@@ -922,54 +922,62 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 38.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 45.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 45.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 45.
-
-[41
+[39
 
 
 
 
 
 ]
+Overfull \hbox (9.01768pt too wide) in paragraph at lines 54--58
+\T1/lmr/m/n/10.95 For a di-rect co-ef-fi-cient proof, put $\OML/cmm/m/it/10.95 
+F\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 u; v\OT1/cmr/m/n/10.95 ) = (1 + \OML/c
+mm/m/it/10.95 u \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 v \OMS/cmsy/m/n/10.95 
+^^@ \OML/cmm/m/it/10.95 uv\OT1/cmr/m/n/10.95 )[] = [][](\OML/cmm/m/it/10.95 S[]
+\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 u[]v[]$\T1/lmr/m/n/10.95 .
+ []
+
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 59.
+(hyperref)                removing `math shift' on input line 68.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 59.
+(hyperref)                removing `superscript' on input line 68.
 
-) [42]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 68.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 82.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 82.
+
+[40]) [41]
 \openout2 = chapters/17-chapter.aux
  (./chapters/17-chapter.tex
-Chapter 18
-[43
+Chapter 17
+[42
 
 
 
 
 
-] [44]
+] [43]
 Overfull \hbox (7.27232pt too wide) in paragraph at lines 65--66
 \T1/lmr/bx/n/10.95 A GEN-ERAL CLAS-SI-FI-CA-TION OF IN-TE-GRAL ZE-ROS NEEDS
  []
 
-[45] (./chapters/tables/gaussian-krawtchouk-rules.tex [46])) [47]
+[44] (./chapters/tables/gaussian-krawtchouk-rules.tex [45])) [46]
 \openout2 = chapters/18-chapter.aux
 
 (./chapters/18-chapter.tex
-Chapter 19
-) [48
+Chapter 18
+) [47
 
 
 
@@ -978,8 +986,8 @@ Chapter 19
 ]
 \openout2 = chapters/pq-source-summary.aux
  (./chapters/pq-source-summary.tex
-Chapter 20
-[49
+Chapter 19
+[48
 
 
 
@@ -1000,7 +1008,7 @@ Overfull \hbox (4.71364pt too wide) in paragraph at lines 92--97
 /10.95 (\OML/cmm/m/it/10.95 z\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 h[]z[]$ \T1/lmr/m/n/10.95 and $\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 a[]x[]$\T1/lmr/m/n/10.95 , then $\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 h\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 D\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 ][] =
  []
 
-[50] (./chapters/kravchuk-sums.tex
+[49] (./chapters/kravchuk-sums.tex
 Overfull \hbox (2.17015pt too wide) in paragraph at lines 11--13
 \T1/lmr/m/n/10.95 The cor-re-spond-ing whole-matrix to-tals are $\OML/cmm/m/it/
 10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 N\OT1/cmr/m/n/10.95 ) = [][] \
@@ -1009,13 +1017,19 @@ OML/cmm/m/it/10.95 K[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 j\OT1/cmr/m/n/10.
 it/10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 N\OT1/cmr/m/n/10.95 ) =
  []
 
-
+[50]
 Overfull \hbox (7.11226pt too wide) in paragraph at lines 15--16
  \T1/lmr/bx/n/10.95 5.2.Signed sums and dis-crete an-tideriva-tives.[] \T1/lmr/
 m/n/10.95 The com-plete signed
  []
 
-[51] [52]
+
+Overfull \hbox (14.19846pt too wide) detected at line 21
+[][][][][] \OT1/cmr/m/n/10.95 = []  [][] = []  \OML/cmm/m/it/10.95 T[]\OT1/cmr/
+m/n/10.95 (\OML/cmm/m/it/10.95 N\OT1/cmr/m/n/10.95 ) = 2[]\OML/cmm/m/it/10.95 :
+ []
+
+[51]
 Overfull \hbox (2.38579pt too wide) detected at line 67
 [] \OML/cmm/m/it/10.95 G[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 u\OT1/cmr/m/n
 /10.95 )\OML/cmm/m/it/10.95 G[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 v\OT1/cm
@@ -1030,14 +1044,14 @@ Overfull \hbox (18.83908pt too wide) in paragraph at lines 71--72
 T1/lmr/m/n/10.95 Cauchy--
  []
 
-[53]
+[52]
 Overfull \hbox (7.25713pt too wide) in paragraph at lines 132--134
 \T1/lmr/m/n/10.95 On the range $\OML/cmm/m/it/10.95 q \OMS/cmsy/m/n/10.95  \OM
 L/cmm/m/it/10.95 j \OMS/cmsy/m/n/10.95  \OML/cmm/m/it/10.95 N=\OT1/cmr/m/n/10.
 95 4$\T1/lmr/m/n/10.95 , the ra-tio of con-sec-u-tive terms is $[]$,
  []
 
-
+[53]
 Overfull \hbox (52.32442pt too wide) in paragraph at lines 142--146
 \T1/lmr/m/n/10.95 Since $\OML/cmm/m/it/10.95 r[] \OT1/cmr/m/n/10.95 = \OML/cmm/
 m/it/10.95 N=\OT1/cmr/m/n/10.95 2 \OMS/cmsy/m/n/10.95 ^^@ []\OML/cmm/m/it/10.95
@@ -1046,14 +1060,14 @@ n/10.95 , the two fac-tors are re-spec-tively $\OT1/cmr/m/n/10.95 2[][]\OML/cmm
 /m/it/10.95 e[]\OT1/cmr/m/n/10.95 (1 +
  []
 
-(./chapters/tables/kravchuk-sums-examples.tex [54]))
+(./chapters/tables/kravchuk-sums-examples.tex))
 Overfull \hbox (170.34457pt too wide) in paragraph at lines 150--132
 \T1/lmr/m/n/10.95 For the un-changed at-tach-ment, cor-rec-tions and in-te-gra-t
 ion scope, see \T1/lmtt/m/n/10.95 sources/INTEGRATION_KravEstimate.md\T1/lmr/m/
 n/10.95 .
  []
 
-) [55]
+) [54]
 \openout2 = chapters/appendix-01.aux
  (./chapters/appendix-01.tex
 Appendix A
@@ -1075,16 +1089,16 @@ cmm/m/it/10.95 ;  A[]\OT1/cmr/m/n/10.95 [] = [][]\OML/cmm/m/it/10.95 ;  \OT1
  []
 
 (./chapters/tables/matrices-N01.tex) (./chapters/tables/matrices-N02.tex
-[56
+[55
 
 
 
 
 
 ]) (./chapters/tables/matrices-N03.tex) (./chapters/tables/matrices-N04.tex
-[57]) (./chapters/tables/matrices-N05.tex [58])
-(./chapters/tables/matrices-N06.tex [59]) (./chapters/tables/matrices-N07.tex
-[60]) (./chapters/tables/matrices-N08.tex [61])
+[56]) (./chapters/tables/matrices-N05.tex [57])
+(./chapters/tables/matrices-N06.tex [58]) (./chapters/tables/matrices-N07.tex
+[59]) (./chapters/tables/matrices-N08.tex [60])
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 36.
@@ -1109,7 +1123,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 36.
 
-(./chapters/tables/Phi-N09-N14.tex [62] [63])) [64]
+(./chapters/tables/Phi-N09-N14.tex [61] [62])) [63]
 \openout2 = chapters/appendix-02.aux
  (./chapters/appendix-02.tex
 Appendix B
@@ -1145,7 +1159,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 41.
 
-[65
+[64
 
 
 
@@ -1168,7 +1182,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 71.
 
-[66]) [67]
+[65]) [66]
 \openout2 = chapters/appendix-03.aux
  (./chapters/appendix-03.tex
 Appendix C
@@ -1190,7 +1204,7 @@ m/n/10 88\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 3372$\T1/lmr/m/n/10 , $\OT1/cmr/m/n/
 :\OT1/cmr/m/n/10 3372$\T1/lmr/m/n/10 , $\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 156\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 558$\T1/lmr/m/n/10 ,
  []
 
-) [68
+) [67
 
 
 
@@ -1200,7 +1214,7 @@ m/n/10 88\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 3372$\T1/lmr/m/n/10 , $\OT1/cmr/m/n/
 \openout2 = chapters/appendix-04.aux
  (./chapters/appendix-04.tex
 Appendix D
-) [69
+) [68
 
 
 
@@ -1210,7 +1224,7 @@ Appendix D
 \openout2 = chapters/appendix-05.aux
  (./chapters/appendix-05.tex
 Appendix E
-) [70
+) [69
 
 
 
@@ -1226,7 +1240,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 st-[]andrews.ac.uk/Biographies/
  []
 
-[71
+[70
 
 
 
@@ -1241,22 +1255,22 @@ mr/m/n/10.95 The spellings \T1/lmr/m/it/10.95 Kravchuk\T1/lmr/m/n/10.95 ,
 )
 Underfull \vbox (badness 1184) has occurred while \output is active []
 
- [72])
-[73]
+ [71])
+[72]
 Bibliography and Source Register
 
-Overfull \hbox (7.61005pt too wide) in paragraph at lines 108--109
+Overfull \hbox (7.61005pt too wide) in paragraph at lines 120--121
 \T1/lmr/m/n/10.95 tions are de-vel-oped in Sec-tion [][]5[][]. The re-tained lo-
 cal sums manuscripts
  []
 
 
-Overfull \hbox (5.3874pt too wide) in paragraph at lines 108--109
+Overfull \hbox (5.3874pt too wide) in paragraph at lines 120--121
 \T1/lmr/m/n/10.95 in \T1/lmtt/m/n/10.95 supporting-papers/ \T1/lmr/m/n/10.95 sup
 -ply fur-ther se-lected for-mu-las with proofs
  []
 
-(./sources/uploaded-source-guide.tex [74
+(./sources/uploaded-source-guide.tex [73
 
 
 
@@ -1272,30 +1286,30 @@ lmr/m/n/10.95 .
  []
 
 )
-Overfull \hbox (8.5993pt too wide) in paragraph at lines 8--114
+Overfull \hbox (8.5993pt too wide) in paragraph at lines 8--126
 []\T1/lmr/m/n/10.95 The sup-plied \T1/lmtt/m/n/10.95 KravEstimate.tex \T1/lmr/m
 /n/10.95 is now pre-served un-changed in \T1/lmtt/m/n/10.95 sources/\T1/lmr/m/n
 /10.95 .
  []
 
-(./bibliography/references.tex [75] [76]
+(./bibliography/references.tex [74] [75]
 Bibliography
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [77
+ [76
 
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [78]
+ [77]
 Underfull \hbox (badness 1953) in paragraph at lines 108--113
 \T1/lmr/m/it/9 quater-nions\T1/lmr/m/n/9 , arXiv:1604.00109 (2016), [][]$\T1/lm
 tt/m/n/9 https://doi.org/10.48550/arXiv.1604.
  []
 
-) [79] (./main.aux (./chapters/00-introduction.aux) (./chapters/01-chapter.aux) (./chapters/02-chapter.aux) (./chapters/03-chapter.aux)
+) [78] (./main.aux (./chapters/00-introduction.aux) (./chapters/01-chapter.aux) (./chapters/02-chapter.aux) (./chapters/03-chapter.aux)
 (./chapters/04-chapter.aux) (./chapters/05-chapter.aux)
 (./chapters/06-chapter.aux) (./chapters/07-chapter.aux)
 (./chapters/08-chapter.aux) (./chapters/09-chapter.aux)
@@ -1308,18 +1322,18 @@ tt/m/n/9 https://doi.org/10.48550/arXiv.1604.
 (./chapters/appendix-03.aux) (./chapters/appendix-04.aux)
 (./chapters/appendix-05.aux) (./chapters/appendix-06.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B97CCBF7BC62706AED6C43F6D07C011A;29613.
+(rerunfilecheck)             Checksum: D1FF6A18D331A00100F3198C8FBA4283;29739.
 )
 
 Here is how much of LuaTeX's memory you used:
- 13565 strings out of 478285
+ 13573 strings out of 478285
  156265,1977958 words of node,token memory allocated
- 5730 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 4 glue, 4 kern, 1 glyph, 1292 attribute, 63 glue_sp
-ec, 1292 attribute_list, 1 write, 4 pdf_action nodes
-   avail lists: 2:3390,3:408,4:172,5:605,6:118,7:12571,8:125,9:1965,10:20,11:727
+ 5766 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 4 glue, 4 kern, 1 glyph, 1301 attribute, 63 glue_sp
+ec, 1301 attribute_list, 1 write, 4 pdf_action nodes
+   avail lists: 2:3390,3:413,4:173,5:624,6:118,7:12571,8:125,9:1965,10:20,11:727
 
- 32043 multiletter control sequences out of 65536+600000
+ 32046 multiletter control sequences out of 65536+600000
  102 fonts using 6499919 bytes
  72i,13n,72p,697b,533s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/tex
@@ -1356,10 +1370,10 @@ exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist/f
 onts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msam10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type
 1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (88 pages, 874985 bytes).
+Output written on main.pdf (90 pages, 885633 bytes).
 
-PDF statistics: 1563 PDF objects out of 1728 (max. 8388607)
- 1422 compressed objects within 15 object streams
- 377 named destinations out of 1000 (max. 131072)
- 1009 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1584 PDF objects out of 1728 (max. 8388607)
+ 1441 compressed objects within 15 object streams
+ 382 named destinations out of 1000 (max. 131072)
+ 1017 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -111,16 +111,16 @@ Column $j$ of $\Phi_N$ is a right eigenvector with eigenvalue $N-2j$;
 row $n$ is a left eigenvector with eigenvalue $N-2n$.
 
 \subsection{Transition probabilities}
-For $N\geq1$, $T_N=A_N/N$ is column-stochastic. Hence
-$p_{t+1}=T_Np_t$ and, for integers $t\geq0$,
+For $N\geq1$, $\mathsf P_N=A_N/N$ is column-stochastic. Hence
+$p_{t+1}=\mathsf P_Np_t$ and, for integers $t\geq0$,
 \[
-T_N^t=2^{-N}\Phi_N(\Lambda_N/N)^t\Phi_N.
+\mathsf P_N^t=2^{-N}\Phi_N(\Lambda_N/N)^t\Phi_N.
 \]
-The backward operator on column vectors of function values is $T_N^T$,
-not $T_N$; its eigenfunctions are $j\mapsto K_n(j;N)$.
+The backward operator on column vectors of function values is $\mathsf P_N^T$,
+not $\mathsf P_N$; its eigenfunctions are $j\mapsto K_n(j;N)$.
 The stationary column distribution is
 $2^{-N}(\binom N0,\ldots,\binom NN)^T$, the normalized first column
-of $\Phi_N$. The eigenvalue $-1$ of $T_N$ expresses period two;
+of $\Phi_N$. The eigenvalue $-1$ of $\mathsf P_N$ expresses period two;
 stationarity does not imply convergence from arbitrary initial data.
 
 \subsection{The cases $N=3$ and $N=5$}

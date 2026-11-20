@@ -47,11 +47,11 @@ polynomials, to avoid confusing them with the centered lattice variable
 $x=N-2j$. On $e_j=\xi^{N-j}\eta^j$,
 \[
 R=\eta\partial_\xi,\qquad L=\xi\partial_\eta,\qquad
-\mathcal H=\xi\partial_\xi-\eta\partial_\eta.
+\mathbf H=\xi\partial_\xi-\eta\partial_\eta.
 \]
-Their matrices are $R_N,L_N,\Lambda_N$, respectively. The Euler operator
+Their matrices are $R_N,L_N,\Lambda_N$, respectively. Boldface $\mathbf H$ denotes the Cartan differential operator, not the oscillator Hamiltonian $\mathcal H$. The Euler operator
 $\mathcal E=\xi\partial_\xi+\eta\partial_\eta$ acts as $NI$, and is
-not $\mathcal H$.
+not $\mathbf H$.
 For the group convention of Section~\ref{sec:8-1}, differentiation gives
 \[
 d\rho_N\!\begin{pmatrix}a&b\\c&d\end{pmatrix}
@@ -59,7 +59,7 @@ d\rho_N\!\begin{pmatrix}a&b\\c&d\end{pmatrix}
 \]
 In particular,
 \[
-d\rho_N(F)=R+L,\qquad d\rho_N(G)=\mathcal H,\qquad
+d\rho_N(F)=R+L,\qquad d\rho_N(G)=\mathbf H,\qquad
 d\rho_N(i)=L-R.
 \]
 The last sign follows from the fixed matrix
@@ -144,9 +144,9 @@ Thus column $k$ of $U_N$ is the $J_x$ eigenstate with eigenvalue $\hbar(s-k)$, e
 \]
 This is the angular-momentum meaning of the Krawtchouk eigenvector matrix: it changes between two perpendicular quantization axes.
 
-For an exact rotation dictionary, use the already established parity matrix $D_N=\operatorname{diag}((-1)^j)$, distinguished from the normalization matrix $C=B_N^{1/2}$ used above. With the displayed $J_y$ sign convention,
+For an exact rotation dictionary, use the already established parity matrix $\sigma_N=\operatorname{diag}((-1)^j)$, distinguished from the normalization matrix $C=B_N^{1/2}$ used above. With the displayed $J_y$ sign convention,
 \begin{equation}\label{eq:angular-Wigner-d}
-U_N=\exp\!\left(-\frac{\mathrm i\pi J_y}{2\hbar}\right)D_N.
+U_N=\exp\!\left(-\frac{\mathrm i\pi J_y}{2\hbar}\right)\sigma_N.
 \end{equation}
 The rightmost factor supplies the column phases: the real symmetric involution $U_N$ is not itself a bare quarter-turn rotation. To prove the identity, at $N=1$ write
 \[

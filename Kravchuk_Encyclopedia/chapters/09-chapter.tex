@@ -101,7 +101,6 @@ formula in the notation fixed by this book.
 Set
 \begin{equation*}
 H=\begin{pmatrix}1&1\\1&-1\end{pmatrix},\qquad
-T_N=H^{\otimes N},\qquad
 s_j=\sum_{|\epsilon|=j}e_\epsilon,\qquad
 b_j=\binom Nj,\qquad a_j=s_j/b_j.
 \end{equation*}
@@ -109,14 +108,14 @@ For an input string of weight $j$, the sum of the output coefficients
 at weight $n$ is the coefficient of $v^n$ in
 $(1+v)^{N-j}(1-v)^j$, namely $K_n(j;N)$.
 Permutation symmetry then shows that each output coefficient at that
-weight in $T_Na_j$ is $K_n(j;N)/b_n$. Consequently
+weight in $H^{\otimes N}a_j$ is $K_n(j;N)/b_n$. Consequently
 \begin{equation*}
-T_Na_j=\sum_{n=0}^N K_n(j;N)a_n.
+H^{\otimes N}a_j=\sum_{n=0}^N K_n(j;N)a_n.
 \end{equation*}
-Thus the restriction of $T_N$ to the symmetric sector has matrix
+Thus the restriction of $H^{\otimes N}$ to the symmetric sector has matrix
 $\Phi_N$ in the orbit-average basis, not in every choice of basis.
 In the orthonormal basis $q_j=s_j/\sqrt{b_j}$, the normalized transform
-$2^{-N/2}T_N$ has matrix
+$2^{-N/2}H^{\otimes N}$ has matrix
 \begin{equation*}
 2^{-N/2}B_N^{-1/2}\Phi_N B_N^{1/2}.
 \end{equation*}

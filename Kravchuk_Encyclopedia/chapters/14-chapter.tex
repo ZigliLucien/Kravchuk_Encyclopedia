@@ -50,6 +50,7 @@ the lattice argument:
 =\sum_{n=0}^N K_n(j;N)v^n,\qquad
 \Phi_N=(K_n(j;N))_{n,j=0}^N.
 \end{equation}
+Equivalently, $(\Phi_N)_{ij}=K_i(j;N)$: row $i$ is degree and column $j$ is the negative-sign count.
 For example,
 \[
 \Phi_2=\begin{pmatrix}1&1&1\\2&0&-2\\1&-1&1\end{pmatrix}.
@@ -103,7 +104,7 @@ $W_N=\operatorname{diag}(2^0,\ldots,2^N)$, this is
 \[
 P_N^{-1}\Phi_NP_N=J_NW_N.
 \]
-Here $W_N$ is used to avoid collision with the parity matrix $D_N$
+Here $W_N$ is used to avoid collision with the parity matrix $\sigma_N$
 of Section~\ref{sec:8-1}. This is the existing binomial-basis identity,
 with its proof made explicit; compare \cite[Section~7.3]{KocikFeynman}.
 

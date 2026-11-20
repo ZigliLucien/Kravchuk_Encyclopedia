@@ -37,10 +37,33 @@ $\Phi_N,S_N$ are in Appendix~\ref{app:matrix-tables}.
 
 \section{The matrix $T$}
 \label{sec:16-1}
-% TODO: Develop this section; add verified references, examples, and exercises.
-
-\noindent\textbf{THE MATRIX $T$ NEEDS TO BE DONE.}
-
+Reserve $T$, or $T_N$ when the level is displayed, for the
+skew-symmetric matrix that anticommutes with $S_N$. In the fixed
+raising/lowering convention it is
+\begin{equation}\label{eq:ency-T-definition}
+T_N=(\Lambda_N-NI)R_N+(\Lambda_N+NI)L_N.
+\end{equation}
+Equivalently, with endpoint terms omitted,
+\[
+\tfrac12T_Ne_j=j(N-j+1)e_{j-1}-(j+1)(N-j)e_{j+1}.
+\]
+Thus $(T_N)_{j,j+1}=2(j+1)(N-j)$ and
+$(T_N)_{j+1,j}=-2(j+1)(N-j)$ for $0\le j<N$. The finite identities are
+\begin{equation}\label{eq:ency-T-anticommutation}
+T_N^T=-T_N,\qquad T_NS_N=-S_NT_N.
+\end{equation}
+For a direct coefficient proof, put
+$F(u,v)=(1+u+v-uv)^N=\sum_{a,b}(S_N)_{ab}u^av^b$.
+Left multiplication by $T_N$ acts on this generating polynomial as
+\[
+\mathcal D_u=2\{N\partial_u-u\partial_u^2-Nu
++u^3\partial_u^2-(N-2)u^2\partial_u\}.
+\]
+Right multiplication acts as $-\mathcal D_v$, since $T_N^T=-T_N$.
+Substitution gives $\mathcal D_uF=\mathcal D_vF$, proving
+$T_NS_N+S_NT_N=0$. For $N=0$ the matrices are scalar and $T_0=0$.
+The spectral consequences of this anticommutation are distinct from
+the reflection identities involving $J_N$ and $\sigma_N$.
 
 \section{$S^2$ and trace formulas}
 \label{sec:16-2}
@@ -65,11 +88,11 @@ The beta integral follows by factoring $1\pm e^{i\theta}$ into half-angle sine a
 
 \section{Symmetry sectors and block decompositions}
 \label{sec:16-4}
-Define $(Jf)_j=f_{N-j}$ and $(Ef)_j=(-1)^jf_j$. Then
+Use the reversal $(J_Nf)_j=f_{N-j}$ and the sign operator $(\sigma_Nf)_j=(-1)^jf_j$. Then
 \[
-JS_N=S_NE,\qquad S_NJ=ES_N,
+J_NS_N=S_N\sigma_N,\qquad S_NJ_N=\sigma_NS_N,
 \]
-so $S_N$ commutes with $J+E$. For the square, indices of different parity decouple. Conjugation by $\operatorname{diag}((-1)^{\lfloor j/2\rfloor})$ makes each parity block entrywise positive, by \eqref{eq:beta}.
+so $S_N$ commutes with $J_N+\sigma_N$. For the square, indices of different parity decouple. Conjugation by $\operatorname{diag}((-1)^{\lfloor j/2\rfloor})$ makes each parity block entrywise positive, by \eqref{eq:beta}.
 
 \section{Beta-function kernel and spectral asymptotics}
 \label{sec:16-5}
